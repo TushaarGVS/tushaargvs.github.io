@@ -1,6 +1,5 @@
 ## Marisa Carlos&rsquo; website
 
-#See [kbroman.org](http://kbroman.org).
 See [marisacarlos.com](http://marisacarlos.com)
 
 ---

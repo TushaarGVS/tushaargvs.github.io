@@ -2,7 +2,7 @@
 layout: frontpage
 title: Marisa Carlos
 description: Marisa Carlos is a PhD candidate in Policy Analysis and Management and Cornell Univeristy 
-keywords: Broman, QTL, R/qtl, quantitative trait loci, statistics, statistical genetics, recombination
+keywords: Carlos, Marisa, Cornell, health, economics
 ---
 <!--
 <div class="navbar">
