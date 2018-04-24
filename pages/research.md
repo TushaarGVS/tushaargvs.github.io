@@ -5,12 +5,12 @@ description: Marisa Carlos's research
 ---
 
 
-#### <u>Prescription drug coupons: a way to get around the tiered formulary<u>
+#### <u>Prescription Drug Coupons: A Way to Get Around the Tiered Tormulary<u>
 *I estimate the effect of prescription drug coupons on generic utilization, medication adherence, and preventable hospitalizations. Drug coupons are banned in Massachusetts
 (for all insurance types) and in Medicare, which allows me to estimate difference-in-differences and triple-difference models. I use claims data from a large national insurer
 from 2007-2016 as well as a dataset collected by scraping the Internet Archive to determine the availability/introduction of coupons across time.*
 
-#### <u> Hospital ownership and admission through the emergency department <u>
+#### <u> Hospital Awnership and Admission Through the Emergency Department <u>
 *Using the universe of ER discharge records for multiple states and years, I determine whether hospital ownership affects hospital admission rates for patients who show up in
 the emergency room. I use within-hospital variation from ownership conversions to estimate hospital fixed-effects regressions and event studies. The results indicate that
 conversion to for-profit from nonprofit or government ownership results in a 2-3 percentage point increase in admission rates, with the effects concentrated to Medicare
