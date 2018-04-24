@@ -18,8 +18,9 @@ Her research interests include health economics, specifically pharmaceuticals, h
     <div class="row-fluid">
         <div class="span5">
             Marisa Carlos<br/>
-            Email: <code>mbc</code><b>I</b><code>96</code><b>don't</b><code>@</code><b>want</b><code>bio</code><b>spam!
-            </b><code>stat</code><b>So</b><code>.</code><b>please</b><code>corn</code><b>leave
+            <div id="hide_email">
+            Email: <code>m</code><b>I</b><code>b</code><b>don't</b><code>c</code><b>want</b><code>9</code><b>spam!
+            </b><code>6@</code><b>So</b><code>co</code><b>please</b><code>rn</code><b>leave
             </b><code>ell</code><b>me</b><code>.</code><b>alone</b><code>e</code><b>!</b><code>du</code><br/>
             </div>
         </div>
