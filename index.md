@@ -15,7 +15,7 @@ description: Marisa Carlos is a PhD candidiate in Policy Analysis and Management
 Marisa Carlos is a PhD candidate in the [Department of Policy Analysis &amp; Management](http://www.human.cornell.edu/pam) at Cornell University.
 Her research interests include health economics, specifically pharmaceuticals, hospitals, and health insurance.
 
-[curriculum vitae ![CV as pdf](icons16/pdf-icon.png)]({{ BASE_PATH }}/assets/mbcarlos_CV.pdf)<br/>
+[curriculum vitae ![CV as pdf]({{ BASE_PATH }}/pages/icons16/pdf-icon.png)]({{ BASE_PATH }}/assets/mbcarlos_CV.pdf)<br/>
 
 
 ---
@@ -46,7 +46,7 @@ Her research interests include health economics, specifically pharmaceuticals, h
       <ul class="nav">
           <li><a href="{{ BASE_PATH }}/assets/mbcarlos_CV.pdf">cv</a></li>
           <li><a href="https://github.com/mbcarlos">github</a></li>
-          <li><a href="https://twitter.com/MarisaBriCarlos">@kwbroman</a></li>
+          <li><a href="https://twitter.com/MarisaBriCarlos">@MarisaBriCarlos</a></li>
       </ul>
   </div>
 </div>
