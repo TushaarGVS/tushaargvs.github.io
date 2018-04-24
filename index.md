@@ -5,13 +5,6 @@ description: Marisa Carlos is a PhD candidate in Policy Analysis and Management 
 keywords: Carlos, Marisa, Cornell, health, economics
 ---
 
-
----
-layout: page
-title: about
-description: Marisa Carlos is a PhD candidiate in Policy Analysis and Management at Cornell University
----
-
 Marisa Carlos is a PhD candidate in the [Department of Policy Analysis &amp; Management](http://www.human.cornell.edu/pam) at Cornell University.
 Her research interests include health economics, specifically pharmaceuticals, hospitals, and health insurance.
 
