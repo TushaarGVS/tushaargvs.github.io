@@ -26,7 +26,6 @@ information about them. This is the first set of information we want to collect.
 If you look at the URL for each state, you'll notice that the formula of the URL is the same:
 - https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state= **AK** #results
 - https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state= **AR** #results
-- https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state= **AK** #results
 
 
 
