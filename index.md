@@ -27,8 +27,8 @@ Her research interests include health economics, specifically pharmaceuticals, h
         </div>
 
         <div class="span2">
-        <a href="../assets/pics/marisa_carlos.jpg">
-            <img src="../assets/pics/marisa_carlos.jpg"
+        <a href="../assets/headshot.jpg">
+            <img src="../assets/headshot.jpg"
                   title="Marisa Carlos" alt="Marisa Carlos"/></a>
         </div>
     </div>
