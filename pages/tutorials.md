@@ -8,4 +8,5 @@ description: Marisa Carlos's tutorials
 
 <!---
 - [Web Scraping Part II: Python](http://marisacarlos.com/pages/web-scraping-python)
+- [How to run Python scripts](https://marisacarlos.com/how-to-run-python-file)
 --->
