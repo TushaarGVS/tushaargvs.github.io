@@ -31,6 +31,9 @@ If you need a refresher on how to run a Python script, check out my very short t
 The modules we are going to need to import are the foll
 
 Let's start by importing the modules we will need. At the top of your python file, add:
+```python
+from bs4 import BeautifulSoup
+```
 
 
 
