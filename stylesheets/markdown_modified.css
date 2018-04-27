@@ -16,3 +16,8 @@ a:hover
   color: purple;
   background: #CAFFFF;
 }
+
+.danger {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+}
