@@ -8,7 +8,7 @@ This tutorial is written for Python 2.7. Instructions for viewing the page sourc
 commands are not a huge part of the tutorial, so this can be easily adapted for use on a Windows machine. 
 
 
-<div class="danger">
+<div class="warning">
   <p><strong>Note:</strong> If you have never run a Python script from your computer, you might need to install Python. Additionally, if you don't have them you'll want to install Xcode, command line tools, Homebrew,
 and PIP. <a href="https://www.macworld.co.uk/how-to/mac/coding-with-python-on-mac-3635912/">Click here for a tutorial that will walk you through this on a Mac.</a></p>
 </div>

@@ -64,21 +64,24 @@ h1, h2, h3, h4 {
 .danger {
     background-color: #ffdddd;
     border-left: 6px solid #f44336;
-    padding-left: 80px;
+    padding-left: 10px;
 }
 
 .success {
     background-color: #ddffdd;
     border-left: 6px solid #4CAF50;
+    padding-left: 10px;
 }
 
 .info {
     background-color: #e7f3fe;
     border-left: 6px solid #2196F3;
+    padding-left: 10px;
 }
 
 
 .warning {
     background-color: #ffffcc;
     border-left: 6px solid #ffeb3b;
+    padding-left: 10px;
 }
