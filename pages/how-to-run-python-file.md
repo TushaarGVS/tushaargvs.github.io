@@ -16,14 +16,18 @@ I personally don't like Anaconda because it takes too long to open and it feels 
 
 #### How to create and run your code
 
-1. Open your text editor (in my case Komodo Edit) and create a new file. In Komodo Edit, click on "text" near the bottom right corner and select "python" from the drop down menu. 
+1. Open your text editor (in my case Komodo Edit) and create a new file.  
 2. Write your code and then save it - be sure to add .py to the end of the file so your computer knows its a python script.
 3. Open your terminal and navigate to the folder (directory) where you saved your python code. For example, if my code was saved in /Users/marisacarlos/Dropbox I would type:
    ```bash
    cd /Users/marisacarlos/Dropbox
    ```
-
-   Note that if you have spaces in your path name you'll need to use double quotes around it.
+   <div class="warning">
+   Note that if you have spaces in your path name you'll need to use double quotes around it:
+   ```bash
+   cd "/Users/marisacarlos/folder name with spaces"
+   ```
+   <div class="warning">
 
 4. Run your code. If your code is called pythoncode.py you would type:
    ```bash
