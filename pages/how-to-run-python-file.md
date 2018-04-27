@@ -24,6 +24,9 @@ I personally don't like Anaconda because it takes too long to open and it feels 
    ```
    <div class="warning">
    Note that if you have spaces in your path name you'll need to use double quotes around it:
+   ```bash
+   cd "/Users/marisacarlos/folder name with spaces"
+   ```
    </div>
    ```bash
    cd "/Users/marisacarlos/folder name with spaces"
