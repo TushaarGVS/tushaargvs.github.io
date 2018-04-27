@@ -4,7 +4,7 @@ title: Web Scraping Part II: Python
 description: Tutorial on using Python to scrape data from the web
 ---
 
-
+#### Web Scraping Part II: Python
 
 This tutorial is written for Python 2.7. Instructions for viewing the page source are based on Google Chrome. Command-line things are for Mac. Note that using the command-line is not a huge part of the tutorial, so this can be easily adapted for use on a Windows machine.
 
@@ -64,6 +64,34 @@ or
 save_output_path = ''
 ```
 
+Add a line containing a list of state codes:
+```python
+# state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+state_codes = ["AK"]
+```
+
+I added two lines, one commented out (has the # in front) and one uncommented. It's much more efficient to write and test our code using the shorter list. If we loop through all the states every time we test the code, it'll take way too long. When we've finished our code and want to actually collect the data, remove the short list and uncomment the long list.
+
+
+
+ADD COMMANDS HERE FOR PYTNON
+
+Everything is arranged as a tree.
+
+
+This next part is the trickiest part about web scraping. We need to figure out which tags have the information we want. Ideally, we'd like to find a set of tags that contains all the information we want for each drug plan, and be able to pull out **only** those tags. The **only** part is where it gets tricky. For this website, I looked through the page source and figured out the tag we were looking for had these unique characteristics:
+```html
+<tr class="tbllight" valign="middle"><td colspan="3" valign="middle">
+<tr class="tbldark" valign="middle"><td colspan="3" valign="middle">
+```
+You'll notice that the class alernates between "tbllight" and "tbldark" but the **valign** and **
+
+
+For a complete list of tag types see the list over at [w3schools](https://www.w3schools.com/tags/default.asp)
+Types of tags:
+- `<td>` tag defines a cell in an HTML table. 
+- `<tr>`
+- `<a> : contains hrefs (URL links)
 
 
 
@@ -76,7 +104,7 @@ Because the URLs have this structure, we will loop through all the URLs to get e
 
 
 
-TROUBLESHOOTING:
+#### TROUBLESHOOTING:
 
 Get stuck in a loop or run something that you didn't mean to? You can terminate the python command by doing the following. First open a new tab or window in your terminal. Then type:
 ```bash
@@ -85,6 +113,7 @@ ps aux | grep python
 This will display a list of processes containing the term "python". Look for the process containing the command you issued (in my case it says:)
 ![ps aux output]({{ BASE_PATH }}/assets/ps_aux_grep_python.png)
 [(click here to zoom)]({{ BASE_PATH }}/assets/ps_aux_grep_python.png)
+
 Figure out what the process ID is. In the example above the PID is 6380, so to stop this process I issue the command:
 ```
 kill 6380
