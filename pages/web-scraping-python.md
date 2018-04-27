@@ -76,7 +76,29 @@ I added two lines, one commented out (has the # in front) and one uncommented. I
 
 ADD COMMANDS HERE FOR PYTNON
 
-Everything is arranged as a tree.
+
+The next part is the trickest part of web scraping. We need to figure out where the information we want to collect is and figure out a well to tell the machine what information we want. We'll start by looking at the page source. In Google Chrome  paste the following into your address bar:
+```
+view-source:https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AK#results
+```
+
+Notice this is just the website prefixed with **view-source:**. You can also get to this by going to the website, right clicking anywhere, and selecting "view page source."
+
+Scrolling through the page source, it's clear that there is a whole lot of information we don't need. We want to find a way to identify each row of the table in the page source. When I looked at the webpage I noticed that every row of the table has the text "Preferred Generic". If I search the page I can see that this text only occurs in the table, and it occurs in every single row.
+
+I can search for this text in the page source to glean some insight into what tags contain the information I want:
+![preferred_generic_page_source_search]({{ BASE_PATH }}/assets/preferred_generic_page_source_search.png)
+[(click here to zoom)]({{ BASE_PATH }}/assets/preferred_generic_page_source_search.png)
+
+The screenshot above shows the entire tag, which contains all of the information that we need. It is `<tr>` tag - which we know because it starts with `<tr>` and ends with `</tr>`:
+![tr_tag_illustration]({{ BASE_PATH }}/assets/tr_tag_illustration.png)
+[(click here to zoom)]({{ BASE_PATH }}/assets/tr_tag_illustration.png)
+
+
+All of the information we are looking for is contained within the tag:
+![tr_tag_column_info_highlighted]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
+[(click here to zoom)]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
+
 
 
 This next part is the trickiest part about web scraping. We need to figure out which tags have the information we want. Ideally, we'd like to find a set of tags that contains all the information we want for each drug plan, and be able to pull out **only** those tags. The **only** part is where it gets tricky. For this website, I looked through the page source and figured out the tag we were looking for had these unique characteristics:
@@ -84,14 +106,14 @@ This next part is the trickiest part about web scraping. We need to figure out w
 <tr class="tbllight" valign="middle"><td colspan="3" valign="middle">
 <tr class="tbldark" valign="middle"><td colspan="3" valign="middle">
 ```
-You'll notice that the class alernates between "tbllight" and "tbldark" but the **valign** and **
+You'll notice that the class alernates between "tbllight" and "tbldark" but the **valign** is always "middle". 
 
 
-For a complete list of tag types see the list over at [w3schools](https://www.w3schools.com/tags/default.asp)
+For a complete list of tag types see [w3schools](https://www.w3schools.com/tags/default.asp)
 Types of tags:
-- `<td>` tag defines a cell in an HTML table. 
-- `<tr>`
-- `<a> : contains hrefs (URL links)
+- `<td>`: defines a cell in an HTML table. 
+- `<tr>`: defines a row in a table
+- `<a>` : defines a hyperline (href)
 
 
 
