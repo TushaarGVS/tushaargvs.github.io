@@ -7,6 +7,12 @@ description: Tutorial on using Python to scrape data from the web
 This tutorial is written for Python 2.7. Instructions for viewing the page source as based on Google Chrome. Command-line things are for Mac. Note that the command-line
 commands are not a huge part of the tutorial, so this can be easily adapted for use on a Windows machine. 
 
+
+<div class="warning">
+  <p><strong>Note:</strong> If you have never run a Python script from your computer, you might need to install Python. Additionally, if you don't have them you'll want to install Xcode, command line tools, Homebrew,
+and PIP. [Here is a tutorial that will walk you through all of this on a Mac](https://www.macworld.co.uk/how-to/mac/coding-with-python-on-mac-3635912/).</p>
+</div>
+
 In this tutorial we will collect information on Medicare Part D prescription drug plans. The end result will be a CSV file containing information on every part D plan available in every state, with information on monthly premium, deductible, whether there is a "donut hole"
 coverage gap, tier information, as well as information on the formulary position of every drug (tier number, cost-sharing, and drug usage management)
 
@@ -28,11 +34,22 @@ Now that we have an idea of what we want to do, we'll start coding it up.
 
 If you need a refresher on how to run a Python script, check out my very short tutorial INSERT HERE.
 
-The modules we are going to need to import are the foll
+The modules we are going to need to import are the following:
+
+You might need to install these if you haven't already. To do this, go to the command line and type:
+```bash
+
+```
 
 Let's start by importing the modules we will need. At the top of your python file, add:
 ```python
 from bs4 import BeautifulSoup
+```
+
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
 ```
 
 
