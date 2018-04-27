@@ -24,10 +24,10 @@ I personally don't like Anaconda because it takes too long to open and it feels 
    ```
    <div class="warning">
    Note that if you have spaces in your path name you'll need to use double quotes around it:
+   </div>
    ```bash
    cd "/Users/marisacarlos/folder name with spaces"
    ```
-   <div class="warning">
 
 4. Run your code. If your code is called pythoncode.py you would type:
    ```bash
