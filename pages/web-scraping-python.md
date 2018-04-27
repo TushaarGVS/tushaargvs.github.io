@@ -10,7 +10,7 @@ commands are not a huge part of the tutorial, so this can be easily adapted for 
 
 <div class="alert-info">
   <p><strong>Note:</strong> If you have never run a Python script from your computer, you might need to install Python. Additionally, if you don't have them you'll want to install Xcode, command line tools, Homebrew,
-and PIP. [Here is a tutorial that will walk you through all of this on a Mac](https://www.macworld.co.uk/how-to/mac/coding-with-python-on-mac-3635912/).</p>
+and PIP.<a href="https://www.macworld.co.uk/how-to/mac/coding-with-python-on-mac-3635912/">Here is a tutorial that will walk you through all of this on a Mac.</a></p>
 </div>
 
 In this tutorial we will collect information on Medicare Part D prescription drug plans. The end result will be a CSV file containing information on every part D plan available in every state, with information on monthly premium, deductible, whether there is a "donut hole"
