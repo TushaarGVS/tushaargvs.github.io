@@ -28,7 +28,7 @@ In this tutorial we will collect information on Medicare Part D prescription dru
    
 Now that we have an idea of what we want to do, we'll start coding it up.
 
-If you need a refresher on how to run a Python script, check out my very short tutorial INSERT HERE.
+If you need a refresher on how to run a Python script, check out my very short tutorial on [how to run a python script]({{ BASE_PATH }}/pages/how-to-run-python-file).
 
 The modules we are going to need to import are the following:
 
