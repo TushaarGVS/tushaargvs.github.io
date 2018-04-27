@@ -32,10 +32,7 @@ In this tutorial we will collect information on Medicare Part D prescription dru
 
 Our end result will be a spreadsheet containing the above information for every plan in every state.
 
-   
 Now that we have an idea of what we want to do, we'll start coding it up.
-
-If you need a refresher on how to run a Python script, check out my very short tutorial on [how to run a python script]({{ BASE_PATH }}/pages/how-to-run-python-file).
 
 <div class="info">
   <p><strong>Note:</strong> If you need a refresher on how to run a Python script, check out my very short tutorial on  <a href="{{ BASE_PATH }}/pages/how-to-run-python-file)">how to run a python script.</a></p>
@@ -44,15 +41,30 @@ If you need a refresher on how to run a Python script, check out my very short t
 
 The modules we are going to need to import are the following:
 
-You might need to install these if you haven't already. To do this, go to the command line and type:
+You will need to install these if they aren't already on your machine. To do this, go to the command line and type:
 ```bash
-
+pip install selenium
+pip install bs4
+pip install xlsxwriter
 ```
 
 Let's start by importing the modules we will need. At the top of your python file, add:
 ```python
 from bs4 import BeautifulSoup
+from selenium import webdriver
+import xlsxwriter
 ```
+
+Add a line indicating the path that you want to save your output in. If you want to save in the same directory that you have your python file in, you can just leave it blank.
+```python
+save_output_path = '/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files'
+```
+or
+```python
+save_output_path = ''
+```
+
+
 
 
 
@@ -64,3 +76,20 @@ Because the URLs have this structure, we will loop through all the URLs to get e
 
 
 
+TROUBLESHOOTING:
+
+Get stuck in a loop or run something that you didn't mean to? You can terminate the python command by doing the following. First open a new tab or window in your terminal. Then type:
+```bash
+ps aux | grep python
+```
+This will display a list of processes containing the term "python". Look for the process containing the command you issued (in my case it says:)
+![ps aux output]({{ BASE_PATH }}/assets/ps_aux_grep_python.png)
+[(click here to zoom)]({{ BASE_PATH }}/assets/ps_aux_grep_python.png)
+Figure out what the process ID is. In the example above the PID is 6380, so to stop this process I issue the command:
+```
+kill 6380
+```
+When you go back to the window where you issued the python command you'll see:
+```bash
+Terminated: 15
+```
