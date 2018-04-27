@@ -4,6 +4,8 @@ title: Web Scraping Part II: Python
 description: Tutorial on using Python to scrape data from the web
 ---
 
+
+
 This tutorial is written for Python 2.7. Instructions for viewing the page source are based on Google Chrome. Command-line things are for Mac. Note that using the command-line is not a huge part of the tutorial, so this can be easily adapted for use on a Windows machine.
 
 
@@ -24,14 +26,21 @@ In this tutorial we will collect information on Medicare Part D prescription dru
    5. Total Formulary Drugs (number)
    6. URL containined in the link "Browse Formulary" (we will use this in the second part to collect information on all the drugs in the formulary)
    
-**Here's what the first row of our output will look like:**
+**Here's what the first row of our output should look like:**
 ![scraping output spreadsheet example]({{ BASE_PATH }}/assets/scraping_output_spreadsheet_example.png)
 [(click here to zoom)]({{ BASE_PATH }}/assets/scraping_output_spreadsheet_example.png)
+
+Our end result will be a spreadsheet containing the above information for every plan in every state.
 
    
 Now that we have an idea of what we want to do, we'll start coding it up.
 
 If you need a refresher on how to run a Python script, check out my very short tutorial on [how to run a python script]({{ BASE_PATH }}/pages/how-to-run-python-file).
+
+<div class="info">
+  <p><strong>Note:</strong> If you need a refresher on how to run a Python script, check out my very short tutorial on  <a href="{{ BASE_PATH }}/pages/how-to-run-python-file)">how to run a python script.</a></p>
+</div>
+
 
 The modules we are going to need to import are the following:
 
