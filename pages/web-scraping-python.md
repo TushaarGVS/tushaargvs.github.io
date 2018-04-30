@@ -225,15 +225,15 @@ All of the information we are looking for is contained within the tag:
 [(click to zoom)]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 
 <div class="info">
-  <p><strong>Note:</strong> There are many different types of tags, but the basic structure that you need to know is that tag X starts with &lt;X &gt; and ends with &lt;/X &gt; . To see a list of different tag types, see <a href="https://www.w3schools.com/tags/default.asp">w3schools.com</a> It's not super important to understand what each tag type does, it's just important to know how to identify them in the code.</p>
+  <p><strong>Note:</strong> There are many different types of tags, but the basic structure that you need to know is that tag X starts with &lt;X&gt; and ends with &lt;/X&gt; . To see a list of different tag types, see <a href="https://www.w3schools.com/tags/default.asp">w3schools.com</a> It's not super important to understand what each tag type does, it's just important to know how to identify them in the code.</p>
 </div>
 
 
-We can see that the TR tag has the characteristics:
+We can also see that the TR tag has the attributes:
 ```html
 valign="middle" class="tbldark"
 ```
-If we scroll down to the tag containing the second row of data we want to scrape, we see the TR tag has the characteristics:
+If we scroll down to the tag containing the second row of data we want to scrape, we see the second TR tag has the attributes:
 ```html
 valign="middle" class="tbllight"
 ```
@@ -244,22 +244,43 @@ Luckily for us, it looks like TR tags with asset `valign="middle"` are **only** 
 ```python
     soup.find_all('tr',{"valign":"middle"})
 ```
-The `find_all` command searches through the "soup" and pulls out all of the tags with the attributes you specify. In this case, we've told it to pull out all the 'tr' tags where valign="middle". We can see how many `<tr>` tags by printing the length of the list:
-```python
-print len(soup.find_all('tr',{"valign":"middle"}))
-```
+The `find_all` command searches through the "soup" and pulls out all of the tags with the attributes you specify.
 
-If this number is 19 (the number of rows in the table for Alaska) then it's likely that we are pulling out the information we need and nothing more.
+The `find_all` command takes two arguments. The first argument is the type of tag, and the second attribute is a dictionary containing a list of attributes. In our case, the type of tag is `'tr'` and the attributes are `{"valign":"middle"}`. (Note that if we wanted to add another attribute, e.g. class="tbldark" the second argument would be `{"valign":"middle", "class":"tbldark"}`.)
+
+We can see how many `<tr>` tags exist in the document by printing the length of the list (i.e. the number of elements that are in the list, where an element is a single `<tr>` tag):
+```python
+    print len(soup.find_all('tr',{"valign":"middle"}))
+```
+We can see that this number is 19, which is the number of rows in the table for Alaska. At this point it should be safe to assume we are pulling out the information we need and nothing more.
 
 We can loop through all of these tags and print each one using the following code:
 ```python
-for tr_tag in soup.find_all('tr',{"valign":"middle"}):
-    print_line()
-    print tr_tag
+    for tr_tag in soup.find_all('tr',{"valign":"middle"}):
+        print_line() #remember this just prints a line so we can read the output easier
+        print tr_tag
 ```
 
-We see that within each `<tr>` tag there are a bunch of other tags. The information we want to pull for each row is containing in a separate tag. From inspecting the page source it looks like this information is contained in the `<td>` tags:
+We can see that within each `<tr>` tag there are a bunch of `<td>` tags. We can also see this if we inspect the page source a little more closely:
+![td_tags]({{ BASE_PATH }}/assets/td_tags.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/td_tags.png)
 
+You'll also notice that within some of the `<td>` tags, there are `<a>` tags, which define hyperlinks. For example, here are the `<a>` tags in the first `<td>` tag:
+![a_tags_in_td_tag]({{ BASE_PATH }}/assets/a_tags_in_td_tag.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/a_tags_in_td_tag.png)
+
+The `<a>` tags would be useful if we wanted to get, for example, the link behind the **browse formulary** text. However, we won't be using them in this tutorial. 
+
+So, just to remind you where we are - we have a loop that defines the state, and then within that loop we have another loiop
+We loop that goes through all the states, and then within that loop we have a loop that goes through the `<tr>` tags, and each `<tr>` tag contains
+
+
+So far we have two loops:
+* **State loop (`for state in state_codes:`)**: This loops through all the different states
+* **`<tr>` tag loop (`tr_tag in soup.find_all('tr',{"valign":"middle"}):`)**: Loops through the `<tr>` tags - stores the information from the tag in the variable **`tr_tag`** which contains the information for rows (it loops through the rows of the table)
+* **`<tr>` tag loop ()**: Loops through the **rows** of the table - each `<tr>` tag contains the information for all of the columns in a single of the table.
+
+The next thing we need is to loop through all the **columns** of the table 
 
 
 Within each tr tag, I can pull out each td tag. Underneath the `for tr_tag in [...]` loop add a loop that pulls out each td tag:
