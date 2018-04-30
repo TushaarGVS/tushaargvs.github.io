@@ -225,7 +225,7 @@ All of the information we are looking for is contained within the tag:
 [(click to zoom)]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 
 <div class="info">
-  <p><strong>Note:</strong> There are many different types of tags, but the basic structure that you need to know is that tag X starts with <X> and ends with </X>. To see a list of different tag types, see <a href="https://www.w3schools.com/tags/default.asp">w3schools.com</a> It's not super important to understand what each tag type does, it's just important to know how to identify them in the code.</p>
+  <p><strong>Note:</strong> There are many different types of tags, but the basic structure that you need to know is that tag X starts with &lt;X &gt; and ends with &lt;/X &gt; . To see a list of different tag types, see <a href="https://www.w3schools.com/tags/default.asp">w3schools.com</a> It's not super important to understand what each tag type does, it's just important to know how to identify them in the code.</p>
 </div>
 
 
