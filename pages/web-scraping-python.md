@@ -29,7 +29,7 @@ In this tutorial we will collect information on Medicare Part D prescription dru
    
 **Here's what the first row of our output should look like:**
 ![scraping output spreadsheet example]({{ BASE_PATH }}/assets/scraping_output_spreadsheet_example.png)
-[(click here to zoom)]({{ BASE_PATH }}/assets/scraping_output_spreadsheet_example.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/scraping_output_spreadsheet_example.png)
 
 Our end result will be a spreadsheet containing the above information for every plan in every state.
 
@@ -145,9 +145,8 @@ Now let's use the `state` variable to create a new string varaible containing th
 At this point, our python code should look like this:
 ```python
 from bs4 import BeautifulSoup
-import time
 import xlsxwriter
-from selenium import webdriver #This allows us to read the webpage if uses Javascript
+from selenium import webdriver 
 
 def print_line():
     print " "
@@ -187,7 +186,7 @@ output_workbook.close()
 FINISH ENTERING PYTHON CODES HERE 
 
 
-The next part is the trickest part of web scraping. We need to figure out where the information we want to collect is and figure out a well to tell the machine what information we want. We'll start by looking at the page source. In Google Chrome  paste the following into your address bar:
+The next part is the trickest part of web scraping. We need to figure out where the information we want to collect is and figure out a well to tell Python what information we want. We'll start by looking at the page source. In Google Chrome  paste the following into your address bar:
 ```
 view-source:https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AK#results
 ```
@@ -198,15 +197,15 @@ Scrolling through the page source, it's clear that there is a whole lot of infor
 
 I can search for this text in the page source to glean some insight into what tags contain the information I want:
 ![preferred_generic_page_source_search]({{ BASE_PATH }}/assets/preferred_generic_page_source_search.png)
-[(click here to zoom)]({{ BASE_PATH }}/assets/preferred_generic_page_source_search.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/preferred_generic_page_source_search.png)
 
 The screenshot above shows the entire tag, which contains all of the information that we need. It is a `<tr>` tag - which we know because it starts with `<tr>` and ends with `</tr>`:
 ![tr_tag_illustration]({{ BASE_PATH }}/assets/tr_tag_illustration.png)
-[(click here to zoom)]({{ BASE_PATH }}/assets/tr_tag_illustration.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/tr_tag_illustration.png)
 
 All of the information we are looking for is contained within the tag:
 ![tr_tag_column_info_highlighted]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
-[(click here to zoom)]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 
 We can see that the TR tag has the characteristics:
 ```html
@@ -217,11 +216,11 @@ If we scroll down to the tag containing the second row of data we want to scrape
 valign="middle" class="tbllight"
 ```
 ![second_tr_tag_illustration]({{ BASE_PATH }}/assets/second_tr_tag_illustration.png)
-[(click here to zoom)]({{ BASE_PATH }}/assets/second_tr_tag_illustration.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/second_tr_tag_illustration.png)
 
-Luckily for us, it looks like TR tags with asset valign="middle" are **only** used for the rows in the table with the data we want. Becuase of this we can pull out all the TR tags with this attribute:
+Luckily for us, it looks like TR tags with asset `valign="middle"` are **only** used for the rows in the table with the data we want. Becuase of this we can pull out all the TR tags with this attribute. To do this, add the following command to the python file (in `for state in state_code:` loop):
 ```python
-soup.find_all('tr',{"valign":"middle"})
+    soup.find_all('tr',{"valign":"middle"})
 ```
 The `find_all` command searches through the "soup" and pulls out all of the tags with the attributes you specify. In this case, we've told it to pull out all the 'tr' tags where valign="middle". We can see how many `<tr>` tags by printing the length of the list:
 ```python
@@ -276,7 +275,7 @@ ps aux | grep python
 ```
 This will display a list of processes containing the term "python". Look for the process containing the command you issued (in my case it says:)
 ![ps aux output]({{ BASE_PATH }}/assets/ps_aux_grep_python.png)
-[(click here to zoom)]({{ BASE_PATH }}/assets/ps_aux_grep_python.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/ps_aux_grep_python.png)
 
 Figure out what the process ID is. In the example above the PID is 6380, so to stop this process I issue the command:
 ```
