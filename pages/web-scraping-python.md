@@ -39,7 +39,7 @@ Now that we have an idea of what we want to do, we'll start coding it up.
   <p><strong>Note:</strong> If you need a refresher on how to run a Python script, check out my very short tutorial on  <a href="{{ BASE_PATH }}/pages/how-to-run-python-file">how to run a python script.</a></p>
 </div>
 
-
+#### Install required Python modules:
 The python modules we will need to run our code are the following:
 * [Selenium](http://selenium-python.readthedocs.io)
 * [bs4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
@@ -51,7 +51,7 @@ pip install selenium
 pip install bs4
 pip install xlsxwriter
 ```
-
+#### Set up Python file for scraping:
 In a new python file (I'm calling mine "medicare_PDP_scrape.py) add the modules that we will need to the top of the script:
 ```python
 from bs4 import BeautifulSoup
@@ -59,7 +59,7 @@ import xlsxwriter
 from selenium import webdriver
 ```
 
-We need to open the driver that we want to use to visit the websites we want to scrape. The code below tells Python to use PhantomJS as our webdriver. [PhantomJS](http://phantomjs.org) is basically a web browser that runs in the background.
+We need to open the driver that we want to use to visit the websites we plan to scrape. The code below tells Python to use PhantomJS as our webdriver. [PhantomJS](http://phantomjs.org) is basically a web browser that runs in the background.
 ```python
 driver = webdriver.PhantomJS()
 ```
@@ -86,6 +86,8 @@ def print_line():
     print "----------------------------------------------------------------------------------------------------------------------"
     print " "
 ```
+
+#### Write column headers to output worksheet:
 Before we start collecting and writing the data to our spreadsheet, we need to specify a name for the Excel workbook (and worksheet within the workbook) that we want to save our output to. Add the following code:
 ```python
 output_workbook = xlsxwriter.Workbook("medicare_PDP_scrape.xlsx")
@@ -94,7 +96,7 @@ plan_info_worksheet = output_workbook.add_worksheet("plan_info")
 
 The first line creates the workbook, which we can refer to using the variable "output_workbook". The second line creates the worksheet within that workbook. When you open the Excel workbook, the worksheet will be named "plan_info". Within our Python script, we can refer to the worksheet using the variable "plan_info_worksheet". When we write the output, we will refer to the worksheet (plan_info_worksheet).
 
-Let's add headers to our excel worksheet in the first row.Note that in the xlsxwriter module, row 0 refers to the first row and column 0 refers to column A.
+Let's add headers to our excel worksheet in the first row. Note that in the xlsxwriter module, row 0 refers to the first row and column 0 refers to column A.
 
 Because we are going to iterate through rows (i.e. add a new row for every Medicare plan), we will define a variable called row that we will increase everytime we start writing information on a new plan. First we will set it equal to 0, write our headers, and then increase it by 1:
 row=0
@@ -124,6 +126,8 @@ Now that we've set up everything we need to run our Python file and write out ou
   <p>As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the <a href="INSERT URL HERE">troubleshooting section</a> if you need help (get stuck in a loop, etc.)</p>
 </div>
 
+#### Set up loop to navigate to the webpage for each state:
+
 If you look at the URL for each state, you'll notice that the only thing that changes between two states is the abbreviated state code (**AK** versus **AL**):
 - https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AK#results
 - https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AL#results
@@ -147,9 +151,9 @@ The code above loops through the list of state codes. This means that in the fir
 
 ![print_state_loop]({{ BASE_PATH }}/assets/print_state_loop.png)
 
-Now let's use the `state` variable to create a new string varaible containing the URL that we want to navigate to. We'll use the pattern mentioned above (that the URL only differs by the state code).
+Now let's use the `state` variable to create a new string varaible containing the URL that we want to navigate to. We'll use the pattern mentioned above (that the URL only differs by the state code):
 ```python
-    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state="+state+"#results"
+    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=" + state + "#results"
     print "STATE URL IS:",state_url
 ```
 
@@ -157,7 +161,7 @@ Now let's use the `state` variable to create a new string varaible containing th
   <p><strong>Note:</strong> Be aware of the indentation used in the previous (and all of the following) commands. The URL variable is created using the state variable, therefore it must be written within the state loop. This means it's indented (4 spaces or the tab button) underneath <strong>"for state in state_codes:"</strong>. </p>
 </div>
 
-At this point, our python code should look like this:
+##### At this point, our python code should look like this:
 ```python
 from bs4 import BeautifulSoup
 import xlsxwriter
@@ -191,19 +195,16 @@ state_codes = ["AK"]
 for state in state_codes:
     print "COLLECTING DATA FOR",state
     
-    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state="+state+"#results"
+    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=" + state + "#results"
     print "STATE URL IS:",state_url
 
 output_workbook.close()
 ```
 
-Now that we have the URL, we can tell Python to go to get all of the underlying HTML code from that webpage. To do that type:
+#### Extract and parse the HTML:
+Now that we have the URL, we can tell Python to go to that website and get all of the underlying HTML code from that webpage. To do that type:
 ```python 
     driver.get(state_url)
-```
-This tells Python to go to the webpage for Alaska and get the underlying HTML.
-
-Because we've opened the web driver, we need to add a piece of code to the **bottom** of our python file that closes the driver. We open a new web driver every time we go to 
 
 Next, we want to feed the HTML from the page into beautiful soup. Beautiful soup is a Python library that lets us to systematically pull information out of the HTML code. To do this, add:
 ```python
@@ -217,14 +218,14 @@ view-source:https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?st
 ```
 Notice this is just the website prefixed with **view-source:**. You can also get to this by going to the website, right clicking anywhere, and selecting "view page source."
 
-The information you'll see in the page source is the same information that is contained in our "soup". You can print the soup in an easy (or easier) to read way (i.e. "prettify" it) by adding:
+The information you'll see in the page source is the same information that is contained in our "soup". You can print the soup in an easy-ish to read way (i.e. "prettify" it):
 ```python
     print soup.prettify()
 ```
 
 If you run the Python file you can see that the information in the variable "soup" is the same as the information in the page source on Google Chrome.
 
-Scrolling through the page source, it's clear that there is a whole lot of information we don't need. We want to find a way to identify each row of the table in the page source. When I looked at the webpage I noticed that every row of the table has the text "Preferred Generic". If I search the page I can see that this text only occurs in the table, and it occurs in every single row.
+Scrolling through the page source, it's clear that there is a lot of information we don't need. We want to find a way to identify each row of the table in the page source. When I looked at the webpage I noticed that every row of the table has the text "Preferred Generic". If I search the page I can see that this text only occurs in the table, and it occurs in every single row.
 
 I can search for this text in the page source to glean some insight into what tags contain the information I want:
 ![preferred_generic_page_source_search]({{ BASE_PATH }}/assets/preferred_generic_page_source_search.png)
@@ -234,14 +235,14 @@ The screenshot above shows the entire tag, which contains all of the information
 ![tr_tag_illustration]({{ BASE_PATH }}/assets/tr_tag_illustration.png)
 [(click to zoom)]({{ BASE_PATH }}/assets/tr_tag_illustration.png)
 
-All of the information we are looking for is contained within the tag:
+All of the information we are looking for from a given row is contained within the tag:
 ![tr_tag_column_info_highlighted]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 [(click to zoom)]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 
 The screenshot above is the `<tr>` tag for the first row of the table. Scroll through the page source and see if you can identify the other `<tr>` tags which contain the information for the other rows. 
 
 <div class="info">
-  <p><strong>Note:</strong> There are many different types of tags, but the basic structure that you need to know is that tag X starts with &lt;X&gt; and ends with &lt;/X&gt; . To see a list of different tag types, see <a href="https://www.w3schools.com/tags/default.asp">w3schools.com</a> It's not super important to understand what each tag type does, it's just important to know how to identify them in the code.</p>
+  <p><strong>Note:</strong> There are many different types of tags, but the basic structure that you need to know is that tag X starts with &lt;X&gt; and ends with &lt;/X&gt;. To see a list of different tag types, see <a href="https://www.w3schools.com/tags/default.asp">w3schools.com</a> It's not super important to understand what each tag type does, it's just important to know how to identify them in the code.</p>
 </div>
 
 
@@ -258,11 +259,12 @@ Luckily for us, it looks like the `<tr>` tags with attribute `valign="middle"` a
 ```python
 soup.find_all('tr',attrs={"valign":"middle"})
 ```
+(Note that you do not need to add the above to your Python file - we'll get to that below.)
 
 The `find_all` command pull tags out of the soup. The first argument we give `find_all` tells it to pull out a specific type of tag - in our case all of the `<tr>` tags. The second argument narrows down the `<tr>` tags to those containing the attribute `valign="middle"`. 
 
 <div class="info">
-  <p><strong>Note:</strong> The `find_all` command does not require a tag type or attributes and has many more functions than just that illustrated above. Explore the  <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">documentation</a>to see how else you can use `find_all` and other Beautiful Soup commands</p>
+  <p><strong>Note:</strong> The `find_all` command does not require a tag type or attributes and has many more functions than illustrated above. Explore the  <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">documentation</a>to see how else you can use find_all and other Beautiful Soup commands</p>
 </div>
 
 We can see how many of these types of `<tr>` tags exist in the document by printing the length of the list (i.e. the number of elements in the list, where an element is a single `<tr>` tag):
@@ -288,30 +290,30 @@ You'll also notice that within some of the `<td>` tags, there are `<a>` tags, wh
 ![a_tags_in_td_tag]({{ BASE_PATH }}/assets/a_tags_in_td_tag.png)
 [(click to zoom)]({{ BASE_PATH }}/assets/a_tags_in_td_tag.png)
 
-The `<a>` tags would be useful if we wanted to get, for example, the link behind the **browse formulary** text. However, we won't be using them in this tutorial. 
+The `<a>` tags would be useful if we wanted to get, for example, the link behind the **browse formulary** text, though we won't be doing that in this tutorial. 
 
-The final thing we want to do before we can write it all to our worksheet is to loop through the **columns** of the table. As we saw earlier screenshot, the `<td>` tags within each `<tr>` tag contain the column information we are looking for - plan name, premium, deductible, etc. To extract this information, let's create our third and final loop:
+The final thing we want to do before we can write it all to our worksheet is to loop through the **columns** of the table. As we saw in the earlier screenshot, the `<td>` tags within each `<tr>` tag contain the column information we are looking for - plan name, premium, deductible, etc. To extract this information, let's create our third and final loop:
 ```python
         for td_tag in tr_tag.find_all('td'):
             print_line()
             print td_tag
 ```
 
-In each loop, the variable `td_tag` contains all the information for a specific column of the current row. We want to get just the text and remove all of the HTML coding. To do this, we can append the command `get_text()` to our variable `td_tag`:
+In each loop, the variable `td_tag` contains all the information for a specific column of the current row. We want to get *just the text* and remove all of the HTML coding. To do this, we can append the command `get_text()` to our variable `td_tag`:
 ```python
             print td_tag.get_text()
 ```
-We will also want to remove the leading and trailing blanks by adding the command `strip()`:
+We also want to remove the leading and trailing blanks by adding the command `strip()`:
 ```python
             print td_tag.get_text().strip()
 ```
 
-Finally, we'll notice that the text "Benefits & Contact Info" and "Browse Formulary" show up in the first and last columns. We don't need this in our output, so let's remove it using two `replace()` commands, which will replace "Benefits & Contact Info" with "" (nothing) as well as "Browse Formulary".
+Finally, we want to remove the text "Benefits & Contact Info" and "Browse Formulary" that shows up in the first and last columns. We don't need this in our output, so let's remove it using two `replace()` commands, which will replace "Benefits & Contact Info" with "" (nothing) as well as "Browse Formulary".
 ```python 
             print td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
 ```
 
-To make it easier to see when we write it to our worksheet, I'm going to save the string in a variable called `write_cell_value`:
+To make it easier to comprehend when we write it to our worksheet, I'm going to save the string in a variable called `write_cell_value`:
 ```python
             write_cell_value = td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
 ```
@@ -357,7 +359,7 @@ state_codes = ["AK"]
 for state in state_codes:
     print "COLLECTING DATA FOR",state
     
-    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state="+state+"#results"
+    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=" + state + "#results"
     print "STATE URL IS:",state_url
 
     driver = webdriver.PhantomJS() 
