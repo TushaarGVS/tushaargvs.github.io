@@ -276,11 +276,12 @@ We loop that goes through all the states, and then within that loop we have a lo
 
 
 So far we have two loops:
-* **State loop (`for state in state_codes:`)**: This loops through all the different states
-* **`<tr>` tag loop (`tr_tag in soup.find_all('tr',{"valign":"middle"}):`)**: Loops through the `<tr>` tags - stores the information from the tag in the variable **`tr_tag`** which contains the information for rows (it loops through the rows of the table)
-* **`<tr>` tag loop ()**: Loops through the **rows** of the table - each `<tr>` tag contains the information for all of the columns in a single of the table.
+* **State loop (`for state in state_codes:`)**: Loops through all the different states (in the first loop state="AK", second state="AL, and so on.)
+* **`<tr>` tag loop (for `tr_tag in soup.find_all('tr',{"valign":"middle"}):`)**: Loops through the `<tr>` tags - stores the information from the tag in the variable **`tr_tag`** which contains the information for rows (it loops through the rows of the table)
+* **`<tr>` tag loop (for `tr_tag in soup.find_all('tr',{"valign":"middle"}):`)**: Loops through the `<tr>` tags - each `<tr>` tag has the information for an entire row of the the table. (In the first loop, **`tr_tag`** has all the info in the **Humana Walmart Rx Plan (PDP) - S5884-180** row; in the second loop **`tr_tag`** has all the info in the **Express Scripts Medicare - Saver (PDP) - S5660-250** row, and so on.)
 
-The next thing we need is to loop through all the **columns** of the table 
+
+The final thing we want to do before we can write it to our worksheet is to loop through the **columns** of the table. 
 
 
 Within each tr tag, I can pull out each td tag. Underneath the `for tr_tag in [...]` loop add a loop that pulls out each td tag:
