@@ -5,7 +5,7 @@ description: Marisa Carlos's tutorials
 ---
 
 - [Command Line Basics](http://marisacarlos.com/pages/command-line-basics)
-- [How to run Python scripts](https://marisacarlos.com/how-to-run-python-file)
+- [How to run Python scripts](https://marisacarlos.com/pages/how-to-run-python-file)
 - [Web Scraping Part I: Python](http://marisacarlos.com/pages/web-scraping-python)
 
 <!---
