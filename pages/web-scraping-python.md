@@ -59,7 +59,7 @@ import xlsxwriter
 from selenium import webdriver
 ```
 
-We need to open the driver that we want to use to visit the websites we want to scrape. The code below tells Python to use phantomJS as our webdriver. [PhantomJS](http://phantomjs.org) is basically a web browser that runs in the background.
+We need to open the driver that we want to use to visit the websites we want to scrape. The code below tells Python to use PhantomJS as our webdriver. [PhantomJS](http://phantomjs.org) is basically a web browser that runs in the background.
 ```python
 driver = webdriver.PhantomJS()
 ```
@@ -94,10 +94,9 @@ plan_info_worksheet = output_workbook.add_worksheet("plan_info")
 
 The first line creates the workbook, which we can refer to using the variable "output_workbook". The second line creates the worksheet within that workbook. When you open the Excel workbook, the worksheet will be named "plan_info". Within our Python script, we can refer to the worksheet using the variable "plan_info_worksheet". When we write the output, we will refer to the worksheet (plan_info_worksheet).
 
-Let's add headers to our excel worksheet in the first row. Note that in the xlsxwriter module, row 0 refers to the first row and column 0 refers to column A.
+Let's add headers to our excel worksheet in the first row.Note that in the xlsxwriter module, row 0 refers to the first row and column 0 refers to column A.
 
-Because we are going to iterate through rows (i.e. add a new row for every Medicare plan), we will define a variable called row that we will increase everytime we start writing information on a new plan. First we will set it equal to 0, write our headers, and then increase it be 1 (so it is equal to 1):
-```python
+Because we are going to iterate through rows (i.e. add a new row for every Medicare plan), we will define a variable called row that we will increase everytime we start writing information on a new plan. First we will set it equal to 0, write our headers, and then increase it by 1:
 row=0
 ```
 To write the header in the first column, we can type:
@@ -122,7 +121,7 @@ output_workbook.close()
 Now that we've set up everything we need to run our Python file and write out output, we can get to the actual web scraping. 
 
 <div class="info">
-  <p>As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the <a href="INSERT URL HERE">troubleshooting section</a> if you need help (get stuck in a loop, etc.)<p>
+  <p>As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the <a href="INSERT URL HERE">troubleshooting section</a> if you need help (get stuck in a loop, etc.)</p>
 </div>
 
 If you look at the URL for each state, you'll notice that the only thing that changes between two states is the abbreviated state code (**AK** versus **AL**):
