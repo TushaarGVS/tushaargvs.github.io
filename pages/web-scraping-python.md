@@ -304,32 +304,13 @@ To make it easier to see when we write it to our worksheet, I'm going to save th
 
 Now that we have the information we want in the format we want, we can begin writing it to our worksheet. But first let's recap where we are and what our python code should look like at this point.
 
-Our three *nested* loops are: 
+##### Our three *nested* loops are: 
 * **State loop** (`for state in state_codes:`): Loops through all the different states (in the first loop state="AK", second state="AL, and so on.)
-  * A state
 * **`<tr>` tag loop** (for `tr_tag in soup.find_all('tr',{"valign":"middle"}):`): Loops through the `<tr>` tags - each `<tr>` tag has the information for an entire row of the the table. (In the first loop, **`tr_tag`** has all the info in the **Humana Walmart Rx Plan (PDP) - S5884-180** row; in the second loop **`tr_tag`** has all the info in the **Express Scripts Medicare - Saver (PDP) - S5660-250** row, and so on.)
-  * A Medicare plan in a state
 * **`<td>` tag loop** (for td_tag in tr_tag.find_all('td'):): Loops through the `<td>` tags within each `<tr>` tag. Each `<td>` tag has the information for a single cell of the table.
-  * A plan characteristic of a given Medicare plan in a state
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### ADD PYTHON CODE HERE FOR WRITING TO WORKSHEET
-
-
-Here's what our code should look like so far:
+##### Here's what our code should look like so far:
 ```python
 from bs4 import BeautifulSoup
 import xlsxwriter
@@ -389,7 +370,7 @@ output_workbook.close()
 ```
 
 
-
+#### ADD PYTHON CODE HERE FOR WRITING TO WORKSHEET
 
 
 
