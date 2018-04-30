@@ -525,25 +525,7 @@ You should now be able to open the workbook and see something like the following
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### TROUBLESHOOTING:
+#### Troubleshooting:
 
 Get stuck in a loop or run something that you didn't mean to? You can terminate the python command by doing the following. First open a new tab or window in your terminal. Then type:
 ```bash
