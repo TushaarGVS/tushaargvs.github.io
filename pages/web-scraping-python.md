@@ -19,12 +19,13 @@ In this tutorial we will collect information on Medicare Part D prescription dru
 1. Navigate to the website [q1medicare.com](https://q1medicare.com)
 2. On this webpage you'll see a box where you can **"Review 2018 Medicare Part D Plans"**. Click  on **AK** (Alaska).
 3. Scroll down to the chart that says **"There are 19 Alaska 2018 stand-alone [...]**. In this chart, you'll see all of the different plans and information about them. This is the first set of information we want to collect. In our spreadsheet we're going to collect:
-   1. Monthly prem.
-   2. Deductible
+   1. Plan Name
+   2. Monthly prem.
+   3. Deductible
    3. (Donut Hole) Gap Coverage
-   4. Preferred Pharmacy Copay/Coinsurance 30-Day Supply
-   5. Total Formulary Drugs (number)
-   6. URL containined in the link "Browse Formulary" (we will use this in a later tutorial to collect information on all the drugs in the formulary)
+   4. $0 Prem. with Full LIS?
+   5. Preferred Pharmacy Copay/Coinsurance 30-Day Supply
+   6. Total Formulary Drugs (number)
    
 **Here's what the first row of our output should look like:**
 ![scraping output spreadsheet example]({{ BASE_PATH }}/assets/scraping_output_spreadsheet_example.png)
@@ -51,7 +52,7 @@ pip install bs4
 pip install xlsxwriter
 ```
 
-Now let's start writing out Python code. In a new python file (I'm calling mine "medicare_PDP_scrape.py) add the modules that we will need to the top of the script:
+In a new python file (I'm calling mine "medicare_PDP_scrape.py) add the modules that we will need to the top of the script:
 ```python
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -59,7 +60,6 @@ import xlsxwriter
 ```
 
 We will also want to create a variable containing the path of the directory we want to save our spreadsheet in:
-
 ```python
 save_output_path = '/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files'
 ```
@@ -71,9 +71,47 @@ def print_line():
     print "----------------------------------------------------------------------------------------------------------------------"
     print " "
 ```
+Before we start collecting and writing the data to our spreadsheet, we need to specify a name for the Excel workbook (and worksheet within the workbook) that we want to save our output to. Add the following code:
+output_workbook = xlsxwriter.Workbook("medicare_PDP_scrape.xlsx")
+plan_info_worksheet = output_workbook.add_worksheet("plan_info")
+
+The first line creates the workbook, which we can refer to using the variable "output_workbook". The second line creates the worksheet within that workbook. When you open the Excel workbook, the worksheet will be named "plan_info". Within our Python script, we can refer to the worksheet using the variable "plan_info_worksheet". When we write the output, we will refer to the worksheet (plan_info_worksheet).
 
 
-If you look at the URL for each state, you'll notice that the only thing that changes between two states is the state code (**AK** versus **AL**):
+row = 0 #We need to initialize a variable that contains the row number of our worksheet. For each plan in each state, we will add a new row. First set this to 0, and then increase it every time we add a new row. (Note that row=0 is acutally the first row in the xlsxwriter function and column 0 refers to column A)
+
+Let's add headers to our excel worksheet in the first row. Note that in the xlsxwriter module, row 0 refers to the first row and column 0 refers to column A.
+
+Because we are going to iterate through rows (i.e. add a new row for every Medicare plan), we will define a variable called row that we will increase everytime we start writing information on a new plan. First we will set it equal to 0, write our headers, and then increase it be 1 (so it is equal to 1):
+```python
+row=0
+```
+To write the header in the first column, we can type:
+```python
+plan_info_worksheet.write(row,0,"state")
+```
+The `write` function takes three arguments: The first is the row (which we are using our variable row to indicate, so at this point row=0), the second is the column (0), and the third is the information you want to write (in this case "state"). We can do this for the next 7 rows:
+```python
+plan_info_worksheet.write(row,1,"plan_name")
+plan_info_worksheet.write(row,2,"monthly_premium")
+plan_info_worksheet.write(row,3,"deductible")
+plan_info_worksheet.write(row,4,"gap_coverage")
+plan_info_worksheet.write(row,5,"zero_prem_full_LIS")
+plan_info_worksheet.write(row,6,"preferred_pharmacy_costshare_30day")
+plan_info_worksheet.write(row,7,"num_drugs_formulary")
+```
+
+The final thing we want to do is add the following lines to the very **bottom** of our Python file. These two lines will be the last lines in our file - everything we add to the Python script will go above these two lines:
+```python
+output_workbook.close()
+driver.quit()
+```
+
+As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the [**troubleshooting**](INSERT URL HERE) section if you need help (get stuck in a loop, etc.)
+
+Now that we've set up everything we need to run our Python file and write out output, we can get to the actual web scraping. 
+
+If you look at the URL for each state, you'll notice that the only thing that changes between two states is the abbreviated state code (**AK** versus **AL**):
 - https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AK#results
 - https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AL#results
 
@@ -82,19 +120,35 @@ This will make it easy to loop through the URLs for all states. We can create a 
 Add a line containing a list of state codes:
 ```python
 # state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
-state_codes = ["AK","AL"]
+state_codes = ["AK"]
 ```
 
 I added two lines, one commented out (has the # in front) and one uncommented. It's much more efficient to write and test our code using the shorter list. If we loop through all the states every time we test the code, it will take much longer and won't buy us anything. When we've finished our code and want to actually collect the data, remove the short list and uncomment the long list.
 
-
-
-ADD COMMANDS HERE FOR PYTNON BEGINNING AT "FIRST WE WANT TO LOOP THROUGH THE STATES"
-### PUT THESE COMMANDS AT THE VRY BOTOTM OF YOUR PYTHON FILE SO THAT EVERYTHING PROPERLY CLOSES WHEN YOU RUN IT WHILE WE ARE TESTING/BUILDING
+To loop through the states, type:
 ```python
-workbook.close()
-driver.quit()
+for state in state_codes:
+    print "COLLECTING DATA FOR",state
 ```
+The code above loops through the list of state codes. This means that in the first loop the variable `state` will equal "AK", in the second loop `state="AL"` and so on until the last loop where `state="WY"`. The print statement just lets us know where we are in the loop. If we run the python file at this point, we should see the following output in our console:
+![print_state_loop]({{ BASE_PATH }}/assets/print_state_loop.png)
+[(click here to zoom)]({{ BASE_PATH }}/assets/print_state_loop.png)
+
+Let's use the `state` variable to create a new string varaible containing the URL that we want to navigate to. We'll use the pattern mentioned above (the URL only differs by the state code).
+```python
+    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state="+state+"#results"
+    print "STATE URL IS:",state_url
+```
+
+<div class="warning">
+  <p><strong>Note:</strong> Be aware of the indentation use in the previous and all of the following commands. The URL variable is created using the state variable, therefore it must be written within the state loop. This means it's indented (4 spaces or the tab button) underneath "for state in state_codes:". </p>
+</div>
+
+
+
+
+
+FINISH ENTERING PYTHON CODES HERE 
 
 
 The next part is the trickest part of web scraping. We need to figure out where the information we want to collect is and figure out a well to tell the machine what information we want. We'll start by looking at the page source. In Google Chrome  paste the following into your address bar:
