@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Web Scraping Part II: Python
+title: Web Scraping Part I: Python
 description: Tutorial on using Python to scrape data from the web
 ---
 
-#### Web Scraping Part II: Python
+#### Web Scraping Part I: Python
 
 This tutorial is written for Python 2.7. Instructions for viewing the page source are based on Google Chrome. Command-line things are for Mac. Note that using the command-line is not a huge part of the tutorial, so this can be easily adapted for use on a Windows machine.
 
@@ -224,42 +224,47 @@ All of the information we are looking for is contained within the tag:
 ![tr_tag_column_info_highlighted]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 [(click to zoom)]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 
+The screenshot above is the `<tr>` tag for the first row of the table. Scroll through the page source and see if you can identify the other `<tr>` tags which contain the information for the other rows. 
+
 <div class="info">
   <p><strong>Note:</strong> There are many different types of tags, but the basic structure that you need to know is that tag X starts with &lt;X&gt; and ends with &lt;/X&gt; . To see a list of different tag types, see <a href="https://www.w3schools.com/tags/default.asp">w3schools.com</a> It's not super important to understand what each tag type does, it's just important to know how to identify them in the code.</p>
 </div>
 
 
-We can also see that the TR tag has the attributes:
+After looking through the `<tr>` tags, it looks like each `<tr>` tag containing the row information has one of the following attributes:
 ```html
 valign="middle" class="tbldark"
 ```
-If we scroll down to the tag containing the second row of data we want to scrape, we see the second TR tag has the attributes:
+or
 ```html
 valign="middle" class="tbllight"
 ```
-![second_tr_tag_illustration]({{ BASE_PATH }}/assets/second_tr_tag_illustration.png)
-[(click to zoom)]({{ BASE_PATH }}/assets/second_tr_tag_illustration.png)
 
-Luckily for us, it looks like TR tags with asset `valign="middle"` are **only** used for the rows in the table with the data we want. Becuase of this we can pull out all the TR tags with this attribute. To do this, add the following command to the python file (in the `for state in state_code:` loop):
+Luckily for us, it looks like the `<tr>` tags with attribute `valign="middle"` are **only** used for the rows in the table with the data we want. Becuase of this we can pull out all the TR tags with this attribute. To do this, we'll use Beautiful Soup's `find_all` command:
 ```python
-    soup.find_all('tr',{"valign":"middle"})
+soup.find_all('tr',attrs={"valign":"middle"})
 ```
-The `find_all` command searches through the "soup" and pulls out all of the tags with the attributes you specify.
 
-The `find_all` command takes two arguments. The first argument is the type of tag, and the second attribute is a dictionary containing a list of attributes. In our case, the type of tag is `'tr'` and the attributes are `{"valign":"middle"}`. (Note that if we wanted to add another attribute, e.g. class="tbldark" the second argument would be `{"valign":"middle", "class":"tbldark"}`.)
+The `find_all` command pull tags out of the soup. The first argument we give `find_all` tells it to pull out a specific type of tag - in our case all of the `<tr>` tags. The second argument narrows down the `<tr>` tags to those containing the attribute `valign="middle"`. 
 
-We can see how many `<tr>` tags exist in the document by printing the length of the list (i.e. the number of elements that are in the list, where an element is a single `<tr>` tag):
+<div class="info">
+  <p><strong>Note:</strong> The `find_all` command does not require a tag type or attributes and has many more functions than just that illustrated above. Explore the  <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">documentation</a>to see how else you can use `find_all` and other Beautiful Soup commands</p>
+</div>
+
+We can see how many of these types of `<tr>` tags exist in the document by printing the length of the list (i.e. the number of elements in the list, where an element is a single `<tr>` tag):
 ```python
-    print len(soup.find_all('tr',{"valign":"middle"}))
+    print "Number of tags meeting this criteria:"
+    print len(soup.find_all('tr',attrs={"valign":"middle"}))
 ```
 We can see that this number is 19, which is the number of rows in the table for Alaska. At this point it should be safe to assume we are pulling out the information we need and nothing more.
 
 We can loop through all of these tags and print each one using the following code:
 ```python
-    for tr_tag in soup.find_all('tr',{"valign":"middle"}):
+    for tr_tag in soup.find_all('tr',attrs={"valign":"middle"}):
         print_line() #remember this just prints a line so we can read the output easier
         print tr_tag
 ```
+The first time we go through this loop the variable `tr_tag` will contain all the information in the **Humana Walmart Rx Plan (PDP) - S5884-180** row. In the second loop it will have all the information in the **Express Scripts Medicare - Saver (PDP) - S5660-250** row, and so on.
 
 We can see that within each `<tr>` tag there are a bunch of `<td>` tags. We can also see this if we inspect the page source a little more closely:
 ![td_tags]({{ BASE_PATH }}/assets/td_tags.png)
@@ -271,17 +276,121 @@ You'll also notice that within some of the `<td>` tags, there are `<a>` tags, wh
 
 The `<a>` tags would be useful if we wanted to get, for example, the link behind the **browse formulary** text. However, we won't be using them in this tutorial. 
 
-So, just to remind you where we are - we have a loop that defines the state, and then within that loop we have another loiop
-We loop that goes through all the states, and then within that loop we have a loop that goes through the `<tr>` tags, and each `<tr>` tag contains
+The final thing we want to do before we can write it all to our worksheet is to loop through the **columns** of the table. We can see that each of the `<td>` tags within the `<tr>` tag contains our column info (plan name, premium, deductible, etc.). To do this, let's create our third and final loop:
+```python
+        for td_tag in tr_tag.find_all('td'):
+            print_line()
+            print td_tag
+```
+
+In each loop, the variable `td_tag` contains all the information for a specific column of the current row. We want to get just the text and remove all of the HTML coding. To do this, we can append the command `get_text()` to our variable `td_tag`:
+```python
+            print td_tag.get_text()
+```
+We will also want to remove the leading and trailing blanks by adding the command `strip()`:
+```python
+            print td_tag.get_text().strip()
+```
+
+Finally, we'll notice that the text "Benefits & Contact Info" and "Browse Formulary" show up in the first and last columns. We don't need this in our output, so let's remove it using two `replace()` commands, which will replace "Benefits & Contact Info" with "" (nothing) as well as "Browse Formulary".
+```python 
+            print td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
+```
+
+To make it easier to see when we write it to our worksheet, I'm going to save the string in a variable called `write_cell_value`:
+```python
+            write_cell_value = td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
+```
+
+Now that we have the information we want in the format we want, we can begin writing it to our worksheet.
+
+#### ADD PYTHON CODE HERE FOR WRITING TO WORKSHEET
 
 
-So far we have two loops:
-* **State loop (`for state in state_codes:`)**: Loops through all the different states (in the first loop state="AK", second state="AL, and so on.)
-* **`<tr>` tag loop (for `tr_tag in soup.find_all('tr',{"valign":"middle"}):`)**: Loops through the `<tr>` tags - stores the information from the tag in the variable **`tr_tag`** which contains the information for rows (it loops through the rows of the table)
-* **`<tr>` tag loop (for `tr_tag in soup.find_all('tr',{"valign":"middle"}):`)**: Loops through the `<tr>` tags - each `<tr>` tag has the information for an entire row of the the table. (In the first loop, **`tr_tag`** has all the info in the **Humana Walmart Rx Plan (PDP) - S5884-180** row; in the second loop **`tr_tag`** has all the info in the **Express Scripts Medicare - Saver (PDP) - S5660-250** row, and so on.)
+Here's what our code should look like so far:
+```python
+from bs4 import BeautifulSoup
+import xlsxwriter
+from selenium import webdriver 
+
+def print_line():
+    print " "
+    print "----------------------------------------------------------------------------------------------------------------------"
+    print " "
+
+save_output_path = "/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files"
+
+output_workbook = xlsxwriter.Workbook("medicare_PDP_scrape.xlsx") 
+plan_info_worksheet = output_workbook.add_worksheet("plan_info") 
+row = 0 
+
+plan_info_worksheet.write(row,0,"state")
+plan_info_worksheet.write(row,1,"plan_name")
+plan_info_worksheet.write(row,2,"monthly_premium")
+plan_info_worksheet.write(row,3,"deductible")
+plan_info_worksheet.write(row,4,"gap_coverage")
+plan_info_worksheet.write(row,5,"zero_prem_full_LIS")
+plan_info_worksheet.write(row,6,"preferred_pharmacy_costshare_30day")
+plan_info_worksheet.write(row,7,"num_drugs_formulary")
 
 
-The final thing we want to do before we can write it to our worksheet is to loop through the **columns** of the table. 
+# state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+state_codes = ["AK"]
+
+for state in state_codes:
+    print "COLLECTING DATA FOR",state
+    
+    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state="+state+"#results"
+    print "STATE URL IS:",state_url
+
+    driver = webdriver.PhantomJS() 
+    driver.get(state_url)
+
+    soup = BeautifulSoup(driver.page_source,"lxml")
+    
+    print soup.prettify()
+    
+    print "Number of tags meeting this criteria:"
+    print len(soup.find_all('tr',attrs={"valign":"middle"}))
+    
+    for tr_tag in soup.find_all('tr',attrs={"valign":"middle"}):
+        print_line() #remember this just prints a line so we can read the output easier
+        print tr_tag
+        
+         for td_tag in tr_tag.find_all('td'):
+            print_line()
+            print td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
+            
+            write_cell_value = td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
+
+output_workbook.close()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+So to recap where we are, we currently have two loops:
+* **State loop** (`for state in state_codes:`): Loops through all the different states (in the first loop state="AK", second state="AL, and so on.)
+* **`<tr>` tag loop** (for `tr_tag in soup.find_all('tr',{"valign":"middle"}):`): Loops through the `<tr>` tags - each `<tr>` tag has the information for an entire row of the the table. (In the first loop, **`tr_tag`** has all the info in the **Humana Walmart Rx Plan (PDP) - S5884-180** row; in the second loop **`tr_tag`** has all the info in the **Express Scripts Medicare - Saver (PDP) - S5660-250** row, and so on.)
+
+
+
+
 
 
 Within each tr tag, I can pull out each td tag. Underneath the `for tr_tag in [...]` loop add a loop that pulls out each td tag:
