@@ -181,17 +181,34 @@ for state in state_codes:
 output_workbook.close()
 ```
 
+Now that we have the URL, we can tell Python to go to get all of the underlying HTML code from that webpage. To do that type:
+```python
+    driver = webdriver.PhantomJS() 
+    driver.get(state_url)
+```
 
+The first line, `driver = webdriver.PhantomJS()`, tells Python to use phantomJS as our webdriver. [PhantomJS](http://phantomjs.org) is basically a web browser that runs in the background. There are other webdrivers available such as Chrome or Firefox, but they won't run in the backround - i.e. you will see Python open Google Chrome, go to the website, then close the website.
 
-FINISH ENTERING PYTHON CODES HERE 
+The second line, `driver.get(state_url)`, tells Python to go to the webpage for Alaska and get the underlying HTML.
 
+Next, we want to feed the HTML from the page into beautiful soup. Beautiful soup is a Python library that lets us to systematically pull information out of the HTML code. To do this, add:
+```python
+    soup = BeautifulSoup(driver.page_source,"lxml")
+```
+Now all of our HTML code for the Alaska webpage is stored in the variable `soup`. We can use now use functions from the beautiful soup library to collect the data we need.
 
 The next part is the trickest part of web scraping. We need to figure out where the information we want to collect is and figure out a well to tell Python what information we want. We'll start by looking at the page source. In Google Chrome  paste the following into your address bar:
 ```
 view-source:https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AK#results
 ```
-
 Notice this is just the website prefixed with **view-source:**. You can also get to this by going to the website, right clicking anywhere, and selecting "view page source."
+
+The information you'll see in the page source is the same information that is contained in our "soup". You can print the soup in an easy (or easier) to read way (i.e. "prettify" it) by adding:
+```python
+    print soup.prettify()
+```
+
+If you run the Python file you can see that the information in the variable "soup" is the same as the information in the page source on Google Chrome.
 
 Scrolling through the page source, it's clear that there is a whole lot of information we don't need. We want to find a way to identify each row of the table in the page source. When I looked at the webpage I noticed that every row of the table has the text "Preferred Generic". If I search the page I can see that this text only occurs in the table, and it occurs in every single row.
 
@@ -207,6 +224,11 @@ All of the information we are looking for is contained within the tag:
 ![tr_tag_column_info_highlighted]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 [(click to zoom)]({{ BASE_PATH }}/assets/tr_tag_column_info_highlighted.png)
 
+<div class="info">
+  <p><strong>Note:</strong> There are many different types of tags, but the basic structure that you need to know is that tag X starts with <X> and ends with </X>. To see a list of different tag types, see <a href="https://www.w3schools.com/tags/default.asp">w3schools.com</a> It's not super important to understand what each tag type does, it's just important to know how to identify them in the code.</p>
+</div>
+
+
 We can see that the TR tag has the characteristics:
 ```html
 valign="middle" class="tbldark"
@@ -218,7 +240,7 @@ valign="middle" class="tbllight"
 ![second_tr_tag_illustration]({{ BASE_PATH }}/assets/second_tr_tag_illustration.png)
 [(click to zoom)]({{ BASE_PATH }}/assets/second_tr_tag_illustration.png)
 
-Luckily for us, it looks like TR tags with asset `valign="middle"` are **only** used for the rows in the table with the data we want. Becuase of this we can pull out all the TR tags with this attribute. To do this, add the following command to the python file (in `for state in state_code:` loop):
+Luckily for us, it looks like TR tags with asset `valign="middle"` are **only** used for the rows in the table with the data we want. Becuase of this we can pull out all the TR tags with this attribute. To do this, add the following command to the python file (in the `for state in state_code:` loop):
 ```python
     soup.find_all('tr',{"valign":"middle"})
 ```
@@ -256,7 +278,7 @@ for tr_tag in soup.find_all('tr',{"valign":"middle"}):
 
 If we look at the output in the console, we see that with the exception of the first td tag, we've succesfully found the tags that contain just the information we are looking for. So for tags 2-7 we can extract the text (tag 7 we'll need to extract the url too) and then in tag 1 we can pull out the text and URL from the first `<a>` tag which has the information we want. 
 
-For a complete list of tag types see [w3schools](https://www.w3schools.com/tags/default.asp)
+
 
 
 
