@@ -124,7 +124,7 @@ output_workbook.close()
 Now that we've set up everything we need to run our Python file and write out output, we can get to the actual web scraping. 
 
 <div class="info">
-  <p>As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the <a href="INSERT URL HERE">troubleshooting section</a> if you need help (get stuck in a loop, etc.)</p>
+  <p>As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the <strong>troubleshooting section</strong> if you need help (get stuck in a loop, etc.)</p>
 </div>
 
 #### Set up loop to navigate to the webpage for each state:
