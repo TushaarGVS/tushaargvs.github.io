@@ -56,6 +56,7 @@ In a new python file (I'm calling mine "medicare_PDP_scrape.py) add the modules 
 ```python
 from bs4 import BeautifulSoup
 import xlsxwriter
+import time
 from selenium import webdriver
 ```
 
@@ -90,11 +91,11 @@ def print_line():
 #### Write column headers to output worksheet:
 Before we start collecting and writing the data to our spreadsheet, we need to specify a name for the Excel workbook (and worksheet within the workbook) that we want to save our output to. Add the following code:
 ```python
-output_workbook = xlsxwriter.Workbook("medicare_PDP_scrape.xlsx")
+output_workbook = xlsxwriter.Workbook(save_output_path+"/medicare_PDP_scrape.xlsx") 
 plan_info_worksheet = output_workbook.add_worksheet("plan_info")
 ```
 
-The first line creates the workbook, which we can refer to using the variable "output_workbook". The second line creates the worksheet within that workbook. When you open the Excel workbook, the worksheet will be named "plan_info". Within our Python script, we can refer to the worksheet using the variable "plan_info_worksheet". When we write the output, we will refer to the worksheet (plan_info_worksheet).
+The first line creates the workbook, which we can refer to using the variable "output_workbook". This file will be stored in the path you specified in the variable `save_output_path`.The second line creates the worksheet within that workbook. When you open the Excel workbook, the worksheet will be named "plan_info". Within our Python script, we can refer to the worksheet using the variable "plan_info_worksheet". When we write the output, we will refer to the worksheet (plan_info_worksheet).
 
 Let's add headers to our excel worksheet in the first row. Note that in the xlsxwriter module, row 0 refers to the first row and column 0 refers to column A.
 
@@ -165,17 +166,19 @@ Now let's use the `state` variable to create a new string varaible containing th
 ```python
 from bs4 import BeautifulSoup
 import xlsxwriter
+import time
 from selenium import webdriver
+
 driver = webdriver.PhantomJS()
+
+save_output_path = "/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files"
 
 def print_line():
     print " "
     print "----------------------------------------------------------------------------------------------------------------------"
     print " "
 
-save_output_path = "/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files"
-
-output_workbook = xlsxwriter.Workbook("medicare_PDP_scrape.xlsx") 
+output_workbook = xlsxwriter.Workbook(save_output_path+"/medicare_PDP_scrape.xlsx") 
 plan_info_worksheet = output_workbook.add_worksheet("plan_info") 
 row = 0 
 
@@ -189,7 +192,7 @@ plan_info_worksheet.write(row,6,"preferred_pharmacy_costshare_30day")
 plan_info_worksheet.write(row,7,"num_drugs_formulary")
 
 
-# state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+#state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 state_codes = ["AK"]
 
 for state in state_codes:
@@ -199,12 +202,19 @@ for state in state_codes:
     print "STATE URL IS:",state_url
 
 output_workbook.close()
+driver.quit()
 ```
 
 #### Extract and parse the HTML:
 Now that we have the URL, we can tell Python to go to that website and get all of the underlying HTML code from that webpage. To do that type:
 ```python 
     driver.get(state_url)
+```
+It's also a good habit to get into to tell python to sleep for a second (or more) after you visit a website. Some websites have rate limits and this will help with that (though it is not fail safe):
+```python
+    time.sleep(1)
+```
+
 
 Next, we want to feed the HTML from the page into beautiful soup. Beautiful soup is a Python library that lets us to systematically pull information out of the HTML code. To do this, add:
 ```python
@@ -259,12 +269,12 @@ Luckily for us, it looks like the `<tr>` tags with attribute `valign="middle"` a
 ```python
 soup.find_all('tr',attrs={"valign":"middle"})
 ```
-(Note that you do not need to add the above to your Python file - we'll get to that below.)
+*(Note that you do not need to add the above line to your Python file - we'll get to that below.)*
 
 The `find_all` command pull tags out of the soup. The first argument we give `find_all` tells it to pull out a specific type of tag - in our case all of the `<tr>` tags. The second argument narrows down the `<tr>` tags to those containing the attribute `valign="middle"`. 
 
 <div class="info">
-  <p><strong>Note:</strong> The `find_all` command does not require a tag type or attributes and has many more functions than illustrated above. Explore the  <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">documentation</a>to see how else you can use find_all and other Beautiful Soup commands</p>
+  <p><strong>Note:</strong> The <strong>find_all</strong> command does not require a tag type or attributes and has many more functions than illustrated above. Explore the  <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">documentation</a> to see how else you can use find_all and other Beautiful Soup commands</p>
 </div>
 
 We can see how many of these types of `<tr>` tags exist in the document by printing the length of the list (i.e. the number of elements in the list, where an element is a single `<tr>` tag):
@@ -290,7 +300,7 @@ You'll also notice that within some of the `<td>` tags, there are `<a>` tags, wh
 ![a_tags_in_td_tag]({{ BASE_PATH }}/assets/a_tags_in_td_tag.png)
 [(click to zoom)]({{ BASE_PATH }}/assets/a_tags_in_td_tag.png)
 
-The `<a>` tags would be useful if we wanted to get, for example, the link behind the **browse formulary** text, though we won't be doing that in this tutorial. 
+The `<a>` tags would be useful if we wanted to get, for example, the link behind the **browse formulary** text (though we won't be doing that in this tutorial).
 
 The final thing we want to do before we can write it all to our worksheet is to loop through the **columns** of the table. As we saw in the earlier screenshot, the `<td>` tags within each `<tr>` tag contain the column information we are looking for - plan name, premium, deductible, etc. To extract this information, let's create our third and final loop:
 ```python
@@ -330,16 +340,19 @@ Now that we have the information we want in the format we want, we can begin wri
 ```python
 from bs4 import BeautifulSoup
 import xlsxwriter
-from selenium import webdriver 
+import time
+from selenium import webdriver
+
+driver = webdriver.PhantomJS()
+
+save_output_path = "/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files"
 
 def print_line():
     print " "
     print "----------------------------------------------------------------------------------------------------------------------"
     print " "
 
-save_output_path = "/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files"
-
-output_workbook = xlsxwriter.Workbook("medicare_PDP_scrape.xlsx") 
+output_workbook = xlsxwriter.Workbook(save_output_path+"/medicare_PDP_scrape.xlsx") 
 plan_info_worksheet = output_workbook.add_worksheet("plan_info") 
 row = 0 
 
@@ -353,7 +366,7 @@ plan_info_worksheet.write(row,6,"preferred_pharmacy_costshare_30day")
 plan_info_worksheet.write(row,7,"num_drugs_formulary")
 
 
-# state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+#state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 state_codes = ["AK"]
 
 for state in state_codes:
@@ -362,8 +375,8 @@ for state in state_codes:
     state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=" + state + "#results"
     print "STATE URL IS:",state_url
 
-    driver = webdriver.PhantomJS() 
     driver.get(state_url)
+    time.sleep(1)
 
     soup = BeautifulSoup(driver.page_source,"lxml")
     
@@ -373,9 +386,12 @@ for state in state_codes:
     print len(soup.find_all('tr',attrs={"valign":"middle"}))
     
     for tr_tag in soup.find_all('tr',attrs={"valign":"middle"}):
+        row += 1
+        
         print_line() #remember this just prints a line so we can read the output easier
         print tr_tag
         
+        col = 0
         for td_tag in tr_tag.find_all('td'):
             print_line()
             print td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
@@ -383,15 +399,128 @@ for state in state_codes:
             write_cell_value = td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
 
 output_workbook.close()
+driver.quit()
 ```
 
 
-#### ADD PYTHON CODE HERE FOR WRITING TO WORKSHEET
+#### Output the data to the worksheet:
+
+Every time we go to a new row of a table, we need to increase our variable `row` by 1. We will use this variable to tell Python which row of our worksheet to write to. We can add the following code right **underneath** our `<tr>` tag loop:
+```python
+        row += 1
+```
+The top of this loop should now be:
+```python
+    for tr_tag in soup.find_all('tr',attrs={"valign":"middle"}):
+        row += 1
+        print_line() 
+        print tr_tag
+```
+
+Similar to our `row` variable, we want to create a variable that we can use to tell Python which column of our worksheet to write the data to. Right **above** our `<td>` loop, add:
+```python
+        col = 0
+```
+The top of this loop should now be:
+```python
+        col = 0
+        for td_tag in tr_tag.find_all('td'):
+            print_line()
+```
+The column variable will return to 0 every time we go through a new row of the table. This allows us to return back to column A after we've finished scraping the data in a row of the table.
+
+Before we write the plan name, premium, etc. we want to add the name of the state to the first column. We can do this using an if statement. If col==0, then we have just starting a new row and therefore need to write the name of the state:
+```python 
+            if col==0:
+                plan_info_worksheet.write(row,col,state)
+```
+After we've written the state into the first column, we need to increase our `col` variable by 1 so that we can write to the next column:
+```python
+            col+=1
+```
+
+Finally we can write the plan information into the other columns (plan name, premium, etc.). Remember that we stored this information in the variable called `write_cell_value`:
+```python
+            plan_info_worksheet.write(row,col,write_cell_value)
+```
+
+The very last thing we need to do to collect all of the data is remove the short `state_codes` list and uncomment the longer list. 
+
+**Our final python file should look like:**
+
+```python
+from bs4 import BeautifulSoup
+import xlsxwriter
+import time
+from selenium import webdriver
+
+driver = webdriver.PhantomJS()
+
+save_output_path = "/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files"
+
+def print_line():
+    print " "
+    print "----------------------------------------------------------------------------------------------------------------------"
+    print " "
+
+output_workbook = xlsxwriter.Workbook(save_output_path+"/medicare_PDP_scrape.xlsx") 
+plan_info_worksheet = output_workbook.add_worksheet("plan_info") 
+row = 0 
+
+plan_info_worksheet.write(row,0,"state")
+plan_info_worksheet.write(row,1,"plan_name")
+plan_info_worksheet.write(row,2,"monthly_premium")
+plan_info_worksheet.write(row,3,"deductible")
+plan_info_worksheet.write(row,4,"gap_coverage")
+plan_info_worksheet.write(row,5,"zero_prem_full_LIS")
+plan_info_worksheet.write(row,6,"preferred_pharmacy_costshare_30day")
+plan_info_worksheet.write(row,7,"num_drugs_formulary")
 
 
+state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+#state_codes = ["AK"]
 
+for state in state_codes:
+    print "COLLECTING DATA FOR",state
+    
+    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=" + state + "#results"
+    print "STATE URL IS:",state_url
 
+    driver.get(state_url)
+    time.sleep(1)
 
+    soup = BeautifulSoup(driver.page_source,"lxml")
+    
+    print soup.prettify()
+    
+    print "Number of tags meeting this criteria:"
+    print len(soup.find_all('tr',attrs={"valign":"middle"}))
+    
+    for tr_tag in soup.find_all('tr',attrs={"valign":"middle"}):
+        row += 1
+        
+        print_line() #remember this just prints a line so we can read the output easier
+        print tr_tag
+        
+        col = 0
+        for td_tag in tr_tag.find_all('td'):
+            print_line()
+            print td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
+            
+            write_cell_value = td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
+            
+            if col==0:
+                plan_info_worksheet.write(row,col,state)
+            col+=1 
+            plan_info_worksheet.write(row,col,write_cell_value)
+
+output_workbook.close()
+driver.quit()
+```
+
+You should now be able to open the workbook and see something like the following:
+![final_output]({{ BASE_PATH }}/assets/final_output.png)
+[(click to zoom)]({{ BASE_PATH }}/assets/final_output.png)
 
 
 
