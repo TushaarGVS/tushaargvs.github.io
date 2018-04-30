@@ -131,6 +131,7 @@ for state in state_codes:
     print "COLLECTING DATA FOR",state
 ```
 The code above loops through the list of state codes. This means that in the first loop the variable `state` will equal "AK", in the second loop `state="AL"` and so on until the last loop where `state="WY"`. The print statement just lets us know where we are in the loop. If we run the python file at this point, we should see the following output in our console:
+
 ![print_state_loop]({{ BASE_PATH }}/assets/print_state_loop.png)
 [(click here to zoom)]({{ BASE_PATH }}/assets/print_state_loop.png)
 
