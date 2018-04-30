@@ -72,13 +72,12 @@ def print_line():
     print " "
 ```
 Before we start collecting and writing the data to our spreadsheet, we need to specify a name for the Excel workbook (and worksheet within the workbook) that we want to save our output to. Add the following code:
+```python
 output_workbook = xlsxwriter.Workbook("medicare_PDP_scrape.xlsx")
 plan_info_worksheet = output_workbook.add_worksheet("plan_info")
+```
 
 The first line creates the workbook, which we can refer to using the variable "output_workbook". The second line creates the worksheet within that workbook. When you open the Excel workbook, the worksheet will be named "plan_info". Within our Python script, we can refer to the worksheet using the variable "plan_info_worksheet". When we write the output, we will refer to the worksheet (plan_info_worksheet).
-
-
-row = 0 #We need to initialize a variable that contains the row number of our worksheet. For each plan in each state, we will add a new row. First set this to 0, and then increase it every time we add a new row. (Note that row=0 is acutally the first row in the xlsxwriter function and column 0 refers to column A)
 
 Let's add headers to our excel worksheet in the first row. Note that in the xlsxwriter module, row 0 refers to the first row and column 0 refers to column A.
 
@@ -90,7 +89,7 @@ To write the header in the first column, we can type:
 ```python
 plan_info_worksheet.write(row,0,"state")
 ```
-The `write` function takes three arguments: The first is the row (which we are using our variable row to indicate, so at this point row=0), the second is the column (0), and the third is the information you want to write (in this case "state"). We can do this for the next 7 rows:
+The `write` function takes three arguments: The first is the row (which we are specifying with the variable row, which is currently equal to 0), the second is the column (0), and the third is the information you want to write ("state"). We can do this for the next 7 rows:
 ```python
 plan_info_worksheet.write(row,1,"plan_name")
 plan_info_worksheet.write(row,2,"monthly_premium")
@@ -100,16 +99,15 @@ plan_info_worksheet.write(row,5,"zero_prem_full_LIS")
 plan_info_worksheet.write(row,6,"preferred_pharmacy_costshare_30day")
 plan_info_worksheet.write(row,7,"num_drugs_formulary")
 ```
-
-The final thing we want to do is add the following lines to the very **bottom** of our Python file. These two lines will be the last lines in our file - everything we add to the Python script will go above these two lines:
+Becuase we opened an Excel workbook, we'll need to add a line to the very **bottom** of our Python file that closes the workbook. This will be the last line in our file - everything we add to the Python script will go above this line:
 ```python
 output_workbook.close()
-driver.quit()
 ```
+
+Now that we've set up everything we need to run our Python file and write out output, we can get to the actual web scraping. 
 
 As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the [**troubleshooting**](INSERT URL HERE) section if you need help (get stuck in a loop, etc.)
 
-Now that we've set up everything we need to run our Python file and write out output, we can get to the actual web scraping. 
 
 If you look at the URL for each state, you'll notice that the only thing that changes between two states is the abbreviated state code (**AK** versus **AL**):
 - https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AK#results
@@ -133,19 +131,56 @@ for state in state_codes:
 The code above loops through the list of state codes. This means that in the first loop the variable `state` will equal "AK", in the second loop `state="AL"` and so on until the last loop where `state="WY"`. The print statement just lets us know where we are in the loop. If we run the python file at this point, we should see the following output in our console:
 
 ![print_state_loop]({{ BASE_PATH }}/assets/print_state_loop.png)
-[(click here to zoom)]({{ BASE_PATH }}/assets/print_state_loop.png)
 
-Let's use the `state` variable to create a new string varaible containing the URL that we want to navigate to. We'll use the pattern mentioned above (the URL only differs by the state code).
+Now let's use the `state` variable to create a new string varaible containing the URL that we want to navigate to. We'll use the pattern mentioned above (that the URL only differs by the state code).
 ```python
     state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state="+state+"#results"
     print "STATE URL IS:",state_url
 ```
 
 <div class="warning">
-  <p><strong>Note:</strong> Be aware of the indentation use in the previous and all of the following commands. The URL variable is created using the state variable, therefore it must be written within the state loop. This means it's indented (4 spaces or the tab button) underneath "for state in state_codes:". </p>
+  <p><strong>Note:</strong> Be aware of the indentation used in the previous (and all of the following) commands. The URL variable is created using the state variable, therefore it must be written within the state loop. This means it's indented (4 spaces or the tab button) underneath <strong>"for state in state_codes:"</strong>. </p>
 </div>
 
+At this point, our python code should look like this:
+```python
+from bs4 import BeautifulSoup
+import time
+import xlsxwriter
+from selenium import webdriver #This allows us to read the webpage if uses Javascript
 
+def print_line():
+    print " "
+    print "----------------------------------------------------------------------------------------------------------------------"
+    print " "
+
+save_output_path = "/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files"
+
+output_workbook = xlsxwriter.Workbook("medicare_PDP_scrape.xlsx") 
+plan_info_worksheet = output_workbook.add_worksheet("plan_info") 
+row = 0 
+
+plan_info_worksheet.write(row,0,"state")
+plan_info_worksheet.write(row,1,"plan_name")
+plan_info_worksheet.write(row,2,"monthly_premium")
+plan_info_worksheet.write(row,3,"deductible")
+plan_info_worksheet.write(row,4,"gap_coverage")
+plan_info_worksheet.write(row,5,"zero_prem_full_LIS")
+plan_info_worksheet.write(row,6,"preferred_pharmacy_costshare_30day")
+plan_info_worksheet.write(row,7,"num_drugs_formulary")
+
+
+# state_codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC","SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+state_codes = ["AK"]
+
+for state in state_codes:
+    print "COLLECTING DATA FOR",state
+    
+    state_url = "https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state="+state+"#results"
+    print "STATE URL IS:",state_url
+
+output_workbook.close()
+```
 
 
 
