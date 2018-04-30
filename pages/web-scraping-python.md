@@ -276,7 +276,7 @@ You'll also notice that within some of the `<td>` tags, there are `<a>` tags, wh
 
 The `<a>` tags would be useful if we wanted to get, for example, the link behind the **browse formulary** text. However, we won't be using them in this tutorial. 
 
-The final thing we want to do before we can write it all to our worksheet is to loop through the **columns** of the table. We can see that each of the `<td>` tags within the `<tr>` tag contains our column info (plan name, premium, deductible, etc.). To do this, let's create our third and final loop:
+The final thing we want to do before we can write it all to our worksheet is to loop through the **columns** of the table. As we saw earlier screenshot, the `<td>` tags within each `<tr>` tag contain the column information we are looking for - plan name, premium, deductible, etc. To extract this information, let's create our third and final loop:
 ```python
         for td_tag in tr_tag.find_all('td'):
             print_line()
@@ -302,7 +302,29 @@ To make it easier to see when we write it to our worksheet, I'm going to save th
             write_cell_value = td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
 ```
 
-Now that we have the information we want in the format we want, we can begin writing it to our worksheet.
+Now that we have the information we want in the format we want, we can begin writing it to our worksheet. But first let's recap where we are and what our python code should look like at this point.
+
+Our three *nested* loops are: 
+* **State loop** (`for state in state_codes:`): Loops through all the different states (in the first loop state="AK", second state="AL, and so on.)
+  * A state
+* **`<tr>` tag loop** (for `tr_tag in soup.find_all('tr',{"valign":"middle"}):`): Loops through the `<tr>` tags - each `<tr>` tag has the information for an entire row of the the table. (In the first loop, **`tr_tag`** has all the info in the **Humana Walmart Rx Plan (PDP) - S5884-180** row; in the second loop **`tr_tag`** has all the info in the **Express Scripts Medicare - Saver (PDP) - S5660-250** row, and so on.)
+  * A Medicare plan in a state
+* **`<td>` tag loop** (for td_tag in tr_tag.find_all('td'):): Loops through the `<td>` tags within each `<tr>` tag. Each `<td>` tag has the information for a single cell of the table.
+  * A plan characteristic of a given Medicare plan in a state
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### ADD PYTHON CODE HERE FOR WRITING TO WORKSHEET
 
@@ -384,30 +406,6 @@ output_workbook.close()
 
 
 
-So to recap where we are, we currently have two loops:
-* **State loop** (`for state in state_codes:`): Loops through all the different states (in the first loop state="AK", second state="AL, and so on.)
-* **`<tr>` tag loop** (for `tr_tag in soup.find_all('tr',{"valign":"middle"}):`): Loops through the `<tr>` tags - each `<tr>` tag has the information for an entire row of the the table. (In the first loop, **`tr_tag`** has all the info in the **Humana Walmart Rx Plan (PDP) - S5884-180** row; in the second loop **`tr_tag`** has all the info in the **Express Scripts Medicare - Saver (PDP) - S5660-250** row, and so on.)
-
-
-
-
-
-
-Within each tr tag, I can pull out each td tag. Underneath the `for tr_tag in [...]` loop add a loop that pulls out each td tag:
-```python
-for tr_tag in soup.find_all('tr',{"valign":"middle"}):
-    print_line()
-    #print tr_tag #I'm commenting this out for now to make the console less messy
-    
-    td_tag_num = 0 #We will use this variable to count the number of td tags that are within each tr tag.
-    for td_tag in tr_tag.find_all('td'): #Loop through the td tags
-        td_tag_num+=1 #Adds 1 to the td_tag_num variable every time we go through the loop
-        print_line()
-        print "td tag num:", td_tag_num
-        print td_tag
-```
-
-If we look at the output in the console, we see that with the exception of the first td tag, we've succesfully found the tags that contain just the information we are looking for. So for tags 2-7 we can extract the text (tag 7 we'll need to extract the url too) and then in tag 1 we can pull out the text and URL from the first `<a>` tag which has the information we want. 
 
 
 
@@ -416,7 +414,6 @@ If we look at the output in the console, we see that with the exception of the f
 
 
 
-Because the URLs have this structure, we will loop through all the URLs to get each state landing page. Note that if the URLs were not the same, we would instead have python "click" on the link for each state. But this is easier.
 
 
 
