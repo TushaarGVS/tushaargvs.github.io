@@ -55,9 +55,24 @@ pip install xlsxwriter
 In a new python file (I'm calling mine "medicare_PDP_scrape.py) add the modules that we will need to the top of the script:
 ```python
 from bs4 import BeautifulSoup
-from selenium import webdriver
 import xlsxwriter
+from selenium import webdriver
 ```
+
+We need to open the driver that we want to use to visit the websites we want to scrape. The code below tells Python to use phantomJS as our webdriver. [PhantomJS](http://phantomjs.org) is basically a web browser that runs in the background.
+```python
+driver = webdriver.PhantomJS()
+```
+Becuase we've opened a driver, we need to add a piece of code to the very **bottom** of our Python file that closes the browser:
+```python
+driver.quit()
+```
+This will be the last line in our file - everything we add to the Python script will go above this line.
+
+<div class="info">
+  <p><strong>Note:</strong> There are other webdrivers available such as Chrome or Firefox, but they won't run in the backround - i.e. you will see Python open Google Chrome, go to the website, then close the website.</p>
+</div>
+
 
 We will also want to create a variable containing the path of the directory we want to save our spreadsheet in:
 ```python
@@ -99,15 +114,16 @@ plan_info_worksheet.write(row,5,"zero_prem_full_LIS")
 plan_info_worksheet.write(row,6,"preferred_pharmacy_costshare_30day")
 plan_info_worksheet.write(row,7,"num_drugs_formulary")
 ```
-Becuase we opened an Excel workbook, we'll need to add a line to the very **bottom** of our Python file that closes the workbook. This will be the last line in our file - everything we add to the Python script will go above this line:
+Becuase we opened an Excel workbook, we'll need to add another line to the very **bottom** of our Python file that closes the workbook (either before or after `driver.quit()`):
 ```python
 output_workbook.close()
 ```
 
 Now that we've set up everything we need to run our Python file and write out output, we can get to the actual web scraping. 
 
-As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the [**troubleshooting**](INSERT URL HERE) section if you need help (get stuck in a loop, etc.)
-
+<div class="info">
+  <p>As we go through the web scraping steps below, I encourage you to stop and run the file, look at the output, print things to the console, etc. See the <a href="INSERT URL HERE">troubleshooting section</a> if you need help (get stuck in a loop, etc.)<p>
+</div>
 
 If you look at the URL for each state, you'll notice that the only thing that changes between two states is the abbreviated state code (**AK** versus **AL**):
 - https://q1medicare.com/PartD-SearchPDPMedicare-2018PlanFinder.php?state=AK#results
@@ -146,7 +162,8 @@ At this point, our python code should look like this:
 ```python
 from bs4 import BeautifulSoup
 import xlsxwriter
-from selenium import webdriver 
+from selenium import webdriver
+driver = webdriver.PhantomJS()
 
 def print_line():
     print " "
@@ -182,14 +199,12 @@ output_workbook.close()
 ```
 
 Now that we have the URL, we can tell Python to go to get all of the underlying HTML code from that webpage. To do that type:
-```python
-    driver = webdriver.PhantomJS() 
+```python 
     driver.get(state_url)
 ```
+This tells Python to go to the webpage for Alaska and get the underlying HTML.
 
-The first line, `driver = webdriver.PhantomJS()`, tells Python to use phantomJS as our webdriver. [PhantomJS](http://phantomjs.org) is basically a web browser that runs in the background. There are other webdrivers available such as Chrome or Firefox, but they won't run in the backround - i.e. you will see Python open Google Chrome, go to the website, then close the website.
-
-The second line, `driver.get(state_url)`, tells Python to go to the webpage for Alaska and get the underlying HTML.
+Because we've opened the web driver, we need to add a piece of code to the **bottom** of our python file that closes the driver. We open a new web driver every time we go to 
 
 Next, we want to feed the HTML from the page into beautiful soup. Beautiful soup is a Python library that lets us to systematically pull information out of the HTML code. To do this, add:
 ```python
@@ -360,7 +375,7 @@ for state in state_codes:
         print_line() #remember this just prints a line so we can read the output easier
         print tr_tag
         
-         for td_tag in tr_tag.find_all('td'):
+        for td_tag in tr_tag.find_all('td'):
             print_line()
             print td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
             
