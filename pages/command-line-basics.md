@@ -26,14 +26,14 @@ When you open the terminal, the first thing you'll want to do is figure out wher
 
 #### Print working directory (i.e. figure out where you are) - `pwd`:
 To see where you are, type: 
-```
+```bash
 $ pwd
 ```
 and press enter. A path will print to the console which will indicate the folder that you are currently in. This is called the "current working directory" or just "working directory".
 
 #### change directory - `cd`:
 To move to another folder (i.e. change your working directory) use the command `cd`. Let's say I have some python files that I want to run stored in the folder /Users/marisacarlos/Dropbox/Cornell/Python_Tutorial. If I issue the command:
-```
+```bash
 $ cd /Users/marisacarlos/Dropbox/Cornell/Python_Tutorial
 ```
 it will take me to this folder.
@@ -46,6 +46,11 @@ it would look for a folder called `Users` in my working directory instead of the
 #### List the contents of a folder - `ls`:
 To see the contents of a folder use the command `ls`. Typing `$ ls` will show a list of files in your working directory. If you specify a path after `ls` (e.g. `ls /Users/marisacarlos/Dropbox/Cornell`, it will show a list of files in the folder path you specify. 
 
+#### Open a file - `open`':
+If you want to open a file without double clicking on the file in its folder, you can use the `open` command. For example, if my current directory contained the file workbook.xlsx, I could open it by typing:
+```bash
+open workbook.xlsx
+```
 
 #### Removing files using `rm`:
 Issuing commands at the command line can be dangerous because you have the power to make permanent changes to your computer. An example of this is the command `rm` which removes files. `rm` is different from right-clicking on a file and moving it to the trash because `rm` deletes the file permanently and does not place it in the trash folder. For this reason I suggest two things:
@@ -66,15 +71,15 @@ Issuing commands at the command line can be dangerous because you have the power
 ### Other Useful Things
 #### Path shortcuts:
 `../` can be used to refer to the directory *above* the one you are currently in. For example, if your current working directory is: 
-```
+```bash
 /Users/marisacarlos/Dropbox
 ```
 then `../` will correspond to the path: 
-```
+```bash
 /Users/marisacarlos
 ```
 and `../../` will correspond to the path: 
-```
+```bash
 /Users
 ```
 and so on.
