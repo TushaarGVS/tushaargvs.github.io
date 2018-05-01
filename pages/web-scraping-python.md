@@ -36,11 +36,11 @@ Our end result will be a spreadsheet containing the above information for every 
 Now that we have an idea of what we want to do, we'll start coding it up.
 
 <div class="info">
-  <p><strong>Note:</strong> If you need a refresher on how to run a Python script, check out my very short tutorial on  <a href="{{ BASE_PATH }}/pages/how-to-run-python-file">how to run a python script.</a></p>
+  <p><strong>Note:</strong> If you need a refresher on how to run a Python script, check out my very short tutorial on  <a href="{{ BASE_PATH }}/pages/how-to-run-python-file">how to run a Python script.</a></p>
 </div>
 
 #### Install required Python modules:
-The python modules we will need to run our code are the following:
+The Python modules we will need to run our code are the following:
 * [Selenium](http://selenium-python.readthedocs.io)
 * [bs4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 * [xlsxwriter](http://xlsxwriter.readthedocs.io)
@@ -52,7 +52,7 @@ pip install bs4
 pip install xlsxwriter
 ```
 #### Set up Python file for scraping:
-In a new python file (I'm calling mine "medicare_PDP_scrape.py) add the modules that we will need to the top of the script:
+In a new Python file (I'm calling mine "medicare_PDP_scrape.py) add the modules that we will need to the top of the script:
 ```python
 from bs4 import BeautifulSoup
 import xlsxwriter
@@ -80,7 +80,7 @@ We will also want to create a variable containing the path of the directory we w
 save_output_path = '/Users/marisacarlos/Dropbox/mbcarlos.github.io/tutorial_files'
 ```
 
-At the top of all of my python files I define a function that prints a new (blank) line, dashed line, and another new line. I use it to make printing to the console easier to read. After we define the function, we can call it by typing `print_line()`:
+At the top of all of my Python files I define a function that prints a new (blank) line, dashed line, and another new line. I use it to make printing to the console easier to read. After we define the function, we can call it by typing `print_line()`:
 ```
 def print_line():
     print " "
@@ -148,7 +148,7 @@ To loop through the states, type:
 for state in state_codes:
     print "COLLECTING DATA FOR",state
 ```
-The code above loops through the list of state codes. This means that in the first loop the variable `state` will equal "AK", in the second loop `state="AL"` and so on until the last loop where `state="WY"`. The print statement just lets us know where we are in the loop. If we run the python file at this point, we should see the following output in our console:
+The code above loops through the list of state codes. This means that in the first loop the variable `state` will equal "AK", in the second loop `state="AL"` and so on until the last loop where `state="WY"`. The print statement just lets us know where we are in the loop. If we run the Python file at this point, we should see the following output in our console:
 
 ![print_state_loop]({{ BASE_PATH }}/assets/print_state_loop.png)
 
@@ -162,7 +162,7 @@ Now let's use the `state` variable to create a new string varaible containing th
   <p><strong>Note:</strong> Be aware of the indentation used in the previous (and all of the following) commands. The URL variable is created using the state variable, therefore it must be written within the state loop. This means it's indented (4 spaces or the tab button) underneath <strong>"for state in state_codes:"</strong>. </p>
 </div>
 
-##### At this point, our python code should look like this:
+##### At this point, our Python code should look like this:
 ```python
 from bs4 import BeautifulSoup
 import xlsxwriter
@@ -210,17 +210,17 @@ Now that we have the URL, we can tell Python to go to that website and get all o
 ```python 
     driver.get(state_url)
 ```
-It's also a good habit to get into to tell python to sleep for a second (or more) after you visit a website. Some websites have rate limits and this will help with that (though it is not fail safe):
+It's also a good habit to get into to tell Python to sleep for a second (or more) after you visit a website. Some websites have rate limits and this will help with that (though it is not fail safe):
 ```python
     time.sleep(1)
 ```
 
 
-Next, we want to feed the HTML from the page into beautiful soup. Beautiful soup is a Python library that lets us to systematically pull information out of the HTML code. To do this, add:
+Next, we want to feed the HTML from the page into Beautiful Soup. Beautiful Soup is a Python library that lets us to systematically pull information out of the HTML code. To do this, add:
 ```python
     soup = BeautifulSoup(driver.page_source,"lxml")
 ```
-Now all of our HTML code for the Alaska webpage is stored in the variable `soup`. We can use now use functions from the beautiful soup library to collect the data we need.
+Now all of our HTML code for the Alaska webpage is stored in the variable `soup`. We can use now use functions from the Beautiful Soup library to collect the data we need.
 
 The next part is the trickest part of web scraping. We need to figure out where the information we want to collect is and figure out a well to tell Python what information we want. We'll start by looking at the page source. In Google Chrome  paste the following into your address bar:
 ```
@@ -328,7 +328,7 @@ To make it easier to comprehend when we write it to our worksheet, I'm going to 
             write_cell_value = td_tag.get_text().strip().replace("Benefits & Contact Info","").replace("Browse Formulary","")
 ```
 
-Now that we have the information we want in the format we want, we can begin writing it to our worksheet. But first let's recap where we are and what our python code should look like at this point.
+Now that we have the information we want in the format we want, we can begin writing it to our worksheet. But first let's recap where we are and what our Python code should look like at this point.
 
 ##### Our three *nested* loops are: 
 * **State loop** (`for state in state_codes:`): Loops through all the different states (in the first loop state="AK", second state="AL, and so on.)
@@ -446,7 +446,7 @@ Finally we can write the plan information into the other columns (plan name, pre
 
 The very last thing we need to do to collect all of the data is remove the short `state_codes` list and uncomment the longer list. 
 
-**Our final python file should look like:**
+**Our final Python file should look like:**
 
 ```python
 from bs4 import BeautifulSoup
@@ -527,7 +527,7 @@ You should now be able to open the workbook and see something like the following
 
 #### Troubleshooting:
 
-Get stuck in a loop or run something that you didn't mean to? You can terminate the python command by doing the following. First open a new tab or window in your terminal. Then type:
+Get stuck in a loop or run something that you didn't mean to? You can terminate the Python command by doing the following. First open a new tab or window in your terminal. Then type:
 ```bash
 ps aux | grep python
 ```
@@ -539,7 +539,7 @@ Figure out what the process ID is. In the example above the PID is 6380, so to s
 ```
 kill 6380
 ```
-When you go back to the window where you issued the python command you'll see:
+When you go back to the window where you issued the Python command you'll see:
 ```bash
 Terminated: 15
 ```
