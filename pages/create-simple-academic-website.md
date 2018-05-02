@@ -10,7 +10,9 @@ This tutorial will teach you how to create a simple and free academic website us
 
 At the end of the tutorial you will have a website up and running at http://username.github.io (where username is your username). There is a link at the end with instructions for adding a custom domain name (e.g. marisacarlos.com).
 
-There are many other ways to create a website, one of which is using a website builder such as [Wix](http://wix.com). Websites created by Wix are definitely fancier than the one you will create in this tutorial, however, the website in this tutorial has the following advantages:
+<div class="info">
+  <p>There are many other ways to create a website, one of which is using a website builder such as <a href="http://wix.com">Wix</a>. Websites created by Wix are definitely fancier than this one, however, the simple GitHub Pages website has the following advantages:</p>
+</div>
 * It is completely free. A website built with Wix is only free if you are okay with the Wix ads and don't want to connect a custom domain. Adding a custom domain on Wix will cost you $60/year and removing the ads will cost you another $72/year.
   * **Note**: *Registering* a custom domain name is never free, regardless of whether you connect it to a Wix site or a GitHub pages site. The difference is that GitHub won't charge you to connect the custom domain, but Wix will. In both cases you have to pay the Domain Name Registrar. Instructions on this are at the end of this tutorial. 
 * The Wix website builder requires a *lot* of memory. My computer is old-ish, and I have no patience for memory-intensive websites in which there is a delay between when I click and drag something and when the object acutally moves.
