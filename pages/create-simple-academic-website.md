@@ -65,7 +65,7 @@ cd simple_academic_website
    ```bash
    git add filename.filesuffix
    ```
-   <div class="info"
+   <div class="info">
    <p><strong>Note:</p> At any time you can check to see what has been staged for commit, what has changes but isn't yet staged for commit, and which files are untracked by typing:</p>
    </div>
    ```
@@ -77,11 +77,11 @@ cd simple_academic_website
    ```bash
    git commit -m "write whatever message you want to describe this commit"
    ```
-   <div class="info"
+   <div class="info">
      <p><strong>Note 1:</strong> If you get an error at this point, you might need to configure your git with your username and email address. <a href="https://help.github.com/articles/setting-your-commit-email-address-in-git">See here</a> and <a href="https://help.github.com/articles/setting-your-username-in-git/">here</a></p>
    </div>
    
-   <div class="info"
+   <div class="info">
      <p><strong>Note 2:</strong> You have to type a commit message. If you just type git commit you will open up the message editor which is confusing and difficult to get out of. If you do get stuck in it, see <a href="https://apple.stackexchange.com/questions/252541/how-do-i-escape-the-git-commit-window-from-os-x-terminal">this Stackexchange thread for mac</a> and <a href="https://stackoverflow.com/questions/9171356/how-do-i-exit-from-the-text-window-in-git">this one for Windows.</a></p>
    </div>
 
