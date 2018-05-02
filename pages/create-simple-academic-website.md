@@ -40,7 +40,7 @@ cd simple_academic_website
 ```
 
 
-3. Go to the command line and remove the .git directory. use the command rm -rf .git.
+3. Go to the command line and remove the .git directory using the command `rm -rf .git`.
    <div class="danger">
      <p><strong>WARNING:</strong> Be careful with this command as it removes a non-empty directory without asking you for confirmation. It will NOT send your files to the trash - it will remove them forever and ever.
      </p>
@@ -66,7 +66,7 @@ cd simple_academic_website
    git add filename.filesuffix
    ```
    <div class="info">
-   <p><strong>Note:</strong>At any time you can check to see what has been staged for commit, what has changes but isn't yet staged for commit, and which files are untracked by typing:</p>
+   <p><strong>Note:</strong> At any time you can check to see what has been staged for commit, what has changes but isn't yet staged for commit, and which files are untracked by typing:</p>
    </div>
    ```
    git status
@@ -96,6 +96,10 @@ cd simple_academic_website
    git push -u origin master
    ```
    You will be prompted to enter your username and password.
+   
+   <div class="note">
+   <p><strong>Note: </strong> You will only have to issue the command <strong>git remote add origin ...</strong> once. This sets the URL for your github repository, which only needs to be done once.</p>
+   </div>
 
 9. Your website should now be live at https://username.github.io. You can check to make sure this is the case by going to the settings tab
    ![github_settings]({{ BASE_PATH }}/assets/simple_website_tutorial/github_settings.png)
@@ -125,6 +129,16 @@ cd simple_academic_website
   Then you would create a page called `tutorials.md` and store it in the `pages` directory. The tutorials page would follow the same syntax as `research.md` or `index.md`. 
 * Edit 404.md to include your email address
 * Replace the CV and headshot with your own. These are stored in the `assets/` folder. Keep the names CV.pdf and headshot.jpg so that the pages that link to them continue to work.
+
+#### Publish your website:
+The last step is to push all of the changes you made to your GitHub repository. To do this do the following (assuming you are in your top directory - which is the directory that contains the **pages** and **assets** folders):
+```bash
+git add .
+git commit -m "update my website"
+git push -u origin master
+```
+
+Sometimes it takes a few minutes for the pages to refresh, but at this point you should have an active website at http://username.github.io. 
 
 
 #### Adding a custom domain name (yourname.com)
