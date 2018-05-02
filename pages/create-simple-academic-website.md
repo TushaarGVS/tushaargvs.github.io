@@ -53,7 +53,7 @@ cd simple_academic_website
 
 3. Go to the command line and remove the .git directory using the command `rm -rf .git`.
    <div class="danger">
-     <p><strong>WARNING:</strong> Be careful with this command as it removes a non-empty directory without asking you for confirmation. It will NOT send your files to the trash - it will remove them forever and ever.
+     <p><strong>WARNING:</strong> Be careful with this command as it removes a non-empty directory without asking you for confirmation. It will NOT send your files to the trash - it will remove them forever.
      </p>
    </div>
    
