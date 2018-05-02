@@ -111,21 +111,31 @@ cd simple_academic_website
 
 
 #### Update the website files with your info:
-* **ReadMe.md**: This is the file you'll see displayed on the home page of your GitHub repository 
+* **ReadMe.md**: This is the file you'll see displayed on the home page of your GitHub repository
+
 * **_config.yml**: Edit lines 11-18 (title - production URL) with your info. The "Title" will be what shows up in the top left-hand corner of every page. (Note: I don't fully understand what this file does, so I can't provide much insight on what might happen if you mess with it...)
-* **index.md**: This where you will edit the info that shows up on the home page.
+
+* **index.md**: This is where you will edit the info that shows up on the home page.
   * In the top header (the stuff at the very top between the two sets of dashes) edit the title, a description of your website, and some keywords. Below the header, edit the text you want to show up on the main page.
-  * The link curriculum vitae link does not need to be changed (I'll show you where to store your CV below).
+  
+  * The curriculum vitae link does not need to be changed (I'll show you where to store your CV below).
+  
   * In the &lt;div class="container"&gt; section change the name and email. The email is hidden so that you don't get spam from bots that crawl pages looking for email addresses. Add your email address in pieces between the text "I don't want spam! So please leave me alone!"
+  
   * Change the name below  &lt;`img src="../assets/headshot.jpg"`
+  
   * In the &lt;`div class="navbar"`&gt; section you can add or remove things from the footer navigation bar. The link to the CV does not need to be changed, but you can add your github URL and username and twitter URL and username. Alternatively you can remove these if you don't want them, or add an additional field. Note that this footer navigation bar only shows up on the home page.
+  
 * **pages/research.md**: This is the page you will get to by clicking the "research" tab in the top navigation bar. You can add descriptions of your research and link to working papers and code (or whatever you want).
+
   * Edit the description in the header.
+  
   * If you want to link to working papers, you can add them to the folder *pages/working_papers* and link to them from this page. 
-* **_includes/themes/twitter/default.html**: This is the page you can update if you want to change the navigation bar at the top. For example, if you wanted to add a "tutorials" link you would add:
+* **_includes/themes/twitter/default.html**: This is the file you can update if you want to change the navigation bar at the top. For example, if you wanted to add a "tutorials" link you add the following in the &lt;ul class="nav"&gt; section:
   ```html
   <li><a href="{{ BASE_PATH }}/pages/tutorials.html">tutorials</a></li>
   ```
+  
   Then you would create a page called `tutorials.md` and store it in the `pages` directory. The tutorials page would follow the same syntax as `research.md` or `index.md`. 
 * Edit 404.md to include your email address
 * Replace the CV and headshot with your own. These are stored in the `assets/` folder. Keep the names CV.pdf and headshot.jpg so that the pages that link to them continue to work.
