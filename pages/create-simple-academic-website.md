@@ -66,7 +66,7 @@ cd simple_academic_website
    git add filename.filesuffix
    ```
    <div class="info">
-   <p><strong>Note:</p> At any time you can check to see what has been staged for commit, what has changes but isn't yet staged for commit, and which files are untracked by typing:</p>
+   <p><strong>Note:</strong>At any time you can check to see what has been staged for commit, what has changes but isn't yet staged for commit, and which files are untracked by typing:</p>
    </div>
    ```
    git status
