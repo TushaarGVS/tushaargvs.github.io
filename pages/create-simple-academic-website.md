@@ -131,7 +131,7 @@ cd simple_academic_website
   * Edit the description in the header.
   
   * If you want to link to working papers, you can add them to the folder *pages/working_papers* and link to them from this page. 
-* **_includes/themes/twitter/default.html**: This is the file you can update if you want to change the navigation bar at the top. For example, if you wanted to add a "tutorials" link you add the following in the &lt;ul class="nav"&gt; section:
+* **_includes/themes/twitter/default.html**: This is the file you can update if you want to change the navigation bar at the top. For example, if you wanted to add a "tutorials" page and link you would add the following code to the &lt;ul class="nav"&gt; section:
   ```html
   <li><a href="{{ BASE_PATH }}/pages/tutorials.html">tutorials</a></li>
   ```
