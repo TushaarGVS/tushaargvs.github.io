@@ -18,9 +18,6 @@ At the end of the tutorial you will have a website up and running at http://user
 * The Wix website builder requires a *lot* of memory. My computer is old-ish, and I have no patience for memory-intensive websites in which there is a delay between when I click and drag something and when the object acutally moves.
 * Creating this website can be an incentive to learn Git/GitHub, which I think every researcher should be using. 
 
-<div class="warning">
-  <p><strong>Note: </strong> The command line commands are written for Mac users and executed in the Terminal, but they should translate to Windows (Command Prompt) with few or no modifications. If there is something you cannot figure out, email me and I can try to help. </p>
-</div>
 
 #### For those who have never used GitHub or Git:
 * Download the [approriate git software](https://git-scm.com/downloads) and install it.
@@ -34,6 +31,11 @@ At the end of the tutorial you will have a website up and running at http://user
 
 
 #### Download the website files and create your repository:
+
+<div class="warning">
+  <p><strong>Note: </strong> The command line commands are written for Mac users and executed in the Terminal, but they should translate to Windows (Command Prompt) with few or no modifications. If there is something you cannot figure out, email me and I can try to help. </p>
+</div>
+
 
 1. Figure out where you want to store all of the files for your website. When you clone my directory, it will create a folder called "simple_academic_website" in your current working dirctory. Navigate to that directory and then clone the repository:
    ```bash
