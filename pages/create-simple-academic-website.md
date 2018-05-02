@@ -1,12 +1,19 @@
+---
+layout: page
+title: How to Create a Simple Academic Website
+description: How to create a simple academic website for free using Github Pages.
+---
 
-FOR THOSE UNFAMILIAR WITH GITHUB/GIT:
-* Download the approriate git software https://git-scm.com/downloads and install it.
-* Create a github account. The Hello World tutorial is a good thing to start with: https://guides.github.com/activities/hello-world/
-* If you need to know how to clone a repository see: https://help.github.com/articles/cloning-a-repository/
-* If you need to know how to create a new repository see:  https://help.github.com/articles/creating-a-new-repository/
-* This github cheat sheet is useful: https://education.github.com/git-cheat-sheet-education.pdf
-* custom domain on github pages: https://help.github.com/articles/using-a-custom-domain-with-github-pages/
+#### How to create a simple academic website for free using Github Pages.
 
+##### For those who have never used GitHub or Git:
+* Download the [approriate git software](https://git-scm.com/downloads) and install it.
+* Create an account at [GitHub](https://github.com).
+* Go through the [Hello World tutorial]( https://guides.github.com/activities/hello-world/), which will teach you how to create a repository and change it using the command line.
+* [Click here for information on how to clone a repository](https://help.github.com/articles/cloning-a-repository/)
+* [Click here for information on creating a new repository](https://help.github.com/articles/creating-a-new-repository/)
+* I find this [GitHub cheat sheet](https://education.github.com/git-cheat-sheet-education.pdf) very useful when I forget which commands do what.
+<!--
 1) Clone my repository ENTER URL HERE (see this page if you don't know how to clone a repository https://help.github.com/articles/cloning-a-repository/)
 2) remove the .git directory
 3) Edit a bunch of pages
@@ -16,11 +23,11 @@ FOR THOSE UNFAMILIAR WITH GITHUB/GIT:
     when you create this repository do not initialize with a readme or add a license - just leave it blank adn we will push all the files to it
     If you've never created a repository see: https://help.github.com/articles/creating-a-new-repository/
 6) Push your changes to github using git push -u origin master
+-->
 
 
 
-
-#### Creating a Simple Academic Website
+##### Creating a Simple Academic Website
 
 In this tutorial we will create a simple academic website with THIS FORMAT (URL HERE)
 
@@ -78,15 +85,26 @@ And scrolling down to the GitHub Pages section:
 
 
 
+#### Things to edit:
+* **ReadMe.md**: This is the file you'll see displayed on your github repository page
+* **_config.yml**: Edit lines 11-18 (title - production URL) with your info. The "Title" will be what shows up in the top left-hand corner of every page. (Note: I don't fully understand what this file does, so I can't provide much insight on what might happen if you mess with it...)
+* **index.md**: This where you will edit the info that shows up on the home page.
+  * In the top header (the stuff at the very top between the two sets of dashes) add a title (This), a description of what this website it, and some keywords. Below the header, edit your description.
+  * The link curriculum vitae link does not need to be changed (I'll show you where to store your CV below).
+  * In the &lt;div class="container"&gt; section change my name to your name and add your email. The email is hidden so that you don't get spam from bots that crawl pages looking for email addresses. Add your email address in pieces between the text "I don't want spam! So please leave me alone!"
+  * Change my name to your name in the section  &lt;`img src="../assets/headshot.jpg"`
+  * In the &lt;`div class="navbar"`&gt; section you can add or remove things from the footer navigation bar. The link to the CV does not need to be changed, but you can add your github URL and username and twitter URL and username. Alternatively you can remove these if you don't want them, or add an additional field. Note that this footer navigation bar only shows up on the home page.
+* **pages/research.md**: This is the page you will get to by clicking the "research" tab in the top navigation bar. You can add descriptions of your research and link to working papers and code (or whatever you want).
+  * Edit the description in the header.
+  * If you want to link to working papers, you can add them to the folder *pages/working_papers* and link to them from this page. 
+* **_includes/themes/twitter/default.html**: This is the page you can update if you want to change the navigation bar at the top. For example, if you wanted to add a "tutorials" link you would add:
+  ```html
+  <li><a href="{{ BASE_PATH }}/pages/tutorials.html">tutorials</a></li>
+  ```
+  and then you would create a page called `tutorials.md` and store it in the `pages` directory. The tutorials page would follow the same syntax as `research.md` or `index.md`. 
+* Edit 404.md to include your email address
+* Replace the CV and headshot with your own. These are stored in the `assets/` folder. Keep the names CV.pdf and headshot.jpg so that the pages that link to them continue to work.
 
-ADD PART ABOUT EDITING:
-0) edit _config.yml with all of your info (line 11-19)
-1) 
-1) Replace my CV and headshot with your CV and headshot. Save them in the assets folder as CV.pdf and headshot.jpg. If you want to name them something else you'll have to edit the links on the home page (index) and navigation bar (_includes/themes/twitter/default.html)
-2) Edit the research page in pages/research.md to include summaries of your research. ADD INFO ABOUT LINKING TO DRAFT OF WORKING PAPER
-3) Edit 404.md to include your email address
-4) 
-3) If you want to add any addtional pages to the top navigation bar
 
-
-I NEED TO GO IN AND EDIT THE TOP NAVIGATION BAR TO REMOVE RESOURCE AND TUTORIALS 
+#### Adding a custom domain name (yourname.com)
+To add your own custom domain, follow [the instructions on github](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). Note that uou'll first need to purchase the domain name. I purchased mine from [GoDaddy](https://www.godaddy.com), but there are other options. 
