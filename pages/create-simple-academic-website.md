@@ -5,7 +5,9 @@ description: How to create a simple academic website for free using Github Pages
 ---
 
 
-This tutorial will teach you how to create a simple and free academic website using GitHub pages. [Click here to see what this website will look like.](http://blueham.github.io) At the end of the tutorial your website will be live at http://username.github.io (where username is your username). There is a link at the end with instructions for adding a custom domain name (e.g. marisacarlos.com).
+This tutorial will teach you how to create a simple and free academic website using GitHub pages. [Click here to see what this website will look like.](http://blueham.github.io)
+
+At the end of the tutorial you will have a website up and running at http://username.github.io (where username is your username). There is a link at the end with instructions for adding a custom domain name (e.g. marisacarlos.com).
 
 <div class="warning">
   <p><strong>Note: </strong> The command line commands are written for Mac users and executed in the Terminal, but they should translate to Windows (Command Prompt) with few or no modifications. If there is something you cannot figure out, email me and I can try to help. </p>
@@ -24,7 +26,7 @@ This tutorial will teach you how to create a simple and free academic website us
 
 #### Download the website files and create your repository:
 
-1) Figure out where you want to store all of the files for your website. When you clone my directory, it will create a folder called "simple_academic_website" in your current working dirctory. Navigate to that directory and then clone the repository:
+1. Figure out where you want to store all of the files for your website. When you clone my directory, it will create a folder called "simple_academic_website" in your current working dirctory. Navigate to that directory and then clone the repository:
    ```bash
    cd "path to where I want to store the folder"
    git clone https://github.com/mbcarlos/simple_academic_website.git
@@ -32,13 +34,13 @@ This tutorial will teach you how to create a simple and free academic website us
    You can of course always move the folder to another place later on if you wish.
 
 
-2) Navigate to the directory you just cloned:
+2. Navigate to the directory you just cloned:
 ```bash
 cd simple_academic_website
 ```
 
 
-3) Go to the command line and remove the .git directory. use the command rm -rf .git.
+3. Go to the command line and remove the .git directory. use the command rm -rf .git.
    <div class="danger">
      <p><strong>WARNING:</strong> Be careful with this command as it removes a non-empty directory without asking you for confirmation. It will NOT send your files to the trash - it will remove them forever and ever.
      </p>
@@ -49,13 +51,13 @@ cd simple_academic_website
    ```
    
    
-4) Initialize the git repository. This adds a file called .git that tracks all of the changes to the files in the directory and subdirectories.
+4. Initialize the git repository. This adds a file called .git that tracks all of the changes to the files in the directory and subdirectories.
    ```bash
    git init
    ```
 
 
-5) Use git add to add these files to your next commit:
+5. Use git add to add these files to your next commit:
    ```bash
    git add .
    ```
@@ -71,7 +73,7 @@ cd simple_academic_website
    ```
    
    
-6) Commit the changes:
+6. Commit the changes:
    ```bash
    git commit -m "write whatever message you want to describe this commit"
    ```
@@ -84,18 +86,18 @@ cd simple_academic_website
    </div>
 
 
-7) Go to the [GitHub website](http://www.github.com) and create a new repository. You must call this repository username.github.io. If your username is marisabriana it will look like this:
+7. Go to the [GitHub website](http://www.github.com) and create a new repository. You must call this repository username.github.io. If your username is marisabriana it will look like this:
    ![create_new_repository]({{ BASE_PATH }}/assets/simple_website_tutorial/create_new_repository.png)
    [(click to zoom)]({{ BASE_PATH }}/assets/simple_website_tutorial/create_new_repository.png)
 
-8) Go back to the command line and push (upload) all of your files in your website folder to github.
+8. Go back to the command line and push (upload) all of your files in your website folder to github.
    ```bash
    git remote add origin https://github.com/username/username.github.io.git
    git push -u origin master
    ```
    You will be prompted to enter your username and password.
 
-6) Your website should now be live at https://username.github.io. You can check to make sure this is the case by going to the settings tab
+9. Your website should now be live at https://username.github.io. You can check to make sure this is the case by going to the settings tab
    ![github_settings]({{ BASE_PATH }}/assets/simple_website_tutorial/github_settings.png)
    [(click to zoom)]({{ BASE_PATH }}/assets/simple_website_tutorial/github_settings.png)
    and scrolling down to the GitHub Pages section
