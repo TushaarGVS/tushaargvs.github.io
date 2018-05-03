@@ -28,7 +28,6 @@ Her research interests include health economics, specifically pharmaceuticals, h
     <div class="row-fluid">
         <div class="span5">
             Marisa Carlos<br/>
-            <strong>Email</strong>mbc96@cornell.edu<br/>
             <div id="hide_email">
             Email: <code>m</code><b>I</b><code>b</code><b>don't</b><code>c</code><b>want</b><code>9</code><b>spam!
             </b><code>6@</code><b>So</b><code>co</code><b>please</b><code>rn</code><b>leave
