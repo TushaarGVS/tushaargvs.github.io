@@ -33,7 +33,8 @@ At the end of the tutorial you will have a website up and running at http://user
 #### Download the website files and create your repository:
 
 <div class="warning">
-  <p><strong>Note: </strong> The command line commands are written for Mac users and executed in the Terminal, but they should translate to Windows (Command Prompt) with few or no modifications. If there is something you cannot figure out, email me and I can try to help. </p>
+  <p><strong>Note: </strong> Everything written in a grey code box are commands. For Mac users, you will run these in the Terminal (spotlight search Terminal if you've never used it or see my <a href="{{ BASE_PATH }}/pages/command-line-basics">tutorial on the command line.</a>). For Windows users you will run them using Git Bash, which can be found in the Git folder. 
+  </p>
 </div>
 
 
@@ -51,7 +52,7 @@ cd simple_academic_website
 ```
 
 
-3. Go to the command line and remove the .git directory using the command `rm -rf .git`.
+3. Go to the command line (Terminal/Git Bash) and remove the .git directory using the command `rm -rf .git`.
    <div class="danger">
      <p><strong>WARNING:</strong> Be careful with this command as it removes a non-empty directory without asking you for confirmation. It will NOT send your files to the trash - it will remove them forever.
      </p>
@@ -72,10 +73,17 @@ cd simple_academic_website
    ```bash
    git add .
    ```
+   
+   
    Note that `git add .` will add ALL of the files in your current directory and all subdirectories. It won't add the files in the directory above the one you ar currently in. If you want to add only specific files you can type:
    ```bash
    git add filename.filesuffix
    ```
+   
+   <div class="info">
+     <p><strong>Note:</strong> Most of the time when you enter a command at the command prompt you won't see any output written to the screen after the command is executed. If you enter a command and are returned to the command prompt (as in, you see the $ next to a blank line) then the command executed correctly.</p>
+   </div>
+   
    <div class="info">
    <p><strong>Note:</strong> At any time you can check to see what has been staged for commit, what has changes but isn't yet staged for commit, and which files are untracked by typing:</p>
    </div>
@@ -89,7 +97,7 @@ cd simple_academic_website
    git commit -m "write whatever message you want to describe this commit"
    ```
    <div class="info">
-     <p><strong>Note 1:</strong> If you get an error at this point, you might need to configure your git with your username and email address. <a href="https://help.github.com/articles/setting-your-commit-email-address-in-git">See here</a> and <a href="https://help.github.com/articles/setting-your-username-in-git/">here</a></p>
+     <p><strong>Note 1:</strong> You might get an error at this point asking you to set your name and email in the configuration settings. Follow the instructions on the screen to do this.</p>
    </div>
    
    <div class="info">
@@ -101,7 +109,7 @@ cd simple_academic_website
    ![create_new_repository]({{ BASE_PATH }}/assets/simple_website_tutorial/create_new_repository.png)
    [(click to zoom)]({{ BASE_PATH }}/assets/simple_website_tutorial/create_new_repository.png)
 
-8. Go back to the command line and push (upload) all of your files in your website folder to github.
+8. Go back to the command line (Terminal/Git Bash) and push (upload) all of your files in your website folder to github.
    ```bash
    git remote add origin https://github.com/username/username.github.io.git
    git push -u origin master
@@ -122,6 +130,9 @@ cd simple_academic_website
 
 
 #### Update the website files with your info:
+
+Now you have all of the files you need stored on your computer. Edit the following files using a text editor (you **CANNOT** edit them using Microsoft Word or a similar program, you need to use a plain-text editor. [Sublime Text](https://www.sublimetext.com) is a good options and Notepad++ (which is built in) is a good option Windows).
+
 * **ReadMe.md**: This is the file you'll see displayed on the home page of your GitHub repository
 
 * **_config.yml**: Edit lines 11-18 (title - production URL) with your info. The "Title" will be what shows up in the top left-hand corner of every page. (Note: I don't fully understand what this file does, so I can't provide much insight on what might happen if you mess with it...)
@@ -131,7 +142,7 @@ cd simple_academic_website
   
   * The curriculum vitae link does not need to be changed (I'll show you where to store your CV below).
   
-  * In the &lt;div class="container"&gt; section change the name and email. The email is hidden so that you don't get spam from bots that crawl pages looking for email addresses. Add your email address in pieces between the text "I don't want spam! So please leave me alone!"
+  * In the &lt;div class="container"&gt; section change the name and email.
   
   * Change the name below  &lt;`img src="../assets/headshot.jpg"`
   
@@ -148,7 +159,7 @@ cd simple_academic_website
   ```
   
   Then you would create a page called `tutorials.md` and store it in the `pages` directory. The tutorials page would follow the same syntax as `research.md` or `index.md`. 
-* Edit 404.md to include your email address
+* Edit 404.md to include your email address (this is the page that will come up anytime someone tries to go to page within username.github.io that does not exist)
 * Replace the CV and headshot with your own. These are stored in the `assets/` folder. Keep the names CV.pdf and headshot.jpg so that the pages that link to them continue to work.
 
 #### Publish your website:
