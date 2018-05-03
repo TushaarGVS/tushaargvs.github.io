@@ -105,7 +105,7 @@ cd simple_academic_website
    </div>
 
 
-7. Go to the [GitHub website](http://www.github.com) and create a new repository. You must call this repository username.github.io. If your username is marisabriana it will look like this:
+7. Go to the [GitHub website](http://www.github.com) and create a new repository. You must call this repository username.github.io. If your username is blueham it will look like this:
    ![create_new_repository]({{ BASE_PATH }}/assets/simple_website_tutorial/create_new_repository.png)
    [(click to zoom)]({{ BASE_PATH }}/assets/simple_website_tutorial/create_new_repository.png)
 
