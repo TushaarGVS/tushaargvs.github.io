@@ -123,6 +123,7 @@ cd simple_academic_website
 9. Your website should now be live at https://username.github.io. You can check to make sure this is the case by going to the settings tab
    ![github_settings]({{ BASE_PATH }}/assets/simple_website_tutorial/github_settings.png)
    [(click to zoom)]({{ BASE_PATH }}/assets/simple_website_tutorial/github_settings.png)
+   
    and scrolling down to the GitHub Pages section
    ![github_settings_pages]({{ BASE_PATH }}/assets/simple_website_tutorial/github_settings_pages.png)
    [(click to zoom)]({{ BASE_PATH }}/assets/simple_website_tutorial/github_settings_pages.png)
