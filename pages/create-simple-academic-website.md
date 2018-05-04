@@ -180,12 +180,12 @@ To add your own custom domain, follow [the instructions on github](https://help.
 
 
 #### Extra Customization
-If you want to make any changes to the overall look of the website, you can update the custom CSS file **assets/themes/twitter/css/my_custom_css.css**.
+If you want to make any changes to the overall look of the website, you can update the custom CSS file at **assets/themes/twitter/css/my_custom_css.css**.
 
-Here are some examples of things you can add/modify in **my_custom_css.css**. 
+Here are some examples of things you can add/modify.
 
 ##### Change the color of the navigation bars:
-Adding the code below to **my_custom_css.css** will change the color of the navigation bars to a light blue. Changing the color values (which are prefixed by #) will change the colors of the navigation bar. Browse the available colors at [w3scools.com](https://www.w3schools.com/colors/colors_mixer.asp). 
+Adding the code below to **my_custom_css.css** will change the color of the navigation bars to a light blue. Changing the color values (which are prefixed by #) will change the colors of the navigation bar. Browse the available colors at [w3schools.com](https://www.w3schools.com/colors/colors_mixer.asp). 
 ```html
 .navbar-inner{
     min-height:40px;
