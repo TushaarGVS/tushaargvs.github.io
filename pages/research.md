@@ -6,6 +6,9 @@ description: Marisa Carlos's research
 
 
 #### <u>Prescription Drug Coupons: A Way to Get Around the Tiered Tormulary</u>
+<br>
+<br>
+<br>
 *I estimate the effect of prescription drug coupons on generic utilization, medication adherence, and preventable hospitalizations. Drug coupons are banned in Massachusetts
 (for all insurance types) and in Medicare, which allows me to estimate difference-in-differences and triple-difference models. I use claims data from a large national insurer
 from 2007-2016 as well as a dataset collected by scraping the Internet Archive to determine the availability/introduction of coupons across time.*
