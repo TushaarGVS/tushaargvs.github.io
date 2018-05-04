@@ -22,5 +22,5 @@ necessary.*
 has come in the form of unbundling the device payment from the global hospital payment, i.e. reimbursing the hospital specifically for the insertion of LARC. We use variation
 across states and time to determine how the increased payments affect LARC use, fertility, and adverse birth outcomes. Preliminary event studies indicate a slight decrease in
 fertility, as well as a decrease in pre-term delivery among unmarried and teenage mothers. Consistent with our hypothesis, these effects are concentrated among women who have
-previously given birth.*
+previously given birth.* (with [Barton Willage](https://bjwillage.github.io/))
 
