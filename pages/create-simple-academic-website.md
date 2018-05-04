@@ -176,3 +176,54 @@ Sometimes it takes a few minutes for the pages to refresh, but at this point you
 
 #### Adding a custom domain name (yourname.com)
 To add your own custom domain, follow [the instructions on github](https://help.github.com/articles/using-a-custom-domain-with-github-pages/). Note that you'll first need to purchase the domain name. I purchased mine from [GoDaddy](https://www.godaddy.com), but there are other options. 
+
+
+
+#### Extra Customization
+If you want to make any changes to the overall look of the website, you can update the custom CSS file **assets/themes/twitter/css/my_custom_css.css**.
+
+Here are some examples of things you can add/modify in **my_custom_css.css**. 
+
+##### Change the color of the navigation bars:
+Adding the code below to **my_custom_css.css** will change the color of the navigation bars to a light blue. Changing the color values (which are prefixed by #) will change the colors of the navigation bar. Browse the available colors at [w3scools.com](https://www.w3schools.com/colors/colors_mixer.asp). 
+```html
+.navbar-inner{
+    min-height:40px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color:#fafafa;
+    background-image:-moz-linear-gradient(top, #edffff, #e3ffff);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#edffff), to(#f2f2f2));
+    background-image:-webkit-linear-gradient(top, #edffff, #e3ffff);
+    background-image:-o-linear-gradient(top, #edffff, #e3ffff);
+    background-image:linear-gradient(to bottom, #edffff, #e3ffff);
+    background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+    border:1px solid #edffff;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);*zoom:1;
+}
+```
+
+##### Change the color of the headers:
+To change the color of the headers you need to **edit** the existing line in **my_custom_css.css**:
+```html
+h1, h2, h3, h4, h5 {
+    color: darkslateblue;
+}
+```
+You can change the color to a recognized name or a hex value [(see here for more info)](https://www.w3schools.com/css/css_colors.asp). For example, if I wanted my headers to be indigo, I could change the code to:
+```html
+h1, h2, h3, h4, h5 {
+    color: indigo;
+}
+```
+which would be the same as:
+```html
+h1, h2, h3, h4, h5 {
+    color: #4B0082;
+}
+```
