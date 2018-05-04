@@ -215,15 +215,15 @@ h1, h2, h3, h4, h5 {
     color: darkslateblue;
 }
 ```
-You can change the color to a recognized name or a hex value [(see here for more info)](https://www.w3schools.com/css/css_colors.asp). For example, if I wanted my headers to be indigo, I could change the code to:
+You can change the color to a recognized name or a hex value [(see here for more info)](https://www.w3schools.com/css/css_colors.asp). For example, if I wanted to change the headers from the current color (<p><font color="darkslateblue"><strong>darkslateblue</strong></font></p>) to <p><font color="blueviolet"><strong>blueviolet</strong></font></p>, I could change the code to:
 ```html
 h1, h2, h3, h4, h5 {
-    color: indigo;
+    color: blueviolet;
 }
 ```
 which would be the same as:
 ```html
 h1, h2, h3, h4, h5 {
-    color: #4B0082;
+    color: #8a2be2;
 }
 ```
