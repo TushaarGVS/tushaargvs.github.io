@@ -26,7 +26,13 @@
     <!-- atom & rss feed -->
     <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-
+    
+    <!--Add function that displays last modified date: -->
+    <script type="text/javascript">
+    onload = function(){
+        document.getElementById("lastModified").innerHTML = "Page last changed " + document.lastModified.split(" ")[0];
+    }
+    </script>
   </head>
 
   <body>
@@ -48,6 +54,7 @@
 
       <div class="content">
         {{ content }}
+        <span id="lastModified"></span>
       </div>
 
       <hr>
