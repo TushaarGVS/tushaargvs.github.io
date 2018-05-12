@@ -187,7 +187,7 @@ Here are some examples of things you can add/modify.
 ##### Change the color of the navigation bars:
 Adding the code below to **my_custom_css.css** will change the color of the navigation bars to a light blue. Changing the color values (which are prefixed by #) will change the colors of the navigation bar. Browse the available colors at [w3schools.com](https://www.w3schools.com/colors/colors_mixer.asp). 
 ```html
-.navbar-inner{
+.navbar-inner {
     min-height:40px;
     padding-left:20px;
     padding-right:20px;
