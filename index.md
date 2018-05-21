@@ -46,8 +46,8 @@ Her research interests include health economics, specifically pharmaceuticals, h
 <div class="navbar">
   <div class="navbar-inner">
       <ul class="nav">
-          <li><a href="{{ BASE_PATH }}/assets/CV.pdf">cv</a></li>
-          <li><a href="https://github.com/mbcarlos">github</a></li>
+          <li><a href="{{ BASE_PATH }}/assets/CV.pdf">CV</a></li>
+          <li><a href="https://github.com/mbcarlos">GitHub</a></li>
           <li><a href="https://twitter.com/MarisaBriCarlos">@MarisaBriCarlos</a></li>
       </ul>
   </div>
