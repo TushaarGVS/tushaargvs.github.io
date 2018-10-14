@@ -6,9 +6,7 @@ description: Marisa Carlos's research
 
 
 #### <u>Prescription Drug Coupons: A Way to Get Around the Tiered Tormulary</u>
-*I estimate the effect of prescription drug coupons on generic utilization, medication adherence, and preventable hospitalizations. Drug coupons are banned in Massachusetts
-(for all insurance types) and in Medicare, which allows me to estimate difference-in-differences and triple-difference models. I use claims data from a large national insurer
-from 2007-2016 as well as a dataset collected by scraping the Internet Archive to determine the availability/introduction of coupons across time.*
+*A relatively recent strategy employed by pharmaceutical companies looking to retain market share upon generic entry has been to offer copay coupons. These coupons are offers from the pharmaceutical company to pay a portion of a patient's out-of-pocket cost. The coupons allow pharmaceutical companies to bypass the tiered formulary set by the insurance company. Unsurprisingly, these coupons have been the subject of much debate, with various stakeholders holding making vastly different claims about the effects. Insurance companies and government at both the state and federal level claim the coupons increase costs by inducing people to purchase expensive brand-name drugs over less-costly generic alternatives. Pharmaceutical companies, as well as various patient advocacy groups, claim coupons decrease costs by increasing medication adherence and preventing avoidable hospitalizations. In this paper, I address this debate by using insurance claims from a large, national insurer to estimate the effect of coupons on generic drug use, medication adherence, and hospitalizations. I take advantage of variation in who is legally allowed to use coupons, as well as which drugs offer coupons, to estimate difference-in-difference models.*
 <br>
 
 #### <u> Hospital Awnership and Admission Through the Emergency Department </u>
@@ -21,8 +19,7 @@ necessary.*
 
 #### <u>Non-Monetary Obstacles to Medical Care: Evidence from Postpartum Contraceptives</u>
 *Since 2012, state Medicaid agencies have begun to offer increased reimbursement for inpatient postpartum long-acting reversible contraception (LARC). The reimbursement
-has come in the form of unbundling the device payment from the global hospital payment, i.e. reimbursing the hospital specifically for the insertion of LARC. We use variation
-across states and time to determine how the increased payments affect LARC use, fertility, and adverse birth outcomes. Preliminary event studies indicate a slight decrease in
-fertility, as well as a decrease in pre-term delivery among unmarried and teenage mothers. Consistent with our hypothesis, these effects are concentrated among women who have
-previously given birth.* (with [Barton Willage](https://bjwillage.github.io/))
+has come in the form of unbundling the device payment from the global hospital payment, i.e. reimbursing the hospital specifically for the insertion of LARC. We use variation across states and time in the implemtnation of the policy to determine how the increased payments affect LARC use, fertility, and adverse birth outcomes.* (with [Barton Willage](https://bjwillage.github.io/))
+
+
 
