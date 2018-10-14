@@ -5,10 +5,9 @@ description: How to create a simple academic website for free using Github Pages
 ---
 
 
-This tutorial will teach you how to create a simple and free academic website using GitHub pages. [Click here to see what this website will look like.](http://blueham.github.io)
+This tutorial will teach you how to create a simple and free academic website using GitHub pages. The materials for this tutorial are derived from [Karl Broman's excellent website](https://kbroman.org) (thanks Karl Broman!), and modified specifically for grad students on the academic job market. It assumes no previous knowledge of Git or GitHub.
 
-
-At the end of the tutorial you will have a website up and running at http://username.github.io (where username is your username). There is a link at the end with instructions for adding a custom domain name (e.g. marisacarlos.com).
+At the end of the tutorial you will have a website up and running at http://username.github.io (where username is your username). There is a link at the end with instructions for adding a custom domain name (e.g. marisacarlos.com). [Click here to see what this website will look like.](http://blueham.github.io). 
 
 <div class="info">
   <p>There are many other ways to create a website, one of which is using a website builder such as <a href="http://wix.com">Wix</a>. Websites created by Wix are definitely fancier than this one, however, the simple GitHub Pages website has the following advantages:</p>
