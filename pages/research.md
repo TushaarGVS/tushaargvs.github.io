@@ -19,7 +19,7 @@ necessary.*
 
 #### <u>Non-Monetary Obstacles to Medical Care: Evidence from Postpartum Contraceptives</u>
 *Since 2012, state Medicaid agencies have begun to offer increased reimbursement for inpatient postpartum long-acting reversible contraception (LARC). The reimbursement
-has come in the form of unbundling the device payment from the global hospital payment, i.e. reimbursing the hospital specifically for the insertion of LARC. We use variation across states and time in the implemtnation of the policy to determine how the increased payments affect LARC use, fertility, and adverse birth outcomes.* (with [Barton Willage](https://bjwillage.github.io/))
+has come in the form of unbundling the device payment from the global hospital payment, i.e. reimbursing the hospital specifically for the insertion of LARC. We use variation across states and time in the implementation of the policy to determine how the increased payments affect LARC use, fertility, and adverse birth outcomes.* (with [Barton Willage](https://bjwillage.github.io/))
 
 
 
