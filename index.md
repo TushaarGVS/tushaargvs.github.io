@@ -17,7 +17,7 @@ keywords: Carlos, Marisa, Cornell, health economics, health policy, phd, PAM
 I am a PhD candidate in the [Department of Policy Analysis &amp; Management](http://www.human.cornell.edu/pam) at Cornell University.
 My research interests include health economics, specifically pharmaceuticals, hospitals, and health insurance.
 
-I am on the 2018/2019 job market and am available for interviews at the 2019 ASSA meetings in Atlanta. 
+In August 2019 I will join [Analysis Group](https://www.analysisgroup.com) as an Associate in the Boston office.
 
 [curriculum vitae ![CV as pdf]({{ BASE_PATH }}/pages/icons16/pdf-icon.png)]({{ BASE_PATH }}/assets/CV.pdf)<br/>
 
