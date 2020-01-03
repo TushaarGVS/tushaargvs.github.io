@@ -1,6 +1,6 @@
-## Marisa Carlos&rsquo; website
+## Tushaar Gangavarapu&rsquo;s website
 
-See [tgangavarapu.com](http://tgangavarapu.com)
+See [TushaarGVS.github.io](http://TushaarGVS.github.io)
 
 ---
 
