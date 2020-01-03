@@ -1,6 +1,6 @@
 ## Tushaar Gangavarapu&rsquo;s website
 
-See [TushaarGVS.github.io](http://TushaarGVS.github.io)
+See [tushaargvs.github.io](http://tushaargvs.github.io)
 
 ---
 
