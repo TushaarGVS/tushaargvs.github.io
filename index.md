@@ -9,9 +9,9 @@
   gtag('config', 'UA-118614554-1');
 </script>
 layout: frontpage
-title: Marisa Carlos
-description: Marisa Carlos is a PhD candidate in Policy Analysis and Management and Cornell Univeristy 
-keywords: Carlos, Marisa, Cornell, health economics, health policy, phd, PAM
+title: Gangavarapu, Tushaar
+description: Tushaar Gangavarapu is an NLP Research Engineer at Kindle Content Experience and Quality Algorithms, Amazon.com, Inc. 
+keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, DL
 ---
 
 I am a PhD candidate in the [Department of Policy Analysis &amp; Management](http://www.human.cornell.edu/pam) at Cornell University.
@@ -49,8 +49,8 @@ In August 2019 I will join [Analysis Group](https://www.analysisgroup.com) as an
   <div class="navbar-inner">
       <ul class="nav">
           <li><a href="{{ BASE_PATH }}/assets/CV.pdf">CV</a></li>
-          <li><a href="https://github.com/mbcarlos">GitHub</a></li>
-          <li><a href="https://twitter.com/MarisaBriCarlos">@MarisaBriCarlos</a></li>
+          <li><a href="https://github.com/TushaarGVS">GitHub</a></li>
+          <li><a href="https://twitter.com/tushaar1997">@tushaar1997</a></li>
       </ul>
   </div>
 </div>
