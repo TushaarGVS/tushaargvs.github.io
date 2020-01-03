@@ -1,4 +1,4 @@
-## Tushaar Gangavarapu&rsquo; website
+## Tushaar Gangavarapu&rsquo;s website
 
 See [tgangavarapu.com](http://tgangavarapu.com)
 
