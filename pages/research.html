@@ -10,13 +10,21 @@ description: Tushaar Gangavarapu's research
     rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     $(function () {
-        $("#dialog").dialog({
+        $("#abs-dialog").dialog({
             modal: true,
-            autoOpen: false,
-            width: 300,
-            height: 150
+            autoOpen: false
         });
-        $("#btnShow").click(function () {
+        $("#abs-show").click(function () {
+            $('#dialog').dialog('open');
+        });
+    }
+
+    $(function () {
+        $("#bib-dialog").dialog({
+            modal: true,
+            autoOpen: false
+        });
+        $("#bib-show").click(function () {
             $('#dialog').dialog('open');
         });
     });
@@ -40,29 +48,26 @@ description: Tushaar Gangavarapu's research
     <td style="font-weight: normal; font-size: small; vertical-align: top;">
       Tushaar Gangavarapu, Aditya Jayasimha, Gokul S Krishnan, and Sowmya Kamath S (2019): <b>Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes.</b> <i>Knowledge-Based Systems 105321, Elsevier.</i>
       <br/>
-      <span style="color:white;font-size:12px;background-color:#ccccff;cursor: pointer;"><font color="black">
-        <input type="button" id="btnShow" value="&nbsp;abstract &nbsp;" />
-          <div id="dialog" style="display: none" align = "center">
+        <input type="button" id="abs-show" style="color:black;font-size:12px;background-color:#ccccff;cursor: pointer;" value="&nbsp;abstract &nbsp;" />
+          <div id="abs-dialog" style="display: none" align = "center">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit,
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </div>
-      </font>&nbsp;</span>&nbsp;
+      &nbsp;
       <span style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"> <a href="" target="_blank"><font color="black">&nbsp;.url</font></a>&nbsp;</span>&nbsp;
-      <span style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"><font color="black">
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#publ-kbs-2019-bib">&nbsp;.bib &nbsp;</button>
-      </font></span>
-      
-      <div id="publ-kbs-2019-bib" class="collapse">
-        @inproceedings{molina2020iclr_pau,
-          year = { 2020 },
-          crossref = { https://github.com/ml-research/pau },
-          title = { Padé Activation Units: End-to-end Learning of Flexible Activation Functions in Deep Networks },
-          pages = {  },
-          booktitle = { Proceedings of the International Conference on Larning Reresentations (ICLR); a previous version also as arXiv preprint arXiv:1907.06732 },
-          author = { Alejandro Molina and Patrick Schramowski and Kristian Kersting }
-        }
-      </div>
+      <span style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"> <a href="" target="_blank"><font color="black">&nbsp;.pdf</font></a>&nbsp;</span>&nbsp;
+      <input type="button" id="bib-show" style="color:black;font-size:12px;background-color:#FFCECE;cursor: pointer;" value="&nbsp;.bib &nbsp;" />
+          <div id="bib-dialog" style="display: none" align = "center">
+            @inproceedings{molina2020iclr_pau,
+             year = { 2020 },
+             crossref = { https://github.com/ml-research/pau },
+             title = { Padé Activation Units: End-to-end Learning of Flexible Activation Functions in Deep Networks },
+             pages = {  },
+             booktitle = { Proceedings of the International Conference on Larning Reresentations (ICLR); a previous version also as arXiv preprint  arXiv:1907.06732 },
+              author = { Alejandro Molina and Patrick Schramowski and Kristian Kersting }
+            }
+          </div>
     </td>
     <td style="font-weight: normal; font-size: small; vertical-align: top;">
       <span style="color:white;font-size:11px;background-color: #090">Journal</span>&nbsp;
