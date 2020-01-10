@@ -4,6 +4,10 @@ title: Research
 description: Tushaar Gangavarapu's research
 ---
 
+<!-- conference: #090; journal: coral -->
+<!-- .url: #FFCECE; .pdf (draft): #FFCECE ; .bib: #1a8cff; code: #ffa5c9 -->
+<!-- tags: #E8E8E8 -->
+
 <style type="text/css">
 td, th {
     padding:0 15px;
@@ -51,44 +55,48 @@ td, th {
     <th></th>
     <th align = "left">Tags</th>
   </tr>
+
   <tr>
-    <td></td>
+    <td>
+      <img src="../assets/pub_images/knosys-2019.png" style="max-width: 110px; height: auto;vertical-align: left;">
+    </td>
     <td style="font-weight: normal; font-size: small; vertical-align: top;">
-      Tushaar Gangavarapu, Aditya Jayasimha, Gokul S Krishnan, and Sowmya Kamath S (2019): <b>Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes.</b> <i>Knowledge-Based Systems 105321, Elsevier.</i>
+      Tushaar Gangavarapu, Aditya Jayasimha, Gokul S Krishnan, and Sowmya Kamath S (2019): <b>Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes.</b> <i>Knowledge-Based Systems, Elsevier (KnoSys) 105321.</i>
       <br/>
       
       <span id="abs-show" style="color:white;font-size:12px;background-color:#ccccff;cursor: pointer;" onclick="abs_btn()"><font color="black">&nbsp; abstract &nbsp;</font>
         <div id="abs-dialog" style="display: none" align = "center">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          In hospitals, caregivers are trained to chronicle the subtle changes in the clinical conditions of a patient at regular intervals, for enabling decision-making. Caregivers’ text-based clinical notes are a significant source of rich patient-specific data, that can facilitate effective clinical decision support, despite which, this treasure-trove of data remains largely unexplored for supporting the prediction of clinical outcomes. The application of sophisticated data modeling and prediction algorithms with greater computational capacity have made disease prediction from raw clinical notes a relevant problem. In this paper, we propose an approach based on vector space and topic modeling, to structure the raw clinical data by capturing the semantic information in the nursing notes. Fuzzy similarity based data cleansing approach was used to merge anomalous and redundant patient data. Furthermore, we utilize eight supervised multi-label classification models to facilitate disease (ICD-9 code group) prediction. We present an exhaustive comparative study to evaluate the performance of the proposed approaches using standard evaluation metrics. Experimental validation on MIMIC-III, an open database, underscored the superior performance of the proposed Term weighting of unstructured notes AGgregated using fuzzy Similarity (TAGS) model, which consistently outperformed the state-of-the-art structured data based approach by 7.79% in AUPRC and 1.24% in AUROC.
         </div>
       </span>&nbsp;
 
-      <span style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"> <a href="" target="_blank"><font color="black">&nbsp; .url &nbsp;</font></a></span>&nbsp;
+      <span style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"> <a href="https://doi.org/10.1016/j.knosys.2019.105321" target="_blank"><font color="black">&nbsp; .url &nbsp;</font></a></span>&nbsp;
 
-      <span style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"> <a href="" target="_blank"><font color="black">&nbsp; .pdf &nbsp;</font></a></span>&nbsp;
+      <span style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"> <a href="href={{ BASE_PATH }}/assets/publications/knosys-2019-draft.pdf"><font color="black">&nbsp; .pdf (draft) &nbsp;</font></a></span>&nbsp;
 
-      <span id="bib-show" style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;" onclick="bib_btn()"><font color="black">&nbsp;.bib &nbsp;</font>
+      <span id="bib-show" style="color:white;font-size:12px;background-color:#1a8cff;cursor: pointer;" onclick="bib_btn()"><font color="black">&nbsp;.bib &nbsp;</font>
         <div id="bib-dialog" style="display: none" align = "center">
-          @inproceedings{molina2020iclr_pau,
-             year = { 2020 },
-             crossref = { https://github.com/ml-research/pau },
-             title = { Padé Activation Units: End-to-end Learning of Flexible Activation Functions in Deep Networks },
-             pages = {  },
-             booktitle = { Proceedings of the International Conference on Larning Reresentations (ICLR); a previous version also as arXiv preprint  arXiv:1907.06732 },
-              author = { Alejandro Molina and Patrick Schramowski and Kristian Kersting }
+          @article{gangavarapu-knosys-2019,
+            author = "Tushaar Gangavarapu and Aditya Jayasimha and Gokul S. Krishnan and Sowmya Kamath S.",
+            title = "Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes",
+            journal = "Knowledge-Based Systems",
+            pages = "105321",
+            year = "2019",
+            issn = "0950-7051",
+            doi = "https://doi.org/10.1016/j.knosys.2019.105321",
+            url = "http://www.sciencedirect.com/science/article/pii/S0950705119305982"
           }
         </div>
       </span>
     </td>
     <td style="font-weight: normal; font-size: small; vertical-align: top;">
-      <span style="color:white;font-size:11px;background-color: #090">Journal</span>&nbsp;
-      <span style="color:black;font-size:11px;background-color: #E8E8E8"> Attend-Infer-Repeat</span>&nbsp;
-      <span style="color:black;font-size:11px;background-color: #E8E8E8"> Deep Probabilistic Learning</span>&nbsp;
-      <span style="color:black;font-size:11px;background-color: #E8E8E8"> Physical Interactions</span>&nbsp;
-      <span style="color:black;font-size:11px;background-color: #E8E8E8"> SQAIR</span>&nbsp;
-      <span style="color:black;font-size:11px;background-color: #E8E8E8"> SuPAIR</span>&nbsp;
-      <span style="color:black;font-size:11px;background-color: #E8E8E8"> Sum-Product Networks</span>&nbsp;
-      <span style="color:black;font-size:11px;background-color: #E8E8E8"> Video</span>
+      <span style="color:white;font-size:11px;background-color: coral">Journal</span>&nbsp;
+      <span style="color:black;font-size:11px;background-color: #E8E8E8">clinical decision support systems</span>&nbsp;
+      <span style="color:black;font-size:11px;background-color: #E8E8E8">disease prediction</span>&nbsp;
+      <span style="color:black;font-size:11px;background-color: #E8E8E8">healthcare analytics</span>&nbsp;
+      <span style="color:black;font-size:11px;background-color: #E8E8E8">ICD-9 code group prediction</span>&nbsp;
+      <span style="color:black;font-size:11px;background-color: #E8E8E8">machine learning</span>&nbsp;
+      <span style="color:black;font-size:11px;background-color: #E8E8E8">natural language processing</span>
     </td>
   </tr>
 </table>
