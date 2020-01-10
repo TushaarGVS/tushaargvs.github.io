@@ -12,6 +12,18 @@ description: Tushaar Gangavarapu's research
   td, th {
       padding:0 8px;
   }
+
+  .noclose, .ui-dialog-titlebar-close {
+    display:none;
+  }
+
+  #bib-dialog { width: 60%; position: fixed; top: 30%; left: 10%; right: 10%; background-color: #eee; border: 3px solid black; padding: 10px; -moz-border-radius:10px; -webkit-border-radius:10px; -o-border-radius:10px; border-radius:10px; z-index: 50;}
+  span.bib-close { background-color: #fff; border: 3px solid #fff; color: black; float: left; font-size: 20px; height: 12px; left: 0px; line-height: 10px; padding: 3px; position: relative; text-align: center; text-decoration: none; top: -5px; width: 20px; -moz-border-radius:15px; -webkit-border-radius:15px; -o-border-radius:15px; border-radius:15px; }
+
+  #abs-dialog { width: 60%; position: fixed; top: 30%; left: 10%; right: 10%; background-color: #eee; border: 3px solid black; padding: 10px; -moz-border-radius:10px; -webkit-border-radius:10px; -o-border-radius:10px; border-radius:10px; z-index: 50;}
+  span.abs-close { background-color: #fff; border: 3px solid #fff; color: black; float: left; font-size: 20px; height: 12px; left: 0px; line-height: 10px; padding: 3px; position: relative; text-align: center; text-decoration: none; top: -5px; width: 20px; -moz-border-radius:15px; -webkit-border-radius:15px; -o-border-radius:15px; border-radius:15px; }
+
+  #shutter { background-color: #fff; opacity: 0.7; width:100%; height: 100%; position: fixed; top: 0; left:0; z-index: 10;}
 </style>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -20,7 +32,8 @@ description: Tushaar Gangavarapu's research
   $(function abs_btn() {
       $("#abs-dialog").dialog({
           modal: true,
-          autoOpen: false
+          autoOpen: false,
+          dialogClass: "noclose"
       });
 
       $("#abs-show").click(function () {
@@ -31,7 +44,8 @@ description: Tushaar Gangavarapu's research
   $(function bib_btn() {
       $("#bib-dialog").dialog({
           modal: true,
-          autoOpen: false
+          autoOpen: false,
+          dialogClass: "noclose"
       });
 
       $("#bib-show").click(function () {
@@ -63,7 +77,11 @@ description: Tushaar Gangavarapu's research
       <br/>
       
       <span id="abs-show" style="color:white;background-color:#ccccff;cursor: pointer;" @click="abs_btn"><font color="black">&nbsp; abstract &nbsp;</font>
-        <div id="abs-dialog" style="display: none" align = "center">
+        <div id="abs-dialog">
+          <span class="abs-close" onclick="$('#abs-dialog').dialog('close');" style="cursor: pointer;">x</a></span><br/><br/>
+
+          <b>Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes.</b></br><br/>
+
           In hospitals, caregivers are trained to chronicle the subtle changes in the clinical conditions of a patient at regular intervals, for enabling decision-making. Caregivers’ text-based clinical notes are a significant source of rich patient-specific data, that can facilitate effective clinical decision support, despite which, this treasure-trove of data remains largely unexplored for supporting the prediction of clinical outcomes. The application of sophisticated data modeling and prediction algorithms with greater computational capacity have made disease prediction from raw clinical notes a relevant problem. In this paper, we propose an approach based on vector space and topic modeling, to structure the raw clinical data by capturing the semantic information in the nursing notes. Fuzzy similarity based data cleansing approach was used to merge anomalous and redundant patient data. Furthermore, we utilize eight supervised multi-label classification models to facilitate disease (ICD-9 code group) prediction. We present an exhaustive comparative study to evaluate the performance of the proposed approaches using standard evaluation metrics. Experimental validation on MIMIC-III, an open database, underscored the superior performance of the proposed Term weighting of unstructured notes AGgregated using fuzzy Similarity (TAGS) model, which consistently outperformed the state-of-the-art structured data based approach by 7.79% in AUPRC and 1.24% in AUROC.
         </div>
       </span>&nbsp;
@@ -73,7 +91,11 @@ description: Tushaar Gangavarapu's research
       <span style="color:white;background-color:#FFCECE;cursor: pointer;"> <a href="../assets/publications/knosys-2019-draft.pdf"><font color="black">&nbsp; .pdf (draft) &nbsp;</font></a></span>&nbsp;
 
       <span id="bib-show" style="color:white;background-color:#1a8cff;cursor: pointer;" @click="bib_btn"><font color="black">&nbsp;.bib &nbsp;</font>
-        <div id="bib-dialog" style="display: none" align = "center">
+        <div id="bib-dialog">
+          <span class="abs-close" onclick="$('#bib-dialog').dialog('close');" style="cursor: pointer;">x</a></span><br/><br/>
+
+          <b>Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes.</b></br><br/>
+
           @article{gangavarapu-knosys-2019,
             author = "Tushaar Gangavarapu and Aditya Jayasimha and Gokul S. Krishnan and Sowmya Kamath S.",
             title = "Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes",
