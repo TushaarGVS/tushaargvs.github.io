@@ -9,21 +9,23 @@ description: Tushaar Gangavarapu's research
 <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"
     rel="stylesheet" type="text/css" />
 <script type="text/javascript">
-    $(function () {
+    $(function abs_btn() {
         $("#abs-dialog").dialog({
             modal: true,
             autoOpen: false
         });
+
         $("#abs-show").click(function () {
             $('#abs-dialog').dialog('open');
         });
-    }
+    });
 
-    $(function () {
+    $(function bib_btn() {
         $("#bib-dialog").dialog({
             modal: true,
             autoOpen: false
         });
+
         $("#bib-show").click(function () {
             $('#bib-dialog').dialog('open');
         });
@@ -39,16 +41,16 @@ description: Tushaar Gangavarapu's research
 
 <table style="width:100%">
   <tr>
-    <th>Publication</th>
+    <th align = "left">Publication</th>
     <th></th>
-    <th>Tags</th>
+    <th align = "left">Tags</th>
   </tr>
   <tr>
     <td></td>
     <td style="font-weight: normal; font-size: small; vertical-align: top;">
       Tushaar Gangavarapu, Aditya Jayasimha, Gokul S Krishnan, and Sowmya Kamath S (2019): <b>Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes.</b> <i>Knowledge-Based Systems 105321, Elsevier.</i>
       <br/>
-      <span id="abs-show" style="color:white;font-size:12px;background-color:#ccccff;cursor: pointer;"><font color="black">&nbsp; abstract &nbsp;</font>
+      <span id="abs-show" style="color:white;font-size:12px;background-color:#ccccff;cursor: pointer;" onclick="abs_btn()"><font color="black">&nbsp; abstract &nbsp;</font>
         <div id="abs-dialog" style="display: none" align = "center">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </div>
@@ -58,7 +60,7 @@ description: Tushaar Gangavarapu's research
 
       <span style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"> <a href="" target="_blank"><font color="black">&nbsp; .pdf &nbsp;</font></a></span>&nbsp;
 
-      <span id="bib-show" style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;"><font color="black">&nbsp;.bib &nbsp;</font>
+      <span id="bib-show" style="color:white;font-size:12px;background-color:#FFCECE;cursor: pointer;" onclick="bib_btn()"><font color="black">&nbsp;.bib &nbsp;</font>
         <div id="bib-dialog" style="display: none" align = "center">
           @inproceedings{molina2020iclr_pau,
              year = { 2020 },
