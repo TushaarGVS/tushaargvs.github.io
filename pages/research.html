@@ -9,9 +9,28 @@ description: Tushaar Gangavarapu's research
 <!-- tags: #E8E8E8 -->
 
 <style type="text/css">
-td, th {
-    padding:0 8px;
-}
+  td, th {
+      padding:0 8px;
+  }
+
+  #abs-dialog, #bib-dialog{
+      position:fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(255,255,255,0.7);
+      z-index:9999;
+  }
+  
+  #abs-show, #bib-show{
+      width:600px;
+      padding:30px;
+      background-color: grey;
+      left:50%;
+      top:40%;
+      margin-left:-200px; /*half of width*/
+      border-radius:5px;
+      color:black;
+      position:relative;
+  }
 </style>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -22,9 +41,7 @@ td, th {
     $(function abs_btn() {
         $("#abs-dialog").dialog({
             modal: true,
-            autoOpen: false,
-            width: 80%,
-            height: 50%
+            autoOpen: false
         });
 
         $("#abs-show").click(function () {
