@@ -37,7 +37,7 @@ description: Tushaar Gangavarapu's research
   <a href="https://scholar.google.co.in/citations?user=C7v_cA8AAAAJ&hl=en" target="_blank">Google Scholar</a>, 
   <a href="https://dblp.uni-trier.de/pers/hd/g/Gangavarapu:Tushaar" target="_blank">DBLP</a>, and
   <a href="https://www.semanticscholar.org/author/Tushaar-Gangavarapu/119292802" target="_blank">SemanticScholar</a>.
-</div><br/><br/>
+</div><br/>
 
 <table style="width:100%" cellspacing="30">
   <tr style="border-bottom: 1px solid #000000;">
@@ -141,7 +141,7 @@ description: Tushaar Gangavarapu's research
       <font color="#8c1515">Tushaar Gangavarapu</font>*, Aditya Jayasimha, Gokul S Krishnan, and Sowmya Kamath S (2019): <b>Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes.</b> <i>Knowledge-Based Systems (KnoSys), Elsevier 105321.</i>
       <br/>
       
-      <span id="abs-show-kbs" style="color:white;background-color:#ccccff;font-size:12px;cursor: pointer;" onclick="
+      <span style="color:white;background-color:#ccccff;font-size:12px;cursor: pointer;" onclick="
         $('.abs-dialog').dialog({
           modal: true,
           autoOpen: false,
@@ -164,7 +164,7 @@ description: Tushaar Gangavarapu's research
 
       <span style="color:white;background-color:#FFCECE;cursor: pointer;font-size:12px;"> <a href="../assets/publications/knosys-2019-draft.pdf"><font color="black">&nbsp; .pdf (draft) &nbsp;</font></a></span>&nbsp;
 
-      <span id="bib-show-kbs" style="color:white;background-color:#1a8cff;cursor: pointer;font-size:12px;" onclick="
+      <span style="color:white;background-color:#1a8cff;cursor: pointer;font-size:12px;" onclick="
         $('.bib-dialog').dialog({
           modal: true,
           autoOpen: false,
@@ -272,8 +272,8 @@ description: Tushaar Gangavarapu's research
       <span style="color:black;background-color: #E8E8E8">clinical decision support systems</span>&nbsp;
       <span style="color:black;background-color: #E8E8E8">disease prediction</span>&nbsp;
       <span style="color:black;background-color: #E8E8E8">multi-label classification</span>&nbsp;
-      <span style="color:black;background-color: #E8E8E8">natural language processing</span>
-      <span style="color:black;background-color: #E8E8E8">deep learning</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">natural language processing</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">deep learning</span>
     </td>
   </tr>
 
@@ -344,8 +344,77 @@ description: Tushaar Gangavarapu's research
       <span style="color:black;background-color: #E8E8E8">Barnes-Hut algorithm</span>&nbsp;
       <span style="color:black;background-color: #E8E8E8">CUDA N-body simulations</span>&nbsp;
       <span style="color:black;background-color: #E8E8E8">openMP</span>&nbsp;
-      <span style="color:black;background-color: #E8E8E8">parallel processing</span>
-      <span style="color:black;background-color: #E8E8E8">performance</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">parallel processing</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">performance</span>
+    </td>
+  </tr>
+
+  <tr style="border-bottom: 1px solid #D6D6D6;">
+    <td>
+      <img src="../assets/pub_images/nldb-2019.png" style="max-width: 120px; height: auto;vertical-align: left;">
+    </td>
+    <td style="font-weight: normal;vertical-align: top;">
+      <font color="#8c1515">Tushaar Gangavarapu</font>*, Aditya Jayasimha, Gokul S Krishnan, and Sowmya Kamath S (2019): <b>TAGS: Towards Automated Classification of Unstructured Clinical Nursing Notes.</b> <i>In Proceedings of the 20th International Conference on Applications of Natural Language to Information Systems (NLDB), Springer (LNCS 11608, pp. 195–207).</i>
+      <br/>
+      
+      <span style="color:white;background-color:#ccccff;font-size:12px;cursor: pointer;" onclick="
+        $('.abs-dialog').dialog({
+          modal: true,
+          autoOpen: false,
+          closeOnEscape: false,
+          open: function(event, ui) {
+            $('.ui-dialog-titlebar-close', ui.dialog || ui).hide();
+          }
+        });
+        $('#abs-dialog-nldb').dialog('open');"><font color="black">&nbsp; abstract &nbsp;</font>
+        <div class="abs-dialog" id="abs-dialog-nldb" style="display:none;">
+          <span class="abs-close" onclick="$('#abs-dialog-nldb').dialog('close');" style="cursor: pointer;">x</a></span><br/><br/>
+
+          <b>TAGS: Towards Automated Classification of Unstructured Clinical Nursing Notes.</b></br><br/>
+
+          Accurate risk management and disease prediction are vital in intensive care units to channel prompt care to patients in critical conditions and aid medical personnel in effective decision making. Clinical nursing notes document subjective assessments and crucial information of a patient’s state, which is mostly lost when transcribed into Electronic Medical Records (EMRs). The Clinical Decision Support Systems (CDSSs) in the existing body of literature are heavily dependent on the structured nature of EMRs. Moreover, works which aim at benchmarking deep learning models are limited. In this paper, we aim at leveraging the underutilized treasure-trove of patient-specific information present in the unstructured clinical nursing notes towards the development of CDSSs. We present a fuzzy token-based similarity approach to aggregate voluminous clinical documentations of a patient. To structure the free-text in the unstructured notes, vector space and coherence-based topic modeling approaches that capture the syntactic and latent semantic information are presented. Furthermore, we utilize the predictive capabilities of deep neural architectures for disease prediction as ICD-9 code group. Experimental validation revealed that the proposed <i>T</i>erm weighting of unstructured notes <i>AG</i>gregated using fuzzy <i>S</i>imilarity (<i>TAGS</i>) model outperformed the state-of-the-art model by 5% in AUPRC and 1.55% in AUROC.
+        </div>
+      </span>&nbsp;
+
+      <span style="color:white;background-color:#FFCECE;font-size:12px;cursor: pointer;"> <a href="https://doi.org/10.1007/978-3-030-23281-8_16" target="_blank"><font color="black">&nbsp; .url &nbsp;</font></a></span>&nbsp;
+
+      <span style="color:white;background-color:#FFCECE;cursor: pointer;font-size:12px;"> <a href="../assets/publications/nldb-2019-draft.pdf"><font color="black">&nbsp; .pdf (draft) &nbsp;</font></a></span>&nbsp;
+
+      <span style="color:white;background-color:#1a8cff;cursor: pointer;font-size:12px;" onclick="
+        $('.bib-dialog').dialog({
+          modal: true,
+          autoOpen: false,
+          closeOnEscape: false,
+          open: function(event, ui) {
+            $('.ui-dialog-titlebar-close', ui.dialog || ui).hide();
+          }
+        });
+        $('#bib-dialog-nldb').dialog('open');"><font color="black">&nbsp;.bib &nbsp;</font>
+        <div class="bib-dialog" id="bib-dialog-nldb" style="display:none;">
+          <span class="abs-close" onclick="$('#bib-dialog-nldb').dialog('close');" style="cursor: pointer;">x</a></span><br/><br/>
+
+          <b>TAGS: Towards Automated Classification of Unstructured Clinical Nursing Notes.</b></br><br/>
+
+          @inproceedings{gangavarapu-nldb-2019,<br/>
+          &nbsp;&nbsp;&nbsp;author="Gangavarapu, Tushaar and Jayasimha, Aditya and Krishnan, Gokul S. and Kamath S., Sowmya",<br/>
+          &nbsp;&nbsp;&nbsp;title="TAGS: Towards Automated Classification of Unstructured Clinical Nursing Notes",<br/>
+          &nbsp;&nbsp;&nbsp;booktitle="Natural Language Processing and Information Systems",<br/>
+          &nbsp;&nbsp;&nbsp;year="2019",<br/>
+          &nbsp;&nbsp;&nbsp;publisher="Springer International Publishing",<br/>
+          &nbsp;&nbsp;&nbsp;address="Cham",<br/>
+          &nbsp;&nbsp;&nbsp;pages="195-207",<br/>
+          &nbsp;&nbsp;&nbsp;isbn="978-3-030-23281-8"<br/>
+          }
+        </div>
+      </span>
+    </td>
+    <td style="font-weight: normal; font-size:12px;vertical-align: top;">
+      <span style="color:white;background-color: #090">conference</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">healthcare analytics</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">disease group prediction</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">natural language processing</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">risk assessment systems</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">deep learning</span>
     </td>
   </tr>
 </table>
