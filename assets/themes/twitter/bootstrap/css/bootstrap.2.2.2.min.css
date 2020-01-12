@@ -583,7 +583,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .nav-stacked>li{float:none;}
 .nav-stacked>li>a{margin-right:0;}
 .nav-tabs.nav-stacked{border-bottom:0;}
-.nav-tabs.nav-stacked>li>a{border:1px solid #ddd;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
+.nav-tabs.nav-stacked>li>a{border:1px solid #EBEBEB;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
 .nav-tabs.nav-stacked>li:first-child>a{-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;}
 .nav-tabs.nav-stacked>li:last-child>a{-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;}
 .nav-tabs.nav-stacked>li>a:hover{border-color:#ddd;z-index:2;}
@@ -627,7 +627,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .navbar-inner:after{clear:both;}
 .navbar .container{width:auto;}
 .nav-collapse.collapse{height:auto;overflow:visible;}
-.navbar .brand{float:left;display:block;padding:10px 20px 10px;margin-left:-20px;font-size:20px;font-weight:200;color:#EBEBEB;text-shadow:none;}.navbar .brand:hover{color:#FFFFFF}
+.navbar .brand{float:left;display:block;padding:10px 20px 10px;margin-left:-20px;font-size:20px;font-weight:200;color:#EBEBEB;text-shadow:none;}.navbar .brand:hover{color:#FFFFFF; background-color:#ddd;}
 .navbar-text{margin-bottom:0;line-height:40px;color:#EBEBEB;}
 .navbar-link{color:#FFFFFF;}.navbar-link:hover{color:#FFFFFF;}
 .navbar .divider-vertical{height:40px;margin:0 9px;border-left:1px solid #f2f2f2;border-right:1px solid #ffffff;}
