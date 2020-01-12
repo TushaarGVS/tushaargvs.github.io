@@ -59,6 +59,7 @@ td.right {
 
 h1, h2, h3, h4, h5 {
     color: #4285F3;
+    font-weight: 500;
 }
 
 .danger {
@@ -98,6 +99,7 @@ h1, h2, h3, h4, h5 {
     background-image:linear-gradient(to bottom, #424242, #424242);
     background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#424242', endColorstr='#424242', GradientType=0);
     border:1px solid #424242;
+    -webkit-border-radius: 0px;
     -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);
     -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);
     box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);*zoom:1;
