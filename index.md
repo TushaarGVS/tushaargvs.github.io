@@ -16,15 +16,12 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
 <div class="container">
     <div class="row-fluid">
-        <div class="span5">
-            Gangavarapu, Tushaar<br/>
-            <div>
+        <div>
             Extremely interested in Cognitive Psychology, Learning Sciences, and Bioinformatics. A voracious reader of evolutionary biology. I worked with the Worldwide Deals Team, Community Shopping at Amazon.com, Inc. for ranking of the deals on the "Today's Deals" page. I'm moving to the Kindle Quality Algorithms team as a research engineer, to solve challenging NLP tasks!
-            </div>
         </div>
         <div class="span2">
-        <a href="../assets/images/tushaar.jpg">
-          <img src="../assets/images/tushaar.jpg"
+        <a href="../assets/images/tushaar.jpeg">
+          <img src="../assets/images/tushaar.jpeg"
                   title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar"/></a>
         </div>
     </div>
