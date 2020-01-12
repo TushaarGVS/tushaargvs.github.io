@@ -7,16 +7,16 @@ code {
 }
 
 a code {
-    color: slateblue;
+    color: #8C1515;
 }
 
 a {
-    color: slateblue;
+    color: #8C1515;
 }
 
 a:hover {
-    color: darkslateblue;
-    background-color: #e3e4fa;
+    color: #8C1515;
+    background-color: #f7e2e2;
     text-decoration: none;
 }
 
@@ -25,10 +25,10 @@ a img {
 }
 
 a:hover img {
-    color: darkslateblue;
-    background-color: #e3e4fa;
+    color: #8C1515;
+    background-color: #f7e2e2;
     text-decoration: none;
-    border: solid 2px #e3e4fa;
+    border: solid 2px #f7e2e2;
 }
 
 p.center {
@@ -58,7 +58,7 @@ td.right {
 
 
 h1, h2, h3, h4, h5 {
-    color: #a638bf;
+    color: #4285F3;
 }
 
 .danger {
