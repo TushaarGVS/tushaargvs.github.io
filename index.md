@@ -14,31 +14,18 @@ description: Tushaar Gangavarapu is an NLP Research Engineer at Kindle Content E
 keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, DL
 ---
 
-I am a PhD candidate in the [Department of Policy Analysis &amp; Management](http://www.human.cornell.edu/pam) at Cornell University.
-My research interests include health economics, specifically pharmaceuticals, hospitals, and health insurance.
-
-In August 2019 I will join [Analysis Group](https://www.analysisgroup.com) as an Associate in the Boston office.
-
-
----
-
 <div class="container">
-<h4><a name="contact"></a>contact</h4>
-
     <div class="row-fluid">
         <div class="span5">
-            Marisa Carlos<br/>
-            <div id="hide_email">
-            Email: <code>m</code><b>I</b><code>b</code><b>don't</b><code>c</code><b>want</b><code>9</code><b>spam!
-            </b><code>6@</code><b>So</b><code>co</code><b>please</b><code>rn</code><b>leave
-            </b><code>ell</code><b>me</b><code>.</code><b>alone</b><code>e</code><b>!</b><code>du</code><br/>
+            Gangavarapu, Tushaar<br/>
+            <div>
+            Extremely interested in Cognitive Psychology, Learning Sciences, and Bioinformatics. A voracious reader of evolutionary biology. I worked with the Worldwide Deals Team, Community Shopping at Amazon.com, Inc. for ranking of the deals on the "Today's Deals" page. I'm moving to the Kindle Quality Algorithms team as a research engineer, to solve challenging NLP tasks!
             </div>
         </div>
-
         <div class="span2">
-        <a href="../assets/headshot.jpg">
-            <img src="../assets/headshot.jpg"
-                  title="Marisa Carlos" alt="Marisa Carlos"/></a>
+        <a href="../assets/images/tushaar.jpg">
+          <img src="../assets/images/tushaar.jpg"
+                  title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar"/></a>
         </div>
     </div>
 </div>
