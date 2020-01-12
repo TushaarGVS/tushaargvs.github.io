@@ -16,7 +16,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
 <div class="container">
     <div class="row-fluid">
-        <div>
+        <div class="span10">
             Extremely interested in Cognitive Psychology, Learning Sciences, and Bioinformatics. A voracious reader of evolutionary biology. I worked with the Worldwide Deals Team, Community Shopping at Amazon.com, Inc. for ranking of the deals on the "Today's Deals" page. I'm moving to the Kindle Quality Algorithms team as a research engineer, to solve challenging NLP tasks!
         </div>
         <div class="span2">
