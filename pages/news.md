@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Tutorials
-description: Marisa Carlos's tutorials
+title: Scientific Activities
+description: Tushaar Gangavarapu's Scientific Activities
 ---
 
 - [Command Line Basics](http://marisacarlos.com/pages/command-line-basics)

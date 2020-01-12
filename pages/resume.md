@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Resources
-description: Helpful resources
+title: Bio
+description: Tushaar Gangavarapu's Bio
 ---
 
 - [Karl Broman's guide to building a simple website](http://kbroman.org/simple_site/) - Thanks Karl Broman!

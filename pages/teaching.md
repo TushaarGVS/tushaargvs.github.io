@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Resources
-description: Helpful resources
+title: Teaching and Talks
+description: Tushaar Gangavarapu's Talks
 ---
 
 - [Karl Broman's guide to building a simple website](http://kbroman.org/simple_site/) - Thanks Karl Broman!
