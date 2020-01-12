@@ -19,8 +19,6 @@ My research interests include health economics, specifically pharmaceuticals, ho
 
 In August 2019 I will join [Analysis Group](https://www.analysisgroup.com) as an Associate in the Boston office.
 
-[curriculum vitae ![CV as pdf]({{ BASE_PATH }}/pages/icons16/pdf-icon.png)]({{ BASE_PATH }}/assets/CV.pdf)<br/>
-
 
 ---
 
@@ -43,14 +41,4 @@ In August 2019 I will join [Analysis Group](https://www.analysisgroup.com) as an
                   title="Marisa Carlos" alt="Marisa Carlos"/></a>
         </div>
     </div>
-</div>
-
-<div class="navbar">
-  <div class="navbar-inner">
-      <ul class="nav">
-          <li><a href="{{ BASE_PATH }}/assets/CV.pdf">CV</a></li>
-          <li><a href="https://github.com/TushaarGVS">GitHub</a></li>
-          <li><a href="https://twitter.com/tushaar1997">@tushaar1997</a></li>
-      </ul>
-  </div>
 </div>
