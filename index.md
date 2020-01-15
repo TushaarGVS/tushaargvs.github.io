@@ -29,7 +29,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   }
 
   .el {
-    --highlighter-pen: url('../assets/images/highlighter.png');
+    --highlighter-pen: url('/assets/images/highlighter.png');
     --highlighter-color: yellow;
     --highlighter-path: path("M46.83,230.9c24.41,-51.06 455.28,-6.72 465.09,-16.82");
     --highlighter-size: 43;
