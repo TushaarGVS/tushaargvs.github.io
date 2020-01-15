@@ -61,7 +61,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   Over the course of his undergraduate study, he underwent two internships, one with Cultyvate at PES University, where he worked on developing effective <i>neural architectures to improve the crop yield based on weather conditions</i>. He also worked with the Kindle Create team at Amazon.com, Inc., where he modeled <i>deep language processing models for customer assistance</i> and also worked on providing <i>accessibility to the blind</i>. He has given expert talks and guest lectures on several topics, including the vitality of social media analytics for predictive applications, assessment of game-based outcomes, and greediness and selfishness of genetic selectors.
 </p>
 
-<br/><hr class="style"/><br/>
+<hr class="style"/>
 
 
 <b>Timeline.</b>
@@ -101,5 +101,3 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
   </tbody></table>
 </div>
-
-<br/><hr class="style"/>
