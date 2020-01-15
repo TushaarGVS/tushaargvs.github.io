@@ -14,19 +14,6 @@ description: Tushaar Gangavarapu is an NLP Research Engineer at Kindle Content E
 keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, DL
 ---
 
-<!-- <div class="container">
-    <div class="row-fluid">
-        <div class="span10">
-            Extremely interested in Cognitive Psychology, Learning Sciences, and Bioinformatics. A voracious reader of evolutionary biology. I worked with the Worldwide Deals Team, Community Shopping at Amazon.com, Inc. for ranking of the deals on the "Today's Deals" page. I'm moving to the Kindle Quality Algorithms team as a research engineer, to solve challenging NLP tasks!
-        </div>
-        <div class="span2">
-        <a href="../assets/images/tushaar.jpeg">
-          <img src="../assets/images/tushaar.jpeg"
-                  title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar"/></a>
-        </div>
-    </div>
-</div> -->
-
 <style type="text/css">
   hr.style {
     border: 0;
@@ -36,6 +23,12 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
   h3 {
     display:inline;
+  }
+
+  div.polaroid {
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
   }
 </style>
 
@@ -50,10 +43,10 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
         <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
       </div>
     </div>  
-    <div class="span2">
+    <div class="span2 polaroid">
       <a href="../assets/images/tushaar.jpg">
-        <img src="../assets/images/tushaar.jpg"
-                title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar"/></a>
+        <img src="../assets/images/tushaar.jpg" style="width:75%" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar"/>
+      </a>
     </div>
   </div>
 
