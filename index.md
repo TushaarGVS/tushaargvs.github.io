@@ -38,7 +38,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 <div class="row">
 
   <div class="col-md-9">
-    <div><br/><br/><font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font></div>
+    <div><br/><br/><font color="#4285F4"><font size="18px">Tushaar Gangavarapu</font> (pronouns: he/him/his)</font></div>
     <div>
       Machine Learning Research Engineer, Kindle Content Experience and Content Quality Algorithms <br/> Amazon.com, Inc., India.
       <br/> Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
@@ -53,7 +53,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   To expand on the way of personalization, we aim at extracting the crux of a book that is very specific to authors' writing styles &#151; readability, writing density, phonology, and lyricism, among many other qualities &#151; each forming a piece of the ATGC code of the book. Using the state-of-the-art language processing and machine learning solutions, we aim at mapping the authors' genetic code with the way readers experience the same. Based on the underlying analysis, one can then formulate intelligent informative recommendations, both to the reader and the publishers, concerning the expected quality of writing. Instilling such perspectives through intelligent systems can help us adapt to the dynamic nature of literary writing and facilitate deeply satisfying user experiences!
 </p>
 
-<br/><hr class="style"/><br/>
+<hr class="style"/>
 
 <p>
   <b>Bio.</b> Tushaar Gangavarapu is a Machine Learning Research Engineer at the <i>AQuA</i> &#151; <i>A</i>utomated <i>Qu</i>ality <i>A</i>ssistance team of Kindle Content Experience and Quality Algorithms org. at Amazon.com, Inc., India. He is an alumnus (undergraduate) of the <a href="https://infotech.nitk.ac.in/" target="_blank">Department of Information Technology</a> at <a href="http://www.nitk.ac.in/">National Institute of Technology Karnataka, Surathkal, India.</a> During his undergraduate study, he focused on <i>cognitive psychology and learning sciences</i> involving gauging the human behavioral patterns and modeling personality traits, under the guidance of <a href="https://infotech.nitk.ac.in/faculty/ram-mohana-reddy-guddeti" target="_blank">Prof. Ram Mohana Reddy Guddeti</a>, in association with the <a href="http://hccg.nitk.ac.in/" target="_blank">Human Centered Computing Group (HCCG)</a>. He also worked on developing <i>deep neural architectures for intelligent healthcare applications</i>, with the <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering (HALE) Lab</a>, under the guidance of <a href="https://infotech.nitk.ac.in/faculty/sowmya-kamath-s" target="_blank">Dr. Sowmya Kamath</a>. <br/><br/>
