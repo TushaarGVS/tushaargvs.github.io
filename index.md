@@ -89,7 +89,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
     <tr>
       <td style="vertical-align: text-top;"> <span><font color="#4285F4">Aug 2015 &#150; Apr 2019:</font></span></td>
-      <td style="vertical-align: text-top;"> <span>Undergraduate student (major: Information Technology, specialization: Aritificial Intelligence), NITK Surathkal, India.</td>
+      <td style="vertical-align: text-top;"> <span>Undergraduate student (major: Information Technology, specialization: Aritificial Intelligence), NITK Surathkal, India.</span></td>
     </tr>
   </tbody>
   </table>
