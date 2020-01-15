@@ -55,31 +55,31 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 <b>Timeline.</b>
 <br/>
 <table border="0" width="100%" id="awards" style="vertical-align: text-top;">
-<colgroup><col width="160px">
+<colgroup><col width="150px">
 </colgroup><tbody><tr>
 <td style="vertical-align: text-top;"><span><font color="#4285F4">Dec 2019 &#150; now:</font></span></td>
-<td><span class="t2where">Machine Learning Research Engineer, Kindle Content Experience and Quality Algorithms, Amazon.com, Inc., India.</span></td>
+<td><span>Machine Learning Research Engineer, Kindle Content Experience and Quality Algorithms, Amazon.com, Inc., India.</span></td>
 </tr>
 
 <tr>
 <td style="vertical-align: text-top;"><span><font color="#4285F4">Jun 2019 &#150; Dec 2019:</font></span></td>
-<td><span class="t2where">Software Development Engineer, Worldwide Deals, Consumer Engagement, Amazon.com, Inc., India.</span></td>
+<td><span>Software Development Engineer, Worldwide Deals, Consumer Engagement, Amazon.com, Inc., India.</span></td>
 </tr>
 <tr>
-<td style="vertical-align: text-top;"><span><font color="#4285F4">Aug 2018 &#150; now:<font color="#4285F4"></span></td>
-<td style="vertical-align: text-top;"><span class="t2where"> Scientific researcher at <a href="http://hccg.nitk.ac.in/" target="_blank">Human Centered Computing Group (HCCG)</a> and <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering Lab</a>, NITK Surathkal, India.</span></td>
+<td style="vertical-align: text-top;"><span><font color="#4285F4">Aug 2018 &#150; now:</font></span></td>
+<td style="vertical-align: text-top;"><span> Scientific researcher at <a href="http://hccg.nitk.ac.in/" target="_blank">Human Centered Computing Group (HCCG)</a> and <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering Lab</a>, NITK Surathkal, India.</span></td>
 </tr>
 <tr>
 <td style="vertical-align: text-top;"><span><font color="#4285F4">May 2018 &#150; Jul 2018:</font></span></td>
-<td style="vertical-align: text-top;"><span class="t2where">Software Development Intern, Kindle Create, Publisher Tools to Reader, Amazon.com, Inc., India.</span></td>
+<td style="vertical-align: text-top;"><span>Software Development Intern, Kindle Create, Publisher Tools to Reader, Amazon.com, Inc., India.</span></td>
 </tr>
 <tr>
 <td style="vertical-align: text-top;"><span><font color="#4285F4">May 2017 &#150; Jul 2017:</font></span></td>
-<td style="vertical-align: text-top;"><span class="t2where">CPRMI Research Intern, Cultyvate, PES University, India.</span></td>
+<td style="vertical-align: text-top;"><span>Research Intern, Center for Pattern Recognition and Machine Intelligence, Cultyvate, PES University, India.</span></td>
 </tr>
 <tr>
 <td style="vertical-align: text-top;"> <span><font color="#4285F4">Aug 2015 &#150; Apr 2019:</font></span></td>
-<td style="vertical-align: text-top;"> <span class="t2where">Undergraduate student (major: Information Technology, specialization: Aritificial Intelligence), NITK Surathkal, India.</td>
+<td style="vertical-align: text-top;"> <span>Undergraduate student (major: Information Technology, specialization: Aritificial Intelligence), NITK Surathkal, India.</td>
 </tr>
 </tbody></table>
 
