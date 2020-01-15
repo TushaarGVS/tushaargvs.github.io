@@ -74,7 +74,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 <hr class="style"/>
 
 <b>Timeline.</b><p style="margin-bottom:0.25cm;"></p>
-<table border="0" width="100%" id="awards" style="vertical-align: text-top;">
+<table border="0" width="100%" style="vertical-align: text-top;">
 <colgroup><col width="150px"></colgroup>
 <tbody>
   <tr>
@@ -84,7 +84,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#4285F4">Jun 2019 &#150; Dec 2019:</font></span></td>
-    <td><span>Software Development Engineer, Worldwide Deals, Consumer Engagement, Amazon.com, Inc., India.</span></td>
+    <td><span>Software Development Engineer, <a href="https://www.amazon.com/gp/goldbox" target="_blank">Worldwide Deals</a>, Consumer Engagement, Amazon.com, Inc., India.</span></td>
   </tr>
 
   <tr>
@@ -94,7 +94,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#4285F4">May 2018 &#150; Jul 2018:</font></span></td>
-    <td style="vertical-align: text-top;"><span>Software Development Intern, Kindle Create, Publisher Tools to Reader, Amazon.com, Inc., India.</span></td>
+    <td style="vertical-align: text-top;"><span>Software Development Intern, <a href="https://www.amazon.com/Kindle-Create/b?ie=UTF8&node=18292298011">Kindle Create</a>, Publisher Tools to Reader, Amazon.com, Inc., India.</span></td>
   </tr>
 
   <tr>
@@ -106,6 +106,6 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
     <td style="vertical-align: text-top;"> <span><font color="#4285F4">Aug 2015 &#150; Apr 2019:</font></span></td>
     <td style="vertical-align: text-top;"> <span>Undergraduate student (major: Information Technology, specialization: Aritificial Intelligence), NITK Surathkal, India.</td>
   </tr>
-
-  </tbody></table>
+</tbody>
+</table>
 </div>
