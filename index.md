@@ -31,14 +31,18 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   hr.style {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  }
+
+  h3 {
+    display:inline;
   }
 </style>
 
 <div class="row">
 
   <div class="col-md-9">
-    <div><br/><br/><font color="#4285F4"><font size="16px">Tushaar Gangavarapu</font> (<i>pronouns</i>: he/him/his)</font></div>
+    <div><br/><br/><font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (<i>pronouns</i>: he/him/his)</font></div>
     <div>
       Machine Learning Research Engineer, Kindle Content Experience and Content Quality Algorithms <br/> Amazon.com, Inc., India.
       <br/> Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
@@ -64,8 +68,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 <hr class="style"/>
 
 
-<b>Timeline.</b>
-<br/>
+<b>Timeline.</b><br/><br/>
 <table border="0" width="100%" id="awards" style="vertical-align: text-top;">
 <colgroup><col width="150px"></colgroup>
 <tbody>
