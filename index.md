@@ -39,10 +39,10 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
   .yellow-highlight {
     text-shadow: 
-      -4px 0px 4px yellow,
-       4px 0px 4px yellow,
-       8px 0px 8px yellow,
-      -8px 0px 8px yellow;
+      -6px 0px 5px yellow,
+       6px 0px 5px yellow,
+       12px 0px 12px yellow,
+      -12px 0px 12px yellow;
   }
 
   h3 {
