@@ -58,7 +58,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
   <p>
     <b>Research Interests.</b> I am broadly interested in Cognitive and Psychological Trait Modeling, Learning Sciences, Game-based Learning and Assessment, Social Multimedia and Social Network Analysis, Machine and Deep Biomedical Data Modeling, Bio-Inspired Evolutionary Computing, and Natural Language Processing.
-  </p><hr class="style">
+  </p><hr>
 
   <b>Timeline.</b><p style="margin-bottom:0.25cm;"></p>
   <table border="0" width="100%" style="vertical-align: text-top;">
