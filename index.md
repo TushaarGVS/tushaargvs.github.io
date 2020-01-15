@@ -40,7 +40,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   <img src="../assets/images/tushaar.jpg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   <font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font>
   <br/>Machine Learning Research Engineer, Automated Quality Assistance (AQuA) <br/>Kindle Content Experience and Content Quality Algorithm Org., Amazon.com, Inc.
-  <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
+  <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a><hr class="style">
 
   <p style="margin-bottom:0.5cm;"></p><p>
     <b>Mission.</b> My team and I at the Kindle Content Experience and Quality Algorithms org., Amazon.com, Inc., aim at ensuring <i>consistency</i> in the quality of production and publishing, while enhancing the reader experience (e.g., automated real-time text analysis, text tagging, automated formatting suggestions, etc.). Our main objective is to draw out a set of intelligent AI-assisted reader experience enhancement algorithms with "personalized" suggestions from the content quality perspective, in turn improving the volume of readers. Determining and devising robust, flexible, and scalable solutions to existing publishing problems. From the personalization perspective, it is important to draw behavioral patterns that are reader and publisher specific.<br/><br/>
