@@ -21,6 +21,13 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
   }
 
+  hr.normal {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
   img {
     background-color: #fff;
     padding: 7px;
@@ -42,7 +49,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   <br/><i>Machine Learning Research Engineer</i> at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Content Quality Algorithms, Amazon.com, Inc.
   <br/><i>Scientific Researcher</i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab
   <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
-  <p style="margin-bottom:0.3cm;"></p><font size="1.9"><b>MESSAGE: </b></font><font size="1.99">Nanos gigantum humeris insidentes ~</font><hr>
+  <p style="margin-bottom:0.3cm;"></p><font size="2"><b>MESSAGE: </b></font><font size="2">Nanos gigantum humeris insidentes ~</font><hr class="normal">
 
   <p style="margin-bottom:0.7cm;"></p><p>
     <b>Mission.</b> My team and I at the Kindle Content Experience and Quality Algorithms org., Amazon.com, Inc., aim at ensuring <i>consistency</i> in the quality of production and publishing, while enhancing the reader experience (e.g., automated real-time text analysis, text tagging, automated formatting suggestions, etc.). Our main objective is to draw out a set of intelligent AI-assisted reader experience enhancement algorithms with "personalized" suggestions from the content quality perspective, in turn improving the volume of readers. Determining and devising robust, flexible, and scalable solutions to existing publishing problems. From the personalization perspective, it is important to draw behavioral patterns that are reader and publisher specific.<br/><br/>
@@ -58,7 +65,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
   <p>
     <b>Research Interests.</b> I am broadly interested in Cognitive and Psychological Trait Modeling, Learning Sciences, Game-based Learning and Assessment, Social Multimedia and Social Network Analysis, Machine and Deep Biomedical Data Modeling, Bio-Inspired Evolutionary Computing, and Natural Language Processing.
-  </p><hr>
+  </p><hr class="normal">
 
   <b>Timeline.</b><p style="margin-bottom:0.25cm;"></p>
   <table border="0" width="100%" style="vertical-align: text-top;">
