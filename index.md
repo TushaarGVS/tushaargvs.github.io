@@ -40,7 +40,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
 <div>
   <p style="margin-bottom:0.5cm;"></p>
-  <img src="../assets/images/tushaar.jpg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
+  <img src="../assets/images/tushaar.jpg" style="width=20%;margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   <font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font>
   <br/>Machine Learning Research Engineer, Automated Quality Assistance (AQuA) <br/>Kindle Content Experience and Content Quality Algorithm Org., Amazon.com, Inc.
   <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
