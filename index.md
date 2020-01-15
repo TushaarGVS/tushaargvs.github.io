@@ -30,7 +30,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 <div class="row">
 
   <div class="col-md-9">
-    <div><br/><br/>Tushaar Gangavarapu (pronouns: he/him/his)</div>
+    <div><br/><br/><font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font></div>
     <div>
       Machine Learning Research Engineer, Kindle Content Experience and Content Quality Algorithms <br/> Amazon.com, Inc., India.
       <br/> Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
