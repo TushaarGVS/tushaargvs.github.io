@@ -74,7 +74,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   <tbody>
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#4285F4">Dec 2019 &#150; now:</font></span></td>
-      <td><span>Machine Learning Research Engineer, Kindle Content Experience and Quality Algorithms, Amazon.com, Inc., India.</span></td>
+      <td><span><font color="#008400">Machine Learning Research Engineer, Kindle Content Experience and Quality Algorithms, Amazon.com, Inc., India.</font></span></td>
     </tr>
 
     <tr>
