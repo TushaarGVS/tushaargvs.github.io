@@ -37,14 +37,6 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
     text-align: center;
   }
 
-  .yellow-highlight {
-    text-shadow: 
-      -12px 0px 12px yellow,
-       12px 0px 12px yellow,
-       12px 0px 12px yellow,
-      -12px 0px 12px yellow;
-  }
-
   h3 {
     display:inline;
   }
@@ -58,7 +50,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   <br/><i>Scientific Researcher</i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab
   <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
   <p style="margin-bottom:0.3cm;"></p>
-  <span class="yellow-highlight"><font size="2"><b>MESSAGE: </b></font><font size="2">nanos gigantum humeris insidentes ~</font><hr class="normal"></span>
+  <font size="2"><b>MESSAGE: </b></font><font size="2">nanos gigantum humeris insidentes ~</font><hr class="normal">
 
   <p style="margin-bottom:0.7cm;"></p><p>
     <b>Mission.</b> My team and I at the Kindle Content Experience and Quality Algorithms org., Amazon.com, Inc., aim at ensuring <i>consistency</i> in the quality of production and publishing, while enhancing the reader experience (e.g., automated real-time text analysis, text tagging, automated formatting suggestions, etc.). Our main objective is to draw out a set of intelligent AI-assisted reader experience enhancement algorithms with "personalized" suggestions from the content quality perspective, in turn improving the volume of readers. We work on determining and devising robust, flexible, and scalable solutions to solve the existing publishing and quality assurance problems. From the personalization perspective, it is important to draw behavioral patterns that are both reader and publisher specific.<br/><br/>
