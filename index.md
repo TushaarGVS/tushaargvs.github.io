@@ -46,8 +46,8 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   <p style="margin-bottom:0.5cm;"></p>
   <img src="../assets/images/tushaar.jpg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   <font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font>
-  <p style="margin-bottom:0.2cm;"></p><i>Machine Learning Research Engineer</i> at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Content Quality Algorithms, Amazon.com, Inc.
-  <br/><i>Scientific Researcher</i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab
+  <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">Machine Learning Research Engineer</font></i> at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Content Quality Algorithms, Amazon.com, Inc.
+  <br/><i><font color="#008400">Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab
   <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
   <p style="margin-bottom:0.3cm;"></p>
   <font size="1.99999"><b>MESSAGE: </b></font><font size="2">nanos gigantum humeris insidentes ~</font><hr class="normal">
