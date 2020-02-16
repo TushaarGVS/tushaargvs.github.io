@@ -28,7 +28,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  img {
+  img.profile {
     background-color: #fff;
     padding: 7px;
     float: right;
@@ -44,7 +44,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
 
 <div>
   <p style="margin-bottom:0.5cm;"></p>
-  <img src="../assets/images/tushaar.jpg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
+  <img class="profile" src="../assets/images/tushaar.jpg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   <font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font>
   <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">Machine Learning Research Engineer</font></i> at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Content Quality Algorithms, Amazon.com, Inc.
   <br/><i><font color="#008400">Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab
