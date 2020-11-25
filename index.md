@@ -33,7 +33,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
     padding: 7px;
     float: right;
     width: 140px;
-    height: 180.64px;
+    height: auto!important;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
   }
