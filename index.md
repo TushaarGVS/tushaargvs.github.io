@@ -10,8 +10,8 @@
 </script>
 layout: frontpage
 title: Gangavarapu, Tushaar
-description: Tushaar Gangavarapu is an NLP Research Engineer at Kindle Content Experience and Quality Algorithms, Amazon.com, Inc. 
-keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, DL
+description: Tushaar Gangavarapu is an Applied Scientist at Kindle Content Experience and Quality Algorithms, Amazon.com, Inc. 
+keywords: Tushaar, Gangavarapu, Amazon, NITK, applied, scientist, research, engineer, NLP, ML, AI, DL
 ---
 
 <style type="text/css">
@@ -47,7 +47,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   <p style="margin-bottom:0.5cm;"></p>
   <img class="profile" src="../assets/images/tushaar_garden.jpeg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   <font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font>
-  <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">Machine Learning Research Engineer</font></i> at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
+  <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">Applied Scientist</font></i> at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
   <br/><i><font color="#008400">Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab
   <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
   <p style="margin-bottom:0.3cm;"></p>
@@ -60,7 +60,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   </p><hr class="style">
 
   <p>
-    <b>Bio.</b> Tushaar Gangavarapu is a Machine Learning Research Engineer at the <i>AQuA</i> &#151; <i>A</i>utomated <i>Qu</i>ality <i>A</i>ssistance team of Kindle Content Experience and Quality Algorithms org. at Amazon.com, Inc., India. He is an alumnus (undergraduate) of the <a href="https://infotech.nitk.ac.in/" target="_blank">Department of Information Technology</a> at <a href="http://www.nitk.ac.in/">National Institute of Technology Karnataka, Surathkal, India.</a> During his undergraduate study, he focused on <i>cognitive psychology and learning sciences</i> involving gauging the human behavioral patterns and modeling personality traits, under the guidance of <a href="https://infotech.nitk.ac.in/faculty/ram-mohana-reddy-guddeti" target="_blank">Prof. Ram Mohana Reddy Guddeti</a>, in association with the <a href="http://hccg.nitk.ac.in/" target="_blank">Human Centered Computing Group (HCCG)</a>. He also worked on developing <i>deep neural architectures for intelligent healthcare applications</i>, with the <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering (HALE) Lab</a>, under the guidance of <a href="https://infotech.nitk.ac.in/faculty/sowmya-kamath-s" target="_blank">Dr. Sowmya Kamath S</a>. <br/><br/>
+    <b>Bio.</b> Tushaar Gangavarapu is an Applied Scientist (machine learning) at the <i>AQuA</i> &#151; <i>A</i>utomated <i>Qu</i>ality <i>A</i>ssistance team of Kindle Content Experience and Quality Algorithms org. at Amazon.com, Inc., India. He is an alumnus (undergraduate) of the <a href="https://infotech.nitk.ac.in/" target="_blank">Department of Information Technology</a> at <a href="http://www.nitk.ac.in/">National Institute of Technology Karnataka, Surathkal, India.</a> During his undergraduate study, he focused on <i>cognitive psychology and learning sciences</i> involving gauging the human behavioral patterns and modeling personality traits, under the guidance of <a href="https://infotech.nitk.ac.in/faculty/ram-mohana-reddy-guddeti" target="_blank">Prof. Ram Mohana Reddy Guddeti</a>, in association with the <a href="http://hccg.nitk.ac.in/" target="_blank">Human Centered Computing Group (HCCG)</a>. He also worked on developing <i>deep neural architectures for intelligent healthcare applications</i>, with the <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering (HALE) Lab</a>, under the guidance of <a href="https://infotech.nitk.ac.in/faculty/sowmya-kamath-s" target="_blank">Dr. Sowmya Kamath S</a>. <br/><br/>
 
     Over the course of his undergraduate study, he underwent two internships, one with Cultyvate at PES University, where he worked on developing effective <i>neural architectures to improve the crop yield based on weather conditions</i>. He also worked with the Kindle Create team at Amazon.com, Inc., where he modeled <i>deep language processing models for customer assistance</i> and also worked on providing <i>accessibility to the blind</i>. He has given expert talks and guest lectures on several topics, including the vitality of social media analytics for predictive applications, assessment of game-based outcomes, and greediness and selfishness of genetic selectors.
   </p><hr class="style">
@@ -74,7 +74,12 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, research, engineer, NLP, ML, AI, D
   <colgroup><col width="150px"></colgroup>
   <tbody>
     <tr>
-      <td style="vertical-align: text-top;"><span><font color="#008400">Dec 2019 &#150; now:</font></span></td>
+      <td style="vertical-align: text-top;"><span><font color="#008400">Sep 2021 &#150; now:</font></span></td>
+      <td><span><font color="#4285F4">Applied Scientist, Kindle Content Experience and Quality Algorithms, Amazon.com, Inc., India.</font></span></td>
+    </tr>
+    
+    <tr>
+      <td style="vertical-align: text-top;"><span><font color="#008400">Dec 2019 &#150; Sep 2021:</font></span></td>
       <td><span><font color="#4285F4">Machine Learning Research Engineer, Kindle Content Experience and Quality Algorithms, Amazon.com, Inc., India.</font></span></td>
     </tr>
 
