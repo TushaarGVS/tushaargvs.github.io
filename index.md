@@ -47,7 +47,7 @@ keywords: Tushaar, Gangavarapu, Amazon, NITK, applied, scientist, research, engi
   <p style="margin-bottom:0.5cm;"></p>
   <img class="profile" src="../assets/images/tushaar_garden.jpeg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   <font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font>
-  <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">Applied Scientist</font></i> at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
+  <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">Applied Scientist</font></i> (machine learning) at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
   <br/><i><font color="#008400">Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab
   <br/>Contact: <a href="mailto:tusgan@amazon.com" style="height:15px"> tusgan (at) amazon (dot) com </a>
   <p style="margin-bottom:0.3cm;"></p>
