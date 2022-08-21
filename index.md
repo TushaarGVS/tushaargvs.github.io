@@ -47,9 +47,9 @@ keywords: Tushaar, Gangavarapu, Cornell, University, Ithaca, New York, NY, Amazo
   <p style="margin-bottom:0.5cm;"></p>
   <img class="profile" src="../assets/images/tushaar_cap.jpg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   <font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (pronouns: he/him/his)</font>
-  <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">Graduate Student</font></i> at Cornell University (Ithaca, NY) &#151; Computer Science
-  <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">(Ex-)Applied Scientist</font></i> (machine learning) at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
-  <br/><i><font color="#008400">(Ex-) Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab
+  <p></p><i><font color="#008400">Graduate Student</font></i> at Cornell University (Ithaca, NY) &#151; Computer Science
+  <!-- <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">(Ex-)Applied Scientist</font></i> (machine learning) at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
+  <br/><i><font color="#008400">Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab -->
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px"> tg352 (at) cornell (dot) edu </a>
   <p style="margin-bottom:0.3cm;"></p>
   <font size="1.99999"><b>MESSAGE: </b></font><font size="2">nanos gigantum humeris insidentes ~</font><hr class="normal">
