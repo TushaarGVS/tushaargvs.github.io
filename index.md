@@ -46,7 +46,7 @@ keywords: Tushaar, Gangavarapu, Cornell, University, Ithaca, New York, NY, Amazo
 <div>
   <p style="margin-bottom:0.5cm;"></p>
   <img class="profile" src="../assets/images/tushaar_cap.jpg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
-  <font color="#4285F4"><h3>Tushaar Gangavarapu</h3> (he/him/his; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a>: θʰυʃ ɑr)</font>
+  <font color="#4285F4"><h3>Tush"aa"r</h3>(<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a>: θʰυʃ ɑr)<h3> Gangavarapu</h3> (he/him/his)</font>
   <p></p><i><font color="#008400">Graduate Student</font></i> at Cornell University (Ithaca, NY) &#151; Computer Science
   <!-- <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">(Ex-)Applied Scientist</font></i> (machine learning) at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
   <br/><i><font color="#008400">Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab -->
