@@ -53,7 +53,7 @@ keywords: Tushaar, Gangavarapu, Cornell, University, Ithaca, New York, NY, Amazo
   <br/><i><font color="#008400">Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab -->
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px"> tg352 (at) cornell (dot) edu </a>
   <p style="margin-bottom:0.3cm;"></p>
-  <font size="1.99999"><b>MESSAGE: </b></font><font size="2">Mathematics is like a "religion," and all these equations are like miracles. You take two numbers and when you add them, they magically become a new number! No one can say how it happens; you either believe it or you don't!</font><hr class="normal">
+  <font size="1.99999"><b>MESSAGE: </b></font><font size="2">nanos gigantum humeris insidentes~</font><hr class="normal">
 
   <p style="margin-bottom:0.7cm;"></p><p>
     <b>Mission.</b> My team and I at the Books org., Amazon.com, Inc., aim at ensuring <i>consistency</i> in the quality of production and publishing, while enhancing the reader experience (e.g., automated real-time text analysis, text tagging, automated formatting suggestions, etc.). Our main objective is to draw out a set of intelligent AI-assisted reader experience enhancement algorithms with "personalized" suggestions from the content quality perspective, in turn improving the volume of readers. We work on determining and devising robust, flexible, and scalable solutions to solve the existing publishing and quality assurance problems. From the personalization perspective, it is important to draw behavioral patterns that are both reader and publisher specific.<br/><br/>
