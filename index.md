@@ -77,7 +77,12 @@ keywords: Tushaar, Gangavarapu, Cornell, University, Ithaca, New York, NY, Amazo
   <tbody>
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">Aug 2022 &#150; now:</font></span></td>
-      <td><span><font color="#4285F4">Graduate Student (major: Computer Science), Cornell University, Ithaca, NY.</font></span></td>
+      <td><span><font color="#4285F4">Teaching Assistant, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> F22, Cornell University, Ithaca NY.</font></span></td>
+    </tr>
+
+    <tr>
+      <td style="vertical-align: text-top;"><span><font color="#008400">Aug 2022 &#150; now:</font></span></td>
+      <td><span><font color="#4285F4">Graduate Student (major: Computer Science), Cornell University, Ithaca NY.</font></span></td>
     </tr>
 
     <tr>
