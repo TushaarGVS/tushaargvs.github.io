@@ -46,7 +46,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <div>
   <p style="margin-bottom:0.5cm;"></p>
   <img class="profile" src="../assets/images/tushaar_cap.jpg" style="margin-left:15px;" title="tushaar gangavarapu" alt="gangavarapu, tushaar">
-  <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r<sup><font size="2"> [he/him]</font></sup></h3></font>
+  <font color="#4285F4"><h3>tush<font color="#333333"><u>aa</u></font>r<sup><font size="2"> [he/him]</font></sup></h3></font>
   <!-- <font size="2">[<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a>: θʰ υʃ ɑr] [pronouns: he/him/his]</font><br/></font> -->
   <br/><i><font color="#008400">graduate student</font></i> at Cornell University, Ithaca [computer science (nlp)]
   <!-- <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">(Ex-)Applied Scientist</font></i> (machine learning) at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
@@ -115,7 +115,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">05/2017&#150;07/2017:</font></span></td>
-      <td style="vertical-align: text-top;"><span><font color="#4285F4">research intern, center for pattern recognition and machine intelligence, PES university</font></span></td>
+      <td style="vertical-align: text-top;"><span><font color="#4285F4">research intern, center for pattern recognition and machine intelligence, PES University</font></span></td>
     </tr>
     
     <tr>
