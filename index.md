@@ -80,7 +80,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">08/2022&#150;01/2023:</font></span></td>
-      <td><span><font color="#4285F4">grad ta, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">natural language processing (cs4740/ling4744/cogst4740/cs5740)</a> fa22, cornell university, ithaca, ny</font></span></td>
+      <td><span><font color="#4285F4">grad ta, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">natural language processing (cs4740/ling4744/cogst4740/cs5740)</a> fa22, Cornell University, Ithaca</font></span></td>
     </tr>
     
     <tr>
@@ -90,7 +90,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">09/2021&#150;08/2022:</font></span></td>
-      <td><span><font color="#4285F4">applied scientist, kindle content experience and quality algorithms, amazon</font></span></td>
+      <td><span><font color="#4285F4">applied scientist, kindle content experience and quality algorithms, Amazon</font></span></td>
     </tr>
     
     <tr>
@@ -105,22 +105,22 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">08/2018&#150;12/2019:</font></span></td>
-      <td style="vertical-align: text-top;"><span><font color="#4285F4">scientific researcher at <a href="http://hccg.nitk.ac.in/" target="_blank">human centered computing group</a> and <a href="https://halelabnitk.github.io/" target="_blank">healthcare analytics and language engineering Lab</a>, nitk surathkal</font></span></td>
+      <td style="vertical-align: text-top;"><span><font color="#4285F4">scientific researcher at <a href="http://hccg.nitk.ac.in/" target="_blank">human centered computing group</a> and <a href="https://halelabnitk.github.io/" target="_blank">healthcare analytics and language engineering Lab</a>, NITK Surathkal</font></span></td>
     </tr>
     
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">05/2018&#150;07/2018:</font></span></td>
-      <td style="vertical-align: text-top;"><span><font color="#4285F4">software development intern, <a href="https://www.amazon.com/Kindle-Create/b?ie=UTF8&node=18292298011">kindle create</a>, publisher tools to reader, amazon</font></span></td>
+      <td style="vertical-align: text-top;"><span><font color="#4285F4">software development intern, <a href="https://www.amazon.com/Kindle-Create/b?ie=UTF8&node=18292298011">kindle create</a>, publisher tools to reader, Amazon</font></span></td>
     </tr>
     
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">05/2017&#150;07/2017:</font></span></td>
-      <td style="vertical-align: text-top;"><span><font color="#4285F4">research intern, center for pattern recognition and machine intelligence, cultyvate, pes university</font></span></td>
+      <td style="vertical-align: text-top;"><span><font color="#4285F4">research intern, center for pattern recognition and machine intelligence, PES university</font></span></td>
     </tr>
     
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">08/2015&#150;04/2019:</font></span></td>
-      <td style="vertical-align: text-top;"><span><font color="#4285F4">undergraduate student (major: information technology, specialization: aritificial intelligence), nitk surathkal</font></span></td>
+      <td style="vertical-align: text-top;"><span><font color="#4285F4">undergraduate student (major: information technology, specialization: aritificial intelligence), NITK Surathkal</font></span></td>
     </tr>
 
 </tbody>
