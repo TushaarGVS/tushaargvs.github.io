@@ -56,7 +56,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <font size="1.99999"><b>message: </b></font><font size="2"></font><hr class="normal">
 
 <p style="margin-bottom:0.7cm;"></p><p>
-    just an ms [student](https://xkcd.com/557/) at cornell university (ithaca). i usually have invigorating discussions [= me learning a lot and having my mind blown!] with [cristian danescu-niculescu-mizil](https://www.cs.cornell.edu/~cristian/), the one-and-only [lillian lee](https://www.cs.cornell.edu/home/llee/), [sasha rush](https://rush-nlp.com/), and [david bindel](https://www.cs.cornell.edu/~bindel/).
+    just an ms <a href="https://xkcd.com/557/">student</a> at cornell university (ithaca). i usually have invigorating discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">cristian danescu-niculescu-mizil</a>, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">lillian lee</a>, <a href="https://rush-nlp.com/">sasha rush</a>, and <a href="https://www.cs.cornell.edu/~bindel/">david bindel</a>.
 
 </p><hr class="style">
 
@@ -70,14 +70,14 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <tbody>
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">jan 2023 &#150; may 2023:</font></span></td>
-      <td><span><font color="#4285F4">head ta, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">language and information (cs4300/info4300)</a> sp23, cornell university, ithaca, ny</font></span></td>
+      <td><span><font color="#4285F4">head ta, <a href="https://canvas.cornell.edu/courses/51469">language and information (cs4300/info4300)</a> sp23, cornell university, ithaca, ny</font></span></td>
     </tr>
 
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">aug 2022 &#150; jan 2023:</font></span></td>
       <td><span><font color="#4285F4">grad ta, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">natural language processing (cs4740/ling4744/cogst4740/cs5740)</a> fa22, cornell university, ithaca, ny</font></span></td>
     </tr>
-
+    
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">aug 2022 &#150; now:</font></span></td>
       <td><span><font color="#4285F4">graduate student (major: computer science), cornell university, ithaca, ny</font></span></td>
