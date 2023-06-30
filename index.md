@@ -70,6 +70,11 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <tbody>
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">jan 2023 &#150; may 2023:</font></span></td>
+      <td><span><font color="#4285F4">research intern (advisor: sasha rush), cornell tech, nyc, ny</font></span></td>
+    </tr>
+
+    <tr>
+      <td style="vertical-align: text-top;"><span><font color="#008400">jan 2023 &#150; may 2023:</font></span></td>
       <td><span><font color="#4285F4">head ta, <a href="https://canvas.cornell.edu/courses/51469">language and information (cs4300/info4300)</a> sp23, cornell university, ithaca, ny</font></span></td>
     </tr>
 
