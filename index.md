@@ -56,7 +56,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <font size="1.99999"><b>message: </b></font><font size="2"></font><hr class="normal">
 
 <p style="margin-bottom:0.7cm;"></p><p>
-    just an ms <a href="https://xkcd.com/557/">student</a> at cornell university (ithaca). i usually have invigorating discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">cristian danescu-niculescu-mizil</a>, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">lillian lee</a>, <a href="https://rush-nlp.com/">sasha rush</a>, and <a href="https://www.cs.cornell.edu/~bindel/">david bindel</a>.
+    i am an ms <a href="https://xkcd.com/557/">student</a> at cornell university (ithaca). i usually have invigorating discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">cristian danescu-niculescu-mizil</a>, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">lillian lee</a>, <a href="https://rush-nlp.com/">sasha rush</a>, and <a href="https://www.cs.cornell.edu/~bindel/">david bindel</a>.
 
 </p><hr class="style">
 
@@ -85,7 +85,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     
     <tr>
       <td style="vertical-align: text-top;"><span><font color="#008400">aug 2022 &#150; now:</font></span></td>
-      <td><span><font color="#4285F4">graduate student (major: computer science), cornell university, ithaca, ny</font></span></td>
+      <td><span><font color="#4285F4">graduate student (major: computer science, minor: math), cornell university, ithaca, ny</font></span></td>
     </tr>
     
     <tr>
