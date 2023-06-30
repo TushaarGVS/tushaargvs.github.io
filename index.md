@@ -48,7 +48,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <img class="profile" src="../assets/images/tushaar_cap.jpg" style="margin-left:15px;" title="tushaar gangavarapu" alt="gangavarapu, tushaar">
   <font color="#4285F4"><h3>tush<font color="#333333"><u>aa</u></font>r<sup><font size="2"> [he/him]</font></sup></h3></font>
   <!-- <font size="2">[<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a>: θʰ υʃ ɑr] [pronouns: he/him/his]</font><br/></font> -->
-  <br/><i><font color="#008400">graduate student</font></i> at Cornell University, Ithaca [computer science (nlp)]
+  <br/><font color="#008400">graduate student</font> at Cornell University, Ithaca [computer science (nlp)]
   <!-- <p style="margin-bottom:0.2cm;"></p><i><font color="#008400">(Ex-)Applied Scientist</font></i> (machine learning) at Automated Quality Assistance (AQuA) &#151; Kindle Content Experience and Quality Algorithms, Amazon.com, Inc.
   <br/><i><font color="#008400">Scientific Researcher</font></i> at Human Centered Computer Group (HCCG) and Healthcare Analytics and Language Engineering (HALE) Lab -->
   <br/>contact: <a href="mailto:tg352@cornell.edu" style="height:15px"> tg352 (at) cornell (dot) edu </a>
