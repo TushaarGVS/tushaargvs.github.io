@@ -4,8 +4,8 @@ title: Memory-efficient attention
 tagline: (<a href="https://arxiv.org/pdf/2112.05682v3.pdf">arxiv</a>)
 description: self-attention does not need O(n^2) memory
 author: Tushaar Gangavarapu
-categories: [nlp, llms]
-tags: [transformers, memory-efficient, attention]
+# categories: [nlp, llms]
+# tags: [transformers, memory-efficient, attention]
 next:
 previous: 
     url: 'posts/transformers/performers.html'
