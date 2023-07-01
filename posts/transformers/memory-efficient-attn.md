@@ -1,8 +1,8 @@
 ---
 layout: post
-# change attributes between this comment [...]
 title: <a href="https://arxiv.org/pdf/2112.05682v3.pdf">Memory-efficient attention</a>
-description: self-attention does not need O(n^2) memory
+tagline: self-attention does not need $$\mathcal{O}(n^2)$$ memory
+author: Tushaar Gangavarapu
 categories: [nlp, llms]
 tags: [transformers, memory-efficient, attention]
 date: 2023-06-30
@@ -10,12 +10,6 @@ next:
 previous: 
     url: 'posts/transformers/performers.html'
     title: performers
-# [...] and this comment.
-markdown: kramdown
-highlighter: rouge
-kramdown:
-  math_engine: mathjax
-  syntax_highlighter: rouge
 ---
 {% include JB/setup %}
 
