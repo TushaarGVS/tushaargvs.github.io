@@ -13,6 +13,7 @@ previous:
 # [...] and this comment.
 markdown: kramdown
 highlighter: rouge
+  input: GFM
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
@@ -21,23 +22,11 @@ kramdown:
 
 ### Self-attention
 
-{% highlight python %}
-import numpy as np
-import jax as jax
-print('hello world')
-{% endhighlight %}
-
 ```python
 import numpy as np
 import jax as jax
 print('hello world')
 ```
-
-$L$ and $$L$$ and 
-
-$$
-A = bc
-$$
 
 ### Memory-efficient attention
 

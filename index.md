@@ -51,7 +51,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px"> tg352 (at) cornell (dot) edu </a>
   <p style="margin-bottom:0.3cm;"></p>
   <font size="1.99999"><b>MESSAGE: </b></font><font size="2">[...] But intellectual honesty is more than just acknowledging the work of others and not outsourcing your commencement speech to a neural network. It's also about presenting work in an unbiased manner, about making compelling arguments without misleading, not confusing wanting something to be true really, really badly with it actually being true. [...] There's a fascinating and scientifically very significant instance of intellectual honesty in Newton's understanding of gravity.<br/>
-  –Prof. Alyssa Apsel, <a href="https://www.cornell.edu/video/ece-recognition-ceremony-2023">ECE graduation ceremony, May 2023</a>
+  &#150;Prof. Alyssa Apsel, <a href="https://www.cornell.edu/video/ece-recognition-ceremony-2023">ECE graduation ceremony, May 2023</a>
   </font>
   
 <hr class="normal">
