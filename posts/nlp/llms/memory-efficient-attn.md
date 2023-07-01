@@ -1,5 +1,6 @@
 ---
 layout: post
+# change attributes between this comment [...]
 title: <a href="https://arxiv.org/pdf/2112.05682v3.pdf">Memory-efficient attention</a>
 description: self-attention does not need O(n^2) memory
 categories: [nlp, llms]
@@ -7,6 +8,8 @@ tags: [transformers, memory-efficient, attention]
 date: 2023-06-30
 next:
 previous: 'performers.html'
+# [...] and this comment. 
+highlighter: rouge
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
