@@ -15,10 +15,25 @@ previous:
 
 ### Self-attention
 
+Self-attention (<a href="https://arxiv.org/abs/1706.03762">Vaswani et al., 2017</a>) is at the core of several large language models. For an input sequence of $$L$$ tokens, each represented as $$d$$-dimensional (a.k.a., hidden dimension) embedding; for a given query, $$q \in \mathbb{R}^d$$, and:
 
+$$
+K = \begin{bmatrix}
+\rule[.5ex]{2.5ex}{0.5pt}~ k_1 ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\rule[.5ex]{2.5ex}{0.5pt}~ k_2 ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\vdots
+\rule[.5ex]{2.5ex}{0.5pt}~ k_L ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\end{bmatrix}, V = \begin{bmatrix}
+\rule[.5ex]{2.5ex}{0.5pt}~ v_1 ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\rule[.5ex]{2.5ex}{0.5pt}~ v_2 ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\vdots
+\rule[.5ex]{2.5ex}{0.5pt}~ v_L ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\end{bmatrix}
+$$
 
 ```python
 import jax
+from jax import numpy as jnp
 ```
 
 ### Memory-efficient attention
