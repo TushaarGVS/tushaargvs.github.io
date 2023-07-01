@@ -3,6 +3,7 @@ layout: post
 title: Memory-efficient attention
 tagline: (<a href="https://arxiv.org/pdf/2112.05682v3.pdf">arxiv</a>)
 description: self-attention does not need O(n^2) memory
+tags: [llms, transformers, memory-efficient, attention]
 author: Tushaar Gangavarapu
 next:
 previous: 
