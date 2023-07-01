@@ -32,19 +32,10 @@ K = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-{% tabs attn %}
-{% tab attn pytorch %}
-```python
-import torch
-```
-{% endtab %}
-{% tab attn jax %}
 ```python
 import jax
 from jax import numpy as jnp
 ```
-{% endtab %}
-{% endtabs %}
 
 ### Memory-efficient attention
 
