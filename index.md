@@ -58,7 +58,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <p style="margin-bottom:0.7cm;"></p><p>
     I am a graduate [= ms] <a href="https://xkcd.com/557/">student</a> at Cornell University (Ithaca). I usually enjoy discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and historic facts such as: would Gauss be shocked if they were brought back to life, in this era!?).
     <br/><br/>
-    In NLP, I am currently working on understanding how enabling inductive bias in large language models affects the language generation capabilities (among other things).
+    I am (recently) interested on understanding how enabling inductive bias about language [= distributional hypothesis, etc.] in large language models affects the language generation capabilities (among other things).
 </p><hr class="style">
 
 <p>
