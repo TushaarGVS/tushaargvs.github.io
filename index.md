@@ -1,4 +1,9 @@
 ---
+layout: frontpage
+title: gangavarapu, tushaar
+description: tushaar gangavarapu is a graduate student at cornell university, ithaca, NY. 
+keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazon, nitk, graduate, student, applied, scientist, research, engineer, nlp, ml, ai, dl
+---
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143518986-2"></script>
 <script>
@@ -8,11 +13,6 @@
 
   gtag('config', 'UA-143518986-2');
 </script>
-layout: frontpage
-title: gangavarapu, tushaar
-description: tushaar gangavarapu is a graduate student at cornell university, ithaca, NY. 
-keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazon, nitk, graduate, student, applied, scientist, research, engineer, nlp, ml, ai, dl
----
 
 <style type="text/css">
   hr.style {
