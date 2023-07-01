@@ -62,7 +62,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 </p><hr class="style">
 
 <p>
-    <b>Research interests.</b> nlp, computational social science.
+    <b>Research interests.</b> NLP, computational social science.
   </p><hr class="normal">
 
   <b>Timeline.</b><p style="margin-bottom:0.25cm;"></p>
