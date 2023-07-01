@@ -43,7 +43,7 @@ def attention(q, k, v):
 {% endtab %}
 
 {% tab attn jax %}
-```jax
+```python
 import jax
 from jax import numpy as jnp
 
