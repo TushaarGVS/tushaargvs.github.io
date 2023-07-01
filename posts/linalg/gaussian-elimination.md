@@ -2,8 +2,8 @@
 layout: post
 title: 
 description: 
-categories: [nlp, llms]
-tags: [transformers, time-efficient, attention, kernels]
+categories: [matrices]
+tags: [gaussian-elimination, lu-factorization]
 date:
 output:
   html_document:
