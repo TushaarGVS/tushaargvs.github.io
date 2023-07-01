@@ -62,7 +62,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     <br/><br/>
     I usually enjoy discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and historic facts such as: would Gauss be shocked if they were brought back to life, in this era!?).
     <br/><br/>
-    See <a href="https://github.com/TushaarGVS">my GitHub page</a> for more information on the projects I've recently been working on. If you are an undergrad at Cornell and wish to collaborate with me, please email me.
+    See <a href="https://github.com/TushaarGVS">my GitHub page</a> for more information on the projects I've recently been working on; you can also check my blogs to see what I've been focusing on recently (although, I've only started blogging since 06/2023). If you are an undergrad at Cornell and wish to collaborate with me, please email me.
 </p><hr class="style">
 
 <p><b>Research interests.</b> NLP, computational social science</p><hr class="style">
