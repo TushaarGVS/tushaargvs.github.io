@@ -7,7 +7,7 @@ categories: [nlp, llms]
 tags: [transformers, memory-efficient, attention]
 date: 2023-06-30
 next:
-previous: 'performers.html'
+previous: 'https://tushaargvs.github.io/posts/nlp/llms/performers.html'
 # [...] and this comment. 
 highlighter: rouge
 kramdown:
