@@ -20,22 +20,38 @@ Self-attention (<a href="https://arxiv.org/abs/1706.03762">Vaswani et al., 2017<
 
 $$
 K = \begin{bmatrix}
-\rule[.5ex]{2.5ex}{0.5pt}~ k_1 ~\rule[.5ex]{2.5ex}{0.5pt} \\
-\rule[.5ex]{2.5ex}{0.5pt}~ k_2 ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\rule[.5ex]{2.5ex}{0.5pt} & k_1 & \rule[.5ex]{2.5ex}{0.5pt} \\
+\rule[.5ex]{2.5ex}{0.5pt} & k_2 & \rule[.5ex]{2.5ex}{0.5pt} \\
 \vdots \\
-\rule[.5ex]{2.5ex}{0.5pt}~ k_L ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\rule[.5ex]{2.5ex}{0.5pt} & k_L & \rule[.5ex]{2.5ex}{0.5pt} \\
 \end{bmatrix}, V = \begin{bmatrix}
-\rule[.5ex]{2.5ex}{0.5pt}~ v_1 ~\rule[.5ex]{2.5ex}{0.5pt} \\
-\rule[.5ex]{2.5ex}{0.5pt}~ v_2 ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\rule[.5ex]{2.5ex}{0.5pt} & v_1 & \rule[.5ex]{2.5ex}{0.5pt} \\
+\rule[.5ex]{2.5ex}{0.5pt} & v_2 & \rule[.5ex]{2.5ex}{0.5pt} \\
 \vdots \\
-\rule[.5ex]{2.5ex}{0.5pt}~ v_L ~\rule[.5ex]{2.5ex}{0.5pt} \\
+\rule[.5ex]{2.5ex}{0.5pt} & v_L & \rule[.5ex]{2.5ex}{0.5pt} \\
 \end{bmatrix}
 $$
 
+{% tabs attn %}
+{% tab attn pytorch %}
 ```python
+import torch
+
+def attention(q, k, v):
+    pass
+```
+{% endtab %}
+
+{% tab attn jax %}
+```jax
 import jax
 from jax import numpy as jnp
+
+def attention(q, k, v):
+    pass
 ```
+{% endtab %}
+{% endtabs %}
 
 ### Memory-efficient attention
 
