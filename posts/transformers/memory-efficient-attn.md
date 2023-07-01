@@ -15,11 +15,31 @@ previous:
 
 ### Self-attention
 
-```python
-import numpy as np
-import jax as jax
-print('hello world')
+```r
+library(ggplot2)
+
+# Use stdout as per normal...
+print("Hello, world!")
+
+# Use plots...
+plot(cars)
+
+# Even ggplot!
+qplot(wt, mpg, data = mtcars, colour = factor(cyl))
 ```
+
+{% highlight rurby %}
+library(ggplot2)
+
+# Use stdout as per normal...
+print("Hello, world!")
+
+# Use plots...
+plot(cars)
+
+# Even ggplot!
+qplot(wt, mpg, data = mtcars, colour = factor(cyl))
+{% endhighlight %}
 
 ### Memory-efficient attention
 
