@@ -13,7 +13,6 @@ previous:
 # [...] and this comment.
 markdown: kramdown
 highlighter: rouge
-  input: GFM
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
