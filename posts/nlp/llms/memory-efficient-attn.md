@@ -24,6 +24,18 @@ import jax as jax
 print('hello world')
 {% endhighlight %}
 
+```python
+import numpy as np
+import jax as jax
+print('hello world')
+```
+
+$L$ and $$L$$ and 
+
+$$
+A = bc
+$$
+
 ### Memory-efficient attention
 
 #### Softmax trick
