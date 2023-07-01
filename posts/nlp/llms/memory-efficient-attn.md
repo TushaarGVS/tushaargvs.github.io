@@ -4,7 +4,7 @@ title: <a href="https://arxiv.org/pdf/2112.05682v3.pdf">Memory-efficient attenti
 description: self-attention does not need O(n^2) memory
 categories: [nlp, llms]
 tags: [transformers, memory-efficient, attention]
-date: 06/30/2023
+date: 2030-06-30
 next:
 previous: performers
 comments: true

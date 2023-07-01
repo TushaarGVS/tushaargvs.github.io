@@ -50,13 +50,15 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <br/><font color="#008400">Graduate student</font> at Cornell University, Ithaca [computer science (NLP)]
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px"> tg352 (at) cornell (dot) edu </a>
   <p style="margin-bottom:0.3cm;"></p>
-  <font size="1.99999"><b>MESSAGE: </b></font><font size="2">[...] But intellectual honesty is more than just acknowledging the work of others and not outsourcing your commencement speech to a neural network. It's also about presenting work in an unbiased manner, about making compelling arguments without misleading, not confusing wanting something to be true really, really badly with it actually being true. [...] There's a fascinating and scientifically very significant instance of intellectual honesty in Newton's understanding of gravity. (Prof. Alyssa Apsel at <a href="https://www.cornell.edu/video/ece-recognition-ceremony-2023">ECE graduation ceremony, May 2023</a>)</font>
+  <font size="1.99999"><b>MESSAGE: </b></font><font size="2">[...] But intellectual honesty is more than just acknowledging the work of others and not outsourcing your commencement speech to a neural network. It's also about presenting work in an unbiased manner, about making compelling arguments without misleading, not confusing wanting something to be true really, really badly with it actually being true. [...] There's a fascinating and scientifically very significant instance of intellectual honesty in Newton's understanding of gravity.<br/>
+  Prof. Alyssa Apsel, <a href="https://www.cornell.edu/video/ece-recognition-ceremony-2023">ECE graduation ceremony, May 2023</a>
+  </font>
   
 <hr class="normal">
 
 <p style="margin-bottom:0.7cm;"></p><p>
-    I am a graduate [= ms] <a href="https://xkcd.com/557/">student</a> at Cornell University (Ithaca). I usually enjoy discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and historic facts such as: would Gauss be shocked if they were brought back to life, in this era!?).<br/><br/>
-
+    I am a graduate [= ms] <a href="https://xkcd.com/557/">student</a> at Cornell University (Ithaca). I usually enjoy discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and historic facts such as: would Gauss be shocked if they were brought back to life, in this era!?).
+    <br/><br/>
     I do nlp research, currently working on understanding how enabling inductive bias in llms affects the language generation (among other things) capabilities.  
 </p><hr class="style">
 
