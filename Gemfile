@@ -1,5 +1,8 @@
-gem 'github-pages'
 source 'https://rubygems.org'
-gem 'kramdown-parser-gfm'
-gem 'jekyll-code-tabs'
+
+gem 'github-pages'
 gem 'rouge'
+
+group :jekyll_plugins do
+    gem 'jekyll-code-tabs'
+end
