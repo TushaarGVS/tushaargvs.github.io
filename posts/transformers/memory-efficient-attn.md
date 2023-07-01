@@ -19,12 +19,12 @@ $$
 K = \begin{bmatrix}
 \rule[.5ex]{2.5ex}{0.5pt} & k_1 & \rule[.5ex]{2.5ex}{0.5pt} \\
 \rule[.5ex]{2.5ex}{0.5pt} & k_2 & \rule[.5ex]{2.5ex}{0.5pt} \\
-\vdots \\
+& \vdots & \\
 \rule[.5ex]{2.5ex}{0.5pt} & k_L & \rule[.5ex]{2.5ex}{0.5pt} \\
 \end{bmatrix}, V = \begin{bmatrix}
 \rule[.5ex]{2.5ex}{0.5pt} & v_1 & \rule[.5ex]{2.5ex}{0.5pt} \\
 \rule[.5ex]{2.5ex}{0.5pt} & v_2 & \rule[.5ex]{2.5ex}{0.5pt} \\
-\vdots \\
+& \vdots & \\
 \rule[.5ex]{2.5ex}{0.5pt} & v_L & \rule[.5ex]{2.5ex}{0.5pt} \\
 \end{bmatrix}
 $$
