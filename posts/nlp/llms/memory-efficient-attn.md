@@ -17,7 +17,7 @@ output:
 ---
 {% include JB/setup %}
 
-{% highlight python %
+{% highlight python %}
 import numpy as np
 import jax as jax
-{% endhighlight %}}
+{% endhighlight %}
