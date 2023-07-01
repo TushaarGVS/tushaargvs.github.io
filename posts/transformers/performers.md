@@ -6,7 +6,9 @@ description:
 categories: [nlp, llms]
 tags: [transformers, time-efficient, attention, kernels]
 date: 
-next: 'memory-efficient-attn.html'
+next: 
+    url: 'posts/transformers/memory-efficient-attn.html'
+    title: memory-efficiency
 previous: 
 # [...] and this comment. 
 highlighter: rouge
