@@ -6,7 +6,6 @@ description: self-attention does not need O(n^2) memory
 author: Tushaar Gangavarapu
 categories: [nlp, llms]
 tags: [transformers, memory-efficient, attention]
-date: 2023-06-30
 next:
 previous: 
     url: 'posts/transformers/performers.html'
