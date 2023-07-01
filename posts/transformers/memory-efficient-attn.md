@@ -31,10 +31,20 @@ K = \begin{bmatrix}
 \end{bmatrix}
 $$
 
+{% codetabs %}
+{% codetab pytorch %}
+```python
+import torch
+```
+{% endcodetab %}
+
+{% codetab jax %}
 ```python
 import jax
 from jax import numpy as jnp
 ```
+{% endcodetab %}
+{% endcodetabs %}
 
 ### Memory-efficient attention
 
