@@ -1,6 +1,6 @@
 ---
 layout: frontpage
-title: gangavarapu, tushaar
+title: tushaar
 description: tushaar gangavarapu is a graduate student at cornell university, ithaca, NY. 
 keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazon, nitk, graduate, student, applied, scientist, research, engineer, nlp, ml, ai, dl
 ---
@@ -46,7 +46,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <div>
   <p style="margin-bottom:0.5cm;"></p>
   <img class="profile" src="../assets/images/tushaar_cap.jpg" style="margin-left:15px;" title="tushaar gangavarapu" alt="gangavarapu, tushaar">
-  <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r<sup><font size="2"> [he/him]</font></sup></h3></font>
+  <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r</h3></font> with two a's
   <br/><font color="#008400">Graduate student</font> at Cornell University, Ithaca [computer science (NLP)]
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px"> tg352 (at) cornell (dot) edu </a>
   <p style="margin-bottom:0.3cm;"></p>
@@ -60,9 +60,11 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     <br/><br/>
     I've recently [= over the <a href="https://abstrusegoose.com/116">past six-ish months</a>] become increasingly fascinated with the effects of inductive bias in modeling. Specifically, in several languages, including English, it's often noted that "a word is known by the company it keeps!" (<a href="https://aclweb.org/aclwiki/Distributional_Hypothesis">distributional hypothesis</a>)&#150;I am currently studying the effects of enabling such biases in language modeling.
     <br/><br/>
-    I usually enjoy discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and historic facts such as: would Gauss be shocked if they were brought back to life, in this era!?).
+    I usually enjoy discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and <a href="https://abstrusegoose.com/31">thought-provoking things</a> such as: would Gauss be shocked if they were brought back to life, in this era!?, and of course about <a href="https://twitter.com/DavidBindel/status/1533834861945012231?s=20">bunnies!</a>).
     <br/><br/>
     See <a href="https://github.com/TushaarGVS">my GitHub page</a> for more information on the projects I've recently been working on; you can also check my <a href="https://tushaargvs.github.io/pages/posts.html">blog posts</a> to see what I've been focusing on recently (although, I've only started blogging since 06/2023). If you are an undergrad at Cornell and wish to collaborate with me, please email me.
+    <br/><br/>
+    (If you couldn't tell, I spend my free time scouring the internet [= mostly <a href="https://abstrusegoose.com/">abstrusegoose</a> and <a href="https://xkcd.com/">xkcd</a>] for math-/CS-related memes!)
 </p><hr class="style">
 
 <p><b>Research interests.</b> NLP, computational social science</p><hr class="style">
