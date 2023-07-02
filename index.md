@@ -1,7 +1,7 @@
 ---
 layout: frontpage
 title: tushaar
-description: tushaar gangavarapu is a graduate student at cornell university, ithaca, NY. 
+description: Tushaar Gangavarapu is a graduate student at Cornell University, Ithaca, NY. 
 keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazon, nitk, graduate, student, applied, scientist, research, engineer, nlp, ml, ai, dl
 ---
 <!-- Global site tag (gtag.js) - Google Analytics -->
