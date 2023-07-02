@@ -64,14 +64,14 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     <br/><br/>
     See <a href="https://github.com/TushaarGVS">my GitHub page</a> for more information on the projects I've recently been working on; you can also check my <a href="https://tushaargvs.github.io/pages/posts.html">blog posts</a> to see what I've been focusing on recently (although, I've only started blogging since 06/2023). If you are an undergrad at Cornell and wish to collaborate with me, please email me.
     <br/><br/>
-    (If you couldn't tell, I spend my free time scouring the internet [= mostly <a href="https://abstrusegoose.com/">abstrusegoose</a> and <a href="https://xkcd.com/">xkcd</a>] for math-/CS-related memes!)
+    (If you couldn't tell, I spend my free time scouring the internet [= mostly <a href="https://abstrusegoose.com/">abstrusegoose</a> and <a href="https://xkcd.com/">xkcd</a>] for math-/CS-related comics!)
 </p><hr class="style">
 
 <p><b>Research interests.</b> NLP, computational social science</p><hr class="style">
 
 <p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in fa22, and CS4300 (and cross-listings) in sp23, I was awarded the Bowers CIS best TA award.</p><hr class="style">
 
-<p><b>Acknowledgments.</b> Beyond the amazing faculty, my research (and most of my learnings) are in huge part thanks to: <a href="https://www.cs.cornell.edu/~jpchang/">Jonathan P Chang</a>, <a href="https://twitter.com/tushrgangarapu/status/1666099166135631874?s=20">Lucas Matos Molter</a> (THE idiot!), and Sumanth Aluri. [As Lillian would put it,] my debt to them is unbounded.</p>
+<p><b>Acknowledgments.</b> Beyond the amazing faculty, my research (and most of my learnings) are in huge part thanks to: <a href="https://www.cs.cornell.edu/~jpchang/">Jonathan P. Chang</a>, <a href="https://twitter.com/tushrgangarapu/status/1666099166135631874?s=20">Lucas Matos Molter</a> (THE idiot!), and Sumanth Aluri. [As Lillian would put it,] my debt to them is unbounded.</p>
 
 <hr class="normal">
 
