@@ -2,18 +2,18 @@
 <div class="page-header">
   <h2>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h2>
 </div>
-
+<!-- 
 <script type="text/javascript">
   onload = function(){
       document.getElementById("lastModified").innerHTML = "post last modified on: " + document.lastModified.split(" ")[0];
   }
-  </script>
+  </script> -->
 
 <div class="row-fluid post-full">
   <div class="span12">
     <!-- <div class="date"> -->
-    <!-- <span>(post last modified on: {{ page.date | date_to_long_string }})</span> -->
-    <span id="lastModified"></span>
+    <span>(post last modified on: {{ page.date | date_to_long_string }})</span>
+    <!-- <span id="lastModified"></span> -->
     <!-- </div> -->
     <div class="content">
       {{ content }}
