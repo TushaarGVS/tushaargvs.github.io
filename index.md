@@ -80,7 +80,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <colgroup><col width="150px"></colgroup>
 <tbody>
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">01/2023&#150;05/2023:</font></span></td>
+    <td style="vertical-align: text-top;"><span><font color="#008400">05/2023&#150;08/2023:</font></span></td>
     <td><span><font color="#4285F4">Research intern (<u>advisor</u>: Sasha Rush), Cornell Tech, NYC</font></span></td>
   </tr>
 
