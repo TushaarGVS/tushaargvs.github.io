@@ -45,7 +45,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
 <div>
   <p style="margin-bottom:0.5cm;"></p>
-  <img class="profile" src="../assets/images/tushaar_cap.jpg" style="margin-left:15px;" title="tushaar gangavarapu" alt="gangavarapu, tushaar">
+  <img class="profile" src="../assets/images/tushaar_shed.jpeg" style="margin-left:15px;" title="tushaar gangavarapu" alt="gangavarapu, tushaar">
   <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r</h3></font> with two a's
   <br/><font color="#008400">Graduate student</font> at Cornell University, Ithaca [computer science (NLP)]
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px"> tg352 (at) cornell (dot) edu </a>
