@@ -56,7 +56,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <hr class="normal">
 
 <p style="margin-bottom:0.7cm;"></p><p>
-    I am a <a href="https://xkcd.com/557/">graduate [= ms] student</a> at Cornell University (Ithaca).
+    I am a <a href="https://xkcd.com/557/">graduate [= ms] student</a> at Cornell University (Ithaca), advised by <a href="https://rush-nlp.com/">Sasha Rush</a> (yay! NLP, here I come!)
     <br/><br/>
     I've recently [= over the <a href="https://abstrusegoose.com/116">past six-ish months</a>] become increasingly fascinated with the effects of inductive bias in modeling. Specifically, in several languages, including English, it's often noted that "a word is known by the company it keeps!" (<a href="https://aclweb.org/aclwiki/Distributional_Hypothesis">distributional hypothesis</a>)&#150;I am currently studying the effects of enabling such biases in language modeling.
     <br/><br/>
