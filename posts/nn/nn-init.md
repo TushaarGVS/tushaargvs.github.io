@@ -10,6 +10,7 @@ next:
 previous: 
     url: ''
     title:
+toc: true
 ---
 
 {:toc}
@@ -31,7 +32,14 @@ $$
 
 Observe that the outputs $$o_1$$ and $$o_2$$ from both the neurons are exactly the same. The compute graph is as follows:
 
-```
+```plantuml
+@startuml Diagram
+actor client
+node app
+database db
+db -> app
+app -> client
+@enduml
 ```
 
 Let's build this simple network and inspect the gradients and the resultant weight updates.
