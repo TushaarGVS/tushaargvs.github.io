@@ -22,6 +22,7 @@ production_url : http://tushaargvs.github.io
 markdown: kramdown
 highlighter: rouge
 kramdown:
+  parse_block_html: true
   input: GFM
   syntax_highlighter: rouge
   syntax_highlighter_opts:

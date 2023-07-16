@@ -11,12 +11,12 @@
 
 <div class="row-fluid post-full">
   <div class="span12">
-    <!-- <div class="date"> -->
-    <span>(post last modified on: {{ page.date | date_to_long_string }}; note that the following post might include LaTeX which needs JavaScript to render it–please make sure to have activated JavaScript, and depending on the amount of LaTeX used, it might take sometime to load everything properly)</span>
+    <div class="date">
+    <span>(last modified on: {{ page.date | date_to_long_string }})</span>
     <!-- <span id="lastModified"></span> -->
-    <!-- </div> -->
+    </div>
     <div class="content">
-      {{ content }}
+      {{ content | toc }}
     </div>
 
     <hr>
