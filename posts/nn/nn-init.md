@@ -1,12 +1,12 @@
 ---
 layout: post
-title: How to initialize neural networks?
+title: how to initialize neural networks?
 tagline: (<a href="https://arxiv.org/pdf/2112.05682v3.pdf">arxiv</a>)
 description: how to initialize neuural networks
 tags: [nn-init, xavier, he, kaiming]
 date: 2023-07-14
 author: Tushaar Gangavarapu
-next:
+next: 
 previous: 
     url: ''
     title:
