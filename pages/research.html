@@ -23,6 +23,14 @@ description: tushaar gangavarapu's research
   span.abs-close { background-color: #fff; border: 3px solid #fff; color: black; float: left; font-size: 20px; height: 12px; left: 0px; line-height: 10px; padding: 3px; position: relative; text-align: center; text-decoration: none; top: -5px; width: 20px; -moz-border-radius:15px; -webkit-border-radius:15px; -o-border-radius:15px; border-radius:15px; }
 </style>
 
+<blockquote>
+  <div>
+    "<i>History is not simply the study of the past, it is an explanation of the present.</i>"
+    <p style="margin-bottom:0.1cm;"></p>
+    &#151;Paul Hunham, <a href="https://www.imdb.com/title/tt14849194/">The Holdovers</a>
+  </div>
+</blockquote>
+
 <div> Publications can be found at 
   <a href="https://scholar.google.co.in/citations?user=C7v_cA8AAAAJ&hl=en" target="_blank">google scholar</a>.<br/>
   <small>(* = equal contribution)</small>
@@ -33,6 +41,78 @@ description: tushaar gangavarapu's research
     <th align = "left" >Publication</th>
     <th></th>
     <th align = "left" style="padding-left: 30px;">Tags</th>
+  </tr>
+
+  <tr class="group" style="background-color:rgba(0,0,0,0.4);font-weight:bold;">
+    <td colspan="3" style="padding: 6px;"><b>2023</b></td>
+  </tr>
+
+  <tr role="row" class="odd">
+    <td style="padding-right: 30px;">
+      <img src="../assets/pub_images/bea-2023.png" style="max-width: 120px; height: auto;vertical-align: left;">
+    </td>
+    <td style="font-weight: normal;vertical-align: top;">
+      Yann Hicke, Abhishek Masand, Wentao Guo, and <font color="#008400">Tushaar Gangavarapu</font> (2023): <b>Assessing the efficacy of large language models in generating accurate teacher responses</b> <i>In Proceedings of the 18th Workshop on Innovative Use of NLP for Building Educational Applications (BEA 2023).</i>
+      <br/>
+
+      <span style="color:white;background-color:#ccccff;font-size:12px;cursor: pointer;" onclick="
+        $('.abs-dialog').dialog({
+          modal: true,
+          autoOpen: false,
+          closeOnEscape: false,
+          open: function(event, ui) {
+            $('.ui-dialog-titlebar-close', ui.dialog || ui).hide();
+          }
+        });
+        $('#abs-dialog-bea').dialog('open');"><font color="black">&nbsp; abstract &nbsp;</font>
+        <div class="abs-dialog" id="abs-dialog-bea" style="display:none;">
+          <span class="abs-close" onclick="$('#abs-dialog-bea').dialog('close');" style="cursor: pointer;">x</a></span><br/><br/>
+
+          <b>Assessing the efficacy of large language models in generating accurate teacher responses</b></br><br/>
+
+          (Tack et al., 2023) organized the shared task hosted by the 18th Workshop on Innovative Use of NLP for Building Educational Applications on generation of teacher language in educational dialogues. Following the structure of the shared task, in this study, we attempt to assess the generative abilities of large language models in providing informative and helpful insights to students, thereby simulating the role of a knowledgeable teacher. To this end, we present an extensive evaluation of several benchmarking generative models, including GPT-4 (few-shot, in-context learning), fine-tuned GPT-2, and fine-tuned DialoGPT. Additionally, to optimize for pedagogical quality, we fine-tuned the Flan-T5 model using reinforcement learning. Our experimental findings on the Teacher-Student Chatroom Corpus subset indicate the efficacy of GPT-4 over other fine-tuned models, measured using BERTScore and DialogRPT. We hypothesize that several dataset characteristics, including sampling, representativeness, and dialog completeness, pose significant challenges to fine-tuning, thus contributing to the poor generalizability of the fine-tuned models. Finally, we note the need for these generative models to be evaluated with a metric that relies not only on dialog coherence and matched language modeling distribution but also on the model’s ability to showcase pedagogical skills.
+        </div>
+      </span>&nbsp;
+
+      <span style="color:white;background-color:#f3ccff;font-size:12px;cursor: pointer;"> <a href="https://aclanthology.org/2023.bea-1.60/" target="_blank"><font color="black">&nbsp; url &nbsp;</font></a></span>&nbsp;
+
+      <span style="color:white;background-color:#FFCECE;cursor: pointer;font-size:12px;"> <a href="https://arxiv.org/pdf/2307.04274.pdf"><font color="black">&nbsp; .pdf &nbsp;</font></a></span>&nbsp;
+
+      <span style="color:white;background-color:#5eaeff;cursor: pointer;font-size:12px;" onclick="
+        $('.bib-dialog').dialog({
+          modal: true,
+          autoOpen: false,
+          closeOnEscape: false,
+          open: function(event, ui) {
+            $('.ui-dialog-titlebar-close', ui.dialog || ui).hide();
+          }
+        });
+        $('#bib-dialog-bea').dialog('open');"><font color="black">&nbsp; .bib &nbsp;</font>
+        <div class="bib-dialog" id="bib-dialog-bea" style="display:none;">
+          <span class="abs-close" onclick="$('#bib-dialog-bea').dialog('close');" style="cursor: pointer;">x</a></span><br/><br/>
+
+          <b>Assessing the efficacy of large language models in generating accurate teacher responses</b></br><br/>
+
+          @inproceedings{gangavarapu-bea-2023,<br/>
+          &nbsp;&nbsp;&nbsp;title="Assessing the efficacy of large language models in generating accurate teacher responses",<br/>
+          &nbsp;&nbsp;&nbsp;author="Hicke, Yann and Masand, Abhishek and Guo, Wentao and Gangavarapu, Tushaar",<br/>
+          &nbsp;&nbsp;&nbsp;booktitle="Proceedings of the 18th Workshop on Innovative Use of NLP for Building Educational Applications (BEA 2023)",<br/>
+          &nbsp;&nbsp;&nbsp;year="2023",<br/>
+          &nbsp;&nbsp;&nbsp;publisher="Association for Computational Linguistics",<br/>
+          &nbsp;&nbsp;&nbsp;url="https://aclanthology.org/2023.bea-1.60"<br/>
+          }
+        </div>
+      </span>&nbsp;
+    </td>
+    <td style="font-weight: normal; font-size:12px;vertical-align: top; padding-left: 30px;">
+      <span style="color:white;background-color: #090">Conference</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">ai for education</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">llms</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">finetuning</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">efficacy</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">student-teacher interaction</span>&nbsp;
+      <span style="color:black;background-color: #E8E8E8">llm prompting</span>
+    </td>
   </tr>
 
   <tr class="group" style="background-color:rgba(0,0,0,0.4);font-weight:bold;">
