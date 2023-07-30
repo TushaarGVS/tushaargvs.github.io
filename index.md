@@ -48,11 +48,14 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   
   <img class="profile" src="../assets/images/tushaar_shed.jpeg" style="margin-left:15px;" title="tushaar gangavarapu" alt="gangavarapu, tushaar">
   
-  <p><font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r</h3></font> with two a's</p>
+  <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r</h3></font>&nbsp;with two a's
   
-  <font color="#008400">Graduate student</font> at Cornell University, Ithaca [computer science (NLP)]
+  <br/><font color="#008400">Graduate student</font> at Cornell University, Ithaca [computer science (NLP)]
+  
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px"> tg352 (at) cornell (dot) edu </a>
+  
   <p style="margin-bottom:0.3cm;"></p>
+  
   <blockquote>
   	"[...] <i>But intellectual honesty is more than just acknowledging the work of others and not outsourcing your commencement speech to a neural network. It's also about presenting work in an unbiased manner, about making compelling arguments without misleading, not confusing wanting something to be true really, really badly with it actually being true.</i> [...] <i>There's a fascinating and scientifically very significant instance of intellectual honesty in Newton's understanding of gravity.</i>"
 	
@@ -64,6 +67,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <hr class="normal">
 
 <p style="margin-bottom:0.7cm;"></p><p>
+
     I am a <a href="https://xkcd.com/557/">graduate [= ms] student</a> at Cornell University (Ithaca), advised by <a href="https://rush-nlp.com/">Sasha Rush</a> (yay! NLP, here I come!)
     <br/><br/>
     I've recently [= over the <a href="https://abstrusegoose.com/116">past six-ish months</a>] become increasingly fascinated with the effects of inductive bias in modeling. Specifically, in several languages, including English, it's often noted that "a word is known by the company it keeps!" (<a href="https://aclweb.org/aclwiki/Distributional_Hypothesis">distributional hypothesis</a>)&#150;I am currently studying the effects of enabling such biases in language modeling.
