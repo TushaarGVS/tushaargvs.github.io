@@ -84,7 +84,7 @@ Hence, $$q(x_t | x_0) = \mathcal{N}(x_t; x_0 \sqrt{\bar{\alpha}_t}, (1 - \bar{\a
 From above, we note that the forward diffusion process relies on a variance schedule to incrementally add noise. In their work on Denoising Diffusion Probabilistic Models (DDPM), [Ho et al., 2020](https://arxiv.org/pdf/2006.11239.pdf) employed a linear schedule:
 
 <blockquote> 
-"<i>We set the forward process variances to constants increasing linearly from &beta;<sub>1</sub> = 10<sup>-4</sup> to &beta;<sub>T</sub> = 0.02.</i>"
+"<i>We set the forward process variances to constants increasing linearly from \(\beta_1 = 10^{-4}\) to \(\beta_T = 0.02\).</i>"
 </blockquote>
 
 
@@ -109,7 +109,7 @@ def linear_beta_schedule(num_timesteps, beta_1=0.0001, beta_T=0.02):
 Let's generate forward process samples using the linear variance schedule for a total of $$T = 100$$ timesteps, starting with $$\beta_1 = 0.0001$$ and ending at $$\beta_{100} = 0.02$$. Note that the noise is added to PyTorch tensors, as opposed to Pillow images; to go from Pillow images to PyTorch tensors, we perform the following transformations: (1) normalize images by dividing by $$255$$ so that the images are in $$[0, 1]$$ range, and (2) ensure that the images are in $$[-1, 1]$$ range following the DDPM paper:
 
 <blockquote> 
-"<i>We assume that image data consists of integers in {0, 1, ..., 255} <a href="https://datascience.stackexchange.com/a/54383">scaled linearly to [-1, 1]</a>. This ensures that the neural network reverse process operates on consistently scaled inputs starting from the standard normal prior p(x<sub>T</sub>).</i>"
+"<i>We assume that image data consists of integers in \(\{0, 1, ..., 255\}\) <a href="https://datascience.stackexchange.com/a/54383">scaled linearly to \([-1, 1]\)</a>. This ensures that the neural network reverse process operates on consistently scaled inputs starting from the standard normal prior \(p(x_T)\).</i>"
 </blockquote>
 
 ```python
@@ -125,7 +125,7 @@ def populate_forward_samples(beta_scheduler=linear_beta_schedule, num_timesteps=
 img_tensors = populate_forward_samples(beta_scheduler =linear_beta_schedule, num_timesteps=100)
 ```
 
-Let's visualize the forward process noise addition using a linear variance schedule (defined in the above code block) at $$20$$ different timesteps spread evenly across the total of $$T = 100$$ timesteps [= $$t = 0, 5, 10, \dotsc, 100$$]: 
+Let's visualize the forward process noise addition using a linear variance schedule (defined in the above code block) at $$20$$ different timesteps spread evenly across the total of $$T = 100$$ timesteps [= $$t = \{0, 5, 10, \dotsc, 100\}$$]: 
 
 ```python
 def plot_img_grid(img_tensors, ncols=20):
