@@ -10,7 +10,7 @@ next:
 previous: 
 ---
 
-# Preliminaries
+## Preliminaries
 
 <blockquote>
   <div>
@@ -24,9 +24,9 @@ Before we begin, let's setup a running example of the simple harmonic oscillator
 
 Note that the gravitational force doesn't affect the above mass-spring system. Finally, let's assume that the equillibrium position of the mass, say $$x$$, is at $$x = 0$$, with positive displacement values corresponding to a stretched string.
 
-## Fourier transform
+### Fourier transform
 
-### Simple harmonic motion (SHM)
+#### Simple harmonic motion (SHM)
 
 In the above mass-spring system, when the system is displaced from its equillibrium position, the elasticity of the spring would provide a restoring force to restore the mass to equillibrium. From Newton's first law of motion, we know that inertia causes the system to overshoot this equillibrium. This constant play between inertial and elastic properties causes the mass to oscillate.
 
@@ -52,14 +52,17 @@ $$
 
 Hence, we note that $$x(t)$$ goes back to itself after $$t \rightarrow t + T$$, where $$T = 1/f = 2\pi / \omega_0$$; simply put $$x(t) = x(t + nT)$$ for any $$n \in \mathbb{Z}$$.
 
-### Using Fourier transform to model SHM
+#### Using Fourier transform to model SHM
 
-## Laplace transform
+### Laplace transform
 
-# State-space models
+---
 
+## State-space models
 
-# Footnotes
+---
+
+## Footnotes
 
 [^1]: Let's say that we displace a system, a distance $$x$$ from the equillibrium position ($$x = 0$$) and measure the restoring force as a function $$F(x)$$. By definition, $$F(0) = 0$$, i.e., no restoring force at equillibrium. Now, using [Taylor's remainder theorem](https://people.clas.ufl.edu/kees/files/TaylorRemainderProof.pdf), we have: $$F(x) = F(0) + xF'(0) + \frac{F''(\xi)}{2} x^2 $$ where, $$0 \leq \xi \leq x$$. For really small displacements, we can ignore higher-order terms, and therefore, $$F(x) = -kx$$ with $$k = -F'(0)$$. Note that systems obeying Hook's law are linear, i.e., close to equillibrium ($$x$$ is sufficiently small!).
 
