@@ -49,9 +49,8 @@ img_url = "https://cdn6.bigcommerce.com/s-irxdkj2qs2/product_images/uploaded_ima
 img = Image.open(requests.get(img_url, stream=True).raw).resize((128, 128))
 img
 ```
-{% endtabs %}
-
 <img src="./imgs/code_dog.png">
+{% endtabs %}
 
 ---
 
@@ -165,9 +164,8 @@ def plot_img_grid(img_tensors, ncols=20):
 
 plot_img_grid(linear_img_tensors, ncols=20)
 ```
-{% endtabs %}
-
 <img src="./imgs/code_linear_schedule_out.png">
+{% endtabs %}
 
 ### Parameterized reverse process
 
