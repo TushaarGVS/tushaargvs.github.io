@@ -64,7 +64,7 @@ $$x_t \sim \mathcal{N}(x_{t-1}\sqrt{1-\beta_t}, \beta_t \mathrm{I}) \equiv x_t =
 
 The forward process is a simple Markov chain, where the distribution at a particular timestep only depends on the sample from the immediately preceeding timestep. Hence,
 
-$$q(x_{1:T}|x_0) = \prod_{t=1}^T q(x_t | x_{t-1})$$
+$$q(x_{1:T} | x_0) = \prod_{t=1}^T q(x_t | x_{t-1})$$
 
 A nice property of the forward process us that any $$x_t$$ can be sampled for some arbitrary timestep $$t$$ in a closed form as follows; let $$\alpha_t = 1 - \beta_t$$, $$\bar{\alpha}_t = \prod_{s=1}^T \alpha_s$$, $$\bar{\varepsilon}_t = \prod_{s=1}^T \varepsilon_s$$:
 
@@ -77,7 +77,7 @@ x_t = q(x_t | x_0) = \prod_{t=1}^T q(x_t | x_{t-1}) &= \prod_{t=1}^T x_{t-1} \sq
 &= x_0 \sqrt{\bar{\alpha}_t} + \varepsilon \sqrt{1 - \bar{\alpha}_t}
 \end{align*}$$
 
-Hence, $$q(x_t|x_0) = \mathcal{N}(x_t; x_0 \sqrt{\bar{\alpha}_t}, (1 - \bar{\alpha}_t)\mathrm{I})$$.
+Hence, $$q(x_t | x_0) = \mathcal{N}(x_t; x_0 \sqrt{\bar{\alpha}_t}, (1 - \bar{\alpha}_t) \mathrm{I})$$.
 
 #### Implementation
 
