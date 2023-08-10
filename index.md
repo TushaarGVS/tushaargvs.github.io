@@ -70,7 +70,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     <br/><br/>
     See <a href="https://github.com/TushaarGVS">my GitHub page</a> for more information on the projects I've recently been working on; you can also check my <a href="https://tushaargvs.github.io/pages/posts.html">blog posts</a> to see what I've been focusing on recently (although, I've only started blogging since 06/2023). If you are an undergrad at Cornell and wish to collaborate with me, please email me.
     <br/><br/>
-    (If you couldn't tell, I spend my free time scouring the internet [= mostly <a href="https://abstrusegoose.com/">abstrusegoose</a> and <a href="https://xkcd.com/">xkcd</a>] for math-/CS-related comics!)
+    (If you couldn't tell, I spend my free time scouring the internet [= mostly <a href="https://abstrusegoose.com/">abstrusegoose</a>, <a href="https://handwaving.github.io/">handwaving</a>, and <a href="https://xkcd.com/">xkcd</a>] for math-/CS-related comics!)
 </p><hr class="style">
 
 <p><b>Research interests.</b> large language models, NLP, computational social science</p>

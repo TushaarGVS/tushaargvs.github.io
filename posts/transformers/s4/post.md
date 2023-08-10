@@ -36,7 +36,7 @@ $$
 
 where the dot over a variable ($$\dot{x}$$) indicates differentiation of the variable ($$x$$) with respect to time, two dots ($$\ddot{x}$$) denote the second derivative with respect to time, etc.
 
-From the above ODE, notice that the we want a function $$x(t)$$ such that its second derivative is proportional to itself, i.e., $$\ddot{x}(t) \propto x(t)$$; lucky for us!, we know at least two functions with this property&#151; sine and cosine. Let's write out an [ansatz](https://res.cloudinary.com/dh3hm8pb7/image/upload/c_scale,q_auto:best/v1535842782/Handwaving/Published/Ansatz.png):
+From the above ODE, notice that the we want a function $$x(t)$$ such that its second derivative is proportional to itself, i.e., $$\ddot{x}(t) \propto x(t)$$; lucky for us!, we know at least two functions with this property&#151; sine and cosine. Let's write out an [ansatz](https://handwaving.github.io/270):
 
 $$
 x(t) = a \sin(\omega t) + b \cos(\omega t)
