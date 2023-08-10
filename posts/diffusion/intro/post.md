@@ -163,7 +163,3 @@ plot_img_grid(linear_img_tensors, ncols=20)
 ### Parameterized reverse process
 
 If we can somehow reverse the above process
-
-### An aside on variance scheduling
-
-In the forward process, the final limiting distribution is essentially $$q(x_T | x_0) \sim \mathcal{N}(0, \mathrm{I})$$.
