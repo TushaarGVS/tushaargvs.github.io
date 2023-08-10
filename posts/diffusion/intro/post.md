@@ -10,15 +10,34 @@ next:
 previous: 
 ---
 
-Imagine we took an image and added random noise to it; if we did this repeatedly, we would eventually end up with just noise (and no recognizable features pertaining to the original image). Now, what if we had a magic function that started with the noise, gradually undid the noise, eventually regenerating the coherent image? This magic function is essentially the denoising diffusion model that removes noise incrementally.
+Imagine we took an image and added random noise to it; if we did this repeatedly, we would eventually end up with just noise (and no recognizable features pertaining to the original image). 
 
 <img src="./imgs/noising.png">
 
+Now, what if we had a magic function that started with the noise and gradually removed the noise, eventually regenerating the coherent (original) image? This magic function is essentially the denoising diffusion model.
+
+<img src="./imgs/denoising.png">
+
 Two main differences to note between diffusion models and other popularly-used generative models such as GANs or VAEs is that: (1) diffusion models don't perform one-step denoising; they denoise incrementally (which can be effective, but not efficient time-wise), and (2) the latent representation has high dimensionality, i.e., same as the original data.
 
-### Introduction to diffusion models
+### Imports and installs
 
-#### Foward process
+The code in this blog post is written in Python and requires the following imports (you need to install the imported packages if not already installed):
+
+```python
+import torch
+import torchvision
+import torchvision.transforms as T
+
+from PIL import Image
+import matplotlib.pyplot as plt
+
+import math
+```
+
+## Introduction to diffusion models
+
+### Foward process
 
 The process of incrementally adding Gaussian noise at each timestep is referred to as the forward process and destroys information gradually, usually according to a non-learned, manually-defined variance schedule. More concretely, given a data point, $$x_0 \sim q(x)$$, where $$q(x)$$ is the "true" (unknown to us!) pdf of the data, the forward process of $$T$$ total timesteps is such that at each timestep $$t \in \{1, 2, \dotsc, T\}$$, we produce a noisy sample $$x_t$$ as follows:
 
@@ -40,7 +59,7 @@ $$
 \begin{align*}
 x_t = q(x_t | x_0) = \prod_{t=1}^T q(x_t | x_{t-1}) &= \prod_{t=1}^T \bbox[#90EE90]{x_{t-1}} \sqrt{\alpha_t} + \varepsilon_t\sqrt{1 - \alpha_t} \\
 &= \prod_{t=2}^T \bbox[#90EE90]{\left(x_{t-2} \sqrt{\alpha_{t-1}} + \varepsilon_{t-1}\sqrt{1 - \alpha_{t-1}} \right)} \sqrt{\alpha_t} + \varepsilon_t \sqrt{1 - \alpha_t} \\
-&= \prod_{t=2}^T x_{t-2} \sqrt{\alpha_t\alpha_{t-1}} + \underbrace{\varepsilon_{t-1} \sqrt{\alpha_t - \alpha_t\alpha_{t-1}}}_{\mathcal{N}(0, \alpha_t - \alpha_t\alpha_{t-1})} + \underbrace{\varepsilon_{t} \sqrt{1 - \alpha_t}}_{\mathcal{N}(0, 1 - \alpha_t)} \\
+&= \prod_{t=2}^T x_{t-2} \sqrt{\alpha_t\alpha_{t-1}} + \underbrac{\varepsilon_{t-1} \sqrt{\alpha_t - \alpha_t\alpha_{t-1}}}_{\mathcal{N}(0, \alpha_t - \alpha_t\alpha_{t-1})} + \underbrac{\varepsilon_{t} \sqrt{1 - \alpha_t}}_{\mathcal{N}(0, 1 - \alpha_t)} \\
 &= \prod_{t=2}^T \bbox[#F984EF]{x_{t-2}} \sqrt{\alpha_t\alpha_{t-1}} + \varepsilon \sqrt{1 - \alpha_t\alpha_{t-1}} \\
 &\hphantom{=~} \vdots \\
 &= x_0 \sqrt{\bar{\alpha}_t} + \varepsilon \sqrt{1 - \bar{\alpha}_t}
@@ -48,6 +67,25 @@ x_t = q(x_t | x_0) = \prod_{t=1}^T q(x_t | x_{t-1}) &= \prod_{t=1}^T \bbox[#90EE
 $$
 
 Hence, $$q(x_t|x_0) = \mathcal{N}(x_t; x_0 \sqrt{\bar{\alpha}_t}, (1 - \bar{\alpha}_t)\mathrm{I})$$.
+
+#### Implementation
+
+From above, we note that the forward diffusion process relies on a variance schedule to incrementally add noise. In their work on Denoising Diffusion Probabilistic Models, [Ho et al., 2020](https://arxiv.org/pdf/2006.11239.pdf) employed a linear schedule:
+
+<blockquote> "<i>We set the forward process variances to constants increasing linearly from $$\beta_1 = 10^{-4}$$ to $$\beta_T = 0.02$$.</i>"</blockquote>
+
+Let's implement the linear variance schedule and the associated noising process.
+
+{% tabs diff_fwd %}
+{% tab diff_fwd pytorch %}
+
+```python
+def linear_beta_schedule(num_timesteps, beta_1=1e-4, beta_T=0.02):
+	return torch.linspace(beta_1, beta_T, num_timesteps)
+```
+
+{% endtab %}
+{% endtabs %}
 
 #### Parameterized reverse process
 

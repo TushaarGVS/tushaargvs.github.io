@@ -12,9 +12,11 @@ previous:
 
 ## Preliminaries
 
-> "*The simplest thing that can happen in the physical universe is nothing. The next simplest
-thing, which doesn't get too far away from nothing, is an oscillation about nothing.* [...] *When many oscillators are put together, you get waves.*" <br/>
-> &#151; Matthew Schwartz, [Lecture 1: Simple Harmonic Oscillators](https://scholar.harvard.edu/files/schwartz/files/lecture1-oscillators-and-linearity.pdf)
+<blockquote>
+  <div>
+    "<i>The simplest thing that can happen in the physical universe is nothing. The next simplest thing, which doesn't get too far away from nothing, is an oscillation about nothing.</i> [...] <i>When many oscillators are put together, you get waves.</i>" <br/> &#151; Matthew Schwartz, [Lecture 1: Simple Harmonic Oscillators](https://scholar.harvard.edu/files/schwartz/files/lecture1-oscillators-and-linearity.pdf)
+    </div>
+</blockquote>
 
 Before we begin, let's setup a running example of the simple harmonic oscillator: consider the one-dimensional (horizontal) movement of a mass, attached to a wall with a spring as shown below:
 
