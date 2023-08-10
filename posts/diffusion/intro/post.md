@@ -24,6 +24,8 @@ Two main differences to note between diffusion models and other popularly-used g
 
 The code in this blog post is written in Python and requires the following imports (you need to install the imported packages if not already installed):
 
+{% tabs diff_fwd %}
+
 ```python
 import torch
 import torchvision
@@ -36,14 +38,19 @@ import matplotlib.pyplot as plt
 
 import math
 ```
+{% endtabs %}
 
 Next, let's download an image to use as a toy example and proof-of-concept as we go through the ideas in diffusion models; feel free to replace the image URL (specified using `img_url`) below:
+
+{% tabs diff_fwd %}
 
 ```python
 img_url = "https://cdn6.bigcommerce.com/s-irxdkj2qs2/product_images/uploaded_images/new-havanese.jpg"
 img = Image.open(requests.get(img_url, stream=True).raw).resize((128, 128))
 img
 ```
+{% endtabs %}
+
 <img src="./imgs/code_dog.png">
 
 ---
@@ -85,7 +92,7 @@ Hence, $$q(x_t \vert x_0) = \mathcal{N}(x_t; x_0 \sqrt{\bar{\alpha}_t}, (1 - \ba
 
 From above, we note that the forward diffusion process relies on a variance schedule to incrementally add noise. In their work on Denoising Diffusion Probabilistic Models (DDPM), [Ho et al., 2020](https://arxiv.org/pdf/2006.11239.pdf) employed a linear schedule:
 
-<blockquote><div>
+<blockquote class="quote_md"><div>
 "<i>We set the forward process variances to constants increasing linearly from \(\beta_1 = 10^{-4}\) to \(\beta_T = 0.02\).</i>"
 </div></blockquote>
 
@@ -98,37 +105,34 @@ From above, we note that the forward diffusion process relies on a variance sche
 def linear_beta_schedule(num_timesteps, beta_1=0.0001, beta_T=0.02):
 	return torch.linspace(beta_1, beta_T, num_timesteps)
 ```
-
 {% endtab %}
 {% tab diff_fwd quadratic %}
 
 ```python
 
 ```
-
 {% endtab %}
 {% tab diff_fwd cosine %}
 
 ```python
 
 ```
-
 {% endtab %}
-
 {% tab diff_fwd sigmoid %}
 
 ```python
 
 ```
-
 {% endtab %}
 {% endtabs %}
 
 Let's generate forward process samples using the linear variance schedule for a total of $$T = 100$$ timesteps, starting with $$\beta_1 = 0.0001$$ and ending at $$\beta_{100} = 0.02$$. Note that the noise is added to PyTorch tensors, as opposed to Pillow images; to go from Pillow images to PyTorch tensors, we perform the following transformations: (1) normalize images by dividing by $$255$$ so that the images are in $$[0, 1]$$ range, and (2) ensure that the images are in $$[-1, 1]$$ range following the DDPM paper:
 
-<blockquote><div>
+<blockquote class="quote_md"><div>
 "<i>We assume that image data consists of integers in \(\{0, 1, ..., 255\}\) <a href="https://datascience.stackexchange.com/a/54383">scaled linearly to \([-1, 1]\)</a>. This ensures that the neural network reverse process operates on consistently scaled inputs starting from the standard normal prior \(p(x_T)\).</i>"
 </div></blockquote>
+
+{% tabs diff_fwd %}
 
 ```python
 def populate_forward_samples(beta_scheduler=linear_beta_schedule, num_timesteps=100, beta_1=0.0001, beta_T=0.02):
@@ -142,8 +146,11 @@ def populate_forward_samples(beta_scheduler=linear_beta_schedule, num_timesteps=
 
 linear_img_tensors = populate_forward_samples(beta_scheduler =linear_beta_schedule, num_timesteps=100)
 ```
+{% endtabs %}
 
 Let's visualize the forward process noise addition using a linear variance schedule (defined in the above code block) at $$20$$ different timesteps spread evenly across the total of $$T = 100$$ timesteps [= $$t = \{0, 5, 10, \dotsc, 100\}$$]: 
+
+{% tabs diff_fwd %}
 
 ```python
 def plot_img_grid(img_tensors, ncols=20):
@@ -158,6 +165,8 @@ def plot_img_grid(img_tensors, ncols=20):
 
 plot_img_grid(linear_img_tensors, ncols=20)
 ```
+{% endtabs %}
+
 <img src="./imgs/code_linear_schedule_out.png">
 
 ### Parameterized reverse process
