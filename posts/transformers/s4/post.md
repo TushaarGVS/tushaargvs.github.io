@@ -12,11 +12,9 @@ previous:
 
 ## Preliminaries
 
-<blockquote>
-  <div>
-    "<i>The simplest thing that can happen in the physical universe is nothing. The next simplest thing, which doesn't get too far away from nothing, is an oscillation about nothing.</i> [...] <i>When many oscillators are put together, you get waves.</i>" <br/> &#151; Matthew Schwartz, <a href="https://scholar.harvard.edu/files/schwartz/files/lecture1-oscillators-and-linearity.pdf">Lecture 1: Simple Harmonic Oscillators</a>
-    </div>
-</blockquote>
+<blockquote><div>
+    "<i>The simplest thing that can happen in the physical universe is nothing. The next simplest thing, which doesn't get too far away from nothing, is an oscillation about nothing.</i> [...] <i>When many oscillators are put together, you get waves.</i>" <p style="margin-bottom:0.1cm;"></p> &#151;Matthew Schwartz, <a href="https://scholar.harvard.edu/files/schwartz/files/lecture1-oscillators-and-linearity.pdf">Lecture 1: Simple Harmonic Oscillators</a>
+</div></blockquote>
 
 Before we begin, let's setup a running example of the simple harmonic oscillator: consider the one-dimensional (horizontal) movement of a mass, attached to a wall with a spring as shown below:
 
@@ -61,8 +59,6 @@ Hence, we note that $$x(t)$$ goes back to itself after $$t \rightarrow t + T$$, 
 ## State-space models
 
 ---
-
-## Footnotes
 
 [^1]: Let's say that we displace a system, a distance $$x$$ from the equillibrium position ($$x = 0$$) and measure the restoring force as a function $$F(x)$$. By definition, $$F(0) = 0$$, i.e., no restoring force at equillibrium. Now, using [Taylor's remainder theorem](https://people.clas.ufl.edu/kees/files/TaylorRemainderProof.pdf), we have: $$F(x) = F(0) + xF'(0) + \frac{F''(\xi)}{2} x^2 $$ where, $$0 \leq \xi \leq x$$. For really small displacements, we can ignore higher-order terms, and therefore, $$F(x) = -kx$$ with $$k = -F'(0)$$. Note that systems obeying Hook's law are linear, i.e., close to equillibrium ($$x$$ is sufficiently small!).
 
