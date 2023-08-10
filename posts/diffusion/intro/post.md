@@ -58,7 +58,7 @@ A nice property of the forward process us that any $$x_t$$ can be sampled for so
 $$\begin{align*}
 x_t = q(x_t | x_0) = \prod_{t=1}^T q(x_t | x_{t-1}) &= \prod_{t=1}^T \color{red}{x_{t-1}} \sqrt{\alpha_t} + \varepsilon_t\sqrt{1 - \alpha_t} \\
 &= \prod_{t=2}^T \color{red}{\left(\color{blue}{x_{t-2}} \sqrt{\alpha_{t-1}} + \varepsilon_{t-1}\sqrt{1 - \alpha_{t-1}} \right)} \sqrt{\alpha_t} + \varepsilon_t \sqrt{1 - \alpha_t} \\
-&= \prod_{t=2}^T \color{blue}{x_{t-2}} \sqrt{\alpha_t\alpha_{t-1}} + \underbrac{\varepsilon_{t-1} \sqrt{\alpha_t - \alpha_t\alpha_{t-1}}}_{\mathcal{N}(0, \alpha_t - \alpha_t\alpha_{t-1})} + \underbrac{\varepsilon_{t} \sqrt{1 - \alpha_t}}_{\mathcal{N}(0, 1 - \alpha_t)} \\
+&= \prod_{t=2}^T \color{blue}{x_{t-2}} \sqrt{\alpha_t\alpha_{t-1}} + \underbrace{\varepsilon_{t-1} \sqrt{\alpha_t - \alpha_t\alpha_{t-1}}}_{\mathcal{N}(0, \alpha_t - \alpha_t\alpha_{t-1})} + \underbrace{\varepsilon_{t} \sqrt{1 - \alpha_t}}_{\mathcal{N}(0, 1 - \alpha_t)} \\
 &= \prod_{t=2}^T \color{blue}{x_{t-2}} \sqrt{\alpha_t\alpha_{t-1}} + \varepsilon \sqrt{1 - \alpha_t\alpha_{t-1}} \\
 &\hphantom{=~} \vdots \\
 &= x_0 \sqrt{\bar{\alpha}_t} + \varepsilon \sqrt{1 - \bar{\alpha}_t}
