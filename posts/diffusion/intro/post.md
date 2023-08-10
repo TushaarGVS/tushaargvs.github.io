@@ -79,7 +79,7 @@ x_t = q(x_t | x_0) = \prod_{t=1}^T q(x_t | x_{t-1}) &= \prod_{t=1}^T x_{t-1} \sq
 \end{align*}
 $$
 
-Hence, $$q(x_t x_0) = \mathcal{N}(x_t; x_0 \sqrt{\bar{\alpha}_t}, (1 - \bar{\alpha}_t) \mathrm{I})$$.
+Hence, $$q(x_t \vert x_0) = \mathcal{N}(x_t; x_0 \sqrt{\bar{\alpha}_t}, (1 - \bar{\alpha}_t) \mathrm{I})$$.
 
 #### Implementation
 
@@ -98,13 +98,29 @@ From above, we note that the forward diffusion process relies on a variance sche
 def linear_beta_schedule(num_timesteps, beta_1=0.0001, beta_T=0.02):
 	return torch.linspace(beta_1, beta_T, num_timesteps)
 ```
-{% endtab %}
 
+{% endtab %}
 {% tab diff_fwd quadratic %}
 
 ```python
 
 ```
+
+{% endtab %}
+{% tab diff_fwd cosine %}
+
+```python
+
+```
+
+{% endtab %}
+
+{% tab diff_fwd sigmoid %}
+
+```python
+
+```
+
 {% endtab %}
 {% endtabs %}
 
@@ -124,7 +140,7 @@ def populate_forward_samples(beta_scheduler=linear_beta_schedule, num_timesteps=
 	                       (math.sqrt(beta_t) * torch.randn_like(img_tensor_prev)))
 	return img_tensors
 
-img_tensors = populate_forward_samples(beta_scheduler =linear_beta_schedule, num_timesteps=100)
+linear_img_tensors = populate_forward_samples(beta_scheduler =linear_beta_schedule, num_timesteps=100)
 ```
 
 Let's visualize the forward process noise addition using a linear variance schedule (defined in the above code block) at $$20$$ different timesteps spread evenly across the total of $$T = 100$$ timesteps [= $$t = \{0, 5, 10, \dotsc, 100\}$$]: 
@@ -140,7 +156,7 @@ def plot_img_grid(img_tensors, ncols=20):
 	    grid.paste(_img, box=((idx % ncols) * width, (idx // ncols) * height))
 	return grid
 
-plot_img_grid(img_tensors, ncols=20)
+plot_img_grid(linear_img_tensors, ncols=20)
 ```
 <img src="./imgs/code_linear_schedule_out.png">
 
