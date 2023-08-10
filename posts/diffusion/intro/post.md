@@ -55,7 +55,7 @@ The process of incrementally adding Gaussian noise at each timestep is referred 
 
 $$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \mu = x_{t-1}\sqrt{1-\beta_t}, \sigma^2 = \beta_t \mathrm{I})$$
 
-where $$\beta_t \in (0, 1)$$ is the variance schedule, and usually $$\beta_1 < \beta_2 < \cdots < \beta_T$$ [= it's okay to take larger steps as the input gets noisier]; the variance schedule (as we will see later) can be linear, quadratic, cosine, etc. Given a well-behaved variance schedule, the forward process results in an isotropic Gaussian distribution [= variance in each dimension of the multivariate Gaussian is the same; $$\Sigma = \sigma^2\mathrm{I}$$] at $$T = \infty$$. 
+where $$\beta_t \in (0, 1)$$ is the variance schedule, and usually $$\beta_1 < \beta_2 < \cdots < \beta_T$$ [= it's okay to take larger steps as the input gets noisier]; the variance schedule (as we will see later) can be linear, quadratic, cosine, etc. Given a well-behaved variance schedule, the forward process results in an <a href="https://math.stackexchange.com/a/2137851">isotropic Gaussian distribution [= variance in each dimension of the multivariate Gaussian is the same; $$\Sigma = \sigma^2\mathrm{I}$$]</a> at $$T = \infty$$. 
 
 Simply put, the forward process is essentially drawing (slightly noisier) samples (at each timestep) from a *conditional* Gaussian with mean $$x_{t-1}\sqrt{1-\beta_t}$$ and variance $$ \beta_t \mathrm{I}$$. For some $$\varepsilon \sim \mathcal{N}(0, 1)$$, the above can also be written as (following the properties of a standard normal distribution): 
 
@@ -105,7 +105,7 @@ def linear_beta_schedule(num_timesteps, beta_1=0.0001, beta_T=0.02):
 Let's generate forward process samples using the linear variance schedule for a total of $$T = 100$$ timesteps, starting with $$\beta_1 = 0.0001$$ and ending at $$\beta_{100} = 0.02$$. Note that the noise is added to PyTorch tensors, as opposed to Pillow images; to go from Pillow images to PyTorch tensors, we perform the following transformations: (1) normalize images by dividing by $$255$$ so that the images are in $$[0, 1]$$ range, and (2) ensure that the images are in $$[-1, 1]$$ range following the DDPM paper:
 
 <blockquote> 
-"<i>We assume that image data consists of integers in {0, 1, ..., 255} scaled linearly to [-1, 1]. This ensures that the neural network reverse process operates on consistently scaled inputs starting from the standard normal prior p(x<sub>T</sub>).</i>"
+"<i>We assume that image data consists of integers in {0, 1, ..., 255} <a href="https://datascience.stackexchange.com/a/54383">scaled linearly to [-1, 1]</a>. This ensures that the neural network reverse process operates on consistently scaled inputs starting from the standard normal prior p(x<sub>T</sub>).</i>"
 </blockquote>
 
 ```python
