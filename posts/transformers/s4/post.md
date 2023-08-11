@@ -116,10 +116,9 @@ for t in range(0, len(t_vals), 1):
     axs[2].add_patch(mass)
     axs[2].set(yticks=[])
     camera.snap()
-
 plt.tight_layout()
 animation = camera.animate()
-animation.save("imgs/shm.gif", dpi=200, writer="imagemagick")
+animation.save("imgs/simple-harmonic-motion.gif", dpi=200, writer="imagemagick")
 ```
 
 <img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="800" data-align="center">
@@ -162,10 +161,6 @@ x(t) = c_1 \exp(j \omega_0 t) + c_2 \exp(-j \omega_0 t)
 $$
 
 Using ($3$) and ($4$), we get:
-
-$$
-x(t) = c \cos(\omega_0 t)
-$$
 
 
 
