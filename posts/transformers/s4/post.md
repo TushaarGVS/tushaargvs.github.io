@@ -67,8 +67,6 @@ $$
 
 Let's graph the general solution to the SHM ODE shown in ($1$):
 
-
-
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
@@ -117,7 +115,7 @@ animation = camera.animate()
 animation.save("imgs/shm.gif", dpi=200, writer="imagemagick")
 ```
 
-<img src='./imgs/simple-harmonic-motion.gif'>
+<img src='./imgs/simple-harmonic-motion.gif' width=900>
 
 #### Using Fourier transform to model SHM
 
