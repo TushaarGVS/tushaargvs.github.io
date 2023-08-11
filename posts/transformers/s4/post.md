@@ -67,7 +67,10 @@ $$
 
 Let's graph the general solution to the SHM ODE shown in ($1$):
 
+
+
 ```python
+import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -87,29 +90,33 @@ def x(t, x0=0, v0=1):
     return ((v0 / w0) * np.sin(w0 * t)) + (x0 * np.cos(w0 * t))
 
 
-t_vals = np.linspace(0, 50, 100)  # timesteps
-x_vals = x(t_vals)  # displacement: x(t)
-f_vals = -k * x_vals  # restoring force: -kx(t)
-
 sns.set_context("paper")
 fig, axs = plt.subplots(3, figsize=(8, 4))
 camera = Camera(fig)
 axs[0].set(xlabel=r"$t \longrightarrow$", ylabel=r"$x(t) \longrightarrow$")
 axs[1].set(xlabel=r"$t \longrightarrow$", ylabel=r"$-kx(t) \longrightarrow$")
-axs[2].set(xlabel=r"$x \longrightarrow$", ylabel=r"trajectory")
-for t in range(0, len(t_vals), 2):
+axs[2].set(xlabel=r"$x \longrightarrow$")
+axs[2].set(xlim=(-6, 6), ylim=(-1, 1.2))
+
+t_vals = np.linspace(0, 50, 100)  # timesteps
+x_vals = x(t_vals)  # displacement: x(t)
+f_vals = -k * x_vals  # restoring force: -kx(t)
+for t in range(0, len(t_vals), 1):
     axs[0].plot(t_vals[:t], x_vals[:t], color="red")
     axs[1].plot(t_vals[:t], f_vals[:t], color="blue")
-    axs[2].boxplot(
-        [[x_vals[t] - 1, x_vals[t], x_vals[t] + 1]],
-        showcaps=False,
-        whis=False,
-        vert=False,
-        widths=10,
+
+    # Spring: https://stackoverflow.com/a/65481246.
+    spring_x = np.linspace(-6, x_vals[t], 240)
+    spring_y = 0.15 * np.sin((spring_x + 6) * (2 * np.pi) * 15 / (x_vals[t] + 6))
+    mass = patches.Rectangle(
+        (x_vals[t] - 0.5, -0.9), 1, 2, linewidth=1, edgecolor="black", facecolor="white"
     )
-    axs[2].axvline(x=0.0, color="black", linestyle="dashed")
+    axs[2].plot(spring_x, spring_y[::-1], color="black")
+    axs[2].axvline(x=0.0, color="orange", linestyle="dashed")
+    axs[2].add_patch(mass)
     axs[2].set(yticks=[])
     camera.snap()
+
 plt.tight_layout()
 animation = camera.animate()
 animation.save("imgs/shm.gif", dpi=200, writer="imagemagick")
