@@ -67,8 +67,6 @@ $$
 
 Let's graph the general solution to the SHM ODE shown in ($1$):
 
-
-
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
@@ -89,12 +87,11 @@ def x(t, x0=0, v0=1):
 
 
 sns.set_context("paper")
-fig, axs = plt.subplots(3, figsize=(10, 5.5))
+fig, axs = plt.subplots(3, figsize=(8, 4))
 camera = Camera(fig)
-axs[0].set(xlabel=r"$t \longrightarrow$", ylabel=r"position $x(t) \longrightarrow$")
-axs[1].set(xlabel=r"$t \longrightarrow$", ylabel=r"restoration force $kx(t) \longrightarrow$")
-axs[2].set(xlabel=r"$x \longrightarrow$", ylabel=r"mass trajectory")
-axs[2].set_yticks([])
+axs[0].set(xlabel=r"$t \longrightarrow$", ylabel=r"$x(t) \longrightarrow$")
+axs[1].set(xlabel=r"$t \longrightarrow$", ylabel=r"$-kx(t) \longrightarrow$")
+axs[2].set(xlabel=r"$x \longrightarrow$", ylabel=r"trajectory")
 
 t_vals = np.linspace(0, 50, 100)
 x_vals = x(t_vals)
@@ -110,6 +107,7 @@ for t in range(0, len(t_vals), 2):
         widths=10,
     )
     axs[2].axvline(x=0.0, color="black", linestyle="dashed")
+    axs[2].set(yticks=[])
     camera.snap()
 
 plt.tight_layout()
