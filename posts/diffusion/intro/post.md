@@ -59,8 +59,6 @@ $$
 q(x_t | x_{t-1}) = \mathcal{N}(x_t; \mu = x_{t-1}\sqrt{1-\beta_t}, \sigma^2 = \beta_t \mathrm{I})
 $$
 
-
-
 where $\beta_t \in (0, 1)$ is the variance schedule, and usually $\beta_1 < \beta_2 < \cdots < \beta_T$ [= it's okay to take larger steps as the input gets noisier]; the variance schedule (as we will see later) can be linear, quadratic, cosine, etc. Given a well-behaved variance schedule, the forward process results in an <a href="https://math.stackexchange.com/a/2137851">isotropic Gaussian distribution [= variance in each dimension of the multivariate Gaussian is the same; $\Sigma = \sigma^2\mathrm{I}$]</a> at $T = \infty$. 
 
 Simply put, the forward process is essentially drawing (slightly noisier) samples (at each timestep) from a *conditional* Gaussian with mean $x_{t-1}\sqrt{1-\beta_t}$ and variance $\beta_t \mathrm{I}$. For some $\varepsilon \sim \mathcal{N}(0, 1)$, the above can also be written as (following the properties of a standard normal distribution): 
@@ -74,8 +72,6 @@ The forward process is a simple Markov chain, where the distribution at a partic
 $$
 q(x_{1:T} | x_0) = \prod_{t=1}^T q(x_t | x_{t-1})
 $$
-
-
 
 A nice property of the forward process us that any $x_t$ can be sampled for some arbitrary timestep $t$ in a closed form as follows; let $\alpha_t = 1 - \beta_t$ and $\bar{\alpha}_t = \prod_{s=1}^T \alpha_s$:
 
