@@ -82,7 +82,7 @@ m = 250  # mass
 
 
 def x(t, x0=0, v0=1):
-    """compute x(t) at a given t; parameterized by x(0) and x'(0)."""
+    """Compute x(t) at a given t; parameterized by x(0) and x'(0)."""
     w0 = np.sqrt(k / m)
     return ((v0 / w0) * np.sin(w0 * t)) + (x0 * np.cos(w0 * t))
 
@@ -115,9 +115,52 @@ animation = camera.animate()
 animation.save("imgs/shm.gif", dpi=200, writer="imagemagick")
 ```
 
-<img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="900" data-align="center">
+<img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="800" data-align="center">
+
+Notice the wavelike pattern $x(t)$ followed by the mass. Hence, a simple harmonic oscillator follows a wave-like pattern (in the absence any other forces, external or otherwise).
 
 #### Using Fourier transform to model SHM
+
+Before proceeding, let's recall the Euler's identity: $\exp(j\omega t) = \cos(\omega t) + j \sin(\omega t)$, and note that:
+
+$$
+\cos(\omega t) = \frac{\exp(j\omega t) + \exp(-j \omega t)}{2};\qquad \sin(\omega t) = \frac{\exp(j \omega t) - \exp(-j \omega t)}{2j} \tag{3}
+$$
+
+The SHM ODE in ($1$) indicates that $\ddot{x}(t) \propto x(t)$; we noted in the previous section that sines and cosines satisfy the property of the second (or even numbers of) derivatives being proportional to themselves, i.e.,
+
+$$
+\frac{d^2}{dt^2}a\sin(\omega t) = -a\omega^2 \sin(\omega t); \qquad \frac{d^2}{dt^2}b\cos(\omega t) = -b\omega^2 \cos(\omega t)
+$$
+
+Apart from sines and cosines, the exponential function has all its derivatives proportional to itself:
+
+$$
+\frac{d}{dt} c\exp(\omega t) = c\omega\exp(\omega t); \qquad \frac{d^2}{dt^2} c\exp(\omega t) = c\omega^2 \exp(\omega t)
+$$
+
+Let's try this ansatz, i.e., $x(t) = c\exp(\omega t)$, into our SHM ODE in ($1$):
+
+$$
+\begin{align*}
+\ddot{x}(t) + \omega_0^2 x(t) &= 0 \\
+c\omega^2\exp(\omega t) + c \omega_0^2 \exp(\omega t) &= 0 \tag{4}
+\end{align*}
+$$
+
+Note that ($4$) implies that $\omega^2 = -\omega_0^2$ or $\omega = \pm\sqrt{-1} \omega_0 = \pm j \omega_0$. Hence the solutions to the ODE are:
+
+$$
+x(t) = c_1 \exp(j \omega_0 t) + c_2 \exp(-j \omega_0 t)
+$$
+
+Using ($3$) and ($4$), we get:
+
+$$
+x(t) = c \cos(\omega_0 t)
+$$
+
+
 
 ### Laplace transform
 
@@ -127,4 +170,4 @@ animation.save("imgs/shm.gif", dpi=200, writer="imagemagick")
 
 ---
 
-[^1]: Let's say that we displace a system, a distance $x$ from the equilibrium position ($x = 0$) and measure the restoring force as a function $F(x)$. By definition, $F(0) = 0$, i.e., no restoring force at equilibrium. Now, using [Taylor's remainder theorem](https://people.clas.ufl.edu/kees/files/TaylorRemainderProof.pdf), we have: $F(x) = F(0) + xF'(0) + \frac{F''(\xi)}{2} x^2$ where, $0 \leq \xi \leq x$. For really small displacements, we can ignore higher-order terms, and therefore, $F(x) = -kx$ with $k = -F'(0)$. Note that systems obeying Hook's law are linear, i.e., close to equilibrium ($x$ is sufficiently small!).
+[^1]: Let's say that we displace a system, a distance $x$ from the equilibrium position ($x = 0$) and measure the restoring force as a function $F(x)$. By definition, $F(0) = 0$, i.e., no restoring force at equilibrium. Now, using [Taylor's remainder theorem](https://people.clas.ufl.edu/kees/files/TaylorRemainderProof.pdf), we have: $F(x) = F(0) + xF'(0) + \frac{F''(\xi)}{2} x^2$ where, $0 \leq \xi \leq x$. For really small displacements, we can ignore higher-order terms, and therefore, $F(x) = -kx$ with $k = -F'(0)$. Note that systems obeying Hook's law are linear, i.e., when mass is close to the equilibrium position ($x$ is sufficiently small!).
