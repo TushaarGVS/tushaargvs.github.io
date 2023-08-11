@@ -90,33 +90,35 @@ From above, we note that the forward diffusion process relies on a variance sche
 <i>We set the forward process variances to constants increasing linearly from \(\beta_1 = 10^{-4}\) to \(\beta_T = 0.02\).</i>
 </div></blockquote>
 
-
-
 {% tabs diff_fwd %}
 {% tab diff_fwd linear %}
 
 ```python
 def linear_beta_schedule(num_timesteps, beta_1=0.0001, beta_T=0.02):
-	return torch.linspace(beta_1, beta_T, num_timesteps)
+    return torch.linspace(beta_1, beta_T, num_timesteps)
 ```
+
 {% endtab %}
 {% tab diff_fwd quadratic %}
 
 ```python
 
 ```
+
 {% endtab %}
 {% tab diff_fwd cosine %}
 
 ```python
 
 ```
+
 {% endtab %}
 {% tab diff_fwd sigmoid %}
 
 ```python
 
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -126,16 +128,15 @@ Let's generate forward process samples using the linear variance schedule for a 
 <i>We assume that image data consists of integers in \(\{0, 1, ..., 255\}\) <a href="https://datascience.stackexchange.com/a/54383">scaled linearly to \([-1, 1]\)</a>. This ensures that the neural network reverse process operates on consistently scaled inputs starting from the standard normal prior \(p(x_T)\).</i>
 </div></blockquote>
 
-
 ```python
 def populate_forward_samples(beta_scheduler=linear_beta_schedule, num_timesteps=100, beta_1=0.0001, beta_T=0.02):
-	betas = beta_scheduler(num_timesteps=100)
-	img_tensors = [TF.to_tensor(img) * 2 - 1]  # the original image
-	for beta_t in betas:
-	    img_tensor_prev = img_tensors[-1]
-	    img_tensors.append((img_tensor_prev * math.sqrt(1 - beta_t)) + 
-	                       (math.sqrt(beta_t) * torch.randn_like(img_tensor_prev)))
-	return img_tensors
+    betas = beta_scheduler(num_timesteps=100)
+    img_tensors = [TF.to_tensor(img) * 2 - 1]  # the original image
+    for beta_t in betas:
+        img_tensor_prev = img_tensors[-1]
+        img_tensors.append((img_tensor_prev * math.sqrt(1 - beta_t)) + 
+                           (math.sqrt(beta_t) * torch.randn_like(img_tensor_prev)))
+    return img_tensors
 
 linear_img_tensors = populate_forward_samples(beta_scheduler =linear_beta_schedule, num_timesteps=100)
 ```
@@ -144,17 +145,18 @@ Let's visualize the forward process noise addition using a linear variance sched
 
 ```python
 def plot_img_grid(img_tensors, ncols=20):
-	ncols, nrows = ncols, 1
-	width, height = img.size
-	grid = Image.new('RGB', size=(ncols * width, nrows * height))
-	for idx in range(0, len(img_tensors), len(img_tensors) // ncols):
-	    _img = TF.to_pil_image((img_tensors[idx] + 1) / 2)
-	    idx = int(idx / (len(img_tensors) // ncols))
-	    grid.paste(_img, box=((idx % ncols) * width, (idx // ncols) * height))
-	return grid
+    ncols, nrows = ncols, 1
+    width, height = img.size
+    grid = Image.new('RGB', size=(ncols * width, nrows * height))
+    for idx in range(0, len(img_tensors), len(img_tensors) // ncols):
+        _img = TF.to_pil_image((img_tensors[idx] + 1) / 2)
+        idx = int(idx / (len(img_tensors) // ncols))
+        grid.paste(_img, box=((idx % ncols) * width, (idx // ncols) * height))
+    return grid
 
 plot_img_grid(linear_img_tensors, ncols=20)
 ```
+
 <img src="./imgs/code_linear_schedule_out.png">
 
 ### Parameterized reverse process
