@@ -627,7 +627,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .navbar-inner:after{clear:both;}
 .navbar .container{width:auto;}
 .nav-collapse.collapse{height:auto;overflow:visible;}
-.navbar .brand{float:left;display:block;padding:10px 20px 10px;margin-left:-20px;font-size:20px;font-weight:200;color:#D6D6D6;text-shadow:none;}.navbar .brand:hover{color:#FFFFFF; background-color:#424242;}
+.navbar .brand{float:left;display:block;padding:10px 20px 10px;margin-left:-20px;font-size:11.5pt;font-weight:200;color:#D6D6D6;text-shadow:none;}.navbar .brand:hover{color:#FFFFFF; background-color:#424242;}
 .navbar-text{margin-bottom:0;line-height:40px;color:#EBEBEB;}
 .navbar-link{color:#FFFFFF;}.navbar-link:hover{color:#FFFFFF;}
 .navbar .divider-vertical{height:40px;margin:0 9px;border-left:1px solid #f2f2f2;border-right:1px solid #ffffff;}
