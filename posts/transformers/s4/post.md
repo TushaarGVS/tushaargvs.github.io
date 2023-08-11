@@ -67,6 +67,8 @@ $$
 
 Let's graph the general solution to the SHM ODE shown in ($1$):
 
+
+
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
@@ -77,14 +79,19 @@ plt.rcParams.update({"font.size": 8})
 plt.rcParams["text.usetex"] = True
 
 
-k = 10
-m = 250
+k = 10  # spring constant
+m = 250  # mass
 
 
 def x(t, x0=0, v0=1):
+    """compute x(t) at a given t; parameterized by x(0) and x'(0)."""
     w0 = np.sqrt(k / m)
     return ((v0 / w0) * np.sin(w0 * t)) + (x0 * np.cos(w0 * t))
 
+
+t_vals = np.linspace(0, 50, 100)  # timesteps
+x_vals = x(t_vals)  # displacement: x(t)
+f_vals = -k * x_vals  # restoring force: -kx(t)
 
 sns.set_context("paper")
 fig, axs = plt.subplots(3, figsize=(8, 4))
@@ -92,10 +99,6 @@ camera = Camera(fig)
 axs[0].set(xlabel=r"$t \longrightarrow$", ylabel=r"$x(t) \longrightarrow$")
 axs[1].set(xlabel=r"$t \longrightarrow$", ylabel=r"$-kx(t) \longrightarrow$")
 axs[2].set(xlabel=r"$x \longrightarrow$", ylabel=r"trajectory")
-
-t_vals = np.linspace(0, 50, 100)
-x_vals = x(t_vals)
-f_vals = -k * x_vals
 for t in range(0, len(t_vals), 2):
     axs[0].plot(t_vals[:t], x_vals[:t], color="red")
     axs[1].plot(t_vals[:t], f_vals[:t], color="blue")
@@ -109,7 +112,6 @@ for t in range(0, len(t_vals), 2):
     axs[2].axvline(x=0.0, color="black", linestyle="dashed")
     axs[2].set(yticks=[])
     camera.snap()
-
 plt.tight_layout()
 animation = camera.animate()
 animation.save("imgs/shm.gif", dpi=200, writer="imagemagick")
