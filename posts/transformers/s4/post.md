@@ -18,7 +18,7 @@ previous:
 
 Before we begin, let's setup a running example of the simple harmonic oscillator: consider the one-dimensional (horizontal) movement of a mass, attached to a wall with a spring as shown below:
 
-<img src="./imgs/mass-on-spring.png" width=400>
+<img title="" src="./imgs/mass-on-spring.png" alt="" width="400" data-align="center">
 
 Note that the gravitational force doesn't affect the above mass-spring system. Finally, let's assume that the equilibrium position of the mass, say $x$, is at $x = 0$, with positive displacement values corresponding to a stretched string.
 
@@ -115,7 +115,7 @@ animation = camera.animate()
 animation.save("imgs/shm.gif", dpi=200, writer="imagemagick")
 ```
 
-<img src='./imgs/simple-harmonic-motion.gif' width=900>
+<img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="900" data-align="center">
 
 #### Using Fourier transform to model SHM
 
