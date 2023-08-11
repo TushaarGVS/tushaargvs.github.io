@@ -18,7 +18,7 @@ previous:
 
 Before we begin, let's setup a running example of the simple harmonic oscillator: consider the one-dimensional (horizontal) movement of a mass, attached to a wall with a spring as shown below:
 
-<img src="./imgs/mass-on-spring.png" width=250>
+<img src="./imgs/mass-on-spring.png" width=400>
 
 Note that the gravitational force doesn't affect the above mass-spring system. Finally, let's assume that the equilibrium position of the mass, say $x$, is at $x = 0$, with positive displacement values corresponding to a stretched string.
 
@@ -28,7 +28,7 @@ Note that the gravitational force doesn't affect the above mass-spring system. F
 
 In the above mass-spring system, when the system is displaced from its equilibrium position, the elasticity of the spring would provide a restoring force to restore the mass to equilibrium. From Newton's first law of motion, we know that inertia causes the system to overshoot this equilibrium. This constant play between inertial and elastic properties causes the mass to oscillate.
 
-Assuming no other forces act on the system (external or otherwise (e.g., air resistance)), the spring constant $k$ provides the elastic restoration force $F(x) = -kx$ (following the Hooke's law, which is a first-order Taylor approximation of the restoring force[^1]), while the inertia of mass $m$ provides the overshoot. From Newton's second law of motion, we have $F = m\ddot{x}$, which gives us the following second-order ODE:
+Assuming no other forces act on the system (external or otherwise (e.g., air resistance)), the spring constant $k$ provides the elastic restoration force $F(x) = -kx$ (following the Hooke's law, which is a first-order Taylor approximation of the restoring force[^1]), while the inertia of mass $m$ provides the overshoot. From Newton's second law of motion, we have $F = m\ddot{x}$, which gives us the following second-order ordinary differential equation (ODE):
 
 $$
 -kx = m\ddot{x} \Rightarrow \ddot{x}(t) + \underbrace{\omega_0^2}_{k/m} x(t) = 0
@@ -65,7 +65,59 @@ $$
 x(t) = \frac{\dot{x}(0)}{\omega_0}\sin(\omega_0 t) + x(0) \cos(\omega_0 t)
 $$
 
+Let's graph the general solution to the SHM ODE shown in ($1$):
 
+
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+from celluloid import Camera
+
+plt.rcParams.update({"font.size": 8})
+plt.rcParams["text.usetex"] = True
+
+
+k = 10
+m = 250
+
+
+def x(t, x0=0, v0=1):
+    w0 = np.sqrt(k / m)
+    return ((v0 / w0) * np.sin(w0 * t)) + (x0 * np.cos(w0 * t))
+
+
+sns.set_context("paper")
+fig, axs = plt.subplots(3, figsize=(10, 5.5))
+camera = Camera(fig)
+axs[0].set(xlabel=r"$t \longrightarrow$", ylabel=r"position $x(t) \longrightarrow$")
+axs[1].set(xlabel=r"$t \longrightarrow$", ylabel=r"restoration force $kx(t) \longrightarrow$")
+axs[2].set(xlabel=r"$x \longrightarrow$", ylabel=r"mass trajectory")
+axs[2].set_yticks([])
+
+t_vals = np.linspace(0, 50, 100)
+x_vals = x(t_vals)
+f_vals = -k * x_vals
+for t in range(0, len(t_vals), 2):
+    axs[0].plot(t_vals[:t], x_vals[:t], color="red")
+    axs[1].plot(t_vals[:t], f_vals[:t], color="blue")
+    axs[2].boxplot(
+        [[x_vals[t] - 1, x_vals[t], x_vals[t] + 1]],
+        showcaps=False,
+        whis=False,
+        vert=False,
+        widths=10,
+    )
+    axs[2].axvline(x=0.0, color="black", linestyle="dashed")
+    camera.snap()
+
+plt.tight_layout()
+animation = camera.animate()
+animation.save("imgs/shm.gif", dpi=200, writer="imagemagick")
+```
+
+<img src='./imgs/simple-harmonic-motion.gif'>
 
 #### Using Fourier transform to model SHM
 
