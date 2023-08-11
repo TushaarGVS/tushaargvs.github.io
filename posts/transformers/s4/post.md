@@ -67,8 +67,6 @@ $$
 
 Let's graph the general solution to the SHM ODE shown in ($1$):
 
-
-
 ```python
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
@@ -108,10 +106,8 @@ for t in range(0, len(t_vals), 1):
     # Spring: https://stackoverflow.com/a/65481246.
     spring_x = np.linspace(-6, x_vals[t], 240)
     spring_y = 0.15 * np.sin((spring_x + 6) * (2 * np.pi) * 15 / (x_vals[t] + 6))
-    mass = patches.Rectangle(
-        (x_vals[t] - 0.5, -0.9), 1, 2, linewidth=1, edgecolor="black", facecolor="white"
-    )
-    axs[2].plot(spring_x, spring_y[::-1], color="black")
+    mass = patches.Rectangle((x_vals[t] - 0.5, -0.9), 1, 2, lw=1, edgecolor="black", facecolor="none")
+    axs[2].plot(spring_x, spring_y, color="black")
     axs[2].axvline(x=0.0, color="orange", linestyle="dashed")
     axs[2].add_patch(mass)
     axs[2].set(yticks=[])
@@ -161,8 +157,6 @@ x(t) = c_1 \exp(j \omega_0 t) + c_2 \exp(-j \omega_0 t)
 $$
 
 Using ($3$) and ($4$), we get:
-
-
 
 ### Laplace transform
 
