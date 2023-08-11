@@ -8,9 +8,10 @@ highlighter: rouge
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : tushaar gangavarapu
+title : Tushaar Gangavarapu
+description: Tushaar's personal website
 author :
-  name : tushaar gangavarapu
+  name : Tushaar Gangavarapu
   email : tg352@cornell.edu
   github : TushaarGVS
   twitter : tushrgangarapu
@@ -30,6 +31,7 @@ kramdown:
 
 plugins:
   - jekyll-tabs
+  - jekyll-feed
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
