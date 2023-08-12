@@ -78,7 +78,7 @@ plt.rcParams["text.usetex"] = True
 
 
 k = 10  # spring constant
-m = 250  # mass
+m = 90  # mass
 
 
 def x(t, x0=0, v0=1):
@@ -89,38 +89,48 @@ def x(t, x0=0, v0=1):
 
 # Setup fig, axes for animation.
 gridspec = dict(hspace=0.0, height_ratios=[1, 0.7, 1, 1])
-fig, (ax1, ax2, ax3, ax4) = plt.subplots(nrows=4, figsize=(8, 3.5), gridspec_kw=gridspec)
+fig, (ax1, ax2, ax3, ax4) = plt.subplots(nrows=4, figsize=(5, 3.5), gridspec_kw=gridspec)
 ax2.set_visible(False)
 camera = Camera(fig)
 ax1.set(xlabel=r"$x \longrightarrow$")
-ax1.set(xlim=(-6, 6), ylim=(-1, 1))
+ax1.set(xlim=(-5, 5), ylim=(-0.5, 0.7))
 ax1.spines["right"].set_visible(False)
 ax1.spines["top"].set_visible(False)
-ax3.set(ylabel=r"$x(t) \longrightarrow$", xticks=[], yticks=[-4, 0, 4], xlim=(0, 15 * np.pi))
-ax3.yaxis.set_label_coords(-0.05, 0.5)
+ax3.set(ylabel=r"$x(t) \longrightarrow$", xticks=[], yticks=[-2, 0, 2], xlim=(0, 15 * np.pi))
+ax3.yaxis.set_label_coords(-0.1, 0.5)
 ax4.set(
     xlabel=r"$t \longrightarrow$",
     ylabel=r"$-kx(t) \longrightarrow$",
-    yticks=[-40, 0, 40],
+    yticks=[-20, 0, 20],
     xlim=(0, 15 * np.pi),
     xticks=np.arange(0, 16 * np.pi, np.pi),
     xticklabels=([0] + [f"{n}$\pi$" for n in range(1, 16)]),
 )
-ax4.yaxis.set_label_coords(-0.05, 0.5)
+ax4.yaxis.set_label_coords(-0.1, 0.5)
 
 t_vals = np.linspace(0, 15 * np.pi, 100)  # timesteps
 x_vals = x(t_vals)  # displacement: x(t)
 f_vals = -k * x_vals  # restoring force: -kx(t)
 for t in range(0, len(t_vals), 1):
     # Spring: https://stackoverflow.com/a/65481246.
-    spring_x = np.linspace(-6, x_vals[t] - 0.5, 240)
-    spring_y = 0.15 * np.sin((spring_x + 6) * (2 * np.pi) * 15 / (x_vals[t] + 5.5))
-    mass = patches.Rectangle((x_vals[t] - 0.5, -0.98), 1, 1.8, lw=1, edgecolor="black", facecolor="white")
+    spring_x = np.linspace(-4.6, x_vals[t] - 0.4 - 0.5, 240)
+    spring_y = 0.15 * np.sin((spring_x + 4.6) * (2 * np.pi) * 15 / (x_vals[t] + 4.6 - 0.4 - 0.5))
+    mass = patches.Rectangle((x_vals[t] - 0.5, -0.48), 1, 1, lw=1, edgecolor="black", facecolor="white")
+    ax1.plot([-5, -4.6], [0, 0], color="black")
+    ax1.plot([x_vals[t] - 0.4 - 0.5, x_vals[t] - 0.5], [0, 0], color="black")
     ax1.plot(spring_x, spring_y, color="black")
-    ax1.axvline(x=0.0, color="orange", linestyle="dashed", zorder=-1)
+    ax1.axvline(x=0.0, color="green", linestyle="dashed", zorder=-1)
+    ax1.axvline(x=-3.0, color="red", linestyle="dashed", zorder=-1)
+    ax1.axvline(x=3.0, color="red", linestyle="dashed", zorder=-1)
     ax1.add_patch(mass)
     ax1.set(yticks=[])
-
+    if x_vals[t] < 0:
+        ax1.text(0.03, 1, r"$\leftarrow m\ddot{x}(t)$", ha='left', va='top', transform=ax1.transAxes)
+        ax1.text(0.03, 0.8, r"$kx(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+    elif x_vals[t] > 0:
+        ax1.text(0.03, 1, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+        ax1.text(0.03, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
+    # Plot displacement and restoring force.
     ax3.plot(t_vals[:t], x_vals[:t], color="red")
     ax3.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
     ax4.plot(t_vals[:t], f_vals[:t], color="blue")
@@ -131,7 +141,7 @@ animation = camera.animate()
 animation.save("imgs/simple-harmonic-motion.gif", dpi=200, writer="imagemagick")
 ```
 
-<img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="800" data-align="center">
+<img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="500" data-align="center">
 
 Notice the wavelike pattern $x(t)$ followed by the mass. Hence, a simple harmonic oscillator follows a wave-like pattern (in the absence any other forces, external or otherwise).
 
