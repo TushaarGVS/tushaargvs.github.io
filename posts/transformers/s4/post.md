@@ -76,6 +76,7 @@ from celluloid import Camera
 plt.rcParams.update({"font.size": 8})
 plt.rcParams["text.usetex"] = True
 
+
 k = 10  # spring constant
 m = 250  # mass
 
@@ -96,6 +97,7 @@ ax1.set(xlim=(-6, 6), ylim=(-1, 1))
 ax1.spines["right"].set_visible(False)
 ax1.spines["top"].set_visible(False)
 ax3.set(ylabel=r"$x(t) \longrightarrow$", xticks=[], yticks=[-4, 0, 4], xlim=(0, 15 * np.pi))
+ax3.yaxis.set_label_coords(-0.05, 0.5)
 ax4.set(
     xlabel=r"$t \longrightarrow$",
     ylabel=r"$-kx(t) \longrightarrow$",
@@ -104,6 +106,7 @@ ax4.set(
     xticks=np.arange(0, 16 * np.pi, np.pi),
     xticklabels=([0] + [f"{n}$\pi$" for n in range(1, 16)]),
 )
+ax4.yaxis.set_label_coords(-0.05, 0.5)
 
 t_vals = np.linspace(0, 15 * np.pi, 100)  # timesteps
 x_vals = x(t_vals)  # displacement: x(t)
@@ -114,14 +117,14 @@ for t in range(0, len(t_vals), 1):
     spring_y = 0.15 * np.sin((spring_x + 6) * (2 * np.pi) * 15 / (x_vals[t] + 5.5))
     mass = patches.Rectangle((x_vals[t] - 0.5, -0.98), 1, 1.8, lw=1, edgecolor="black", facecolor="white")
     ax1.plot(spring_x, spring_y, color="black")
-    ax1.axvline(x=0.0, color="orange", linestyle="dashed")
+    ax1.axvline(x=0.0, color="orange", linestyle="dashed", zorder=-1)
     ax1.add_patch(mass)
     ax1.set(yticks=[])
 
     ax3.plot(t_vals[:t], x_vals[:t], color="red")
-    ax3.axhline(y=0.0, color="black", linestyle="dashed")
+    ax3.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
     ax4.plot(t_vals[:t], f_vals[:t], color="blue")
-    ax4.axhline(y=0.0, color="black", linestyle="dashed")
+    ax4.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
     camera.snap()
 plt.tight_layout()
 animation = camera.animate()
