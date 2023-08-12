@@ -28,7 +28,7 @@ Note that the gravitational force doesn't affect the above mass-spring system. F
 
 In the above mass-spring system, when the system is displaced from its equilibrium position, the elasticity of the spring would provide a restoring force to restore the mass to equilibrium. From Newton's first law of motion, we know that inertia causes the system to overshoot this equilibrium. This constant play between inertial and elastic properties causes the mass to oscillate.
 
-Assuming no other forces act on the system (external or otherwise (e.g., air resistance)), the spring constant $k$ provides the elastic restoration force $F(x) = -kx$ (following the Hooke's law, which is a first-order Taylor approximation of the restoring force[^1]), while the inertia of mass $m$ provides the overshoot. From Newton's second law of motion, we have $F = m\ddot{x}$, which gives us the following second-order ordinary differential equation (ODE):
+Assuming no other forces act on the system (external or otherwise (e.g., air resistance, friction, etc.)), the spring constant $k$ provides the elastic restoration force $F(x) = -kx$ (following the Hooke's law, which is a first-order Taylor approximation of the restoring force[^1]), while the inertia of mass $m$ provides the overshoot. From Newton's second law of motion, we have $F = m\ddot{x}$, which gives us the following second-order ordinary differential equation (ODE):
 
 $$
 -kx = m\ddot{x} \Rightarrow \ddot{x}(t) + \underbrace{\omega_0^2}_{k/m} x(t) = 0
@@ -71,12 +71,10 @@ Let's graph the general solution to the SHM ODE shown in ($1$):
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
 from celluloid import Camera
 
 plt.rcParams.update({"font.size": 8})
 plt.rcParams["text.usetex"] = True
-
 
 k = 10  # spring constant
 m = 250  # mass
@@ -88,29 +86,42 @@ def x(t, x0=0, v0=1):
     return ((v0 / w0) * np.sin(w0 * t)) + (x0 * np.cos(w0 * t))
 
 
-sns.set_context("paper")
-fig, axs = plt.subplots(3, figsize=(8, 4))
+# Setup fig, axes for animation.
+gridspec = dict(hspace=0.0, height_ratios=[1, 0.7, 1, 1])
+fig, (ax1, ax2, ax3, ax4) = plt.subplots(nrows=4, figsize=(8, 3.5), gridspec_kw=gridspec)
+ax2.set_visible(False)
 camera = Camera(fig)
-axs[0].set(xlabel=r"$t \longrightarrow$", ylabel=r"$x(t) \longrightarrow$")
-axs[1].set(xlabel=r"$t \longrightarrow$", ylabel=r"$-kx(t) \longrightarrow$")
-axs[2].set(xlabel=r"$x \longrightarrow$")
-axs[2].set(xlim=(-6, 6), ylim=(-1, 1.2))
+ax1.set(xlabel=r"$x \longrightarrow$")
+ax1.set(xlim=(-6, 6), ylim=(-1, 1))
+ax1.spines["right"].set_visible(False)
+ax1.spines["top"].set_visible(False)
+ax3.set(ylabel=r"$x(t) \longrightarrow$", xticks=[], yticks=[-4, 0, 4], xlim=(0, 15 * np.pi))
+ax4.set(
+    xlabel=r"$t \longrightarrow$",
+    ylabel=r"$-kx(t) \longrightarrow$",
+    yticks=[-40, 0, 40],
+    xlim=(0, 15 * np.pi),
+    xticks=np.arange(0, 16 * np.pi, np.pi),
+    xticklabels=([0] + [f"{n}$\pi$" for n in range(1, 16)]),
+)
 
-t_vals = np.linspace(0, 50, 100)  # timesteps
+t_vals = np.linspace(0, 15 * np.pi, 100)  # timesteps
 x_vals = x(t_vals)  # displacement: x(t)
 f_vals = -k * x_vals  # restoring force: -kx(t)
 for t in range(0, len(t_vals), 1):
-    axs[0].plot(t_vals[:t], x_vals[:t], color="red")
-    axs[1].plot(t_vals[:t], f_vals[:t], color="blue")
-
     # Spring: https://stackoverflow.com/a/65481246.
-    spring_x = np.linspace(-6, x_vals[t], 240)
-    spring_y = 0.15 * np.sin((spring_x + 6) * (2 * np.pi) * 15 / (x_vals[t] + 6))
-    mass = patches.Rectangle((x_vals[t] - 0.5, -0.9), 1, 2, lw=1, edgecolor="black", facecolor="none")
-    axs[2].plot(spring_x, spring_y, color="black")
-    axs[2].axvline(x=0.0, color="orange", linestyle="dashed")
-    axs[2].add_patch(mass)
-    axs[2].set(yticks=[])
+    spring_x = np.linspace(-6, x_vals[t] - 0.5, 240)
+    spring_y = 0.15 * np.sin((spring_x + 6) * (2 * np.pi) * 15 / (x_vals[t] + 5.5))
+    mass = patches.Rectangle((x_vals[t] - 0.5, -0.98), 1, 1.8, lw=1, edgecolor="black", facecolor="white")
+    ax1.plot(spring_x, spring_y, color="black")
+    ax1.axvline(x=0.0, color="orange", linestyle="dashed")
+    ax1.add_patch(mass)
+    ax1.set(yticks=[])
+
+    ax3.plot(t_vals[:t], x_vals[:t], color="red")
+    ax3.axhline(y=0.0, color="black", linestyle="dashed")
+    ax4.plot(t_vals[:t], f_vals[:t], color="blue")
+    ax4.axhline(y=0.0, color="black", linestyle="dashed")
     camera.snap()
 plt.tight_layout()
 animation = camera.animate()
