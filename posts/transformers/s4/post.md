@@ -131,7 +131,7 @@ for t in range(0, len(t_vals), 1):
         ax1.text(0.03, 1, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
         ax1.text(0.03, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
     # Plot displacement and restoring force.
-    ax3.plot(t_vals[:t], x_vals[:t], color="red")
+    ax3.plot(t_vals[:t], x_vals[:t], color="orange")
     ax3.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
     ax4.plot(t_vals[:t], f_vals[:t], color="blue")
     ax4.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
@@ -143,7 +143,7 @@ animation.save("imgs/simple-harmonic-motion.gif", dpi=200, writer="imagemagick")
 
 <img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="500" data-align="center">
 
-Notice the wavelike pattern $x(t)$ followed by the mass. Hence, a simple harmonic oscillator follows a wave-like pattern (in the absence any other forces, external or otherwise).
+Notice the wavelike pattern $x(t)$ with a frequency $1/6\pi$ followed by the mass. Hence, a simple harmonic oscillator follows a (sinusoidal) wavelike pattern in the absence any other forces, external or otherwise.
 
 #### Using Fourier transform to model SHM
 
@@ -174,13 +174,17 @@ c\omega^2\exp(\omega t) + c \omega_0^2 \exp(\omega t) &= 0 \tag{4}
 \end{align*}
 $$
 
-Note that ($4$) implies that $\omega^2 = -\omega_0^2$ or $\omega = \pm\sqrt{-1} \omega_0 = \pm j \omega_0$. Hence the solutions to the ODE are:
+In ($4$), since $\exp(\omega t) > 0$, this implies that $\omega^2 = -\omega_0^2$ or $\omega = \pm\sqrt{-1} \omega_0 = \pm j \omega_0$. Noting that if $c\exp(j\omega_0t)$ and $c\exp(-j\omega_0 t)$ are two (distinct) solutions of ($1$), then the general solution[^2] to ($1$) is given as:
 
 $$
 x(t) = c_1 \exp(j \omega_0 t) + c_2 \exp(-j \omega_0 t)
 $$
 
 Using ($3$) and ($4$), we get:
+
+$$
+x(t) = j(c_1 - c_2)\sin(\omega_0 t) + (c_1 + c_2) \cos(\omega_0 t)
+$$
 
 ### Laplace transform
 
@@ -191,3 +195,5 @@ Using ($3$) and ($4$), we get:
 ---
 
 [^1]: Let's say that we displace a system, a distance $x$ from the equilibrium position ($x = 0$) and measure the restoring force as a function $F(x)$. By definition, $F(0) = 0$, i.e., no restoring force at equilibrium. Now, using [Taylor's remainder theorem](https://people.clas.ufl.edu/kees/files/TaylorRemainderProof.pdf), we have: $F(x) = F(0) + xF'(0) + \frac{F''(\xi)}{2} x^2$ where, $0 \leq \xi \leq x$. For really small displacements, we can ignore higher-order terms, and therefore, $F(x) = -kx$ with $k = -F'(0)$. Note that systems obeying Hook's law are linear, i.e., when mass is close to the equilibrium position ($x$ is sufficiently small!).
+
+[^2]: See Theorem 1 (Recipe for Constant Equations): https://www.math.utah.edu/~gustafso/2250second-order-de-manuscript.pdf.
