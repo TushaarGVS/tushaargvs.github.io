@@ -218,14 +218,35 @@ The cases of $\gamma < 2\omega_0$ (underdamping), $\gamma = 2\omega_0$ (critical
 Note that $\gamma = 0$ also falls under the case of underdamping, and when $\gamma = 0$, the damping force vanishes and we must regain the original SHM. Given that $\gamma < 2\omega_0$, let:
 
 $$
-w_u = \sqrt{\omega_0^2 - \left(\frac{\gamma}{2}\right)^2} \in \mathbb{R}
+\omega_u = \sqrt{\omega_0^2 - \left(\frac{\gamma}{2}\right)^2} \in \mathbb{R}
 $$
 
 Now, the general solution ($5$) can rewritten as:
 
 $$
-x(t) = \exp\left(\frac{-\gamma}{2}t\right) \left(c_1 \exp(j w_u t) + c_2 \exp(-j w_u t)\right)
+\begin{align*}
+x(t) &= \exp\left(\frac{-\gamma}{2}t\right) \left(c_1 \exp(j \omega_u t) + c_2 \exp(-j \omega_u t)\right) \\
+&= \exp\left(\frac{-\gamma}{2}t\right) \left(c_1\cos(\omega_ut) + jc_1 \sin(\omega_u t) + c_2 \cos(\omega_u t) - jc_2\sin(\omega_u t)\right) \\
+&= \exp\left(\frac{-\gamma}{2}t\right) \left((c_1 + c_2) \cos(\omega_u t) + j (c_1  - c_2) \sin(\omega_u t)\right)
+\end{align*}
 $$
+
+Using trigonometric identifies, we can note that:
+
+$$
+\begin{align*}
+c \cos(\omega_u t + \phi) = \underbrace{c \cos(\phi)}_{c_1 + c_2} \cos(\omega_u t) + \underbrace{c \sin(\phi)}_{j(c_1 - c_2)} \sin(\omega_u t) \\
+\Rightarrow c = \sqrt{(c_1 + c_2)^2 - (c_1 - c_2)^2} = 2 \sqrt{c_1c_2}; \qquad \tan(\phi) = j\frac{c_1 - c_2}{c_1 + c_2}
+\end{align*}
+$$
+
+Hence, we have:
+
+$$
+x(t) = c \exp\left(\frac{-\gamma}{2}t\right) \cos(\omega_u t + \phi) \tag{6}
+$$
+
+As can be noted from ($6$), an underdamped oscillator still oscillates, but an angular frequency of $\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2}$, and the amplitude $c\exp(-\gamma t/2)$ decreases exponentially with time.
 
 #### Overdamping: $\gamma > 2\omega_0$
 
