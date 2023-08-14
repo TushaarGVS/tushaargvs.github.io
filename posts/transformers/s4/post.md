@@ -22,9 +22,7 @@ Before we begin, let's setup a running example of the simple harmonic oscillator
 
 Note that the gravitational force doesn't affect the above mass-spring system. Finally, let's assume that the equilibrium position of the mass, say $x$, is at $x = 0$, with positive displacement values corresponding to a stretched string.
 
-### Fourier transform
-
-#### Simple harmonic motion (SHM)
+### Simple harmonic motion (SHM)
 
 In the above mass-spring system, when the system is displaced from its equilibrium position, the elasticity of the spring would provide a restoring force to restore the mass to equilibrium. From Newton's first law of motion, we know that inertia causes the system to overshoot this equilibrium. This constant play between inertial and elastic properties causes the mass to oscillate.
 
@@ -145,7 +143,7 @@ animation.save("imgs/simple-harmonic-motion.gif", dpi=200, writer="imagemagick")
 
 Notice the wavelike pattern $x(t)$ with a frequency $1/6\pi$ followed by the mass. Hence, a simple harmonic oscillator follows a (sinusoidal) wavelike pattern in the absence any other forces, external or otherwise.
 
-#### Using Fourier transform to model SHM
+#### Sines, cosines, and exponentials
 
 Before proceeding, let's recall the Euler's identity: $\exp(j\omega t) = \cos(\omega t) + j \sin(\omega t)$, and note that:
 
@@ -186,7 +184,58 @@ $$
 x(t) = j(c_1 - c_2)\sin(\omega_0 t) + (c_1 + c_2) \cos(\omega_0 t)
 $$
 
-### Laplace transform
+### Damped oscillator
+
+In the previous section on SHM, our mass on a spring system did not account for any damping (e.g., air resistance, friction, etc.). A damped oscillator dissipates its energy, eventually returning to the equilibrium position (unlike in SHM). The damping force must vanish when the body is at rest, and for small velocities[^3], the damping force must be proportional to the velocity: $F \propto -b \dot{x}$ for some damping constant $b$. Thus, the generic form for damped oscillation *close to equilibrium* is:
+
+$$
+m\ddot{x} = -k x - b \dot{x} \equiv \ddot{x} + \underbrace{\gamma}_{b/m} \dot{x} + \underbrace{\omega_0^2}_{k/m} x = 0 \tag{5}
+$$
+
+Just as an aside, ($5$) describes the motion of various physical systems: sound waves, vibrating strings, etc. It can be easily verified that unlike in the case of SHM, $\sin(\omega t)$ or $\cos(\omega t)$ solve the damped oscillator ODE, since $\sin$ and $\cos$ are proportional to their second derivatives, while ($5$) includes a first derivative term as well. However, as noted in the previous section, exponentials are proportional to all their derivatives, including the first and the second. So, let's try plugging in $x(t) = c\exp(\omega t)$ in ($5$):
+
+$$
+\begin{align*}
+c\omega^2 \exp(\omega t) + c\gamma \omega \exp(\omega t) + c \omega_0^2 \exp(\omega t) = 0 \\
+\omega^2 + \gamma \omega + \omega_0^2 = 0 \\
+\Rightarrow \omega = \frac{-\gamma}{2} \pm \sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}
+\end{align*}
+$$
+
+Hence, the general solution to the damped oscillator ODE is:
+
+$$
+\begin{align*}
+x(t) &= c_1 \exp\left(t\frac{-\gamma}{2} + t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) + c_2 \exp\left(t\frac{-\gamma}{2} - t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) \\
+x(t) &= \exp\left(\frac{-\gamma}{2}t\right) \left[c_1 \exp\left(t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) + c_2 \exp\left(-t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right)\right]
+\end{align*}
+$$
+
+The cases of $\gamma < 2\omega_0$ (underdamping), $\gamma = 2\omega_0$ (critical damping), and $\gamma > 2\omega_0$ (overdamping) demonstrate varied physical behavior.
+
+#### Underdamping: $\gamma < 2\omega_0$
+
+Note that $\gamma = 0$ also falls under the case of underdamping, and when $\gamma = 0$, the damping force vanishes and we must regain the original SHM. Given that $\gamma < 2\omega_0$, let:
+
+$$
+w_u = \sqrt{\omega_0^2 - \left(\frac{\gamma}{2}\right)^2} \in \mathbb{R}
+$$
+
+Now, the general solution ($5$) can rewritten as:
+
+$$
+x(t) = \exp\left(\frac{-\gamma}{2}t\right) \left(c_1 \exp(j w_u t) + c_2 \exp(-j w_u t)\right)
+$$
+
+#### Overdamping: $\gamma > 2\omega_0$
+
+#### Critical damping: $\gamma = 2\omega_0$
+
+Let's revisit our previous example to understand how the system behaves under different damping conditions:
+
+```python
+
+```
 
 ---
 
@@ -197,3 +246,5 @@ $$
 [^1]: Let's say that we displace a system, a distance $x$ from the equilibrium position ($x = 0$) and measure the restoring force as a function $F(x)$. By definition, $F(0) = 0$, i.e., no restoring force at equilibrium. Now, using [Taylor's remainder theorem](https://people.clas.ufl.edu/kees/files/TaylorRemainderProof.pdf), we have: $F(x) = F(0) + xF'(0) + \frac{F''(\xi)}{2} x^2$ where, $0 \leq \xi \leq x$. For really small displacements, we can ignore higher-order terms, and therefore, $F(x) = -kx$ with $k = -F'(0)$. Note that systems obeying Hook's law are linear, i.e., when mass is close to the equilibrium position ($x$ is sufficiently small!).
 
 [^2]: See Theorem 1 (Recipe for Constant Equations): https://www.math.utah.edu/~gustafso/2250second-order-de-manuscript.pdf.
+
+[^3]: The underlying assumption under which Taylor's first-order approximation holds.
