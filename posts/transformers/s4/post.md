@@ -181,7 +181,7 @@ $$
 Using ($3$) and ($4$), we get:
 
 $$
-x(t) = j(c_1 - c_2)\sin(\omega_0 t) + (c_1 + c_2) \cos(\omega_0 t)
+x(t) = (c_1 + c_2) \cos(\omega_0 t) + j(c_1 - c_2)\sin(\omega_0 t)
 $$
 
 ### Damped oscillator
