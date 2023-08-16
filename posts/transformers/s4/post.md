@@ -207,7 +207,7 @@ Hence, the general solution to the damped oscillator ODE is:
 $$
 \begin{align*}
 x(t) &= c_1 \exp\left(t\frac{-\gamma}{2} + t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) + c_2 \exp\left(t\frac{-\gamma}{2} - t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) \\
-x(t) &= \exp\left(\frac{-\gamma}{2}t\right) \left[c_1 \exp\left(t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) + c_2 \exp\left(-t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right)\right]
+&= \exp\left(\frac{-\gamma}{2}t\right) \left(c_1 \exp\left(t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) + c_2 \exp\left(-t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right)\right)
 \end{align*}
 $$
 
@@ -250,7 +250,39 @@ As can be noted from ($6$), an underdamped oscillator still oscillates, but an a
 
 #### Overdamping: $\gamma > 2\omega_0$
 
+In the overdamped case, we have $\gamma > 2\omega_0$, ($5$) has real roots since $\sqrt{(\gamma/2)^2 - \omega_0^2} > 0$. Thus the general solution is simply:
+
+$$
+x(t) = c_1 \exp(-u_-t) + c_2 \exp(-u_+t) \tag{7}
+$$
+
+where,
+
+$$
+u_- = \frac{\gamma}{2} - \sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2} \\
+u_+ = \frac{\gamma}{2} + \sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}
+$$
+
+Notice that since $u_+ > u_-$, the $u_+$ solution in ($7$) dies off before $u_-$ solution; both of these suffer from exponential decay.
+
+
 #### Critical damping: $\gamma = 2\omega_0$
+
+In case of critical damping, the solution in ($5$) reduces to:
+
+$$
+\begin{align*}
+x(t) &= c_1\exp(-\gamma t/2) + c_2 \exp(-\gamma t/2) \\
+&= \underbrace{(c_1 + c_2)}_{=\,c} \exp(-\gamma t/2) \\
+&= c \exp(-\omega_0 t) \tag{8}
+\end{align*}
+$$
+
+Note that a second-order ODE is supposed to have two independent solutions; however, ($8$) notes only one solution. To find the other solution, let's use $\gamma = 2\omega_0$ in the original ODE ($5$), we have:
+
+$$
+\ddot{x} + 2\omega_0 \dot{x} + \omega_0^2 x = 0
+$$
 
 Let's revisit our previous example to understand how the system behaves under different damping conditions:
 
