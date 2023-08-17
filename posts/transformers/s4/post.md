@@ -43,7 +43,7 @@ $$
 where $a, b \in \mathbb{R}$ are constants, $\omega = 2\pi f$ is the (natural) angular frequency and $f$ is the frequency. Plugging this (conveniently guessed!) function into the ODE gives us:
 
 $$
--\omega^2(A \sin(\omega t) + B \cos(\omega t)) + \omega_0^2 (A \sin(\omega t) + B \cos(\omega t)) = 0 \Rightarrow \omega = \omega_0 = \sqrt{k/m} \tag{2}
+-\omega^2(a \sin(\omega t) + b \cos(\omega t)) + \omega_0^2 (a \sin(\omega t) + b \cos(\omega t)) = 0 \Rightarrow \omega = \omega_0 = \sqrt{k/m} \tag{2}
 $$
 
 Hence, we note that $x(t)$ goes back to itself after $t \rightarrow t + T$, where $T = 1/f = 2\pi / \omega_0$; simply put $x(t) = x(t + nT)$ for any $n \in \mathbb{Z}$. 
@@ -51,10 +51,10 @@ Hence, we note that $x(t)$ goes back to itself after $t \rightarrow t + T$, wher
 In the above expression for $x(t)$ as shown in ($1$), we note that $\omega$ can be computed using ($2$) and depends only on the spring constant $k$ and mass $m$; however, $a$ and $b$ are not fixed. To determine a particular solution to ($1$), we need to impose two initial conditions (to compute the two unknowns, $a$ and $b$). For instance, if the initial position $x(0)$ and initial velocity $\dot{x}(0)$ are known, then:
 
 $$
-\begin{align}
+\begin{align*}
 \dot{x}(t) = a\omega_0 \cos(\omega_0 t) - b\omega_0 \sin(\omega_0 t) &\Rightarrow \dot{x}(0) = a\omega_0 \equiv a = \frac{\dot{x}(0)}{\omega_0} \\
 x(t) = a \sin(\omega_0 t) + b \cos(\omega_0 t) &\Rightarrow x(0) = b
-\end{align}
+\end{align*}
 $$
 
 Hence, we have:
@@ -62,6 +62,14 @@ Hence, we have:
 $$
 x(t) = \frac{\dot{x}(0)}{\omega_0}\sin(\omega_0 t) + x(0) \cos(\omega_0 t)
 $$
+
+Since $c\cos(\omega_0 t - \phi) = \underbrace{c\cos(\phi)}_{x(0)}\cos(\omega_0 t) - \underbrace{c\sin(\phi)}_{-\dot{x}(0) / \omega_0}\sin(\omega_0 t)$, where $c = \sqrt{x(0)^2 + (\dot{x}(0) / \omega_0)^2}$, we can rewrite $x(t)$ as:
+
+$$
+x(t) = c \cos(\omega_0 t - \phi)
+$$
+
+with $\phi = \arctan(-\dot{x}(0) / (x(0) \omega_0))$.
 
 Let's graph the general solution to the SHM ODE shown in ($1$):
 
@@ -184,6 +192,30 @@ $$
 x(t) = (c_1 + c_2) \cos(\omega_0 t) + j(c_1 - c_2)\sin(\omega_0 t)
 $$
 
+Noting that we're not dealing with quantum particles, we need $x(t)$ to be real, i.e., $\mathfrak{I}(c_1 + c_2) = 0$ and $\mathfrak{R}(c_1 - c_2) = 0$; hence, we need $c_1 = c_2^\star$ or $c_1 = a + jb$, $c_2 = a - jb$. Given the initial state $x(0)$ and $\dot{x}(0)$, we note:
+
+$$
+\begin{align*}
+x(0) = c_1  + c_2 = 2a &\Rightarrow a = x(0) / 2 \\
+\dot{x}(0) = j(c_1 - c_2) \omega_0 = -2b\omega_0 &\Rightarrow b = -\dot{x}(0) / 2\omega_0
+\end{align*}
+$$
+
+Hence, $c_1 = (x(0)/2) - j(\dot{x}(0)/2\omega_0) = r \exp(-j\phi)$; $2r = \sqrt{x(0)^2 + (\dot{x}(0)/\omega_0)^2}$, $\phi = \arctan(-\dot{x}(0)/(x(0) \omega_0))$. Also, note that $x(t)$ is:
+
+$$
+\begin{align*}
+x(t) &= c_1 \exp(j \omega_0 t) + c_1^\star \exp(-j \omega_0 t) \\ 
+&= r \exp(-j \phi)\exp(j \omega_0 t) + r \exp(j\phi)\exp(-j \omega_0 t) \\
+&= \underbrace{r\exp(j(\omega_0 t - \phi))}_{z} + \underbrace{r \exp(-j(\omega_0 t - \phi))}_{z^\star} \\
+&= 2 \mathfrak{R}(z) \\
+&= 2 \mathfrak{R}(r\exp(j(\omega_0 t - \phi))) \equiv 2 r \cos(\omega_0 t - \phi)\\
+&= 2 \mathfrak{R}(c_1 \exp(j \omega_0 t))
+\end{align*}
+$$
+
+Notice how $x(t)$ manifests itself to always be real! It is important to note that we didn't arbitrarily *discard* the complex part to enforce $x(t)$ to be real; it naturally (and beautifully!) came out of our initial conditions. Furthermore, this matches (exactly) with our previously-obtained SHM solution using our sine and cosine ansatz.
+
 ### Damped oscillator
 
 In the previous section on SHM, our mass on a spring system did not account for any damping (e.g., air resistance, friction, etc.). A damped oscillator dissipates its energy, eventually returning to the equilibrium position (unlike in SHM). The damping force must vanish when the body is at rest, and for small velocities[^3], the damping force must be proportional to the velocity: $F \propto -b \dot{x}$ for some damping constant $b$. Thus, the generic form for damped oscillation *close to equilibrium* is:
@@ -206,8 +238,8 @@ Hence, the general solution to the damped oscillator ODE is:
 
 $$
 \begin{align*}
-x(t) &= c_1 \exp\left(t\frac{-\gamma}{2} + t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) + c_2 \exp\left(t\frac{-\gamma}{2} - t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) \\
-&= \exp\left(\frac{-\gamma}{2}t\right) \left(c_1 \exp\left(t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right) + c_2 \exp\left(-t\sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}\right)\right)
+x(t) &= c_1 \exp\left(-\gamma t/2 + t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) + c_2 \exp\left(t\frac{-\gamma}{2} - t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) \\
+&= \exp\left(-\gamma t/2\right) \left(c_1 \exp\left(t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) + c_2 \exp\left(-t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right)\right)
 \end{align*}
 $$
 
@@ -225,9 +257,9 @@ Now, the general solution ($5$) can rewritten as:
 
 $$
 \begin{align*}
-x(t) &= \exp\left(\frac{-\gamma}{2}t\right) \left(c_1 \exp(j \omega_u t) + c_2 \exp(-j \omega_u t)\right) \\
-&= \exp\left(\frac{-\gamma}{2}t\right) \left(c_1\cos(\omega_ut) + jc_1 \sin(\omega_u t) + c_2 \cos(\omega_u t) - jc_2\sin(\omega_u t)\right) \\
-&= \exp\left(\frac{-\gamma}{2}t\right) \left((c_1 + c_2) \cos(\omega_u t) + j (c_1  - c_2) \sin(\omega_u t)\right)
+x(t) &= \exp\left(-\gamma t/2\right) \left(c_1 \exp(j \omega_u t) + c_2 \exp(-j \omega_u t)\right) \\
+&= \exp\left(-\gamma t/2\right) \left(c_1\cos(\omega_ut) + jc_1 \sin(\omega_u t) + c_2 \cos(\omega_u t) - jc_2\sin(\omega_u t)\right) \\
+&= \exp\left(-\gamma t/2\right) \left((c_1 + c_2) \cos(\omega_u t) + j (c_1  - c_2) \sin(\omega_u t)\right)
 \end{align*}
 $$
 
@@ -243,7 +275,7 @@ $$
 Hence, we have:
 
 $$
-x(t) = c \exp\left(\frac{-\gamma}{2}t\right) \cos(\omega_u t + \phi) \tag{6}
+x(t) = c \exp\left(-\gamma t/2\right) \cos(\omega_u t + \phi) \tag{6}
 $$
 
 As can be noted from ($6$), an underdamped oscillator still oscillates, but an angular frequency of $\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2}$, and the amplitude $c\exp(-\gamma t/2)$ decreases exponentially with time.
@@ -282,6 +314,12 @@ Note that a second-order ODE is supposed to have two independent solutions; howe
 
 $$
 \ddot{x} + 2\omega_0 \dot{x} + \omega_0^2 x = 0
+$$
+
+The "other" solution to the ODE is:
+
+$$
+(c + bt)\exp()
 $$
 
 Let's revisit our previous example to understand how the system behaves under different damping conditions:
