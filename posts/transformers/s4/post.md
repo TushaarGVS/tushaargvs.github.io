@@ -272,10 +272,10 @@ def plot_z(z_fn):
         ax1.add_patch(mass)
         ax1.set(yticks=[])
         if x_vals[t] < 0:
-            ax1.text(0.03, 1, r"$\leftarrow m\ddot{x}(t)$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.03, 1.05, r"$\leftarrow m\ddot{x}(t)$", ha='left', va='top', transform=ax1.transAxes)
             ax1.text(0.03, 0.8, r"$kx(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
         elif x_vals[t] > 0:
-            ax1.text(0.03, 1, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.03, 1.05, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
             ax1.text(0.03, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
         
         # Plot the displacement.
@@ -291,7 +291,7 @@ def plot_z(z_fn):
         ax2.axhline(y=0.0, color="black", linewidth=0.5, zorder=-1)
         ax2.axvline(x=0.0, color="black", linewidth=0.5, zorder=-1)
         ax2.text(0.03, -0.1, r"$z(t) = 2r\exp(j(\omega_0 t - \phi))$", ha='left', va='top', transform=ax1.transAxes)
-        ax2.text(0.03, -0.3, r"$x(t) = \mathrm{Re}(z)$", ha='left', va='top', transform=ax1.transAxes)
+        ax2.text(0.03, -0.35, r"$x(t) = \mathrm{Re}(z)$", ha='left', va='top', transform=ax1.transAxes)
         
         camera.snap()
     plt.tight_layout()
