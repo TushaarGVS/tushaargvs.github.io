@@ -63,88 +63,102 @@ $$
 x(t) = \frac{\dot{x}(0)}{\omega_0}\sin(\omega_0 t) + x(0) \cos(\omega_0 t)
 $$
 
-Since $c\cos(\omega_0 t - \phi) = \underbrace{c\cos(\phi)}_{x(0)}\cos(\omega_0 t) - \underbrace{c\sin(\phi)}_{-\dot{x}(0) / \omega_0}\sin(\omega_0 t)$, where $c = \sqrt{x(0)^2 + (\dot{x}(0) / \omega_0)^2}$, we can rewrite $x(t)$ as:
+Since $c\cos(\omega_0 t - \phi) = \underbrace{c\cos(\phi)}_{x(0)}\cos(\omega_0 t) + \underbrace{c\sin(\phi)}_{\dot{x}(0) / \omega_0}\sin(\omega_0 t)$, where $c = \sqrt{x(0)^2 + (\dot{x}(0) / \omega_0)^2}$, we can rewrite $x(t)$ as:
 
 $$
 x(t) = c \cos(\omega_0 t - \phi)
 $$
 
-with $\phi = \arctan(-\dot{x}(0) / (x(0) \omega_0))$.
+with $\phi = \mathrm{arctan2}\left(\dot{x}(0) / \omega_0, x(0)\right)$.
 
-Let's graph the general solution to the SHM ODE shown in ($1$):
+Let's graph the general solution to the SHM ODE shown in ($1$). First, let's code our $x(t)$, with initial state $x(0)$ as `x0` and $\dot{x}(0)$ as `v0`, for a body with mass `m` and spring with spring constant `k`:
+
+```python
+import numpy as np
+
+k = 10  # spring constant
+m = 90  # mass
+ω0 = np.sqrt(k / m)
+
+def x(t, x0=0, v0=1):
+    """Compute x(t) at a given t; parameterized by x(0) and x'(0)."""
+    c = np.sqrt(x0**2 + (v0 / ω0)**2)
+    Φ = np.arctan2(v0 / ω0, x0)
+    return c * np.cos((ω0 * t) - Φ)
+```
+
+Let us write out a generic plotting function that graphs (animates) the function $x(t)$:
 
 ```python
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
-import numpy as np
 from celluloid import Camera
 
 plt.rcParams.update({"font.size": 8})
 plt.rcParams["text.usetex"] = True
 
+def plot_x(x_fn):
+    # Setup fig, axes for animation.
+    gridspec = dict(hspace=0.0, height_ratios=[1, 0.7, 1, 1])
+    fig, (ax1, ax2, ax3, ax4) = plt.subplots(nrows=4, figsize=(5, 3.5), gridspec_kw=gridspec)
+    ax2.set_visible(False)
+    camera = Camera(fig)
+    ax1.set(xlabel=r"$x \longrightarrow$", xlim=(-5, 5), ylim=(-0.5, 0.7))
+    ax1.spines["right"].set_visible(False)
+    ax1.spines["top"].set_visible(False)
+    ax3.set(ylabel=r"$x(t) \longrightarrow$", xticks=[], yticks=[-2, 0, 2], xlim=(0, 15 * np.pi))
+    ax3.yaxis.set_label_coords(-0.1, 0.5)
+    ax4.set(
+        xlabel=r"$t \longrightarrow$",
+        ylabel=r"$-kx(t) \longrightarrow$",
+        yticks=[-20, 0, 20],
+        xlim=(0, 15 * np.pi),
+        xticks=np.arange(0, 16 * np.pi, np.pi),
+        xticklabels=([0] + [f"{n}$\pi$" for n in range(1, 16)]),
+    )
+    ax4.yaxis.set_label_coords(-0.1, 0.5)
 
-k = 10  # spring constant
-m = 90  # mass
+    t_vals = np.linspace(0, 15 * np.pi, 100)  # timesteps
+    x_vals = x_fn(t_vals)  # displacement: x(t)
+    f_vals = -k * x_vals  # restoring force: -kx(t)
+    
+    for t in range(0, len(t_vals), 1):
+        # Spring: https://stackoverflow.com/a/65481246.
+        spring_x = np.linspace(-4.6, x_vals[t] - 0.4 - 0.5, 240)
+        spring_y = 0.15 * np.sin((spring_x + 4.6) * (2 * np.pi) * 15 / (x_vals[t] + 4.6 - 0.4 - 0.5))
+        mass = patches.Rectangle((x_vals[t] - 0.5, -0.48), 1, 1, lw=1, edgecolor="black", facecolor="white")
+        ax1.plot([-5, -4.6], [0, 0], color="black")
+        ax1.plot([x_vals[t] - 0.4 - 0.5, x_vals[t] - 0.5], [0, 0], color="black")
+        ax1.plot(spring_x, spring_y, color="black")
+        ax1.axvline(x=0.0, color="green", linestyle="dashed", zorder=-1)
+        ax1.axvline(x=-3.0, color="red", linestyle="dashed", zorder=-1)
+        ax1.axvline(x=3.0, color="red", linestyle="dashed", zorder=-1)
+        ax1.add_patch(mass)
+        ax1.set(yticks=[])
+        if x_vals[t] < 0:
+            ax1.text(0.03, 1, r"$\leftarrow m\ddot{x}(t)$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.03, 0.8, r"$kx(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+        elif x_vals[t] > 0:
+            ax1.text(0.03, 1, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.03, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
+        
+        # Plot displacement and restoring force.
+        ax3.plot(t_vals[:t], x_vals[:t], color="orange")
+        ax3.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
+        ax4.plot(t_vals[:t], f_vals[:t], color="blue")
+        ax4.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
 
+        camera.snap()
+    plt.tight_layout()
+    anim = camera.animate()
+    return anim
+```
 
-def x(t, x0=0, v0=1):
-    """Compute x(t) at a given t; parameterized by x(0) and x'(0)."""
-    w0 = np.sqrt(k / m)
-    return ((v0 / w0) * np.sin(w0 * t)) + (x0 * np.cos(w0 * t))
+Now, let's visualize the path followed by the mass in a SHM:
 
-
-# Setup fig, axes for animation.
-gridspec = dict(hspace=0.0, height_ratios=[1, 0.7, 1, 1])
-fig, (ax1, ax2, ax3, ax4) = plt.subplots(nrows=4, figsize=(5, 3.5), gridspec_kw=gridspec)
-ax2.set_visible(False)
-camera = Camera(fig)
-ax1.set(xlabel=r"$x \longrightarrow$")
-ax1.set(xlim=(-5, 5), ylim=(-0.5, 0.7))
-ax1.spines["right"].set_visible(False)
-ax1.spines["top"].set_visible(False)
-ax3.set(ylabel=r"$x(t) \longrightarrow$", xticks=[], yticks=[-2, 0, 2], xlim=(0, 15 * np.pi))
-ax3.yaxis.set_label_coords(-0.1, 0.5)
-ax4.set(
-    xlabel=r"$t \longrightarrow$",
-    ylabel=r"$-kx(t) \longrightarrow$",
-    yticks=[-20, 0, 20],
-    xlim=(0, 15 * np.pi),
-    xticks=np.arange(0, 16 * np.pi, np.pi),
-    xticklabels=([0] + [f"{n}$\pi$" for n in range(1, 16)]),
-)
-ax4.yaxis.set_label_coords(-0.1, 0.5)
-
-t_vals = np.linspace(0, 15 * np.pi, 100)  # timesteps
-x_vals = x(t_vals)  # displacement: x(t)
-f_vals = -k * x_vals  # restoring force: -kx(t)
-for t in range(0, len(t_vals), 1):
-    # Spring: https://stackoverflow.com/a/65481246.
-    spring_x = np.linspace(-4.6, x_vals[t] - 0.4 - 0.5, 240)
-    spring_y = 0.15 * np.sin((spring_x + 4.6) * (2 * np.pi) * 15 / (x_vals[t] + 4.6 - 0.4 - 0.5))
-    mass = patches.Rectangle((x_vals[t] - 0.5, -0.48), 1, 1, lw=1, edgecolor="black", facecolor="white")
-    ax1.plot([-5, -4.6], [0, 0], color="black")
-    ax1.plot([x_vals[t] - 0.4 - 0.5, x_vals[t] - 0.5], [0, 0], color="black")
-    ax1.plot(spring_x, spring_y, color="black")
-    ax1.axvline(x=0.0, color="green", linestyle="dashed", zorder=-1)
-    ax1.axvline(x=-3.0, color="red", linestyle="dashed", zorder=-1)
-    ax1.axvline(x=3.0, color="red", linestyle="dashed", zorder=-1)
-    ax1.add_patch(mass)
-    ax1.set(yticks=[])
-    if x_vals[t] < 0:
-        ax1.text(0.03, 1, r"$\leftarrow m\ddot{x}(t)$", ha='left', va='top', transform=ax1.transAxes)
-        ax1.text(0.03, 0.8, r"$kx(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
-    elif x_vals[t] > 0:
-        ax1.text(0.03, 1, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
-        ax1.text(0.03, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
-    # Plot displacement and restoring force.
-    ax3.plot(t_vals[:t], x_vals[:t], color="orange")
-    ax3.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
-    ax4.plot(t_vals[:t], f_vals[:t], color="blue")
-    ax4.axhline(y=0.0, color="black", linestyle="dashed", zorder=-1)
-    camera.snap()
-plt.tight_layout()
-animation = camera.animate()
-animation.save("imgs/simple-harmonic-motion.gif", dpi=200, writer="imagemagick")
+```python
+anim = plot_x(x_fn=x)
+anim.save("imgs/simple-harmonic-motion.gif", dpi=200, writer="imagemagick")
 ```
 
 <img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="500" data-align="center">
@@ -201,7 +215,7 @@ x(0) = c_1  + c_2 = 2a &\Rightarrow a = x(0) / 2 \\
 \end{align*}
 $$
 
-Hence, $c_1 = (x(0)/2) - j(\dot{x}(0)/2\omega_0) = r \exp(-j\phi)$; $2r = \sqrt{x(0)^2 + (\dot{x}(0)/\omega_0)^2}$, $\phi = \arctan(-\dot{x}(0)/(x(0) \omega_0))$. Also, note that $x(t)$ is:
+Hence, $c_1 = \frac{x(0)}{2} - j\frac{\dot{x}(0)}{2\omega_0} = r \exp(-j\phi)$; $r = \sqrt{x(0)^2 + (\dot{x}(0)/\omega_0)^2}/2$, $\phi = \mathrm{arctan2}\left(\dot{x}(0) / \omega_0, x(0)\right)$. Also, note that $x(t)$ is:
 
 $$
 \begin{align*}
@@ -215,6 +229,84 @@ x(t) &= c_1 \exp(j \omega_0 t) + c_1^\star \exp(-j \omega_0 t) \\
 $$
 
 Notice how $x(t)$ manifests itself to always be real! It is important to note that we didn't arbitrarily *discard* the complex part to enforce $x(t)$ to be real; it naturally (and beautifully!) came out of our initial conditions. Furthermore, this matches (exactly) with our previously-obtained SHM solution using our sine and cosine ansatz.
+
+Let's plot the motion of the SHM, i.e., $x(t)$ using the complex plane (with the same initial conditions as before). First, let's code our $z(t)$, with initial state $x(0)$ as `x0` and $\dot{x}(0)$ as `v0`:
+
+```python
+def z(t, x0=0, v0=1):
+    """Compute z(t) at a given t; parameterized by x(0) and x'(0)."""
+    r = np.sqrt(x0**2 + (v0 / ω0)**2) / 2
+    Φ = np.arctan2(v0 / ω0, x0)
+    return 2 * r * np.cos((ω0 * t) - Φ), 2 * r * np.sin((ω0 * t) - Φ)
+```
+
+Let us write out a generic plotting function that graphs (animates) the function $z(t)$:
+
+```python
+def plot_z(z_fn):
+    # Setup fig, axes for animation.
+    gridspec = dict(hspace=0.0, height_ratios=[1, 5])
+    fig, (ax1, ax2) = plt.subplots(nrows=2, figsize=(4, 4), gridspec_kw=gridspec)
+    camera = Camera(fig)
+    ax1.set(xlim=(-5, 5), ylim=(-0.5, 0.7), xticks=[])
+    ax1.spines["right"].set_visible(False)
+    ax1.spines["top"].set_visible(False)
+    ax2.set(xlabel=r"$x(t) \longrightarrow$", xlim=(-3.5, 3.5), ylim=(-3.5, 3.5))
+    ax2.yaxis.set_label_coords(-0.1, 0.5)
+
+    t_vals = np.linspace(0, 15 * np.pi, 100)  # timesteps
+    x_vals, _y_vals = z_fn(t_vals)  # displacement: x(t)
+    y_vals = np.zeros_like(x_vals)
+    
+    for t in range(0, len(t_vals), 1):
+        # Spring: https://stackoverflow.com/a/65481246.
+        spring_x = np.linspace(-4.6, x_vals[t] - 0.4 - 0.5, 240)
+        spring_y = 0.15 * np.sin((spring_x + 4.6) * (2 * np.pi) * 15 / (x_vals[t] + 4.6 - 0.4 - 0.5))
+        mass = patches.Rectangle((x_vals[t] - 0.5, -0.48), 1, 1, lw=1, edgecolor="black", facecolor="white")
+        ax1.plot([-5, -4.6], [0, 0], color="black")
+        ax1.plot([x_vals[t] - 0.4 - 0.5, x_vals[t] - 0.5], [0, 0], color="black")
+        ax1.plot(spring_x, spring_y, color="black")
+        ax1.axvline(x=0.0, color="green", linestyle="dashed", zorder=-1)
+        ax1.axvline(x=-3.0, color="red", linestyle="dashed", zorder=-1)
+        ax1.axvline(x=3.0, color="red", linestyle="dashed", zorder=-1)
+        ax1.add_patch(mass)
+        ax1.set(yticks=[])
+        if x_vals[t] < 0:
+            ax1.text(0.03, 1, r"$\leftarrow m\ddot{x}(t)$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.03, 0.8, r"$kx(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+        elif x_vals[t] > 0:
+            ax1.text(0.03, 1, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.03, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
+        
+        # Plot the displacement.
+        ax2.plot(x_vals[: t + 1], _y_vals[: t + 1], color="blue", linestyle="dashed", zorder=-1)
+        ax2.plot(x_vals[t], _y_vals[t], color="blue", marker="o")
+        ax2.plot([0, x_vals[t]], [0, _y_vals[t]], color="blue", linewidth=0.7)
+        ax2.plot([x_vals[t], x_vals[t]], [0, _y_vals[t]], color="orange", linewidth=0.7)
+        ax2.annotate(r"$z(t)$", (x_vals[t] + 0.2, _y_vals[t]))
+        ax2.plot(x_vals[: t + 1], y_vals[: t + 1], color="orange", linestyle="dashed", zorder=-1)
+        ax2.plot(x_vals[t], y_vals[t], color="orange", marker="o")
+        ax2.annotate(r"$x(t)$", (x_vals[t], y_vals[t] + 0.2))
+        
+        ax2.axhline(y=0.0, color="black", linewidth=0.5, zorder=-1)
+        ax2.axvline(x=0.0, color="black", linewidth=0.5, zorder=-1)
+        ax2.text(0.03, -0.1, r"$z(t) = 2r\exp(j(\omega_0 t - \phi))$", ha='left', va='top', transform=ax1.transAxes)
+        ax2.text(0.03, -0.3, r"$x(t) = \mathrm{Re}(z)$", ha='left', va='top', transform=ax1.transAxes)
+        
+        camera.snap()
+    plt.tight_layout()
+    anim = camera.animate()
+    return anim
+```
+
+Now, let's visualize the path followed by the mass in a SHM:
+
+```python
+anim = plot_z(z_fn=z)
+anim.save("imgs/simple-harmonic-motion-z.gif", dpi=200, writer="imagemagick")
+```
+
+<img title="" src="./imgs/simple-harmonic-motion-z.gif" alt="" width="500" data-align="center">
 
 ### Damped oscillator
 
@@ -230,7 +322,7 @@ $$
 \begin{align*}
 c\omega^2 \exp(\omega t) + c\gamma \omega \exp(\omega t) + c \omega_0^2 \exp(\omega t) = 0 \\
 \omega^2 + \gamma \omega + \omega_0^2 = 0 \\
-\Rightarrow \omega = \frac{-\gamma}{2} \pm \sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}
+\Rightarrow \omega = (-\gamma/2) \pm \sqrt{\left(\gamma/2\right)^2 - \omega_0^2}
 \end{align*}
 $$
 
@@ -238,7 +330,7 @@ Hence, the general solution to the damped oscillator ODE is:
 
 $$
 \begin{align*}
-x(t) &= c_1 \exp\left(-\gamma t/2 + t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) + c_2 \exp\left(t\frac{-\gamma}{2} - t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) \\
+x(t) &= c_1 \exp\left((-\gamma t/2) + t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) + c_2 \exp\left((-\gamma t/2) - t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) \\
 &= \exp\left(-\gamma t/2\right) \left(c_1 \exp\left(t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) + c_2 \exp\left(-t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right)\right)
 \end{align*}
 $$
@@ -250,7 +342,7 @@ The cases of $\gamma < 2\omega_0$ (underdamping), $\gamma = 2\omega_0$ (critical
 Note that $\gamma = 0$ also falls under the case of underdamping, and when $\gamma = 0$, the damping force vanishes and we must regain the original SHM. Given that $\gamma < 2\omega_0$, let:
 
 $$
-\omega_u = \sqrt{\omega_0^2 - \left(\frac{\gamma}{2}\right)^2} \in \mathbb{R}
+\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2} \in \mathbb{R}
 $$
 
 Now, the general solution ($5$) can rewritten as:
@@ -263,19 +355,19 @@ x(t) &= \exp\left(-\gamma t/2\right) \left(c_1 \exp(j \omega_u t) + c_2 \exp(-j 
 \end{align*}
 $$
 
-Using trigonometric identifies, we can note that:
+Again, noting that $x(t) \in \mathbb{R}$, we have $\mathfrak{I}(c_1 + c_2) = 0$ and $\mathfrak{R}(c_1 - c_2) = 0$; hence, $c_1 = c_2^\star = a + jb$, where $a$ and $b$ can be determined by the initial state of the system, $x(0)$ and $\dot{x}(0)$. Using trigonometric identifies:
 
 $$
 \begin{align*}
-c \cos(\omega_u t + \phi) = \underbrace{c \cos(\phi)}_{c_1 + c_2} \cos(\omega_u t) + \underbrace{c \sin(\phi)}_{j(c_1 - c_2)} \sin(\omega_u t) \\
-\Rightarrow c = \sqrt{(c_1 + c_2)^2 - (c_1 - c_2)^2} = 2 \sqrt{c_1c_2}; \qquad \tan(\phi) = j\frac{c_1 - c_2}{c_1 + c_2}
+c \cos(\omega_u t - \phi) = \underbrace{c \cos(\phi)}_{c_1 + c_2\,=\,2a} \cos(\omega_u t) + \underbrace{c \sin(\phi)}_{j(c_1 - c_2)\,=\,-2b} \sin(\omega_u t) \\
+\Rightarrow c = \sqrt{(c_1 + c_2)^2 + (j(c_1 - c_2))^2} = 2 \sqrt{a^2 + b^2}; \qquad \phi = \mathrm{arctan2}(-b, a)
 \end{align*}
 $$
 
 Hence, we have:
 
 $$
-x(t) = c \exp\left(-\gamma t/2\right) \cos(\omega_u t + \phi) \tag{6}
+x(t) = c \exp\left(-\gamma t/2\right) \cos(\omega_u t - \phi) \tag{6}
 $$
 
 As can be noted from ($6$), an underdamped oscillator still oscillates, but an angular frequency of $\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2}$, and the amplitude $c\exp(-\gamma t/2)$ decreases exponentially with time.
@@ -291,8 +383,8 @@ $$
 where,
 
 $$
-u_- = \frac{\gamma}{2} - \sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2} \\
-u_+ = \frac{\gamma}{2} + \sqrt{\left(\frac{\gamma}{2}\right)^2 - \omega_0^2}
+u_- = (\gamma/2) - \sqrt{\left(\gamma/2\right)^2 - \omega_0^2} \\
+u_+ = (\gamma/2) + \sqrt{\left(\gamma/2\right)^2 - \omega_0^2}
 $$
 
 Notice that since $u_+ > u_-$, the $u_+$ solution in ($7$) dies off before $u_-$ solution; both of these suffer from exponential decay.
