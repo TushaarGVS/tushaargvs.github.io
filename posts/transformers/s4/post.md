@@ -308,6 +308,8 @@ anim.save("imgs/simple-harmonic-motion-z.gif", dpi=200, writer="imagemagick")
 
 <img title="" src="./imgs/simple-harmonic-motion-z.gif" alt="" width="500" data-align="center">
 
+Notice how SHM is simply a shadow of the steady circular motion of $z(t) = 2r\exp(j(\omega_0 t - \phi))$ on the real axis.
+
 ### Damped oscillator
 
 In the previous section on SHM, our mass on a spring system did not account for any damping (e.g., air resistance, friction, etc.). A damped oscillator dissipates its energy, eventually returning to the equilibrium position (unlike in SHM). The damping force must vanish when the body is at rest, and for small velocities[^3], the damping force must be proportional to the velocity: $F \propto -b \dot{x}$ for some damping constant $b$. Thus, the generic form for damped oscillation *close to equilibrium* is:
