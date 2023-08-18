@@ -258,8 +258,9 @@ def plot_z(z_fn):
     ax2.yaxis.set_label_coords(-0.1, 0.5)
 
     t_vals = np.linspace(0, 15 * np.pi, 100)  # timesteps
-    x_vals, _y_vals = z_fn(t_vals)  # displacement: x(t)
-    y_vals = np.zeros_like(x_vals)
+    x_vals, _y_vals = z_fn(t_vals)  # z(t) = x(t) + j y(t)
+    y_vals = np.zeros_like(x_vals)  # x(t) = Re(z(t))
+    __y_vals = np.linspace(0, -4, 100)  # shifted y values to show a wave tail
     
     for t in range(0, len(t_vals), 1):
         # Spring: https://stackoverflow.com/a/65481246.
@@ -281,14 +282,18 @@ def plot_z(z_fn):
             ax1.text(0.87, 1.05, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
             ax1.text(0.87, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
         
-        # Plot the displacement.
-        ax2.plot(x_vals[: t + 1], _y_vals[: t + 1], color="blue", linestyle="dashed", zorder=-1)
-        ax2.plot(x_vals[t], _y_vals[t], color="blue", marker="o")
-        ax2.plot([x_vals[t], x_vals[t]], [0, _y_vals[t]], color="gray", linewidth=0.7)
+        # Plot z(t) = x(t) + j y(t).
+        ax2.plot(x_vals[t], _y_vals[t], color="blue", marker="o")  # z(t) head
+        ax2.plot(x_vals[: t + 1], _y_vals[: t + 1], color="blue", linestyle="dashed", zorder=-1)  # z(t) tail
         ax2.annotate(r"$z(t)$", (x_vals[t] + 0.2, _y_vals[t]))
-        ax2.plot(x_vals[: t + 1], y_vals[: t + 1], color="orange", linestyle="dashed", zorder=-1)
-        ax2.plot(x_vals[t], y_vals[t], color="orange", marker="o")
+        
+        # Plot x(t) = Re(z(t)).
+        ax2.plot(x_vals[t], y_vals[t], color="orange", marker="o")  # x(t) head
+        ax2.plot(x_vals[: t + 1], __y_vals[: t + 1][::-1], color="orange", linestyle="dashed", zorder=-1)  # wave tail
         ax2.annotate(r"$x(t)$", (x_vals[t], y_vals[t] + 0.2))
+        
+        # Projection of z(t) onto real axis.
+        ax2.plot([x_vals[t], x_vals[t]], [0, _y_vals[t]], color="gray", linewidth=0.7, zorder=-1)
         
         ax2.axhline(y=0.0, color="black", linewidth=0.5, zorder=-1)
         ax2.axvline(x=0.0, color="black", linewidth=0.5, zorder=-1)
@@ -308,7 +313,7 @@ anim = plot_z(z_fn=z)
 anim.save("imgs/simple-harmonic-motion-z.gif", dpi=200, writer="imagemagick")
 ```
 
-<img title="" src="./imgs/simple-harmonic-motion-z.gif" alt="" width="500" data-align="center">
+<img title="" src="./imgs/simple-harmonic-motion-z.gif" alt="" width="350" data-align="center">
 
 Notice how SHM is simply a shadow of the steady circular motion of $z(t) = 2r\exp(j(\omega_0 t - \phi))$ on the real axis.
 
