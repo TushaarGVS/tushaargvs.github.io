@@ -80,6 +80,7 @@ k = 10  # spring constant
 m = 90  # mass
 ω0 = np.sqrt(k / m)
 
+
 def x(t, x0=0, v0=1):
     """Compute x(t) at a given t; parameterized by x(0) and x'(0)."""
     c = np.sqrt(x0**2 + (v0 / ω0)**2)
@@ -95,7 +96,9 @@ import matplotlib.pyplot as plt
 from celluloid import Camera
 
 plt.rcParams.update({"font.size": 8})
-plt.rcParams["text.usetex"] = True
+plt.rc("text", usetex=True)
+plt.rc("text.latex", preamble=r"\usepackage{amsmath} \usepackage{amssymb}")
+
 
 def plot_x(x_fn):
     # Setup fig, axes for animation.
@@ -245,13 +248,13 @@ Let us write out a generic plotting function that graphs (animates) the function
 ```python
 def plot_z(z_fn):
     # Setup fig, axes for animation.
-    gridspec = dict(hspace=0.0, height_ratios=[1, 5])
-    fig, (ax1, ax2) = plt.subplots(nrows=2, figsize=(4, 4), gridspec_kw=gridspec)
+    gridspec = dict(hspace=0.0, height_ratios=[1, 4.5])
+    fig, (ax1, ax2) = plt.subplots(nrows=2, figsize=(3.5, 4), gridspec_kw=gridspec)
     camera = Camera(fig)
     ax1.set(xlim=(-5, 5), ylim=(-0.5, 0.7), xticks=[])
     ax1.spines["right"].set_visible(False)
     ax1.spines["top"].set_visible(False)
-    ax2.set(xlabel=r"$x(t) \longrightarrow$", xlim=(-3.5, 3.5), ylim=(-3.5, 3.5))
+    ax2.set(xlabel=r"$x(t) \longrightarrow$", xlim=(-5, 5), ylim=(-4.7, 4.7), yticks=[-4, -2, 0, 2, 4])
     ax2.yaxis.set_label_coords(-0.1, 0.5)
 
     t_vals = np.linspace(0, 15 * np.pi, 100)  # timesteps
@@ -272,17 +275,16 @@ def plot_z(z_fn):
         ax1.add_patch(mass)
         ax1.set(yticks=[])
         if x_vals[t] < 0:
-            ax1.text(0.03, 1.05, r"$\leftarrow m\ddot{x}(t)$", ha='left', va='top', transform=ax1.transAxes)
-            ax1.text(0.03, 0.8, r"$kx(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.87, 1.05, r"$\leftarrow m\ddot{x}(t)$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.87, 0.8, r"$kx(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
         elif x_vals[t] > 0:
-            ax1.text(0.03, 1.05, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
-            ax1.text(0.03, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.87, 1.05, r"$m\ddot{x}(t) \rightarrow$", ha='left', va='top', transform=ax1.transAxes)
+            ax1.text(0.87, 0.8, r"$\leftarrow kx(t)$", ha='left', va='top', transform=ax1.transAxes)
         
         # Plot the displacement.
         ax2.plot(x_vals[: t + 1], _y_vals[: t + 1], color="blue", linestyle="dashed", zorder=-1)
         ax2.plot(x_vals[t], _y_vals[t], color="blue", marker="o")
-        ax2.plot([0, x_vals[t]], [0, _y_vals[t]], color="blue", linewidth=0.7)
-        ax2.plot([x_vals[t], x_vals[t]], [0, _y_vals[t]], color="orange", linewidth=0.7)
+        ax2.plot([x_vals[t], x_vals[t]], [0, _y_vals[t]], color="gray", linewidth=0.7)
         ax2.annotate(r"$z(t)$", (x_vals[t] + 0.2, _y_vals[t]))
         ax2.plot(x_vals[: t + 1], y_vals[: t + 1], color="orange", linestyle="dashed", zorder=-1)
         ax2.plot(x_vals[t], y_vals[t], color="orange", marker="o")
@@ -291,7 +293,7 @@ def plot_z(z_fn):
         ax2.axhline(y=0.0, color="black", linewidth=0.5, zorder=-1)
         ax2.axvline(x=0.0, color="black", linewidth=0.5, zorder=-1)
         ax2.text(0.03, -0.1, r"$z(t) = 2r\exp(j(\omega_0 t - \phi))$", ha='left', va='top', transform=ax1.transAxes)
-        ax2.text(0.03, -0.35, r"$x(t) = \mathrm{Re}(z)$", ha='left', va='top', transform=ax1.transAxes)
+        ax2.text(0.03, -0.35, r"$x(t) = \mathfrak{R}(z(t))$", ha='left', va='top', transform=ax1.transAxes)
         
         camera.snap()
     plt.tight_layout()
