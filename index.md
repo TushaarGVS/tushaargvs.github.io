@@ -64,7 +64,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     (If you couldn't tell, I spend my free time scouring the internet [= mostly <a href="https://abstrusegoose.com/">abstrusegoose</a>, <a href="https://handwaving.github.io/">handwaving</a>, and <a href="https://xkcd.com/">xkcd</a>] for math-/CS-related comics!)
 </p><hr class="style">
 
-<p><b>Research interests.</b> large language models, NLP, computational social science</p>
+<p><b>Research interests.</b> Large language models, NLP, computational social science</p>
 
 <p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in fa22, and CS4300 (and cross-listings) in sp23, I was awarded the Bowers CIS best TA award.</p>
 
