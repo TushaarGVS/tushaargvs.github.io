@@ -63,7 +63,7 @@ $$
 x(t) = \frac{\dot{x}(0)}{\omega_0}\sin(\omega_0 t) + x(0) \cos(\omega_0 t)
 $$
 
-Since $c\cos(\omega_0 t - \phi) = \underbrace{c\cos(\phi)}_{x(0)}\cos(\omega_0 t) + \underbrace{c\sin(\phi)}_{\dot{x}(0) / \omega_0}\sin(\omega_0 t)$, where $c = \sqrt{x(0)^2 + (\dot{x}(0) / \omega_0)^2}$, we can rewrite $x(t)$ as:
+Since $c\cos(\omega_0 t - \phi) = c\cos(\phi)\cos(\omega_0 t) + c\sin(\phi)\sin(\omega_0 t)$, where $c\cos(\phi) = x(0)$, $c \sin(\phi) = \dot{x}(0) / \omega_0$, and $c = \sqrt{x(0)^2 + (\dot{x}(0) / \omega_0)^2}$, we can rewrite $x(t)$ as:
 
 $$
 x(t) = c \cos(\omega_0 t - \phi)
