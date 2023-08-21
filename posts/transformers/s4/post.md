@@ -290,7 +290,7 @@ def plot_z(z_fn):
         # Plot x(t) = Re(z(t)).
         ax2.plot(x_vals[t], y_vals[t], color="orange", marker="o")  # x(t) head
         ax2.plot(x_vals[: t + 1], __y_vals[: t + 1][::-1], color="orange", linestyle="dashed", zorder=-1)  # wave tail
-        ax2.annotate(r"$x(t)$", (x_vals[t], y_vals[t] + 0.2))
+        ax2.annotate(r"$x(t)$", (x_vals[t] + 0.2, y_vals[t] + 0.2))
         
         # Projection of z(t) onto real axis.
         ax2.plot([x_vals[t], x_vals[t]], [0, _y_vals[t]], color="gray", linewidth=0.7, zorder=-1)
@@ -335,7 +335,7 @@ c\omega^2 \exp(\omega t) + c\gamma \omega \exp(\omega t) + c \omega_0^2 \exp(\om
 \end{align*}
 $$
 
-Hence, the general solution to the damped oscillator ODE is:
+Hence, the [general solution](https://www.math.stonybrook.edu/~scott/mat127.spr21/SecondOrderLinearDiffEqNotes.pdf) to the damped oscillator ODE is:
 
 $$
 \begin{align*}
@@ -364,7 +364,16 @@ x(t) &= \exp\left(-\gamma t/2\right) \left(c_1 \exp(j \omega_u t) + c_2 \exp(-j 
 \end{align*}
 $$
 
-Again, noting that $x(t) \in \mathbb{R}$, we have $\mathfrak{I}(c_1 + c_2) = 0$ and $\mathfrak{R}(c_1 - c_2) = 0$; hence, $c_1 = c_2^\star = a + jb$, where $a$ and $b$ can be determined by the initial state of the system, $x(0)$ and $\dot{x}(0)$. Using trigonometric identifies:
+Again, noting that $x(t) \in \mathbb{R}$, we have $\mathfrak{I}(c_1 + c_2) = 0$ and $\mathfrak{R}(c_1 - c_2) = 0$; hence, $c_1 = c_2^\star = a + jb$, where $a$ and $b$ can be determined by the initial state of the system, $x(0)$ and $\dot{x}(0)$: 
+
+$$
+\begin{align*}
+x(0) = c_1 + c_2 = 2a &\Rightarrow a = x(0) / 2 \\
+\dot{x}(0) = \frac{\gamma}{2}(c_1 + c_2) + j (c_1 - c_2) = \gamma a - 2b &\Rightarrow b = \frac{\gamma x(0)}{4} - \frac{\dot{x}(0)}{2}
+\end{align*}
+$$
+
+Using trigonometric identifies:
 
 $$
 \begin{align*}
@@ -379,7 +388,32 @@ $$
 x(t) = c \exp\left(-\gamma t/2\right) \cos(\omega_u t - \phi) \tag{6}
 $$
 
-As can be noted from ($6$), an underdamped oscillator still oscillates, but an angular frequency of $\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2}$, and the amplitude $c\exp(-\gamma t/2)$ decreases exponentially with time.
+As can be noted from ($6$), an underdamped oscillator still oscillates, but an angular frequency of $\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2}$, and the amplitude $c\exp(-\gamma t/2)$ decreases exponentially with time. 
+
+Let's graph the motion of a damped oscillator to compare with our SHM; we'll use the complex plane visualization. Let's write out our damped $z(t)$, with the initial state $x(0)$ as `x0` and $\dot{x}(0)$ as `v0`:
+
+```python
+γ = (2 * ω0) - 0.5  # underdamped
+ωu = np.sqrt(ω0**2 - (γ / 2)**2)
+
+def z_underdamped(t, x0=0, v0=4):
+    """Compute z(t) at a given t; parameterized by x(0) and x'(0)."""
+    a = x0 / 2
+    b = ((γ * x0) / 4) - (v0 / 2)
+    c = 2 * np.sqrt(a**2 + b**2)
+    Φ = np.arctan2(-b, a)
+    r = c * np.exp(-γ * t / 2)
+    return r * np.cos((ωu * t) - Φ), r * np.sin((ωu * t) - Φ)
+```
+
+Now, let's visualize the path followed by the underdamped oscillator:
+
+```python
+anim = plot_z(z_fn=z_underdamped)
+anim.save("imgs/simple-harmonic-motion-z-underdamped.gif", dpi=200, writer="imagemagick")
+```
+
+<img title="" src="./imgs/simple-harmonic-motion-z-underdamped.gif" alt="" width="350" data-align="center">
 
 #### Overdamping: $\gamma > 2\omega_0$
 
