@@ -6,6 +6,7 @@ description: Efficiently Modeling Long Sequences with Structured State Spaces
 tags: [ llms, transformers, attention, ssm, s4, long-range arena ]
 date: 2023-08-08
 author: Tushaar Gangavarapu
+toc: true
 next:
 previous: 
 ---
@@ -390,7 +391,7 @@ $$
 
 As can be noted from ($6$), an underdamped oscillator still oscillates, but an angular frequency of $\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2}$, and the amplitude $c\exp(-\gamma t/2)$ decreases exponentially with time. 
 
-Let's graph the motion of a damped oscillator to compare with our SHM; we'll use the complex plane visualization. Let's write out our damped $z(t)$, with the initial state $x(0)$ as `x0` and $\dot{x}(0)$ as `v0`:
+Let's graph the motion of a damped oscillator to compare with our SHM; we'll use the complex plane visualization. Let's write out our damped $z(t)$, with the initial state $x(0)$ as `x0` and $\dot{x}(0)$ as `v0` (to help visualize damped oscillation better, let us set $\dot{x}(0) = 4$):
 
 ```python
 γ = (2 * ω0) - 0.5  # underdamped
@@ -426,8 +427,20 @@ $$
 where,
 
 $$
-u_- = (\gamma/2) - \sqrt{\left(\gamma/2\right)^2 - \omega_0^2} \\
-u_+ = (\gamma/2) + \sqrt{\left(\gamma/2\right)^2 - \omega_0^2}
+\begin{align*}
+u_- &= (\gamma/2) - \sqrt{\left(\gamma/2\right)^2 - \omega_0^2} \\
+u_+ &= (\gamma/2) + \sqrt{\left(\gamma/2\right)^2 - \omega_0^2}
+\end{align*}
+$$
+
+Same as before, we can use the initial state of the system to compute $c_1$ and $c_2$:
+
+$$
+\begin{align*}
+x(0) = c_1 + c_2 \\
+\dot{x}(0) = -u_- c_1 - u_+ c_2 \\
+\Rightarrow (u_+ - u_-) c_1 = u_+ x(0) + \dot{x}(0)
+\end{align*}
 $$
 
 Notice that since $u_+ > u_-$, the $u_+$ solution in ($7$) dies off before $u_-$ solution; both of these suffer from exponential decay.
