@@ -10,4 +10,8 @@ next:
 previous: 
 ---
 
+This and the following posts are about, well, "using matrices"; more specifically, 1) (*stable* and efficient 
+algorithms for) linear systems, 2) least squares, 3) eigenvalue problems. We will attempt to solve these problems 
+using direct (factorization) methods and iterative methods.
+
 ## Preliminaries
