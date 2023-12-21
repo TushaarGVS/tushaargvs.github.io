@@ -37,7 +37,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <div>
   <p style="margin-bottom:0.5cm;"></p>
   
-  <img class="profile" src="../assets/images/tushaar_shed.jpeg" style="margin-left:15px;" title="tushaar gangavarapu" alt="gangavarapu, tushaar">
+  <img class="profile" src="../assets/images/tushaar_shed.jpeg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   
   <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r Gangavarapu</h3></font>
   <br/><font color="#008400">Graduate student</font> (computer science) at Cornell University, Ithaca
@@ -53,22 +53,22 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
 <p style="margin-bottom:0.7cm;"></p><p>
 
-    I am a <a href="https://xkcd.com/557/">graduate [= ms] student</a> at Cornell University (Ithaca), advised by <a href="https://rush-nlp.com/">Sasha Rush</a> (yay! NLP, here I come!).
+    I am an <a href="https://xkcd.com/557/">MS student</a> at Cornell University (Ithaca), advised by <a href="https://rush-nlp.com/">Sasha Rush</a>. I work in the area of efficient language models, more in the context of "how does this component affect model's abilities" (e.g., state space dynamics vs. attention) than hardware optimizations (e.g., flash attention).
     <br/><br/>
-    I've recently [= over the <a href="https://abstrusegoose.com/116">past six-ish months</a>] become increasingly fascinated with the effects of inductive bias in modeling. Specifically, in several languages, including English, it's often noted that "a word is known by the company it keeps!" (<a href="https://aclweb.org/aclwiki/Distributional_Hypothesis">distributional hypothesis</a>)&#150;I am currently studying the effects of enabling such biases in language modeling.
+    I've recently (over the <a href="https://abstrusegoose.com/116">past six-ish months</a>) become increasingly fascinated with the effects of inductive bias in modeling. Specifically, in several languages, including English, it's often noted that "a word is known by the company it keeps!" (<a href="https://aclweb.org/aclwiki/Distributional_Hypothesis">distributional hypothesis</a>)&#150;I am currently studying the effects of enabling such biases in language modeling.
     <br/><br/>
-    I usually enjoy discussions [= me learning a lot and having my mind blown!] with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the one-and-only <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and <a href="https://abstrusegoose.com/31">thought-provoking things</a> such as: would Gauss be shocked if they were brought back to life, in this era!?, and of course about <a href="https://twitter.com/DavidBindel/status/1533834861945012231?s=20">bunnies!</a>).
+    I usually enjoy discussions (which is just me learning a lot and having my mind blown!) with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the <i>one-and-only</i> <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and <a href="https://abstrusegoose.com/31">thought-provoking things</a> such as: would Gauss be shocked if they were brought back to life, in this era!?, and of course about <a href="https://twitter.com/DavidBindel/status/1533834861945012231?s=20">bunnies!</a>).
     <br/><br/>
-    See <a href="https://github.com/TushaarGVS">my GitHub page</a> for more information on the projects I've recently been working on; you can also check my <a href="https://tushaargvs.github.io/pages/posts.html">blog posts</a> to see what I've been focusing on recently (although, I've only started blogging since 06/2023). If you are an undergrad at Cornell and wish to collaborate with me, please email me.
+    See <a href="https://github.com/TushaarGVS">my GitHub page</a> for more information on the projects I've recently been working on; you can also check my <a href="https://tushaargvs.github.io/pages/posts.html">blog posts</a> to see what I've been focusing on recently (although, I've only started blogging since 08/2023). If you are an undergrad at Cornell and wish to collaborate with me, please email me.
     <br/><br/>
     (If you couldn't tell, I spend my free time scouring the internet [= mostly <a href="https://abstrusegoose.com/">abstrusegoose</a>, <a href="https://handwaving.github.io/">handwaving</a>, and <a href="https://xkcd.com/">xkcd</a>] for math-/CS-related comics!)
 </p><hr class="style">
 
 <p><b>Research interests.</b> Large language models, NLP, computational social science</p>
 
-<p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in fa22, and CS4300 (and cross-listings) in sp23, I was awarded the Bowers CIS best TA award.</p>
+<p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in Fa22, and CS4300 (and cross-listings) in Sp23, I was awarded the Bowers CIS best TA award.</p>
 
-<p><b>Acknowledgments.</b> Beyond the amazing faculty, my research (and most of my learnings) are in huge part thanks to: <a href="https://www.cs.cornell.edu/~jpchang/">Jonathan P. Chang</a>, <a href="https://twitter.com/tushrgangarapu/status/1666099166135631874?s=20">Lucas Matos Molter</a> (THE idiot!), and Sumanth Aluri. [As Lillian would put it,] my debt to them is unbounded.</p>
+<p><b>Acknowledgments.</b> Beyond the amazing faculty, my research (and most of my learnings) are in huge part thanks to: <a href="https://www.cs.cornell.edu/~jpchang/">Jonathan P. Chang</a>, <a href="https://twitter.com/tushrgangarapu/status/1666099166135631874?s=20">Lucas Matos Molter</a> (THE idiot!), and Sumanth Aluri. (As Lillian would put it,) my debt to them is unbounded.</p>
 
 <hr class="normal">
 
@@ -80,8 +80,13 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <colgroup><col width="150px"></colgroup>
 <tbody>
   <tr>
+    <td style="vertical-align: text-top;"><span><font color="#008400">01/2023&#150;05/2023:</font></span></td>
+    <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS4300/INFO4300)</a> Sp24, Cornell University, Ithaca</font></span></td>
+  </tr>
+
+  <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">08/2023&#150;01/2024:</font></span></td>
-    <td><span><font color="#4285F4">Head TA, <a href="https://www.cs.cornell.edu/courses/cs4740/2023fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> fa23, Cornell University, Ithaca</font></span></td>
+    <td><span><font color="#4285F4">Head TA, <a href="https://www.cs.cornell.edu/courses/cs4740/2023fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> Fa23, Cornell University, Ithaca</font></span></td>
   </tr>
 
   <tr>
@@ -101,7 +106,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">08/2022&#150;now:</font></span></td>
-    <td><span><font color="#4285F4">Graduate student (<u>major</u>: computer science, <u>minor</u>: math), Cornell University, Ithaca</font></span></td>
+    <td><span><font color="#4285F4">Graduate student (<u>major</u>: computer science, <u>minor</u>: applied math), Cornell University, Ithaca</font></span></td>
   </tr>
   
   <tr>

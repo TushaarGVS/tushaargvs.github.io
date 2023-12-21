@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linear algebra refresher
-tagline: (<a href="https://www.cs.cornell.edu/courses/cs6210/2023fa">CS6210</a>)
+tagline: (<a href="https://www.cs.cornell.edu/courses/matrices/2023fa">CS6210</a>)
 tags: [ vector spaces, matrices, norms, real and complex spaces, linear algebra ]
 date: 2023-08-21
 author: Tushaar Gangavarapu (the contents of this blog are adopted from CS6210 lecture notes)
