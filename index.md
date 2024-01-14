@@ -81,7 +81,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <tbody>
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">01/2023&#150;05/2023:</font></span></td>
-    <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS4300/INFO4300)</a> Sp24, Cornell University, Ithaca</font></span></td>
+    <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS/INFO4300)</a> Sp24, Cornell University, Ithaca</font></span></td>
   </tr>
 
   <tr>
