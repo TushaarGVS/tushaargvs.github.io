@@ -68,7 +68,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
 <p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in Fa22, and CS4300 (and cross-listings) in Sp23, I was awarded the Bowers CIS best TA award.</p>
 
-<p><b>Acknowledgments.</b> Beyond the amazing faculty, my research (and most of my learnings) are in huge part thanks to: <a href="https://www.cs.cornell.edu/~jpchang/">Jonathan P. Chang</a>, <a href="https://twitter.com/tushrgangarapu/status/1666099166135631874?s=20">Lucas Matos Molter</a> (THE idiot!), and Sumanth Aluri. (As Lillian would put it,) my debt to them is unbounded.</p>
+<p><b>Acknowledgments.</b> Beyond the amazing faculty, my research (and most of my learnings) are in huge part thanks to: <a href="https://www.cs.cornell.edu/~jpchang/">Jonathan P. Chang</a>, <a href="https://twitter.com/tushrgangarapu/status/1666099166135631874?s=20">Lucas Matos Molter</a>, and Sumanth Aluri (THE idiot!). (As Lillian would put it,) my debt to them is unbounded.</p>
 
 <hr class="normal">
 
