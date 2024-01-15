@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Hello, CUDA: Writing CUDA extensions for PyTorch
-tagline: 
 description: Writing CUDA extensions for PyTorch
 tags: [ CUDA, PyTorch, parallel computing ]
 date: 2024-01-15
