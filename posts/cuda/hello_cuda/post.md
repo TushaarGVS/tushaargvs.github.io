@@ -11,7 +11,7 @@ next:
 previous: 
 ---
 
-(This blog is inspired from Shijie Wang's post ["Beyond Native PyTorch: The Power of C++/CUDA Integration"](https://witnessj.com/archives/cuda) and several other PyTorch CUDA/CPP extension tutorials online.)
+(This blog is inspired from Shijie Wang's post "[Beyond Native PyTorch: The Power of C++/CUDA Integration](https://witnessj.com/archives/cuda)" and several other PyTorch CUDA/CPP extension tutorials online.)
 
 Okay, so a natural question is: why would one need to learn how to write CPP/CUDA extensions for PyTorch? It's simple: performance optimization. But wait!, isn't PyTorch already optimized?---not in all cases! For example, you might want to enable fast matrix multiplication with _sparse_ matrices (which was my motivation!), or you want to employ fused kernel operations. CUDA/CPP extensions can offer high performance (compared to naive PyTorch-only implementations).
 
