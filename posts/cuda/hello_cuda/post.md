@@ -6,7 +6,7 @@ description: "Writing CUDA extensions for PyTorch"
 tags: [ CUDA, PyTorch, parallel computing ]
 date: 2024-01-15
 author: Tushaar Gangavarapu
-toc: true
+toc: false
 next:
 previous: 
 ---
