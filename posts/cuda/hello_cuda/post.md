@@ -1,10 +1,12 @@
 ---
 layout: post
-title: Hello, CUDA: Writing CUDA extensions for PyTorch
-description: Writing CUDA extensions for PyTorch
+title: "Hello, CUDA: Writing CUDA extensions for PyTorch"
+tagline: 
+description: "Writing CUDA extensions for PyTorch"
 tags: [ CUDA, PyTorch, parallel computing ]
 date: 2024-01-15
 author: Tushaar Gangavarapu
+toc: true
 next:
 previous: 
 ---
