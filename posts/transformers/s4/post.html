@@ -1,0 +1,659 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../assets/images/favicon.ico">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143518986-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-143518986-2');
+    </script>
+
+    <meta name="google-site-verification" content="huu2Y2-hvgWrKYnpHP2tQcShK-fww3FDKlpP7au_4V0" />
+    <meta charset="utf-8">
+    <title>The no nonsense guide to state-space models</title>
+    <meta name="description" content="Efficiently Modeling Long Sequences with Structured State Spaces">
+    
+    <meta name="author" content="Tushaar Gangavarapu">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/tgangavarapu.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/rouge.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/tabs.css" rel="stylesheet">
+
+    <!-- atom & rss feed -->
+    <link href="nil" type="application/atom+xml" rel="alternate" title="Tushaar Gangavarapu">
+    <link href="nil" type="application/rss+xml" rel="alternate" title="Tushaar Gangavarapu">
+    
+    <!--Add function that displays last modified date: -->
+    <script type="text/javascript">
+    onload = function(){
+        document.getElementById("lastModified").innerHTML = "last modified on: " + document.lastModified.split(" ")[0];
+    }
+    </script>
+
+    <style type="text/css">
+      .alignleft { float: left; }
+      .alignright { float: right; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!--    <script type="text/x-mathjax-config">-->
+<!--      MathJax.Hub.Config({-->
+<!--        jax: ["input/TeX", "output/HTML-CSS"],-->
+<!--        tex2jax: {-->
+<!--          inlineMath: [['$', '$'], ['\\(', '\\)']],-->
+<!--          displayMath: [['$$', '$$'], ['\\[', '\\]']],-->
+<!--          processEscapes: true,-->
+<!--          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']-->
+<!--        },-->
+<!--        scale: 100,-->
+<!--        messageStyle: "none",-->
+<!--        "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }-->
+<!--      });-->
+<!--    </script>-->
+<!--    <script id="MathJax-script" async-->
+<!--            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+<!--            type="text/javascript">-->
+<!--    </script>-->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        },
+        scale: 100,
+      };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!--    <script type="text/javascript" id="MathJax-script" async-->
+<!--      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">-->
+<!--    </script>-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Home</a>
+          <ul class="nav">
+              <li><a href="/pages/posts.html">Blog</a></li>
+              <li><a href="/pages/research.html">Research</a></li>
+              <li><a href="/pages/news.html">News</a></li>
+              <li><a href="/pages/teaching.html">Other</a></li>
+              <li><a href="../../../assets/documents/cv.pdf">Vita</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<link rel="alternate" type="application/atom+xml" title="Tushaar Gangavarapu" href="/feed.xml">
+<link rel="shortcut icon" type="image/x-icon" href="../../../assets/images/favicon.ico">
+<div class="page-header">
+  <h2>The no nonsense guide to state-space models <small>(<a href="https://arxiv.org/abs/2111.00396">arxiv</a>)</small></h2>
+</div>
+<!-- 
+<script type="text/javascript">
+  onload = function(){
+      document.getElementById("lastModified").innerHTML = "post last modified on: " + document.lastModified.split(" ")[0];
+  }
+  </script> -->
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+    <span>(last modified on: 08 August 2023)</span>
+    <!-- <span id="lastModified"></span> -->
+    </div>
+    <div class="content">
+      <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#preliminaries">Preliminaries</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#simple-harmonic-motion-shm">Simple harmonic motion (SHM)</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#sines-cosines-and-exponentials">Sines, cosines, and exponentials</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#damped-oscillator">Damped oscillator</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#underdamping-gamma--2omega_0">Underdamping: $\gamma &lt; 2\omega_0$</a></li>
+<li class="toc-entry toc-h4"><a href="#overdamping-gamma--2omega_0">Overdamping: $\gamma &gt; 2\omega_0$</a></li>
+<li class="toc-entry toc-h4"><a href="#critical-damping-gamma--2omega_0">Critical damping: $\gamma = 2\omega_0$</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#state-space-models">State-space models</a></li>
+</ul><h2 id="preliminaries">
+<a class="anchor" href="#preliminaries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preliminaries</h2>
+
+<blockquote class="quote_md"><div>
+    "<i>The simplest thing that can happen in the physical universe is nothing. The next simplest thing, which doesn't get too far away from nothing, is an oscillation about nothing.</i> [...] <i>When many oscillators are put together, you get waves.</i>" <p style="margin-bottom:0.1cm;"></p> Matthew Schwartz, <a href="https://scholar.harvard.edu/files/schwartz/files/lecture1-oscillators-and-linearity.pdf">Lecture 1: Simple Harmonic Oscillators</a>
+</div></blockquote>
+
+<p>Before we begin, let’s setup a running example of the simple harmonic oscillator: consider the one-dimensional (horizontal) movement of a mass, attached to a wall with a spring as shown below:</p>
+
+<p><img title="" src="./imgs/mass-on-spring.png" alt="" width="400" data-align="center"></p>
+
+<p>Note that the gravitational force doesn’t affect the above mass-spring system. Finally, let’s assume that the equilibrium position of the mass, say $x$, is at $x = 0$, with positive displacement values corresponding to a stretched string.</p>
+
+<h3 id="simple-harmonic-motion-shm">
+<a class="anchor" href="#simple-harmonic-motion-shm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple harmonic motion (SHM)</h3>
+
+<p>In the above mass-spring system, when the system is displaced from its equilibrium position, the elasticity of the spring would provide a restoring force to restore the mass to equilibrium. From Newton’s first law of motion, we know that inertia causes the system to overshoot this equilibrium. This constant play between inertial and elastic properties causes the mass to oscillate.</p>
+
+<p>Assuming no other forces act on the system (external or otherwise (e.g., air resistance, friction, etc.)), the spring constant $k$ provides the elastic restoration force $F(x) = -kx$ (following the Hooke’s law, which is a first-order Taylor approximation of the restoring force<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>), while the inertia of mass $m$ provides the overshoot. From Newton’s second law of motion, we have $F = m\ddot{x}$, which gives us the following second-order ordinary differential equation (ODE):</p>
+
+\[-kx = m\ddot{x} \Rightarrow \ddot{x}(t) + \underbrace{\omega_0^2}_{k/m} x(t) = 0\]
+
+<p>where the dot over a variable ($\dot{x}$) indicates differentiation of the variable ($x$) with respect to time, two dots ($\ddot{x}$) denote the second derivative with respect to time, etc.</p>
+
+<p>From the above ODE, notice that the we want a function $x(t)$ such that its second derivative is proportional to itself, i.e., $\ddot{x}(t) \propto x(t)$; lucky for us!, we know at least two functions with this property–sine and cosine. Let’s write out an <a href="https://handwaving.github.io/270">ansatz</a>:</p>
+
+\[x(t) = a \sin(\omega t) + b \cos(\omega t) \tag{1}\]
+
+<p>where $a, b \in \mathbb{R}$ are constants, $\omega = 2\pi f$ is the (natural) angular frequency and $f$ is the frequency. Plugging this (conveniently guessed!) function into the ODE gives us:</p>
+
+\[-\omega^2(a \sin(\omega t) + b \cos(\omega t)) + \omega_0^2 (a \sin(\omega t) + b \cos(\omega t)) = 0 \Rightarrow \omega = \omega_0 = \sqrt{k/m} \tag{2}\]
+
+<p>Hence, we note that $x(t)$ goes back to itself after $t \rightarrow t + T$, where $T = 1/f = 2\pi / \omega_0$; simply put $x(t) = x(t + nT)$ for any $n \in \mathbb{Z}$.</p>
+
+<p>In the above expression for $x(t)$ as shown in ($1$), we note that $\omega$ can be computed using ($2$) and depends only on the spring constant $k$ and mass $m$; however, $a$ and $b$ are not fixed. To determine a particular solution to ($1$), we need to impose two initial conditions (to compute the two unknowns, $a$ and $b$). For instance, if the initial position $x(0)$ and initial velocity $\dot{x}(0)$ are known, then:</p>
+
+\[\begin{align*}
+\dot{x}(t) = a\omega_0 \cos(\omega_0 t) - b\omega_0 \sin(\omega_0 t) &amp;\Rightarrow \dot{x}(0) = a\omega_0 \equiv a = \frac{\dot{x}(0)}{\omega_0} \\
+x(t) = a \sin(\omega_0 t) + b \cos(\omega_0 t) &amp;\Rightarrow x(0) = b
+\end{align*}\]
+
+<p>Hence, we have:</p>
+
+\[x(t) = \frac{\dot{x}(0)}{\omega_0}\sin(\omega_0 t) + x(0) \cos(\omega_0 t)\]
+
+<p>Since $c\cos(\omega_0 t - \phi) = c\cos(\phi)\cos(\omega_0 t) + c\sin(\phi)\sin(\omega_0 t)$, where $c\cos(\phi) = x(0)$, $c \sin(\phi) = \dot{x}(0) / \omega_0$, and $c = \sqrt{x(0)^2 + (\dot{x}(0) / \omega_0)^2}$, we can rewrite $x(t)$ as:</p>
+
+\[x(t) = c \cos(\omega_0 t - \phi)\]
+
+<p>with $\phi = \mathrm{arctan2}\left(\dot{x}(0) / \omega_0, x(0)\right)$.</p>
+
+<p>Let’s graph the general solution to the SHM ODE shown in ($1$). First, let’s code our $x(t)$, with initial state $x(0)$ as <code class="language-plaintext highlighter-rouge">x0</code> and $\dot{x}(0)$ as <code class="language-plaintext highlighter-rouge">v0</code>, for a body with mass <code class="language-plaintext highlighter-rouge">m</code> and spring with spring constant <code class="language-plaintext highlighter-rouge">k</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># spring constant
+</span><span class="n">m</span> <span class="o">=</span> <span class="mi">90</span>  <span class="c1"># mass
+</span><span class="n">ω0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="s">"""Compute x(t) at a given t; parameterized by x(0) and x'(0)."""</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x0</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">v0</span> <span class="o">/</span> <span class="n">ω0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">Φ</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">v0</span> <span class="o">/</span> <span class="n">ω0</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">cos</span><span class="p">((</span><span class="n">ω0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">Φ</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let us write out a generic plotting function that graphs (animates) the function $x(t)$:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="n">patches</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">celluloid</span> <span class="kn">import</span> <span class="n">Camera</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">rcParams</span><span class="p">.</span><span class="n">update</span><span class="p">({</span><span class="s">"font.size"</span><span class="p">:</span> <span class="mi">8</span><span class="p">})</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">rc</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">rc</span><span class="p">(</span><span class="s">"text.latex"</span><span class="p">,</span> <span class="n">preamble</span><span class="o">=</span><span class="sa">r</span><span class="s">"\usepackage{amsmath} \usepackage{amssymb}"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_x</span><span class="p">(</span><span class="n">x_fn</span><span class="p">):</span>
+    <span class="c1"># Setup fig, axes for animation.
+</span>    <span class="n">gridspec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="n">gridspec</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="p">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s">"$x \longrightarrow$"</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">"right"</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">"top"</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s">"$x(t) \longrightarrow$"</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">))</span>
+    <span class="n">ax3</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax4</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span>
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s">"$t \longrightarrow$"</span><span class="p">,</span>
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s">"$-kx(t) \longrightarrow$"</span><span class="p">,</span>
+        <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+        <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">),</span>
+        <span class="n">xticks</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">),</span>
+        <span class="n">xticklabels</span><span class="o">=</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s">$\pi$"</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]),</span>
+    <span class="p">)</span>
+    <span class="n">ax4</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">t_vals</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># timesteps
+</span>    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">x_fn</span><span class="p">(</span><span class="n">t_vals</span><span class="p">)</span>  <span class="c1"># displacement: x(t)
+</span>    <span class="n">f_vals</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">x_vals</span>  <span class="c1"># restoring force: -kx(t)
+</span>    
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_vals</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Spring: https://stackoverflow.com/a/65481246.
+</span>        <span class="n">spring_x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span>
+        <span class="n">spring_y</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">((</span><span class="n">spring_x</span> <span class="o">+</span> <span class="mf">4.6</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="mi">15</span> <span class="o">/</span> <span class="p">(</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="mf">4.6</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">))</span>
+        <span class="n">mass</span> <span class="o">=</span> <span class="n">patches</span><span class="p">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.48</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spring_x</span><span class="p">,</span> <span class="n">spring_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"green"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"red"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"red"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mass</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+        <span class="k">if</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax1</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$\leftarrow m\ddot{x}(t)$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$kx(t) \rightarrow$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax1</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$m\ddot{x}(t) \rightarrow$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$\leftarrow kx(t)$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+        
+        <span class="c1"># Plot displacement and restoring force.
+</span>        <span class="n">ax3</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vals</span><span class="p">[:</span><span class="n">t</span><span class="p">],</span> <span class="n">x_vals</span><span class="p">[:</span><span class="n">t</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"orange"</span><span class="p">)</span>
+        <span class="n">ax3</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax4</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vals</span><span class="p">[:</span><span class="n">t</span><span class="p">],</span> <span class="n">f_vals</span><span class="p">[:</span><span class="n">t</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"blue"</span><span class="p">)</span>
+        <span class="n">ax4</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">camera</span><span class="p">.</span><span class="n">snap</span><span class="p">()</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">camera</span><span class="p">.</span><span class="n">animate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">anim</span>
+</code></pre></div></div>
+
+<p>Now, let’s visualize the path followed by the mass in a SHM:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">anim</span> <span class="o">=</span> <span class="n">plot_x</span><span class="p">(</span><span class="n">x_fn</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">anim</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"imgs/simple-harmonic-motion.gif"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s">"imagemagick"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img title="" src="./imgs/simple-harmonic-motion.gif" alt="" width="500" data-align="center"></p>
+
+<p>Notice the wavelike pattern $x(t)$ with a frequency $1/6\pi$ followed by the mass. Hence, a simple harmonic oscillator follows a (sinusoidal) wavelike pattern in the absence any other forces, external or otherwise.</p>
+
+<h4 id="sines-cosines-and-exponentials">
+<a class="anchor" href="#sines-cosines-and-exponentials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sines, cosines, and exponentials</h4>
+
+<p>Before proceeding, let’s recall the Euler’s identity: $\exp(j\omega t) = \cos(\omega t) + j \sin(\omega t)$, and note that:</p>
+
+\[\cos(\omega t) = \frac{\exp(j\omega t) + \exp(-j \omega t)}{2};\qquad \sin(\omega t) = \frac{\exp(j \omega t) - \exp(-j \omega t)}{2j} \tag{3}\]
+
+<p>The SHM ODE in ($1$) indicates that $\ddot{x}(t) \propto x(t)$; we noted in the previous section that sines and cosines satisfy the property of the second (or even numbers of) derivatives being proportional to themselves, i.e.,</p>
+
+\[\frac{d^2}{dt^2}a\sin(\omega t) = -a\omega^2 \sin(\omega t); \qquad \frac{d^2}{dt^2}b\cos(\omega t) = -b\omega^2 \cos(\omega t)\]
+
+<p>Apart from sines and cosines, the exponential function has all its derivatives proportional to itself:</p>
+
+\[\frac{d}{dt} c\exp(\omega t) = c\omega\exp(\omega t); \qquad \frac{d^2}{dt^2} c\exp(\omega t) = c\omega^2 \exp(\omega t)\]
+
+<p>Let’s try this ansatz, i.e., $x(t) = c\exp(\omega t)$, into our SHM ODE in ($1$):</p>
+
+\[\begin{align*}
+\ddot{x}(t) + \omega_0^2 x(t) &amp;= 0 \\
+c\omega^2\exp(\omega t) + c \omega_0^2 \exp(\omega t) &amp;= 0 \tag{4}
+\end{align*}\]
+
+<p>In ($4$), since $\exp(\omega t) &gt; 0$, this implies that $\omega^2 = -\omega_0^2$ or $\omega = \pm\sqrt{-1} \omega_0 = \pm j \omega_0$. Noting that if $c\exp(j\omega_0t)$ and $c\exp(-j\omega_0 t)$ are two (distinct) solutions of ($1$), then the general solution<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> to ($1$) is given as:</p>
+
+\[x(t) = c_1 \exp(j \omega_0 t) + c_2 \exp(-j \omega_0 t)\]
+
+<p>Using ($3$) and ($4$), we get:</p>
+
+\[x(t) = (c_1 + c_2) \cos(\omega_0 t) + j(c_1 - c_2)\sin(\omega_0 t)\]
+
+<p>Noting that we’re not dealing with quantum particles, we need $x(t)$ to be real, i.e., $\mathfrak{I}(c_1 + c_2) = 0$ and $\mathfrak{R}(c_1 - c_2) = 0$; hence, we need $c_1 = c_2^\star$ or $c_1 = a + jb$, $c_2 = a - jb$. Given the initial state $x(0)$ and $\dot{x}(0)$, we note:</p>
+
+\[\begin{align*}
+x(0) = c_1  + c_2 = 2a &amp;\Rightarrow a = x(0) / 2 \\
+\dot{x}(0) = j(c_1 - c_2) \omega_0 = -2b\omega_0 &amp;\Rightarrow b = -\dot{x}(0) / 2\omega_0
+\end{align*}\]
+
+<p>Hence, $c_1 = \frac{x(0)}{2} - j\frac{\dot{x}(0)}{2\omega_0} = r \exp(-j\phi)$; $r = \sqrt{x(0)^2 + (\dot{x}(0)/\omega_0)^2}/2$, $\phi = \mathrm{arctan2}\left(\dot{x}(0) / \omega_0, x(0)\right)$. Also, note that $x(t)$ is:</p>
+
+\[\begin{align*}
+x(t) &amp;= c_1 \exp(j \omega_0 t) + c_1^\star \exp(-j \omega_0 t) \\ 
+&amp;= r \exp(-j \phi)\exp(j \omega_0 t) + r \exp(j\phi)\exp(-j \omega_0 t) \\
+&amp;= \underbrace{r\exp(j(\omega_0 t - \phi))}_{z} + \underbrace{r \exp(-j(\omega_0 t - \phi))}_{z^\star} \\
+&amp;= 2 \mathfrak{R}(z) \\
+&amp;= 2 \mathfrak{R}(r\exp(j(\omega_0 t - \phi))) \equiv 2 r \cos(\omega_0 t - \phi)\\
+&amp;= 2 \mathfrak{R}(c_1 \exp(j \omega_0 t))
+\end{align*}\]
+
+<p>Notice how $x(t)$ manifests itself to always be real! It is important to note that we didn’t arbitrarily <em>discard</em> the complex part to enforce $x(t)$ to be real; it naturally (and beautifully!) came out of our initial conditions. Furthermore, this matches (exactly) with our previously-obtained SHM solution using our sine and cosine ansatz.</p>
+
+<p>Let’s plot the motion of the SHM, i.e., $x(t)$ using the complex plane (with the same initial conditions as before). First, let’s code our $z(t)$, with initial state $x(0)$ as <code class="language-plaintext highlighter-rouge">x0</code> and $\dot{x}(0)$ as <code class="language-plaintext highlighter-rouge">v0</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="s">"""Compute z(t) at a given t; parameterized by x(0) and x'(0)."""</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x0</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">v0</span> <span class="o">/</span> <span class="n">ω0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Φ</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">v0</span> <span class="o">/</span> <span class="n">ω0</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">cos</span><span class="p">((</span><span class="n">ω0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">Φ</span><span class="p">),</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">((</span><span class="n">ω0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">Φ</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let us write out a generic plotting function that graphs (animates) the function $z(t)$:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plot_z</span><span class="p">(</span><span class="n">z_fn</span><span class="p">):</span>
+    <span class="c1"># Setup fig, axes for animation.
+</span>    <span class="n">gridspec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">])</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="n">gridspec</span><span class="p">)</span>
+    <span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[])</span>
+    <span class="n">ax1</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">"right"</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">"top"</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s">"$x(t) \longrightarrow$"</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">4.7</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">),</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+    <span class="n">ax2</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">t_vals</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># timesteps
+</span>    <span class="n">x_vals</span><span class="p">,</span> <span class="n">_y_vals</span> <span class="o">=</span> <span class="n">z_fn</span><span class="p">(</span><span class="n">t_vals</span><span class="p">)</span>  <span class="c1"># z(t) = x(t) + j y(t)
+</span>    <span class="n">y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x_vals</span><span class="p">)</span>  <span class="c1"># x(t) = Re(z(t))
+</span>    <span class="n">__y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># shifted y values to show a wave tail
+</span>    
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_vals</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Spring: https://stackoverflow.com/a/65481246.
+</span>        <span class="n">spring_x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span>
+        <span class="n">spring_y</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">((</span><span class="n">spring_x</span> <span class="o">+</span> <span class="mf">4.6</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="mi">15</span> <span class="o">/</span> <span class="p">(</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="mf">4.6</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">))</span>
+        <span class="n">mass</span> <span class="o">=</span> <span class="n">patches</span><span class="p">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.48</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spring_x</span><span class="p">,</span> <span class="n">spring_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"green"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"red"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"red"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mass</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+        <span class="k">if</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax1</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.87</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$\leftarrow m\ddot{x}(t)$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.87</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$kx(t) \rightarrow$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax1</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.87</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$m\ddot{x}(t) \rightarrow$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.87</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$\leftarrow kx(t)$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+        
+        <span class="c1"># Plot z(t) = x(t) + j y(t).
+</span>        <span class="n">ax2</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">_y_vals</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"blue"</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">"o"</span><span class="p">)</span>  <span class="c1"># z(t) head
+</span>        <span class="n">ax2</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">[:</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">_y_vals</span><span class="p">[:</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"blue"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># z(t) tail
+</span>        <span class="n">ax2</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s">"$z(t)$"</span><span class="p">,</span> <span class="p">(</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">_y_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        
+        <span class="c1"># Plot x(t) = Re(z(t)).
+</span>        <span class="n">ax2</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">y_vals</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"orange"</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">"o"</span><span class="p">)</span>  <span class="c1"># x(t) head
+</span>        <span class="n">ax2</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">[:</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">__y_vals</span><span class="p">[:</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"orange"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dashed"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># wave tail
+</span>        <span class="n">ax2</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s">"$x(t)$"</span><span class="p">,</span> <span class="p">(</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">))</span>
+        
+        <span class="c1"># Projection of z(t) onto real axis.
+</span>        <span class="n">ax2</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">x_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">_y_vals</span><span class="p">[</span><span class="n">t</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="s">"gray"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="n">ax2</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$z(t) = 2r\exp(j(\omega_0 t - \phi))$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.35</span><span class="p">,</span> <span class="sa">r</span><span class="s">"$x(t) = \mathfrak{R}(z(t))$"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">'top'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="p">.</span><span class="n">transAxes</span><span class="p">)</span>
+        
+        <span class="n">camera</span><span class="p">.</span><span class="n">snap</span><span class="p">()</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">camera</span><span class="p">.</span><span class="n">animate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">anim</span>
+</code></pre></div></div>
+
+<p>Now, let’s visualize the path followed by the mass in a SHM:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">anim</span> <span class="o">=</span> <span class="n">plot_z</span><span class="p">(</span><span class="n">z_fn</span><span class="o">=</span><span class="n">z</span><span class="p">)</span>
+<span class="n">anim</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"imgs/simple-harmonic-motion-z.gif"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s">"imagemagick"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img title="" src="./imgs/simple-harmonic-motion-z.gif" alt="" width="350" data-align="center"></p>
+
+<p>Notice how SHM is simply a shadow of the steady circular motion of $z(t) = 2r\exp(j(\omega_0 t - \phi))$ on the real axis.</p>
+
+<h3 id="damped-oscillator">
+<a class="anchor" href="#damped-oscillator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Damped oscillator</h3>
+
+<p>In the previous section on SHM, our mass on a spring system did not account for any damping (e.g., air resistance, friction, etc.). A damped oscillator dissipates its energy, eventually returning to the equilibrium position (unlike in SHM). The damping force must vanish when the body is at rest, and for small velocities<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup>, the damping force must be proportional to the velocity: $F \propto -b \dot{x}$ for some damping constant $b$. Thus, the generic form for damped oscillation <em>close to equilibrium</em> is:</p>
+
+\[m\ddot{x} = -k x - b \dot{x} \equiv \ddot{x} + \underbrace{\gamma}_{b/m} \dot{x} + \underbrace{\omega_0^2}_{k/m} x = 0 \tag{5}\]
+
+<p>Just as an aside, ($5$) describes the motion of various physical systems: sound waves, vibrating strings, etc. It can be easily verified that unlike in the case of SHM, $\sin(\omega t)$ or $\cos(\omega t)$ solve the damped oscillator ODE, since $\sin$ and $\cos$ are proportional to their second derivatives, while ($5$) includes a first derivative term as well. However, as noted in the previous section, exponentials are proportional to all their derivatives, including the first and the second. So, let’s try plugging in $x(t) = c\exp(\omega t)$ in ($5$):</p>
+
+\[\begin{align*}
+c\omega^2 \exp(\omega t) + c\gamma \omega \exp(\omega t) + c \omega_0^2 \exp(\omega t) = 0 \\
+\omega^2 + \gamma \omega + \omega_0^2 = 0 \\
+\Rightarrow \omega = (-\gamma/2) \pm \sqrt{\left(\gamma/2\right)^2 - \omega_0^2}
+\end{align*}\]
+
+<p>Hence, the <a href="https://www.math.stonybrook.edu/~scott/mat127.spr21/SecondOrderLinearDiffEqNotes.pdf">general solution</a> to the damped oscillator ODE is:</p>
+
+\[\begin{align*}
+x(t) &amp;= c_1 \exp\left((-\gamma t/2) + t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) + c_2 \exp\left((-\gamma t/2) - t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) \\
+&amp;= \exp\left(-\gamma t/2\right) \left(c_1 \exp\left(t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right) + c_2 \exp\left(-t\sqrt{\left(\gamma/2\right)^2 - \omega_0^2}\right)\right)
+\end{align*}\]
+
+<p>The cases of $\gamma &lt; 2\omega_0$ (underdamping), $\gamma = 2\omega_0$ (critical damping), and $\gamma &gt; 2\omega_0$ (overdamping) demonstrate varied physical behavior.</p>
+
+<h4 id="underdamping-gamma--2omega_0">
+<a class="anchor" href="#underdamping-gamma--2omega_0" aria-hidden="true"><span class="octicon octicon-link"></span></a>Underdamping: $\gamma &lt; 2\omega_0$</h4>
+
+<p>Note that $\gamma = 0$ also falls under the case of underdamping, and when $\gamma = 0$, the damping force vanishes and we must regain the original SHM. Given that $\gamma &lt; 2\omega_0$, let:</p>
+
+\[\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2} \in \mathbb{R}\]
+
+<p>Now, the general solution ($5$) can rewritten as:</p>
+
+\[\begin{align*}
+x(t) &amp;= \exp\left(-\gamma t/2\right) \left(c_1 \exp(j \omega_u t) + c_2 \exp(-j \omega_u t)\right) \\
+&amp;= \exp\left(-\gamma t/2\right) \left(c_1\cos(\omega_ut) + jc_1 \sin(\omega_u t) + c_2 \cos(\omega_u t) - jc_2\sin(\omega_u t)\right) \\
+&amp;= \exp\left(-\gamma t/2\right) \left((c_1 + c_2) \cos(\omega_u t) + j (c_1  - c_2) \sin(\omega_u t)\right)
+\end{align*}\]
+
+<p>Again, noting that $x(t) \in \mathbb{R}$, we have $\mathfrak{I}(c_1 + c_2) = 0$ and $\mathfrak{R}(c_1 - c_2) = 0$; hence, $c_1 = c_2^\star = a + jb$, where $a$ and $b$ can be determined by the initial state of the system, $x(0)$ and $\dot{x}(0)$:</p>
+
+\[\begin{align*}
+x(0) = c_1 + c_2 = 2a &amp;\Rightarrow a = x(0) / 2 \\
+\dot{x}(0) = \frac{\gamma}{2}(c_1 + c_2) + j (c_1 - c_2) = \gamma a - 2b &amp;\Rightarrow b = \frac{\gamma x(0)}{4} - \frac{\dot{x}(0)}{2}
+\end{align*}\]
+
+<p>Using trigonometric identifies:</p>
+
+\[\begin{align*}
+c \cos(\omega_u t - \phi) = \underbrace{c \cos(\phi)}_{c_1 + c_2\,=\,2a} \cos(\omega_u t) + \underbrace{c \sin(\phi)}_{j(c_1 - c_2)\,=\,-2b} \sin(\omega_u t) \\
+\Rightarrow c = \sqrt{(c_1 + c_2)^2 + (j(c_1 - c_2))^2} = 2 \sqrt{a^2 + b^2}; \qquad \phi = \mathrm{arctan2}(-b, a)
+\end{align*}\]
+
+<p>Hence, we have:</p>
+
+\[x(t) = c \exp\left(-\gamma t/2\right) \cos(\omega_u t - \phi) \tag{6}\]
+
+<p>As can be noted from ($6$), an underdamped oscillator still oscillates, but an angular frequency of $\omega_u = \sqrt{\omega_0^2 - \left(\gamma/2\right)^2}$, and the amplitude $c\exp(-\gamma t/2)$ decreases exponentially with time.</p>
+
+<p>Let’s graph the motion of a damped oscillator to compare with our SHM; we’ll use the complex plane visualization. Let’s write out our damped $z(t)$, with the initial state $x(0)$ as <code class="language-plaintext highlighter-rouge">x0</code> and $\dot{x}(0)$ as <code class="language-plaintext highlighter-rouge">v0</code> (to help visualize damped oscillation better, let us set $\dot{x}(0) = 4$):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">γ</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ω0</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>  <span class="c1"># underdamped
+</span><span class="n">ωu</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ω0</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">γ</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">z_underdamped</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="s">"""Compute z(t) at a given t; parameterized by x(0) and x'(0)."""</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">((</span><span class="n">γ</span> <span class="o">*</span> <span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">v0</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">Φ</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arctan2</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">γ</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">cos</span><span class="p">((</span><span class="n">ωu</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">Φ</span><span class="p">),</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">((</span><span class="n">ωu</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">Φ</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now, let’s visualize the path followed by the underdamped oscillator:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">anim</span> <span class="o">=</span> <span class="n">plot_z</span><span class="p">(</span><span class="n">z_fn</span><span class="o">=</span><span class="n">z_underdamped</span><span class="p">)</span>
+<span class="n">anim</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"imgs/simple-harmonic-motion-z-underdamped.gif"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s">"imagemagick"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img title="" src="./imgs/simple-harmonic-motion-z-underdamped.gif" alt="" width="350" data-align="center"></p>
+
+<h4 id="overdamping-gamma--2omega_0">
+<a class="anchor" href="#overdamping-gamma--2omega_0" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overdamping: $\gamma &gt; 2\omega_0$</h4>
+
+<p>In the overdamped case, we have $\gamma &gt; 2\omega_0$, ($5$) has real roots since $\sqrt{(\gamma/2)^2 - \omega_0^2} &gt; 0$. Thus the general solution is simply:</p>
+
+\[x(t) = c_1 \exp(-u_-t) + c_2 \exp(-u_+t) \tag{7}\]
+
+<p>where,</p>
+
+\[\begin{align*}
+u_- &amp;= (\gamma/2) - \sqrt{\left(\gamma/2\right)^2 - \omega_0^2} \\
+u_+ &amp;= (\gamma/2) + \sqrt{\left(\gamma/2\right)^2 - \omega_0^2}
+\end{align*}\]
+
+<p>Same as before, we can use the initial state of the system to compute $c_1$ and $c_2$:</p>
+
+\[\begin{align*}
+x(0) = c_1 + c_2 \\
+\dot{x}(0) = -u_- c_1 - u_+ c_2 \\
+\Rightarrow (u_+ - u_-) c_1 = u_+ x(0) + \dot{x}(0)
+\end{align*}\]
+
+<p>Notice that since $u_+ &gt; u_-$, the $u_+$ solution in ($7$) dies off before $u_-$ solution; both of these suffer from exponential decay.</p>
+
+<h4 id="critical-damping-gamma--2omega_0">
+<a class="anchor" href="#critical-damping-gamma--2omega_0" aria-hidden="true"><span class="octicon octicon-link"></span></a>Critical damping: $\gamma = 2\omega_0$</h4>
+
+<p>In case of critical damping, the solution in ($5$) reduces to:</p>
+
+\[\begin{align*}
+x(t) &amp;= c_1\exp(-\gamma t/2) + c_2 \exp(-\gamma t/2) \\
+&amp;= \underbrace{(c_1 + c_2)}_{=\,c} \exp(-\gamma t/2) \\
+&amp;= c \exp(-\omega_0 t) \tag{8}
+\end{align*}\]
+
+<p>Note that a second-order ODE is supposed to have two independent solutions; however, ($8$) notes only one solution. To find the other solution, let’s use $\gamma = 2\omega_0$ in the original ODE ($5$), we have:</p>
+
+\[\ddot{x} + 2\omega_0 \dot{x} + \omega_0^2 x = 0\]
+
+<p>The “other” solution to the ODE is:</p>
+
+\[(c + bt)\exp()\]
+
+<p>Let’s revisit our previous example to understand how the system behaves under different damping conditions:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="state-space-models">
+<a class="anchor" href="#state-space-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>State-space models</h2>
+
+<hr>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Let’s say that we displace a system, a distance $x$ from the equilibrium position ($x = 0$) and measure the restoring force as a function $F(x)$. By definition, $F(0) = 0$, i.e., no restoring force at equilibrium. Now, using <a href="https://people.clas.ufl.edu/kees/files/TaylorRemainderProof.pdf">Taylor’s remainder theorem</a>, we have: $F(x) = F(0) + xF’(0) + \frac{F’’(\xi)}{2} x^2$ where, $0 \leq \xi \leq x$. For really small displacements, we can ignore higher-order terms, and therefore, $F(x) = -kx$ with $k = -F’(0)$. Note that systems obeying Hook’s law are linear, i.e., when mass is close to the equilibrium position ($x$ is sufficiently small!). <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>See Theorem 1 (Recipe for Constant Equations): https://www.math.utah.edu/~gustafso/2250second-order-de-manuscript.pdf. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>The underlying assumption under which Taylor’s first-order approximation holds. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+    </div>
+
+    <hr>
+
+    <!-- 
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+    
+  
+
+
+    </ul>
+       -->
+
+    
+      <ul class="tag_box inline">
+        <li><i class="icon-tags"></i></li>
+        
+        
+
+
+  
+     
+    	<li>llms <span></span></li>
+     
+    	<li>transformers <span></span></li>
+     
+    	<li>attention <span></span></li>
+     
+    	<li>ssm <span></span></li>
+     
+    	<li>s4 <span></span></li>
+     
+    	<li>long-range arena <span></span></li>
+    
+  
+
+
+
+      </ul>
+    
+    
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev disabled"><a>&larr; previous</a></li>
+      
+        <!-- <li><a href="nil">archive</a></li> -->
+      
+        <li class="next disabled"><a>next &rarr;</a>
+      
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+
+      <hr>
+      <div>
+        <p class="alignleft">
+          <a href="https://scholar.google.co.in/citations?user=C7v_cA8AAAAJ&hl=en" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlescholar.svg"/></a> 
+          <!-- <a href="https://www.linkedin.com/in/tgangavarapu/" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg"/></a>  -->
+          <!-- <a href="https://instagram.com/tushaargangarapu/" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg"/></a>  -->
+          <a href="https://github.com/TushaarGVS" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"/></a> 
+          <a href="https://twitter.com/tushrgangarapu" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg"/></a>
+          <a href="/feed.xml" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/rss.svg"/></a>
+          <!-- <a href="https://orcid.org/0000-0002-0489-9573" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/orcid.svg"/></a> -->
+        </p>
+        <p class="alignright"><font size="2">tushaar gangavarapu &#151; <a href="mailto:tg352@cornell.edu">&lt;tg352@cornell.edu&gt;</a> &#151; <span id="lastModified"></span></font></p>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+
+    
+    <script src="/assets/themes/twitter/js/tabs.js"></script>
+  </body>
+</html>
+
