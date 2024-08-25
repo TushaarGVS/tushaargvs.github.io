@@ -86,7 +86,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <tr>
     <!-- <td style="vertical-align: text-top;"><span><font color="#008400">08/2024&#150;01/2025:</font></span></td> -->
     <!-- <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/66298">Practicum in AI (CS4701)</a> Fa24, Cornell University, Ithaca</font></span></td> -->
-    <td style="vertical-align: text-top;"><span>08/2024&#150;01/2025:</span></td> -->
+    <td style="vertical-align: text-top;"><span>08/2024&#150;01/2025:</span></td>
     <td><span>Head TA, <a href="https://canvas.cornell.edu/courses/66298">Practicum in AI (CS4701)</a> Fa24, Cornell University, Ithaca</span></td>
   </tr>
 
