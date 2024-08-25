@@ -60,7 +60,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
       <li> Mechanistic interpretability: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models </li>
     </ul>
 
-    Please see my <a href="https://github.com/TushaarGVS">GitHub</a> and <a href="https://tushaargvs.github.io/pages/research.html">research</a> pages to learn more about my current projects. I no longer work actively on pre-2022 research noted on my <a href="https://tushaargvs.github.io/pages/research.html">research page</a> (e.g., healthcare analytics). To this end, I believe there are more qualified experts in those areas. As such, I may not be able to respond if you are reaching out regarding that earlier work.
+    Please see my <a href="https://github.com/TushaarGVS">GitHub</a> and <a href="https://tushaargvs.github.io/pages/research.html">research</a> pages to learn more about my current projects. I no longer work actively on pre-2022 research noted on my <a href="https://tushaargvs.github.io/pages/research.html">research page</a> (e.g., healthcare analytics). To this end, I believe there are more qualified experts in those areas. As such, I may <i>not</i> be able to respond if you are reaching out regarding that earlier work.
 <br/><br/>
     If you're a Cornell undergrad and interested in any of my work (or want to discuss CS4740 or related topics), feel free to reach out! I'm generally proactive with emails and happy to talk about (my) research.
 </p><hr class="style">
@@ -85,7 +85,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">05/2024&#150;08/2024:</font></span></td>
-    <td><span><font color="#4285F4">Research intern (<u>advisor</u>: Sasha Rush), Cornell Tech, NYC</font></span></td>
+    <td><span><font color="#4285F4">Research Intern (<u>Advisor</u>: Sasha Rush, <u>Project</u>: Mechanistic interpretability), Cornell Tech, NYC</font></span></td>
   </tr>
 
   <tr>
@@ -100,7 +100,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">05/2023&#150;08/2023:</font></span></td>
-    <td><span><font color="#4285F4">Research intern (<u>advisor</u>: Sasha Rush), Cornell Tech, NYC</font></span></td>
+    <td><span><font color="#4285F4">Research Intern (<u>Advisor</u>: Sasha Rush, <u>Project</u>: Authorship identification), Cornell Tech, NYC</font></span></td>
   </tr>
 
   <tr>
@@ -115,42 +115,42 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">08/2022&#150;now:</font></span></td>
-    <td><span><font color="#4285F4">Graduate student (<u>major</u>: computer science, <u>minor</u>: applied math), Cornell University, Ithaca</font></span></td>
+    <td><span><font color="#4285F4">MS CS Student (<u>Major</u>: Computer Science, <u>Minor</u>: Applied Math), Cornell University, Ithaca</font></span></td>
   </tr>
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">09/2021&#150;08/2022:</font></span></td>
-    <td><span><font color="#4285F4">Applied scientist, Kindle Content Experience and Quality Algorithms, Amazon</font></span></td>
+    <td><span><font color="#4285F4">Applied Scientist, Kindle Content Experience and Quality Algorithms, Amazon</font></span></td>
   </tr>
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">12/2019&#150;09/2021:</font></span></td>
-    <td><span><font color="#4285F4">Research engineer, Kindle Content Experience and Quality Algorithms, Amazon</font></span></td>
+    <td><span><font color="#4285F4">Research Engineer, Kindle Content Experience and Quality Algorithms, Amazon</font></span></td>
   </tr>
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">06/2019&#150;12/2019:</font></span></td>
-    <td><span><font color="#4285F4">Software development engineer, <a href="https://www.amazon.com/gp/goldbox" target="_blank">worldwide deals</a>, Consumer Engagement, Amazon</font></span></td>
+    <td><span><font color="#4285F4">Software Development Engineer, <a href="https://www.amazon.com/gp/goldbox" target="_blank">Worldwide Deals</a>, Consumer Engagement, Amazon</font></span></td>
   </tr>
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">08/2018&#150;12/2019:</font></span></td>
-    <td style="vertical-align: text-top;"><span><font color="#4285F4">Scientific researcher at <a href="http://hccg.nitk.ac.in/" target="_blank">Human-Centered Computing Group</a> and <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering Lab</a>, NITK Surathkal</font></span></td>
+    <td style="vertical-align: text-top;"><span><font color="#4285F4">Scientific Researcher at <a href="http://hccg.nitk.ac.in/" target="_blank">Human-Centered Computing Group</a> and <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering Lab</a>, NITK Surathkal</font></span></td>
   </tr>
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">05/2018&#150;07/2018:</font></span></td>
-    <td style="vertical-align: text-top;"><span><font color="#4285F4">Software development intern, <a href="https://www.amazon.com/Kindle-Create/b?ie=UTF8&node=18292298011">Kindle Create</a>, Publisher Tools to Reader, Amazon</font></span></td>
+    <td style="vertical-align: text-top;"><span><font color="#4285F4">Software Development Intern, <a href="https://www.amazon.com/Kindle-Create/b?ie=UTF8&node=18292298011">Kindle Create</a>, Publisher Tools to Reader, Amazon</font></span></td>
   </tr>
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">05/2017&#150;07/2017:</font></span></td>
-    <td style="vertical-align: text-top;"><span><font color="#4285F4">Research intern, Center for Pattern Recognition and Machine Intelligence, PES University</font></span></td>
+    <td style="vertical-align: text-top;"><span><font color="#4285F4">Research Intern, Center for Pattern Recognition and Machine Intelligence, PES University</font></span></td>
   </tr>
   
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">08/2015&#150;04/2019:</font></span></td>
-    <td style="vertical-align: text-top;"><span><font color="#4285F4">Undergraduate student (<u>major</u>: information technology, <u>specialization</u>: aritificial intelligence), NITK Surathkal</font></span></td>
+    <td style="vertical-align: text-top;"><span><font color="#4285F4">Undergraduate Student (<u>Major</u>: Information Technology, <u>Specialization</u>: Aritificial Intelligence), NITK Surathkal</font></span></td>
   </tr>
 
 </tbody>
