@@ -175,4 +175,5 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <ul>
     <li>I really like chocolate-chip cookies, and <i>hate</i> yellow lays!</li>
     <li>I am scared (but also excited), a lot!, while teaching, publicly speaking, etc.</li>
+    <li><a href="https://github.com/TushaarGVS/backprop-lecture-notes-CS-4740/blob/main/13-backprop_notes.pdf">Lecture notes on backpropagation</a> (personal knowledge + compiled from various sources)</li>
 </ul>
