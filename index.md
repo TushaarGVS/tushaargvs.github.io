@@ -92,7 +92,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
   <tr>
     <td style="vertical-align: text-top;"><span>05/2024&#150;08/2024:</span></td>
-    <td><span>Research Intern (<u>Advisor</u>: Sasha Rush, <u>Project</u>: Mechanistic interpretability), Cornell Tech, NYC</span></td>
+    <td><span>Research Intern (Advisor: Sasha Rush, Project: Mechanistic interpretability), Cornell Tech, NYC</span></td>
   </tr>
 
   <tr>
@@ -107,7 +107,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
   <tr>
     <td style="vertical-align: text-top;"><span>05/2023&#150;08/2023:</span></td>
-    <td><span>Research Intern (<u>Advisor</u>: Sasha Rush, <u>Project</u>: Authorship identification), Cornell Tech, NYC</span></td>
+    <td><span>Research Intern (Advisor: Sasha Rush, Project: Authorship identification), Cornell Tech, NYC</span></td>
   </tr>
 
   <tr>
@@ -122,7 +122,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   
   <tr>
     <td style="vertical-align: text-top;"><span>08/2022&#150;now:</span></td>
-    <td><span>MS CS Student (<u>Major</u>: Computer Science, <u>Minor</u>: Applied Math), Cornell University, Ithaca</span></td>
+    <td><span>MS CS Student (Major: Computer Science, Minor: Applied Math), Cornell University, Ithaca</span></td>
   </tr>
   
   <tr>
@@ -157,7 +157,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   
   <tr>
     <td style="vertical-align: text-top;"><span>08/2015&#150;04/2019:</span></td>
-    <td style="vertical-align: text-top;"><span>Undergraduate Student (<u>Major</u>: Information Technology, <u>Specialization</u>: Aritificial Intelligence), NITK Surathkal</span></td>
+    <td style="vertical-align: text-top;"><span>Undergraduate Student (Major: Information Technology, Specialization: Aritificial Intelligence), NITK Surathkal</span></td>
   </tr>
 
 </tbody>
