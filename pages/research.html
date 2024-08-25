@@ -11,7 +11,9 @@ description: Tushaar Gangavarapu's research
     function cite(element_id, authors, title, url, other_info) {
         let authorNames = authors.map(author => {
             if (author.toLowerCase() === "tushaar gangavarapu") {
-                return `<strong>${author}</strong>`;
+                return `<strong>Tushaar Gangavarapu</strong>`;
+            } else if (author.toLowerCase() === "tushaar gangavarapu*") {
+                return `<strong>Tushaar Gangavarapu</strong>*`;
             }
             return author;
         }).join(", ");
@@ -49,7 +51,7 @@ description: Tushaar Gangavarapu's research
     window.onload = function() {
         // 2024
         cite(
-            element_id="mambabyte", 
+            element_id="colm",
             authors=["Junxiong Wang", "Tushaar Gangavarapu", "Jing Nathan Yan", "Alexander M. Rush"], 
             title="MambaByte: Token-free Selective State Space Model", 
             url="https://arxiv.org/pdf/2401.13660",
@@ -83,7 +85,7 @@ description: Tushaar Gangavarapu's research
         )
         cite(
             element_id="amlc_bleed", 
-            authors=["<strong>Tushaar Gangavarapu</strong>*", "Sriraghavendra Ramaswamy*"], 
+            authors=["Tushaar Gangavarapu*", "Sriraghavendra Ramaswamy*"], 
             title="A figure is worth a thousand words, but where are the words?: Enhancing image experience in Kindle eBooks", 
             url="https://w.amazon.com/index.php/AMLC",
             other_info=[
@@ -131,7 +133,7 @@ description: Tushaar Gangavarapu's research
         )
         cite(
             element_id="cods_comad", 
-            authors=["Aditya Jayasimha*", "<strong>Tushaar Gangavarapu</strong>*", "Sowmya Kamath S", "Gokul S Krishnan"], 
+            authors=["Aditya Jayasimha*", "Tushaar Gangavarapu*", "Sowmya Kamath S", "Gokul S Krishnan"], 
             title="Deep Neural Learning for Automated Diagnostic Code Group Prediction Using Unstructured Nursing Notes", 
             url="https://doi.org/10.1145/3371158.3371176",
             other_info=[
@@ -140,12 +142,50 @@ description: Tushaar Gangavarapu's research
             ]
         )
         // 2019
+        cite(
+            element_id="knosys", 
+            authors=["Tushaar Gangavarapu", "Aditya Jayasimha", "Gokul S Krishnan", "Sowmya Kamath S"], 
+            title="Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes", 
+            url="https://doi.org/10.1016/j.knosys.2019.105321",
+            other_info=[
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        cite(
+            element_id="conll", 
+            authors=["Tushaar Gangavarapu", "Gokul S Krishnan", "Sowmya Kamath S"], 
+            title="Coherence-based Modeling of Clinical Concepts Inferred from Heterogeneous Clinical Notes for ICU Patient Risk Stratification", 
+            url="https://www.aclweb.org/anthology/K19-1095/",
+            other_info=[
+                "<a href='https://tushaargvs.github.io/assets/publications/conll-2019-poster.pdf'>Poster</a>",
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        cite(
+            element_id="nldb", 
+            authors=["Tushaar Gangavarapu*", "Aditya Jayasimha*", "Gokul S Krishnan", "Sowmya Kamath S"], 
+            title="TAGS: Towards Automated Classification of Unstructured Clinical Nursing Notes", 
+            url="https://doi.org/10.1007/978-3-030-23281-8_16",
+            other_info=[
+                "<a href='https://tushaargvs.github.io/assets/publications/nldb-2019-ppt.pdf'>Slides</a>",
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        cite(
+            element_id="asoc", 
+            authors=["Tushaar Gangavarapu", "Nagamma Patil"], 
+            title="A novel filter-wrapper hybrid greedy ensemble approach optimized using the genetic algorithm to reduce the dimensionality of high-dimensional biomedical datasets", 
+            url="https://doi.org/10.1016/j.asoc.2019.105538",
+            other_info=[
+                "<a href='https://tushaargvs.github.io/assets/publications/asoc-2019-ppt.pdf'>Poster</a>"
+            ]
+        )
     }
 </script>
 
-<table style="width:100%" class="table style=dataTable" role="grid" cellspacing="25" cellpadding="2">
+<table style="width:100%" class="table style=dataTable" role="grid">
     <thead>
-        <tr>
+        <tr style="background-color:rgba(0,0,0,0.2)">
             <th width="10%">Topic(s)</th>
             <th width="12%">Year, venue</th>
             <th>Publication</th>
@@ -155,16 +195,16 @@ description: Tushaar Gangavarapu's research
     <!-- 2024 -->
     <tbody>
         <tr>
-            <td>Alternate-attention LLM</td>
+            <td>Alternate-attention</td>
             <td>2024 COLM</td>
-            <td id="mambabyte"></td>
+            <td id="colm"></td>
             <td></td>
         </tr>
     </tbody>
     <!-- 2023 -->
     <tbody>
         <tr>
-            <td>LLM</td>
+            <td>LLMs</td>
             <td>2023 ACL: BEA Shared Task</td>
             <td id="bea"></td>
             <td></td>
@@ -201,7 +241,7 @@ description: Tushaar Gangavarapu's research
             <td>Healthcare analytics</td>
             <td>2021 FGCS</td>
             <td id="fgcs"></td>
-            <td>Not an active area of research anymore</td>
+            <td><font color="red">Not an active area of research anymore (= 2024)</font></td>
         </tr>
     </tbody>
     <!-- 2020 -->
@@ -210,7 +250,7 @@ description: Tushaar Gangavarapu's research
             <td>Evolutionary computing</td>
             <td>2020 ICCS</td>
             <td id="iccs"></td>
-            <td>Not an active area of research anymore</td>
+            <td><font color="red">Not an active area of research anymore (= 2024)</font></td>
         </tr>
     </tbody>
     <tbody>
@@ -218,7 +258,7 @@ description: Tushaar Gangavarapu's research
             <td>Machine learning</td>
             <td>2020 AIRE</td>
             <td id="aire"></td>
-            <td>Not an active area of research anymore</td>
+            <td><font color="red">Not an active area of research anymore (= 2024)</font></td>
         </tr>
     </tbody>
     <tbody>
@@ -226,8 +266,40 @@ description: Tushaar Gangavarapu's research
             <td>Healthcare analytics</td>
             <td>2020 ACM CoDS-COMAD</td>
             <td id="cods_comad"></td>
-            <td>Not an active area of research anymore</td>
+            <td><font color="red">Not an active area of research anymore (= 2024)</font></td>
         </tr>
     </tbody>
     <!-- 2019 -->
+    <tbody>
+        <tr>
+            <td>Healthcare analytics</td>
+            <td>2019 KnoSys</td>
+            <td id="knosys"></td>
+            <td><font color="red">Not an active area of research anymore (= 2024)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>Healthcare analytics</td>
+            <td>2019 CoNLL</td>
+            <td id="conll"></td>
+            <td><font color="red">Not an active area of research anymore (= 2024)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>Healthcare analytics</td>
+            <td>2019 NLDB</td>
+            <td id="nldb"></td>
+            <td><font color="red">Not an active area of research anymore (= 2024)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>Evolutionary computing</td>
+            <td>2019 ASOC</td>
+            <td id="asoc"></td>
+            <td><font color="red">Not an active area of research anymore (= 2024)</font></td>
+        </tr>
+    </tbody>
 </table>
