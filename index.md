@@ -97,7 +97,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
   <tr>
     <td style="vertical-align: text-top;"><span>01/2023&#150;05/2023:</span></td>
-    <td><span>Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS/INFO4300)</a> Sp24, Cornell University, Ithaca</span></td>
+    <td><span>Head TA, <a href="https://canvas.cornell.edu/courses/62833">Language and Information (CS/INFO4300)</a> Sp24, Cornell University, Ithaca</span></td>
   </tr>
 
   <tr>
@@ -112,12 +112,12 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
   <tr>
     <td style="vertical-align: text-top;"><span>01/2023&#150;05/2023:</span></td>
-    <td><span>Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS4300/INFO4300)</a> sp23, Cornell University, Ithaca</span></td>
+    <td><span>Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS4300/INFO4300)</a> Sp23, Cornell University, Ithaca</span></td>
   </tr>
 
   <tr>
     <td style="vertical-align: text-top;"><span>08/2022&#150;01/2023:</span></td>
-    <td><span>Grad TA, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> fa22, Cornell University, Ithaca</span></td>
+    <td><span>Grad TA, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> Fa22, Cornell University, Ithaca</span></td>
   </tr>
   
   <tr>
