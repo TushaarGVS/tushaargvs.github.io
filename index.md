@@ -59,9 +59,9 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
       <li> Systems: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>) </li>
       <li> Mechanistic interpretability: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models </li>
     </ul>
-<br/>
+
     Please see my <a href="https://github.com/TushaarGVS">GitHub</a> and <a href="https://tushaargvs.github.io/pages/research.html">research</a> pages to learn more about my current projects. I no longer work actively on pre-2022 research noted on my <a href="https://tushaargvs.github.io/pages/research.html">research page</a> (e.g., healthcare analytics). To this end, I believe there are more qualified experts in those areas. As such, I may not be able to respond if you are reaching out regarding that earlier work.
-<br/>
+<br/><br/>
     If you're a Cornell undergrad and interested in any of my work (or want to discuss CS4740 or related topics), feel free to reach out! I'm generally proactive with emails and happy to talk about (my) research.
 </p><hr class="style">
 
