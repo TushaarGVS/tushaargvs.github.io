@@ -58,9 +58,9 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <p>
     I am an <a href="https://xkcd.com/557/">MS CS student</a> at Cornell University (Ithaca), advised by <a href="https://rush-nlp.com/">Alexander "Sasha" Rush</a>. My work is at the intersection of <i>alternate-attention</i> (for large language models), ML systems, and mechanistic interpretability:
     <ul>
-      <li> Alternate-attention: Compute/memory-efficient architectures such as Mamba(<a href="https://arxiv.org/pdf/2401.13660">Byte</a>), RecurrentGemma </li>
-      <li> Systems: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>) </li>
-      <li> Mechanistic interpretability: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models </li>
+      <li> <b>Alternate-attention</b>: Compute/memory-efficient architectures such as Mamba(<a href="https://arxiv.org/pdf/2401.13660">Byte</a>), RecurrentGemma </li>
+      <li> <b>Systems</b>: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>) </li>
+      <li> <b>Mechanistic interpretability</b>: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models </li>
     </ul>
 </p>
 <p>
