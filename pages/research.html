@@ -9,7 +9,12 @@ description: Tushaar Gangavarapu's research
 
 <script>
     function cite(element_id, authors, title, url, other_info) {
-        let authorNames = authors.join(", ");
+        let authorNames = authors.map(author => {
+            if (author.toLowerCase() === "tushaar gangavarapu") {
+                return `<strong>${author}</strong>`;
+            }
+            return author;
+        }).join(", ");
         let htmlString = `${authorNames}<br>`;
         if (url) {
             htmlString += `<a href="${url}">${title}</a>`;
@@ -42,6 +47,7 @@ description: Tushaar Gangavarapu's research
 
 <script>
     window.onload = function() {
+        // 2024
         cite(
             element_id="mambabyte", 
             authors=["Junxiong Wang", "Tushaar Gangavarapu", "Jing Nathan Yan", "Alexander M. Rush"], 
@@ -49,9 +55,59 @@ description: Tushaar Gangavarapu's research
             url="https://arxiv.org/pdf/2401.13660",
             other_info=[
                 "<a href='https://huggingface.co/JunxiongWang?search_models=MambaByte'>Pretrained models</a>",
-                "<a href='https://www.youtube.com/watch?v=kcd0BTKJuXk'>video (by Sasha Rush)</a>",
-                "<a href='https://openreview.net/forum?id=X1xNsuKssb'>OpenReview</a>"
+                "<a href='https://www.youtube.com/watch?v=kcd0BTKJuXk'>video</a> (by Sasha Rush)",
+                "<a href='https://openreview.net/forum?id=X1xNsuKssb'>OpenReview</a>",
+                "<a href='https://twitter.com/search?q=mambabyte&src=typed_query&f=top'>Twitter coverage</a>"
             ],
+        )
+        // 2023
+        cite(
+            element_id="bea", 
+            authors=["Yann Hicke", "Abhishek Masand", "Wentao Guo", "Tushaar Gangavarapu"], 
+            title="Assessing the efficacy of large language models in generating accurate teacher responses", 
+            url="https://aclanthology.org/2023.bea-1.60",
+            other_info=[
+                "<a href='https://github.com/TushaarGVS/bea-2023'>Code</a>",
+                "<a href='https://sig-edu.org/sharedtask/2023'>Shared task</a>"
+            ],
+        )
+        // 2022
+        cite(
+            element_id="amlc_erl", 
+            authors=["Tushaar Gangavarapu", "Sriraghavendra Ramaswamy"], 
+            title="Alexa, stop reading the references: Enhancing the reading experience in Kindle eBooks", 
+            url="https://w.amazon.com/index.php/AMLC",
+            other_info=[
+                "Amazon confidential (email <a href='mailto:sriragha@amazon.com'>sriragha@amazon.com</a> for details)"
+            ],
+        )
+        cite(
+            element_id="amlc_bleed", 
+            authors=["Tushaar Gangavarapu*", "Sriraghavendra Ramaswamy*"], 
+            title="A figure is worth a thousand words, but where are the words?: Enhancing image experience in Kindle eBooks", 
+            url="https://w.amazon.com/index.php/AMLC",
+            other_info=[
+                "Amazon confidential (email <a href='mailto:sriragha@amazon.com'>sriragha@amazon.com</a> for details)"
+            ],
+        )
+        // 2021
+        cite(
+            element_id="tetc", 
+            authors=["Tushaar Gangavarapu", "Gokul S Krishnan", "Sowmya Kamath S", "Jayakumar Jeganathan"], 
+            title="FarSight: Long-Term Disease Prediction Using Unstructured Clinical Nursing Notes", 
+            url="https://doi.org/10.1109/TETC.2020.2975251",
+            other_info=[
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        cite(
+            element_id="fgcs", 
+            authors=["Veena Mayya", "Sowmya Kamath S", "Gokul S Krishnan", "Tushaar Gangavarapu"], 
+            title="Multi-channel, convolutional attention based neural model for automated diagnostic coding of unstructured patient discharge summaries", 
+            url="https://doi.org/10.1016/j.future.2021.01.013",
+            other_info=[
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
         )
     }
 </script>
@@ -59,11 +115,12 @@ description: Tushaar Gangavarapu's research
 <table style="width:100%" class="table style=dataTable" role="grid">
     <thead>
         <tr>
-            <th width="12%">Topic(s)</th>
-            <th width="13%">Year, venue</th>
+            <th width="14%">Topic(s)</th>
+            <th width="15%">Year, venue</th>
             <th>Publication</th>
         </tr>
     </thead>
+    <!-- 2024 -->
     <tbody>
         <tr>
             <td>Alternate-attention</td>
@@ -71,4 +128,43 @@ description: Tushaar Gangavarapu's research
             <td id="mambabyte"></td>
         </tr>
     </tbody>
+    <!-- 2023 -->
+    <tbody>
+        <tr>
+            <td>Large language models</td>
+            <td>2023 BEA Shared Task</td>
+            <td id="bea"></td>
+        </tr>
+    </tbody>
+    <!-- 2022 -->
+    <tbody>
+        <tr>
+            <td>Information retrieval</td>
+            <td>2022 AMLC</td>
+            <td id="amlc_erl"></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>Information retrieval</td>
+            <td>2022 AMLC</td>
+            <td id="amlc_bleed"></td>
+        </tr>
+    </tbody>
+    <!-- 2021 -->
+    <tbody>
+        <tr>
+            <td>Healthcare analytics</td>
+            <td>2021 TETC</td>
+            <td id="tetc"></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>Healthcare analytics</td>
+            <td>2021 FGCS</td>
+            <td id="fgcs"></td>
+        </tr>
+    </tbody>
+    <!-- 2020 -->
 </table>
