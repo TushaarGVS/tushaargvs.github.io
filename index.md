@@ -72,7 +72,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
 <p><b>Research interests.</b> NLP <a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">::</a> LLM :: alternate-attention :: efficiency, mechanistic interpretability </p>
 
-<p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in fall-{2022, 2023}, and CS4300 (and cross-listings) in spring-{2022, 2023}, I was awarded the Bowers CIS Best TA Award.</p>
+<p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in fall 2022 and 2023, and CS4300 (and cross-listings) in spring 2022 and 2023, I was awarded the Bowers CIS Best TA Award.</p>
 
 <hr class="normal">
 
