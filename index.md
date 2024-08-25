@@ -84,78 +84,80 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <colgroup><col width="150px"></colgroup>
 <tbody>
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">08/2024&#150;01/2025:</font></span></td>
-    <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/66298">Practicum in AI (CS4701)</a> Fa24, Cornell University, Ithaca</font></span></td>
+    <!-- <td style="vertical-align: text-top;"><span><font color="#008400">08/2024&#150;01/2025:</font></span></td> -->
+    <!-- <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/66298">Practicum in AI (CS4701)</a> Fa24, Cornell University, Ithaca</font></span></td> -->
+    <td style="vertical-align: text-top;"><span>08/2024&#150;01/2025:</span></td> -->
+    <td><span>Head TA, <a href="https://canvas.cornell.edu/courses/66298">Practicum in AI (CS4701)</a> Fa24, Cornell University, Ithaca</span></td>
   </tr>
 
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">05/2024&#150;08/2024:</font></span></td>
-    <td><span><font color="#4285F4">Research Intern (<u>Advisor</u>: Sasha Rush, <u>Project</u>: Mechanistic interpretability), Cornell Tech, NYC</font></span></td>
+    <td style="vertical-align: text-top;"><span>05/2024&#150;08/2024:</span></td>
+    <td><span>Research Intern (<u>Advisor</u>: Sasha Rush, <u>Project</u>: Mechanistic interpretability), Cornell Tech, NYC</span></td>
   </tr>
 
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">01/2023&#150;05/2023:</font></span></td>
-    <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS/INFO4300)</a> Sp24, Cornell University, Ithaca</font></span></td>
+    <td style="vertical-align: text-top;"><span>01/2023&#150;05/2023:</span></td>
+    <td><span>Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS/INFO4300)</a> Sp24, Cornell University, Ithaca</span></td>
   </tr>
 
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">08/2023&#150;01/2024:</font></span></td>
-    <td><span><font color="#4285F4">Head TA, <a href="https://www.cs.cornell.edu/courses/cs4740/2023fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> Fa23, Cornell University, Ithaca</font></span></td>
+    <td style="vertical-align: text-top;"><span>08/2023&#150;01/2024:</span></td>
+    <td><span>Head TA, <a href="https://www.cs.cornell.edu/courses/cs4740/2023fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> Fa23, Cornell University, Ithaca</span></td>
   </tr>
 
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">05/2023&#150;08/2023:</font></span></td>
-    <td><span><font color="#4285F4">Research Intern (<u>Advisor</u>: Sasha Rush, <u>Project</u>: Authorship identification), Cornell Tech, NYC</font></span></td>
+    <td style="vertical-align: text-top;"><span>05/2023&#150;08/2023:</span></td>
+    <td><span>Research Intern (<u>Advisor</u>: Sasha Rush, <u>Project</u>: Authorship identification), Cornell Tech, NYC</span></td>
   </tr>
 
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">01/2023&#150;05/2023:</font></span></td>
-    <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS4300/INFO4300)</a> sp23, Cornell University, Ithaca</font></span></td>
+    <td style="vertical-align: text-top;"><span>01/2023&#150;05/2023:</span></td>
+    <td><span>Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS4300/INFO4300)</a> sp23, Cornell University, Ithaca</span></td>
   </tr>
 
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">08/2022&#150;01/2023:</font></span></td>
-    <td><span><font color="#4285F4">Grad TA, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> fa22, Cornell University, Ithaca</font></span></td>
+    <td style="vertical-align: text-top;"><span>08/2022&#150;01/2023:</span></td>
+    <td><span>Grad TA, <a href="https://www.cs.cornell.edu/courses/cs4740/2022fa/">Natural Language Processing (CS4740/LING4744/COGST4740/CS5740)</a> fa22, Cornell University, Ithaca</span></td>
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">08/2022&#150;now:</font></span></td>
-    <td><span><font color="#4285F4">MS CS Student (<u>Major</u>: Computer Science, <u>Minor</u>: Applied Math), Cornell University, Ithaca</font></span></td>
+    <td style="vertical-align: text-top;"><span>08/2022&#150;now:</span></td>
+    <td><span>MS CS Student (<u>Major</u>: Computer Science, <u>Minor</u>: Applied Math), Cornell University, Ithaca</span></td>
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">09/2021&#150;08/2022:</font></span></td>
-    <td><span><font color="#4285F4">Applied Scientist, Kindle Content Experience and Quality Algorithms, Amazon</font></span></td>
+    <td style="vertical-align: text-top;"><span>09/2021&#150;08/2022:</span></td>
+    <td><span>Applied Scientist, Kindle Content Experience and Quality Algorithms, Amazon</span></td>
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">12/2019&#150;09/2021:</font></span></td>
-    <td><span><font color="#4285F4">Research Engineer, Kindle Content Experience and Quality Algorithms, Amazon</font></span></td>
+    <td style="vertical-align: text-top;"><span>12/2019&#150;09/2021:</span></td>
+    <td><span>Research Engineer, Kindle Content Experience and Quality Algorithms, Amazon</span></td>
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">06/2019&#150;12/2019:</font></span></td>
-    <td><span><font color="#4285F4">Software Development Engineer, <a href="https://www.amazon.com/gp/goldbox" target="_blank">Worldwide Deals</a>, Consumer Engagement, Amazon</font></span></td>
+    <td style="vertical-align: text-top;"><span>06/2019&#150;12/2019:</span></td>
+    <td><span>Software Development Engineer, <a href="https://www.amazon.com/gp/goldbox" target="_blank">Worldwide Deals</a>, Consumer Engagement, Amazon</span></td>
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">08/2018&#150;12/2019:</font></span></td>
-    <td style="vertical-align: text-top;"><span><font color="#4285F4">Scientific Researcher at <a href="http://hccg.nitk.ac.in/" target="_blank">Human-Centered Computing Group</a> and <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering Lab</a>, NITK Surathkal</font></span></td>
+    <td style="vertical-align: text-top;"><span>08/2018&#150;12/2019:</span></td>
+    <td style="vertical-align: text-top;"><span>Scientific Researcher at <a href="http://hccg.nitk.ac.in/" target="_blank">Human-Centered Computing Group</a> and <a href="https://halelabnitk.github.io/" target="_blank">Healthcare Analytics and Language Engineering Lab</a>, NITK Surathkal</span></td>
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">05/2018&#150;07/2018:</font></span></td>
-    <td style="vertical-align: text-top;"><span><font color="#4285F4">Software Development Intern, <a href="https://www.amazon.com/Kindle-Create/b?ie=UTF8&node=18292298011">Kindle Create</a>, Publisher Tools to Reader, Amazon</font></span></td>
+    <td style="vertical-align: text-top;"><span>05/2018&#150;07/2018:</span></td>
+    <td style="vertical-align: text-top;"><span>Software Development Intern, <a href="https://www.amazon.com/Kindle-Create/b?ie=UTF8&node=18292298011">Kindle Create</a>, Publisher Tools to Reader, Amazon</span></td>
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">05/2017&#150;07/2017:</font></span></td>
-    <td style="vertical-align: text-top;"><span><font color="#4285F4">Research Intern, Center for Pattern Recognition and Machine Intelligence, PES University</font></span></td>
+    <td style="vertical-align: text-top;"><span>05/2017&#150;07/2017:</span></td>
+    <td style="vertical-align: text-top;"><span>Research Intern, Center for Pattern Recognition and Machine Intelligence, PES University</span></td>
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span><font color="#008400">08/2015&#150;04/2019:</font></span></td>
-    <td style="vertical-align: text-top;"><span><font color="#4285F4">Undergraduate Student (<u>Major</u>: Information Technology, <u>Specialization</u>: Aritificial Intelligence), NITK Surathkal</font></span></td>
+    <td style="vertical-align: text-top;"><span>08/2015&#150;04/2019:</span></td>
+    <td style="vertical-align: text-top;"><span>Undergraduate Student (<u>Major</u>: Information Technology, <u>Specialization</u>: Aritificial Intelligence), NITK Surathkal</span></td>
   </tr>
 
 </tbody>
