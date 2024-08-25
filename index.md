@@ -1,7 +1,7 @@
 ---
 layout: frontpage
 title: Tushaar
-description: Tushaar Gangavarapu is a graduate student at Cornell University, Ithaca, NY. 
+description: Tushaar Gangavarapu is an MS CS student at Cornell University, Ithaca, NY. 
 keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazon, nitk, graduate, student, applied, scientist, research, engineer, nlp, ml, ai, dl
 ---
 
@@ -39,9 +39,10 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   
   <img class="profile" src="../assets/images/tushaar_shed.jpeg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   
-  <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r Gangavarapu</h3></font>
-  <br/><font color="#008400">Graduate student</font> (computer science) at Cornell University, Ithaca
-  <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px">tg352 (at) cornell (dot) edu</a> by email, or G33(D) Gates Hall <a href="https://xkcd.com/222/">in person</a>
+  <!-- <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r Gangavarapu</h3></font> -->
+  <font color="#4285F4"><h3>Tushaar Gangavarapu</h3></font>
+  <br/><font color="#008400">MS CS student</font> at Cornell University
+  <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px">tg352@cornell.edu</a> by email, or 456 Gates Hall <a href="https://xkcd.com/222/">in person</a>
   <p style="margin-bottom:0.3cm;"></p>
   <blockquote>
   <div>
@@ -52,23 +53,21 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <hr class="normal">
 
 <p style="margin-bottom:0.7cm;"></p><p>
+    I am an <a href="https://xkcd.com/557/">MS CS student</a> at Cornell (Ithaca), advised by <a href="https://rush-nlp.com/">Alexander "Sasha" Rush</href>. My work is at the intersection of <i>alternate-attention</i> (for large language models), ML systems, and mechanistic interpretability:
+    <ul>
+      <li> Alternate-attention: Compute/memory-efficient architectures (e.g., Mamba(<a href="https://arxiv.org/pdf/2401.13660">Byte</a>), RecurrentGemma) </li>
+      <li> Systems: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>) </li>
+      <li> Mechanistic interpretability: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models </li>
+    </ul>
 
-    I am an <a href="https://xkcd.com/557/">MS student</a> at Cornell University (Ithaca), advised by <a href="https://rush-nlp.com/">Sasha Rush</a>. I work in the area of efficient language models, more in the context of "how does this component affect model's abilities" (e.g., state space dynamics vs. attention) than hardware optimizations (e.g., flash attention).
-    <br/><br/>
-    I've recently (over the <a href="https://abstrusegoose.com/116">past six-ish months</a>) become increasingly fascinated with the effects of inductive bias in modeling. Specifically, in several languages, including English, it's often noted that "a word is known by the company it keeps!" (<a href="https://aclweb.org/aclwiki/Distributional_Hypothesis">distributional hypothesis</a>)&#150;I am currently studying the effects of enabling such biases in language modeling.
-    <br/><br/>
-    I usually enjoy discussions (which is just me learning a lot and having my mind blown!) with <a href="https://www.cs.cornell.edu/~cristian/">Cristian Danescu-Niculescu-Mizil</a> on modeling conversational trajectories, the <i>one-and-only</i> <a href="https://www.cs.cornell.edu/home/llee/">Lillian Lee</a> on everything NLP (and everything interesting!), <a href="https://rush-nlp.com/">Sasha Rush</a> on large language models, computational efficiency, and on-going NLP/DL research, and <a href="https://www.cs.cornell.edu/~bindel/">David Bindel</a> on linear algebra (and <a href="https://abstrusegoose.com/31">thought-provoking things</a> such as: would Gauss be shocked if they were brought back to life, in this era!?, and of course about <a href="https://twitter.com/DavidBindel/status/1533834861945012231?s=20">bunnies!</a>).
-    <br/><br/>
-    See <a href="https://github.com/TushaarGVS">my GitHub page</a> for more information on the projects I've recently been working on; you can also check my <a href="https://tushaargvs.github.io/pages/posts.html">blog posts</a> to see what I've been focusing on recently (although, I've only started blogging since 08/2023). If you are an undergrad at Cornell and wish to collaborate with me, please email me.
-    <br/><br/>
-    (If you couldn't tell, I spend my free time scouring the internet [= mostly <a href="https://abstrusegoose.com/">abstrusegoose</a>, <a href="https://handwaving.github.io/">handwaving</a>, and <a href="https://xkcd.com/">xkcd</a>] for math-/CS-related comics!)
+    Please see my <a href="https://github.com/TushaarGVS">GitHub</a> and <a href="https://tushaargvs.github.io/pages/research.html">research</a> pages to learn more about my current projects. I no longer work actively on pre-2022 research noted on my <a href="https://tushaargvs.github.io/pages/research.html">research page</a> (e.g., healthcare analytics). To this end, I believe there are more qualified experts in those areas. As such, I may not be able to respond if you are reaching out regarding that earlier work.
+
+    If you're a Cornell undergrad and interested in any of my work (or want to discuss CS4740 or related topics), feel free to reach out! I'm generally proactive with emails and happy to talk about (my) research.
 </p><hr class="style">
 
-<p><b>Research interests.</b> Large language models, NLP, computational social science</p>
+<p><b>Research interests.</b> NLP <a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">::</a> LLM :: alternate-attention :: efficiency, mechanistic interpretability </p>
 
-<p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in Fa22, and CS4300 (and cross-listings) in Sp23, I was awarded the Bowers CIS best TA award.</p>
-
-<p><b>Acknowledgments.</b> Beyond the amazing faculty, my research (and most of my learnings) are in huge part thanks to: <a href="https://www.cs.cornell.edu/~jpchang/">Jonathan P. Chang</a>, <a href="https://twitter.com/tushrgangarapu/status/1666099166135631874?s=20">Lucas Matos Molter</a>, and Sumanth Aluri (THE idiot!). (As Lillian would put it,) my debt to them is unbounded.</p>
+<p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in fall-{2022, 2023}, and CS4300 (and cross-listings) in spring-{2022, 2023}, I was awarded the Bowers CIS Best TA Award.</p>
 
 <hr class="normal">
 
@@ -79,6 +78,16 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <table border="0" width="100%" style="vertical-align: text-top;">
 <colgroup><col width="150px"></colgroup>
 <tbody>
+  <tr>
+    <td style="vertical-align: text-top;"><span><font color="#008400">08/2024&#150;01/2025:</font></span></td>
+    <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/66298">Practicum in AI (CS4701)</a> Fa24, Cornell University, Ithaca</font></span></td>
+  </tr>
+
+  <tr>
+    <td style="vertical-align: text-top;"><span><font color="#008400">05/2024&#150;08/2024:</font></span></td>
+    <td><span><font color="#4285F4">Research intern (<u>advisor</u>: Sasha Rush), Cornell Tech, NYC</font></span></td>
+  </tr>
+
   <tr>
     <td style="vertical-align: text-top;"><span><font color="#008400">01/2023&#150;05/2023:</font></span></td>
     <td><span><font color="#4285F4">Head TA, <a href="https://canvas.cornell.edu/courses/51469">Language and Information (CS/INFO4300)</a> Sp24, Cornell University, Ithaca</font></span></td>
