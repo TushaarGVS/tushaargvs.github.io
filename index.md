@@ -1,6 +1,6 @@
 ---
 layout: frontpage
-title: Tushaar
+title: Tushaar Gangavarapu
 description: Tushaar Gangavarapu is an MS CS student at Cornell University, Ithaca, NY. 
 keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazon, nitk, graduate, student, applied, scientist, research, engineer, nlp, ml, ai, dl
 ---
@@ -40,8 +40,10 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <img class="profile" src="../assets/images/tushaar_shed.jpeg" style="margin-left:15px;" title="Tushaar Gangavarapu" alt="Gangavarapu, Tushaar">
   
   <!-- <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r Gangavarapu</h3></font> -->
-  <font color="#4285F4"><h3>Tushaar Gangavarapu</h3></font>
-  <br/><font color="#008400">MS CS student</font> at Cornell University
+  <!-- <font color="#4285F4"><h3>Tushaar Gangavarapu</h3></font> -->
+  <!-- <br/><font color="#008400">MS CS student</font> at Cornell University -->
+  <h3>Tushaar Gangavarapu</h3>
+  <br/>MS CS student at Cornell University
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px">tg352@cornell.edu</a> (by email), or 456 Gates Hall <a href="https://xkcd.com/222/">in person</a>
   <p style="margin-bottom:0.3cm;"></p>
   <blockquote>
