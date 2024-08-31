@@ -36,13 +36,13 @@ a code {
     text-decoration: underline;
 }
 
-a {
+a:active {
     color: blue;
     text-decoration: underline;
 }
 
-a:hover {
-    color: blue;
+a:visited {
+    color: #551A8B;
     text-decoration: underline;
 }
 
