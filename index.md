@@ -63,9 +63,9 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     <div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternate-attention: Compute/memory-efficient architectures such as Mamba(<a href="https://arxiv.org/pdf/2401.13660">Byte</a>), RecurrentGemma
       <br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: _ML systems_: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>)
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">::</a> <i>ML systems</i>: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>)
       <br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: _Mechanistic interpretability_: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: <i>Mechanistic interpretability</i>: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models
     </div>
 </p>
 <p>
@@ -77,7 +77,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
 <hr class="normal">
 
-<p><b>Research interests.</b> NLP <a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">::</a> LLM :: alternate-attention :: efficiency, mechanistic interpretability </p>
+<p><b>Research interests.</b> NLP :: LLM :: alternate-attention :: efficiency, mechanistic interpretability </p>
 
 <p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in fall 2022 and 2023, and CS4300 (and cross-listings) in spring 2022 and 2023, I was awarded the Bowers CIS Best TA Award.</p>
 
