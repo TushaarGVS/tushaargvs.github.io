@@ -41,10 +41,10 @@ a {
     text-decoration: underline;
 }
 
-a:hover {
+/* a:hover {
     color: blue;
     text-decoration: underline;
-}
+} */
 
 a:link a:active {
     color: blue;
