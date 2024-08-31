@@ -41,12 +41,12 @@ a {
     text-decoration: underline;
 }
 
-a:link a:active a:active:hover {
+a:link a:active {
     color: blue;
     text-decoration: underline;
 }
 
-a:visited a:visited:hover {
+a:visited {
     color: #551A8B;
     text-decoration: underline;
 }
