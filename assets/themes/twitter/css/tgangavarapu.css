@@ -36,7 +36,7 @@ a code {
     text-decoration: underline;
 }
 
-a:active {
+a {
     color: blue;
     text-decoration: underline;
 }
