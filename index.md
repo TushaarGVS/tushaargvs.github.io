@@ -57,18 +57,23 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <p style="margin-bottom:0.7cm;"></p>
 <p>
     I am an <a href="https://xkcd.com/557/">MS CS student</a> at Cornell University (Ithaca), advised by <a href="https://rush-nlp.com/">Alexander "Sasha" Rush</a>. My work is at the intersection of <i>alternate-attention</i> (for large language models), ML systems, and mechanistic interpretability:
-    <ul>
-      <li> <b>Alternate-attention</b>: Compute/memory-efficient architectures such as Mamba(<a href="https://arxiv.org/pdf/2401.13660">Byte</a>), RecurrentGemma </li>
-      <li> <b>Systems</b>: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>) </li>
-      <li> <b>Mechanistic interpretability</b>: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models </li>
-    </ul>
+    
+    <div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternate-attention: Compute/memory-efficient architectures such as Mamba(<a href="https://arxiv.org/pdf/2401.13660">Byte</a>), RecurrentGemma
+      <br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: _ML systems_: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>)
+      <br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: _Mechanistic interpretability_: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models
+    </div>
 </p>
 <p>
     Please see my <a href="https://github.com/TushaarGVS">GitHub</a> and <a href="https://tushaargvs.github.io/pages/research.html">research</a> pages to learn more about my current projects. I no longer actively work on pre-2022 research noted on my <a href="https://tushaargvs.github.io/pages/research.html">research page</a> (e.g., healthcare analytics). To this end, I believe there are more qualified experts in those areas, and as such, I may <i>not</i> be able to respond if you are reaching out regarding extensions of that earlier work.
 <p/>
 <p>
     If you're a Cornell undergrad and interested in any of my work (or want to discuss CS4740 or related topics), feel free to reach out! I'm generally proactive with emails and happy to talk about (my) research.
-</p><hr class="style">
+</p>
+
+<hr class="normal">
 
 <p><b>Research interests.</b> NLP <a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">::</a> LLM :: alternate-attention :: efficiency, mechanistic interpretability </p>
 
