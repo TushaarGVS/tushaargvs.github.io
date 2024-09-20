@@ -84,7 +84,7 @@ orthogonal transformations. Here's a chalkboard animation (as David Bindel would
 call it!):
 
 $$
-\begin{bmatrix} 
+A = \begin{bmatrix} 
     \small{\times} & \small{\times} & \small{\times} \\
     \small{\times} & \small{\times} & \small{\times} \\
     \small{\times} & \small{\times} & \small{\times} \\
@@ -112,5 +112,8 @@ $$
     0 & 0 & \color{red}{0} \\
     \vdots & \vdots & \color{red}{\vdots} \\
     0 & 0 & \color{red}{0} \\
+\end{bmatrix} = \begin{bmatrix}
+R_1 \\
+0
 \end{bmatrix}
 $$
