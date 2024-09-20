@@ -90,13 +90,15 @@ length ($\Vert u \Vert_2 = 1$) orthogonal to subspace $\mathcal{V}$. Then,
 $H = (\mathrm{I} - 2 u u^H)$ is the transformation that represents reflecting
 $x$ with respect to the subspace orthogonal to the vector $u$ (= "mirror").
 
-<img 
-    title="" 
-    src="./imgs/householder_reflector.png" 
-    alt="" 
-    width="500" 
-    data-align="center"
-/>
+<div align="center">
+    <img 
+        title="" 
+        src="./imgs/householder_reflector.png" 
+        alt="" 
+        width="300" 
+        data-align="center"
+    />
+</div>
 
 $H$ is often referred to as the Householder transformation or Householder 
 reflector.
@@ -123,7 +125,7 @@ direction of $u$ (orthogonal to $\mathcal{V}$). Now, the reflection is
     \end{align*}
     $$
 
-If the vector $x$ has a component orthogonal to the mirror ($u^H x \neq 0$), 
+    If the vector $x$ has a component orthogonal to the mirror ($u^H x \neq 0$), 
 then that component is reversed.
 
 * Finally, observe that reflection is a length-preserving transformation. (Note: 
@@ -132,10 +134,10 @@ vector.)
 
 $$
 \Vert Hx \Vert^2 = (Hx)^H Hx = x^H \underbrace{(H^H H)}_{\mathrm{I}} x = x^H x 
-= \Vert x \Vert^2
+= \Vert x \Vert^2.
 $$
 
-##### Householder QR 
+##### Householder QR
 
 Our goal is to convert $A$ to an upper triangular matrix through a series of 
 orthogonal transformations. Here's a chalkboard animation (as David Bindel would
