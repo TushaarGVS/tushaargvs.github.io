@@ -4,7 +4,7 @@ title: Householder QR
 tagline: 
 description: QR factorization using Householder reflectors
 tags: [householder reflectors, QR, matrix factorization]
-date: 2023-07-14
+date: 2024-09-19
 author: Tushaar Gangavarapu
 next:
 previous: 
@@ -15,7 +15,7 @@ toc: true
 
 {:toc}
 
-<br/>
+---
 
 A compelling motivation: A natural decomposition for thinking about least 
 squares problems ($Ax = b$) is the QR decomposition of $A$,
@@ -54,6 +54,7 @@ $$
 (Note: We don't need to explicitly compute $R_1^{-1}$; instead, we can use
 back substitution to find $\hat{x}$.)
 
+<br/>
 #### Gram-Schmidt, a brief note
 
 A first course in linear algebra often shows orthogonalization (converting the 
@@ -77,5 +78,6 @@ To overcome this issue of catastrophic cancellation, the _modified_ Gram-Schmidt
 algorithm is often discussed. However, we will see a different approach of using
 Householder reflectors to achieve orthogonal triangularizations.
 
+<br/>
 #### Householder reflections and QR factorization
 
