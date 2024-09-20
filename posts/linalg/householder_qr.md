@@ -65,7 +65,7 @@ $$
 q_j = (\mathrm{I} - P_{j-1}) a_j,
 $$
 
-where $P_{j-1}$ is a projector on to $(q_1, \dotsc, q_{j-1})$.
+where $P_{j-1}$ is a projector onto $(q_1, \dotsc, q_{j-1})$.
 
 A critical question to ask here is the following: what happens when $a_j$ is
 large and lies really close to $P_{j-1}$—aha!—the computation of $q_j$ as shown
@@ -77,7 +77,65 @@ algorithm is often discussed. However, we will see a different approach of using
 Householder reflectors to achieve orthogonal triangularizations.
 
 <br/>
-#### Householder reflections and QR factorization
+#### QR factorization via Householder reflections
+
+##### Householder reflections 
+
+Before proceeding with Householder QR, let us look at Householder reflections,
+which are to become an essential part of Householder QR. 
+
+Our goal here will be to come up with a linear transformation that reflects a 
+given vector, $x$, about a subspace, $\mathcal{V}$. Let $u$ be a vector of unit
+length ($\Vert u \Vert_2 = 1$) orthogonal to subspace $\mathcal{V}$. Then, 
+$H = (\mathrm{I} - 2 u u^H)$ is the transformation that represents reflecting
+$x$ with respect to the subspace orthogonal to the vector $u$ (= "mirror").
+
+<img 
+    title="" 
+    src="./imgs/householder_reflector.png" 
+    alt="" 
+    width="500" 
+    data-align="center"
+/>
+
+$H$ is often referred to as the Householder transformation or Householder 
+reflector.
+
+Some observations to note:
+* Any vector $z$ in the subspace $\mathcal{V}$ (= orthogonal to the vector $u$) 
+is left unchanged: 
+
+    $$
+    Hz = (\mathrm{I} - 2 u u^H) z = z - 2 u (u^H z) = z.
+    $$
+
+* Any vector $x$ can be written as $z + (u^H x) u$, where $z$ is the projection
+of $x$ onto the subspace $\mathcal{V}$ and $(u^H x) u$ is the projection in the
+direction of $u$ (orthogonal to $\mathcal{V}$). Now, the reflection is
+
+    $$
+    \begin{align*}
+    Hx &= (\mathrm{I} - 2 u u^H)(z + (u^H x) u) \\
+    &= z + (u^H x) u - 2 u u^H (u^H x) u \\
+    &= z + (u^H x) u - 2 (u^H x) u \underbrace{(u^H u)}_{=\,1} \\
+    &= z + (u^H x) u - 2 (u^H x) u \\
+    &= z - (u^H x) u.
+    \end{align*}
+    $$
+
+If the vector $x$ has a component orthogonal to the mirror ($u^H x \neq 0$), 
+then that component is reversed.
+
+* Finally, observe that reflection is a length-preserving transformation. (Note: 
+$H^HH = HH^H = I$ and $HH = I$: reflecting a reflection results in the original
+vector.)
+
+$$
+\Vert Hx \Vert^2 = (Hx)^H Hx = x^H \underbrace{(H^H H)}_{\mathrm{I}} x = x^H x 
+= \Vert x \Vert^2
+$$
+
+##### Householder QR 
 
 Our goal is to convert $A$ to an upper triangular matrix through a series of 
 orthogonal transformations. Here's a chalkboard animation (as David Bindel would
@@ -117,3 +175,13 @@ R_1 \\
 0
 \end{bmatrix}
 $$
+
+```python
+import jaxtyping as jt
+import torch
+
+Fl = lambda size: jt.Float[torch.Tensor, size]
+
+def householder_qr():
+
+```
