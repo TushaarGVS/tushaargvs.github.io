@@ -8,8 +8,6 @@ date: 2024-09-19
 author: Tushaar Gangavarapu
 next:
 previous: 
-    url: ''
-    title:
 toc: true
 ---
 
