@@ -109,7 +109,7 @@ $$
     0 & \star & \color{red}{\small{\bullet}} \\
     0 & 0 & \color{red}{\small{\bullet}} \\
     0 & 0 & \color{red}{0} \\
-    \vdots & \color{red}{\vdots} & \vdots \\
+    \vdots & \vdots & \color{red}{\vdots} \\
     0 & 0 & \color{red}{0} \\
 \end{bmatrix}
 $$
