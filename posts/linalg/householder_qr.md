@@ -150,6 +150,7 @@ y = (\mathrm{I} - 2 u u^H) x = x - 2 u u^H x
 \implies 2 \underbrace{u u^H x}_{=\,p} = x - y,
 \end{align*}
 $$
+
 where $p$ is the projection of $x$ onto $u$ (see figure in the previous 
 subsection). By construction, $p$ and $u$ must point in the same direction.
 Hence, $u$ must be a unit vector in that direction:
@@ -159,7 +160,13 @@ u = \frac{x - y}{\Vert x - y \Vert_2}.
 $$
 
 Now, we have an approach of determining the vector $u$, which defines a subspace
-that mirrors $x$ into $y$. 
+that mirrors $x$ into $y$.
+
+__Remark.__ If $u$ is not a unit vector, the Householder transformation is 
+
+$$
+H = \left(\mathrm{I} - 2 \frac{u u^H}{u^H u}\right) x.
+$$
 
 ##### Householder QR
 
