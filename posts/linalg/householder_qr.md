@@ -80,7 +80,8 @@ Householder reflectors to achieve orthogonal triangularizations.
 #### Householder reflections and QR factorization
 
 Our goal is to convert $A$ to an upper triangular matrix through a series of 
-orthogonal transformations. Here's a chalkboard animation:
+orthogonal transformations. Here's a chalkboard animation (as David Bindel would
+call it!):
 
 $$
 \begin{bmatrix} 
