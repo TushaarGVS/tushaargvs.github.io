@@ -90,26 +90,26 @@ $$
     \color{green}{\times} & \times & \times \\
     \vdots & \vdots & \vdots \\
     \color{green}{\times} & \times & \times \\
-\end{bmatrix} \xrightarrow{Q_1} \begin{bmatrix} 
+\end{bmatrix} \xrightarrow{\color{green}{Q_1}} \begin{bmatrix} 
     \color{green}{*} & \times & \times \\
     \color{green}{0} & \times & \times \\
     \color{green}{0} & \times & \times \\
     \color{green}{0} & \times & \times \\
     \vdots & \vdots & \vdots \\
     \color{green}{0} & \times & \times \\
-\end{bmatrix} \xrightarrow{Q_2} \begin{bmatrix} 
-    * & \color{green}{\star} & \times \\
-    0 & \color{green}{\star} & \times \\
-    0 & \color{green}{0} & \times \\
-    0 & \color{green}{0} & \times \\
+\end{bmatrix} \xrightarrow{\color{blue}{Q_1}} \begin{bmatrix} 
+    * & \color{blue}{\star} & \times \\
+    0 & \color{blue}{\star} & \times \\
+    0 & \color{blue}{0} & \times \\
+    0 & \color{blue}{0} & \times \\
     \vdots & \vdots & \vdots \\
-    0 & \color{green}{0} & \times \\
-\end{bmatrix} \xrightarrow{Q_3} \begin{bmatrix} 
-    * & \star & \color{green}{\bullet} \\
-    0 & \star & \color{green}{\bullet} \\
-    0 & 0 & \color{green}{\bullet} \\
-    0 & 0 & \color{green}{0} \\
+    0 & \color{blue}{0} & \times \\
+\end{bmatrix} \xrightarrow{\color{red}{Q_3}} \begin{bmatrix} 
+    * & \star & \color{red}{\bullet} \\
+    0 & \star & \color{red}{\bullet} \\
+    0 & 0 & \color{red}{\bullet} \\
+    0 & 0 & \color{red}{0} \\
     \vdots & \vdots & \vdots \\
-    0 & 0 & \color{green}{0} \\
+    0 & 0 & \color{red}{0} \\
 \end{bmatrix}
 $$
