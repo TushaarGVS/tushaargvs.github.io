@@ -34,7 +34,7 @@ $$
 A = QR = Q \begin{bmatrix}
 R_1 \\
 0
-\end{bmatrix} = \begin{bmatrix} Q_1 Q_2 \end{bmatrix} \begin{bmatrix}
+\end{bmatrix} = \begin{bmatrix} Q_1 & Q_2 \end{bmatrix} \begin{bmatrix}
 R_1 \\
 0
 \end{bmatrix} = Q_1 R_1,
@@ -42,7 +42,7 @@ $$
 
 where $R_1$ is an $n \times n$ upper triangular matrix and $0$ is an 
 $(m - n) \times n$ zero matrix, $Q_1$ is an $m \times n$ matrix, and $Q_2$ is
-$m \times (m - n)$. 
+$m \times (m - n)$. ($Q_1$ and $Q_2$ have orthogonal columns.)
 
 We can find a solution, $\hat{x}$, to an overdetermined system $Ax = b$ 
 ($m \geq n$) using the QR decomposition as
@@ -67,7 +67,7 @@ $$
 q_j = (\mathrm{I} - P_{j-1}) a_j,
 $$
 
-where $P_{j-1}$ is a projector on to $q_1, \dotsc, q_{j-1}$.
+where $P_{j-1}$ is a projector on to $(q_1, \dotsc, q_{j-1})$.
 
 A critical question to ask here is the following: what happens when $a_j$ is
 large and lies really close to $P_{j-1}$—aha!—the computation of $q_j$ as shown
@@ -81,3 +81,37 @@ Householder reflectors to achieve orthogonal triangularizations.
 <br/>
 #### Householder reflections and QR factorization
 
+Our goal is to convert $A$ to an upper triangular matrix through a series of 
+orthogonal transformations.
+
+$$
+\begin{bmatrix} 
+    \color{green}{x} & x & x \\
+    \color{green}{x} & x & x \\
+    \color{green}{x} & x & x \\
+    \color{green}{x} & x & x \\
+    \dots & \dots & \dots \\
+    \color{green}{x} & x & x \\
+\end{bmatrix} \xrightarrow{Q_1} \begin{bmatrix} 
+    \color{green}{*} & x & x \\
+    \color{green}{0} & x & x \\
+    \color{green}{0} & x & x \\
+    \color{green}{0} & x & x \\
+    \dots & \dots & \dots \\
+    \color{green}{0} & x & x \\
+\end{bmatrix} \xrightarrow{Q_2} \begin{bmatrix} 
+    * & \color{green}{★} & x \\
+    0 & \color{green}{★} & x \\
+    0 & \color{green}{0} & x \\
+    0 & \color{green}{0} & x \\
+    \dots & \dots & \dots \\
+    0 & \color{green}{0} & x \\
+\end{bmatrix} \xrightarrow{Q_3} \begin{bmatrix} 
+    * & ★ & \color{green}{☆} \\
+    0 & ★ & \color{green}{☆} \\
+    0 & 0 & \color{green}{☆} \\
+    0 & 0 & \color{green}{0} \\
+    \dots & \dots & \dots \\
+    0 & 0 & \color{green}{0} \\
+\end{bmatrix}
+$$
