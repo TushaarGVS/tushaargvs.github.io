@@ -86,32 +86,32 @@ orthogonal transformations.
 
 $$
 \begin{bmatrix} 
-    \color{green}{x} & x & x \\
-    \color{green}{x} & x & x \\
-    \color{green}{x} & x & x \\
-    \color{green}{x} & x & x \\
-    \dots & \dots & \dots \\
-    \color{green}{x} & x & x \\
+    \color{green}{\times} & \times & \times \\
+    \color{green}{\times} & \times & \times \\
+    \color{green}{\times} & \times & \times \\
+    \color{green}{\times} & \times & \times \\
+    \vdots & \vdots & \vdots \\
+    \color{green}{\times} & \times & \times \\
 \end{bmatrix} \xrightarrow{Q_1} \begin{bmatrix} 
-    \color{green}{*} & x & x \\
-    \color{green}{0} & x & x \\
-    \color{green}{0} & x & x \\
-    \color{green}{0} & x & x \\
-    \dots & \dots & \dots \\
-    \color{green}{0} & x & x \\
+    \color{green}{*} & \times & \times \\
+    \color{green}{0} & \times & \times \\
+    \color{green}{0} & \times & \times \\
+    \color{green}{0} & \times & \times \\
+    \vdots & \vdots & \vdots \\
+    \color{green}{0} & \times & \times \\
 \end{bmatrix} \xrightarrow{Q_2} \begin{bmatrix} 
-    * & \color{green}{★} & x \\
-    0 & \color{green}{★} & x \\
-    0 & \color{green}{0} & x \\
-    0 & \color{green}{0} & x \\
-    \dots & \dots & \dots \\
-    0 & \color{green}{0} & x \\
+    * & \color{green}{\star} & \times \\
+    0 & \color{green}{\star} & \times \\
+    0 & \color{green}{0} & \times \\
+    0 & \color{green}{0} & \times \\
+    \vdots & \vdots & \vdots \\
+    0 & \color{green}{0} & \times \\
 \end{bmatrix} \xrightarrow{Q_3} \begin{bmatrix} 
-    * & ★ & \color{green}{☆} \\
-    0 & ★ & \color{green}{☆} \\
-    0 & 0 & \color{green}{☆} \\
+    * & \star & \color{green}{\bullet} \\
+    0 & \star & \color{green}{\bullet} \\
+    0 & 0 & \color{green}{\bullet} \\
     0 & 0 & \color{green}{0} \\
-    \dots & \dots & \dots \\
+    \vdots & \vdots & \vdots \\
     0 & 0 & \color{green}{0} \\
 \end{bmatrix}
 $$
