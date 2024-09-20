@@ -79,7 +79,7 @@ Householder reflectors to achieve orthogonal triangularizations.
 <br/>
 #### QR factorization via Householder reflections
 
-##### Householder reflections 
+##### Reflecting a vector
 
 Before proceeding with Householder QR, let us look at Householder reflections,
 which are to become an essential part of Householder QR. 
@@ -119,7 +119,7 @@ direction of $u$ (orthogonal to $\mathcal{V}$). Now, the reflection is
     \begin{align*}
     Hx &= (\mathrm{I} - 2 u u^H)(z + (u^H x) u) \\
     &= z + (u^H x) u - 2 u u^H (u^H x) u \\
-    &= z + (u^H x) u - 2 (u^H x) u \underbrace{(u^H u)}_{=\,1} \\
+    &= z + (u^H x) u - 2 (u^H x) u (\underbrace{u^H u}_{=\,1}) \\
     &= z + (u^H x) u - 2 (u^H x) u \\
     &= z - (u^H x) u.
     \end{align*}
@@ -133,9 +133,33 @@ $H^HH = HH^H = I$ and $HH = I$: reflecting a reflection results in the original
 vector.)
 
 $$
-\Vert Hx \Vert^2 = (Hx)^H Hx = x^H \underbrace{(H^H H)}_{\mathrm{I}} x = x^H x 
+\Vert Hx \Vert^2 = (Hx)^H Hx = x^H (\underbrace{H^H H}_{\mathrm{I}}) x = x^H x 
 = \Vert x \Vert^2.
 $$
+
+##### Adjusting the mirror
+
+Given two vectors, $x$ and $y$, our goal is to find a mirror (= subspace 
+$\mathcal{V}$) that facilitates reflecting vector $x$ into vector $y$ with 
+$\Vert x \Vert_2 = \Vert y \Vert_2$. Simply put, we need to compute $u$ such
+that
+
+$$
+\begin{align*}
+y = (\mathrm{I} - 2 u u^H) x = x - 2 u u^H x
+\implies 2 \underbrace{u u^H x}_{=\,p} = x - y,
+\end{align*}
+$$
+where $p$ is the projection of $x$ onto $u$ (see figure in the previous 
+subsection). By construction, $p$ and $u$ must point in the same direction.
+Hence, $u$ must be a unit vector in that direction:
+
+$$
+u = \frac{x - y}{\Vert x - y \Vert_2}.
+$$
+
+Now, we have an approach of determining the vector $u$, which defines a subspace
+that mirrors $x$ into $y$. 
 
 ##### Householder QR
 
