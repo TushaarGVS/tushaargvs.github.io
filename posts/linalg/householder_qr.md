@@ -80,7 +80,7 @@ Householder reflectors to achieve orthogonal triangularizations.
 #### Householder reflections and QR factorization
 
 Our goal is to convert $A$ to an upper triangular matrix through a series of 
-orthogonal transformations.
+orthogonal transformations. Here's a chalkboard animation:
 
 $$
 \begin{bmatrix} 
@@ -95,21 +95,21 @@ $$
     \color{green}{0} & \small{\times} & \small{\times} \\
     \color{green}{0} & \small{\times} & \small{\times} \\
     \color{green}{0} & \small{\times} & \small{\times} \\
-    \vdots & \vdots & \vdots \\
+    \vdots & \color{green}{\vdots} & \vdots \\
     \color{green}{0} & \small{\times} & \small{\times} \\
-\end{bmatrix} \xrightarrow{\color{blue}{Q_1}} \begin{bmatrix} 
+\end{bmatrix} \xrightarrow{\color{blue}{Q_2}} \begin{bmatrix} 
     * & \color{blue}{\star} & \small{\times} \\
     0 & \color{blue}{\star} & \small{\times} \\
     0 & \color{blue}{0} & \small{\times} \\
     0 & \color{blue}{0} & \small{\times} \\
-    \vdots & \vdots & \vdots \\
+    \vdots & \color{blue}{\vdots} & \vdots \\
     0 & \color{blue}{0} & \small{\times} \\
 \end{bmatrix} \xrightarrow{\color{red}{Q_3}} \begin{bmatrix} 
     * & \star & \color{red}{\bullet} \\
     0 & \star & \color{red}{\bullet} \\
     0 & 0 & \color{red}{\bullet} \\
     0 & 0 & \color{red}{0} \\
-    \vdots & \vdots & \vdots \\
+    \vdots & \color{red}{\vdots} & \vdots \\
     0 & 0 & \color{red}{0} \\
 \end{bmatrix}
 $$
