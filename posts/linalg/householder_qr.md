@@ -95,7 +95,7 @@ $$
     \color{green}{0} & \small{\times} & \small{\times} \\
     \color{green}{0} & \small{\times} & \small{\times} \\
     \color{green}{0} & \small{\times} & \small{\times} \\
-    \vdots & \color{green}{\vdots} & \vdots \\
+    \color{green}{\vdots} & \vdots & \vdots \\
     \color{green}{0} & \small{\times} & \small{\times} \\
 \end{bmatrix} \xrightarrow{\color{blue}{Q_2}} \begin{bmatrix} 
     * & \color{blue}{\star} & \small{\times} \\
