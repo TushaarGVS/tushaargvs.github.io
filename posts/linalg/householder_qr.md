@@ -92,19 +92,19 @@ A = \begin{bmatrix}
     \vdots & \vdots & \vdots \\
     \small{\times} & \small{\times} & \small{\times} \\
 \end{bmatrix} \xrightarrow{\color{green}{Q_1}} \begin{bmatrix} 
-    \color{green}{*} & \small{\times} & \small{\times} \\
-    \color{green}{0} & \small{\times} & \small{\times} \\
-    \color{green}{0} & \small{\times} & \small{\times} \\
-    \color{green}{0} & \small{\times} & \small{\times} \\
+    \color{green}{*} & \small{*} & \small{*} \\
+    \color{green}{0} & \small{*} & \small{*} \\
+    \color{green}{0} & \small{*} & \small{*} \\
+    \color{green}{0} & \small{*} & \small{*} \\
     \color{green}{\vdots} & \vdots & \vdots \\
-    \color{green}{0} & \small{\times} & \small{\times} \\
+    \color{green}{0} & \small{*} & \small{*} \\
 \end{bmatrix} \xrightarrow{\color{blue}{Q_2}} \begin{bmatrix} 
-    * & \color{blue}{\star} & \small{\times} \\
-    0 & \color{blue}{\star} & \small{\times} \\
-    0 & \color{blue}{0} & \small{\times} \\
-    0 & \color{blue}{0} & \small{\times} \\
+    * & \color{blue}{*} & \small{\star} \\
+    0 & \color{blue}{\star} & \small{\star} \\
+    0 & \color{blue}{0} & \small{\star} \\
+    0 & \color{blue}{0} & \small{\star} \\
     \vdots & \color{blue}{\vdots} & \vdots \\
-    0 & \color{blue}{0} & \small{\times} \\
+    0 & \color{blue}{0} & \small{\star} \\
 \end{bmatrix} \xrightarrow{\color{red}{Q_3}} \begin{bmatrix} 
     * & \star & \color{red}{\small{\bullet}} \\
     0 & \star & \color{red}{\small{\bullet}} \\
