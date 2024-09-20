@@ -15,16 +15,21 @@ toc: true
 
 {:toc}
 
+<br/>
+
 A compelling motivation: A natural decomposition for thinking about least 
 squares problems ($Ax = b$) is the QR decomposition of $A$,
+
 $$
 A = QR,
 $$
+
 with $Q$ is an $m \times m$ orthogonal matrix (recall: $Q^H Q = \mathrm{I}$ for
 orthogonal $Q$) and $R$ is an $m \times n$ upper triangular matrix. For 
 tall-thin matrices ($m \geq n$), it is often beneficial to note the _economy_ 
 (or, thin [Golub and Van Loan], or, reduced [Trefethen and Bau]) QR 
 decomposition as
+
 $$
 A = QR = Q \begin{bmatrix}
 R_1 \\
@@ -34,28 +39,33 @@ R_1 \\
 0
 \end{bmatrix} = Q_1 R_1,
 $$
+
 where $R_1$ is an $n \times n$ upper triangular matrix and $0$ is an 
 $(m - n) \times n$ zero matrix, $Q_1$ is an $m \times n$ matrix, and $Q_2$ is
 $m \times (m - n)$. 
 
 We can find a solution, $\hat{x}$, to an overdetermined system $Ax = b$ 
 ($m \geq n$) using the QR decomposition as
+
 $$
 \hat{x} = R_1^{-1} (Q_1^H b).
 $$
+
 (Note: We don't need to explicitly compute $R_1^{-1}$; instead, we can use
 back substitution to find $\hat{x}$.)
 
-## Gram-Schmidt, a brief note
+#### Gram-Schmidt, a brief note
 
 A first course in linear algebra often shows orthogonalization (converting the 
 existing basis of $A$ to an orthonormal basis) using the Gram-Schmidt process.
 The Gram-Schmidt process orthogonalizes by subtracting off components in the
 directions of previous columns and then normalizing the remainder to unit 
 length. Simply put,
+
 $$
 q_j = (\mathrm{I} - P_{j-1}) a_j,
 $$
+
 where $P_{j-1}$ is a projector on to $q_1, \dotsc, q_{j-1}$.
 
 A critical question to ask here is the following: what happens when $a_j$ is
@@ -67,4 +77,5 @@ To overcome this issue of catastrophic cancellation, the _modified_ Gram-Schmidt
 algorithm is often discussed. However, we will see a different approach of using
 Householder reflectors to achieve orthogonal triangularizations.
 
-## Householder reflections and QR factorization
+#### Householder reflections and QR factorization
+
