@@ -84,26 +84,26 @@ orthogonal transformations.
 
 $$
 \begin{bmatrix} 
-    \color{green}{\times} & \times & \times \\
-    \color{green}{\times} & \times & \times \\
-    \color{green}{\times} & \times & \times \\
-    \color{green}{\times} & \times & \times \\
+    \small{\times} & \small{\times} & \small{\times} \\
+    \small{\times} & \small{\times} & \small{\times} \\
+    \small{\times} & \small{\times} & \small{\times} \\
+    \small{\times} & \small{\times} & \small{\times} \\
     \vdots & \vdots & \vdots \\
-    \color{green}{\times} & \times & \times \\
+    \small{\times} & \small{\times} & \small{\times} \\
 \end{bmatrix} \xrightarrow{\color{green}{Q_1}} \begin{bmatrix} 
-    \color{green}{*} & \times & \times \\
-    \color{green}{0} & \times & \times \\
-    \color{green}{0} & \times & \times \\
-    \color{green}{0} & \times & \times \\
+    \color{green}{*} & \small{\times} & \small{\times} \\
+    \color{green}{0} & \small{\times} & \small{\times} \\
+    \color{green}{0} & \small{\times} & \small{\times} \\
+    \color{green}{0} & \small{\times} & \small{\times} \\
     \vdots & \vdots & \vdots \\
-    \color{green}{0} & \times & \times \\
+    \color{green}{0} & \small{\times} & \small{\times} \\
 \end{bmatrix} \xrightarrow{\color{blue}{Q_1}} \begin{bmatrix} 
-    * & \color{blue}{\star} & \times \\
-    0 & \color{blue}{\star} & \times \\
-    0 & \color{blue}{0} & \times \\
-    0 & \color{blue}{0} & \times \\
+    * & \color{blue}{\star} & \small{\times} \\
+    0 & \color{blue}{\star} & \small{\times} \\
+    0 & \color{blue}{0} & \small{\times} \\
+    0 & \color{blue}{0} & \small{\times} \\
     \vdots & \vdots & \vdots \\
-    0 & \color{blue}{0} & \times \\
+    0 & \color{blue}{0} & \small{\times} \\
 \end{bmatrix} \xrightarrow{\color{red}{Q_3}} \begin{bmatrix} 
     * & \star & \color{red}{\bullet} \\
     0 & \star & \color{red}{\bullet} \\
