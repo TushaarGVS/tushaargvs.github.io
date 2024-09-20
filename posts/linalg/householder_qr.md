@@ -105,9 +105,9 @@ $$
     \vdots & \color{blue}{\vdots} & \vdots \\
     0 & \color{blue}{0} & \small{\times} \\
 \end{bmatrix} \xrightarrow{\color{red}{Q_3}} \begin{bmatrix} 
-    * & \star & \color{red}{\bullet} \\
-    0 & \star & \color{red}{\bullet} \\
-    0 & 0 & \color{red}{\bullet} \\
+    * & \star & \color{red}{\small{\bullet}} \\
+    0 & \star & \color{red}{\small{\bullet}} \\
+    0 & 0 & \color{red}{\small{\bullet}} \\
     0 & 0 & \color{red}{0} \\
     \vdots & \color{red}{\vdots} & \vdots \\
     0 & 0 & \color{red}{0} \\
