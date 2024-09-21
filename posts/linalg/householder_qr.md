@@ -313,8 +313,8 @@ $$
 __Remark on storing $\boldsymbol{H_1}$.__ A simple observation from 
 $H_1 a_1 = \beta e_1$ is that the entries other than the first entry of 
 $H_1 a_1$ are zeros, meaning $(v_2, \dotsc, v_m)$ can be stored as entries of
-$(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that makes 
-$(H_1 a_1)[1] = 1$, we can store $v_1$ in $(H_1 a_1)[1]$. Hence
+$(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that ensures 
+$v_1 = 1$, we don't need to explicitly store $v_1$. Hence
 
 $$
 \tilde{v} = \frac{v}{v_1} = 
@@ -345,16 +345,17 @@ def H1_(a1: Fl("m")):
     """
     Computes `H1 a1` and stores `v` corresponding to `H1` in `a1`.
 
-    Note: By convention, `(H1 a1)[1] = 1`. Also notice zero-indexing
-    in code, while function definitions and variable names employ
-    one-indexing.
+    Note: By convention, `v1 = 1` and `v[2:]` are stored in `a1[2:]`.
+    Also notice zero-indexing in code, while function definitions and
+    variable names employ one-indexing.
 
     Convention: Keeping in line with PyTorch convention `_` at the
     end of a function name indicates an inplace operation.
     """
     a11 = a1[0]
-    v1 = a11 + sign(a11) * torch.norm(a1)
-    a1[0] = 1.0
+    beta_e11 = -sign(a11) * torch.norm(a1)
+    v1 = a11 - beta_e11
+    a1[0] = beta_e11
     a1[1:] /= v1  # inplace op
 
 
@@ -363,9 +364,14 @@ a1 = fl64_randn(m)  # random from N(0, 1)
 a1_ref = deepcopy(a1)  # store to check correctness of H1
 
 H1_(a1)  # stores v in a1
-print(f"v={a1}")
+v_H1 = torch.cat((torch.tensor(1.0)[None], a1[1:]))
+print(f"v={v_H1}")
+print(f"R11={a1[0]}")
 
-H1 = torch.eye(m, m) - 2 * torch.outer(a1, a1) / torch.inner(a1, a1)
-print(f"H1@a1={H1@a1_ref}")
-assert torch.allclose((H1 @ a1_ref)[1:], fl64_zeros(m - 1))
+H1 = torch.eye(m, m) - 2 * torch.outer(v_H1, v_H1) / torch.inner(v_H1, v_H1)
+H1_a1 = H1 @ a1_ref
+print(f"H1@a1={H1_a1}")
+assert torch.allclose(H1_a1[1:], fl64_zeros(m - 1))
+assert torch.allclose(H1_a1[0], a1[0])
 ```
+
