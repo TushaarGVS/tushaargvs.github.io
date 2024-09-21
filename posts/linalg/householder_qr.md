@@ -189,21 +189,21 @@ A = \begin{bmatrix}
     \color{green}{0} & \small{*} & \small{*} \\
     \color{green}{\vdots} & \vdots & \vdots \\
     \color{green}{0} & \small{*} & \small{*} \\
-\end{bmatrix} \\ H_1 A} \xrightarrow{H_2} \matrix{\begin{bmatrix} 
-    * & \color{green}{*} & \small{\star} \\
+\end{bmatrix} \\[1.5pt] \small{H_1 A}} \xrightarrow{H_2} \matrix{\begin{bmatrix} 
+    * & * & * \\
     0 & \color{green}{\star} & \small{\star} \\
     0 & \color{green}{0} & \small{\star} \\
     0 & \color{green}{0} & \small{\star} \\
     \vdots & \color{green}{\vdots} & \vdots \\
     0 & \color{green}{0} & \small{\star} \\
-\end{bmatrix} \\ H_2 H_1 A} \xrightarrow{H_3} \matrix{\begin{bmatrix} 
-    * & \star & \color{green}{\small{\bullet}} \\
-    0 & \star & \color{green}{\small{\bullet}} \\
+\end{bmatrix} \\[2pt] \small{ H_2 H_1 A}} \xrightarrow{H_3} \matrix{\begin{bmatrix} 
+    * & * & * \\
+    0 & \star & \star \\
     0 & 0 & \color{green}{\small{\bullet}} \\
     0 & 0 & \color{green}{0} \\
     \vdots & \vdots & \color{green}{\vdots} \\
     0 & 0 & \color{green}{0} \\
-\end{bmatrix} \\ H_3 H_2 H_1 A} = \begin{bmatrix}
+\end{bmatrix} \\[1pt] \small{ H_3 H_2 H_1 A}} = \begin{bmatrix}
 R_1 \\
 0
 \end{bmatrix}
