@@ -310,7 +310,7 @@ a_{m1} \\
 \end{bmatrix}.
 $$
 
-__Remark on storing $\boldsymbol{H_j}$.__ A simple observation from 
+__Remark on storing $\boldsymbol{H_1}$.__ A simple observation from 
 $H_1 a_1 = \beta e_1$ is that the entries other than the first entry of 
 $H_1 a_1$ are zeros, meaning $(v_2, \dotsc, v_m)$ can be stored as entries of
 $(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that makes 
@@ -329,11 +329,43 @@ $$
 (If $v_1 = 0$, we can simply set $\tilde{v}_{j > 1} = 0$.)
 
 ```python
+from copy import deepcopy
+
 import jaxtyping as jt
 import torch
 
 Fl = lambda size: jt.Float[torch.Tensor, size]
 
-def householder_qr():
+sign = lambda x: x and (1, -1)[x < 0]
+fl64_randn = lambda size: torch.randn(size, dtype=torch.float64)
+fl64_zeros = lambda size: torch.zeros(size, dtype=torch.float64)
 
+
+def H1_(a1: Fl("m")):
+    """
+    Computes `H1 a1` and stores `v` corresponding to `H1` in `a1`.
+
+    Note: By convention, `(H1 a1)[1] = 1`. Also notice zero-indexing
+    in code, while function definitions and variable names employ
+    one-indexing.
+
+    Convention: Keeping in line with PyTorch convention `_` at the
+    end of a function name indicates an inplace operation.
+    """
+    a11 = a1[0]
+    v1 = a11 + sign(a11) * torch.norm(a1)
+    a1[0] = 1.0
+    a1[1:] /= v1  # inplace op
+
+
+m = 10
+a1 = fl64_randn(m)  # random from N(0, 1)
+a1_ref = deepcopy(a1)  # store to check correctness of H1
+
+H1_(a1)  # stores v in a1
+print(f"v={a1}")
+
+H1 = torch.eye(m, m) - 2 * torch.outer(a1, a1) / torch.inner(a1, a1)
+print(f"H1@a1={H1@a1_ref}")
+assert torch.allclose((H1 @ a1_ref)[1:], fl64_zeros(m - 1))
 ```
