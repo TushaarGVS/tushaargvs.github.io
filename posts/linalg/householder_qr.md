@@ -189,14 +189,14 @@ A = \begin{bmatrix}
     \color{green}{0} & \small{*} & \small{*} \\
     \color{green}{\vdots} & \vdots & \vdots \\
     \color{green}{0} & \small{*} & \small{*} \\
-\end{bmatrix} \\[1.5pt] \small{H_1 A}} \xrightarrow{H_2} \matrix{\begin{bmatrix} 
+\end{bmatrix} \\[1pt] \small{H_1 A}} \xrightarrow{H_2} \matrix{\begin{bmatrix} 
     * & * & * \\
     0 & \color{green}{\star} & \small{\star} \\
     0 & \color{green}{0} & \small{\star} \\
     0 & \color{green}{0} & \small{\star} \\
     \vdots & \color{green}{\vdots} & \vdots \\
     0 & \color{green}{0} & \small{\star} \\
-\end{bmatrix} \\[2pt] \small{ H_2 H_1 A}} \xrightarrow{H_3} \matrix{\begin{bmatrix} 
+\end{bmatrix} \\[1pt] \small{ H_2 H_1 A}} \xrightarrow{H_3} \matrix{\begin{bmatrix} 
     * & * & * \\
     0 & \star & \star \\
     0 & 0 & \color{green}{\small{\bullet}} \\
@@ -207,6 +207,106 @@ A = \begin{bmatrix}
 R_1 \\
 0
 \end{bmatrix}
+$$
+
+Let us look at the first step $H_1A$:
+
+$$
+H_1 A = H_1 \begin{bmatrix}
+| & | & & | \\
+a_1 & a_2 & \dots & a_n
+| & | & & | \\
+\end{bmatrix} = \begin{bmatrix}
+| & | & & | \\
+H_1 a_1 & H_1 a_2 & \dots & H_1 a_n
+| & | & & | \\
+\end{bmatrix},
+$$
+
+where $a_j$ is an $n$-dimensional column of $A$. What we essentially require is 
+a Householder transformation such that $H_1 a_1 = \beta e_1$ for some constant
+$\beta$, $e_1$ is the first standard basis vector. Since Householder reflectors
+preserve lengths, we need $\vert \beta \vert = \Vert a_1 \Vert_2$. Hence, we 
+need to find a reflector (= mirror) $H$ that reflects $a_1$ onto the $x$-axis:
+
+<div align="center">
+    <img 
+        title="" 
+        src="./imgs/hqr_step1.png" 
+        alt="" 
+        width="300" 
+        data-align="center"
+    />
+</div>
+
+Now, we have $v$ as
+
+$$
+v = \begin{bmatrix} 
+a_{11} \\
+a_{21} \\
+\vdots \\
+a_{m1} \\
+\end{bmatrix} - \begin{bmatrix} 
+\beta \\
+0 \\
+\vdots \\
+0 \\
+\end{bmatrix}.
+$$
+
+Notice that we have several options to choose $\beta$: $\Vert a_1 \Vert_2$,
+$- \Vert a_1 \Vert_2$, $z \Vert a_1 \Vert_2$ for some $z \in \mathcal{C}$ with 
+$\vert z \vert = 1$. If we restrict to real-valued $a_1$, we have
+
+$$
+v = a_1 \mp \Vert a_1 \Vert_2 e_1.
+$$
+
+If we choose $\beta = -\Vert a_1 \Vert_2$, we are consequently placing the 
+mirror as follows:
+
+<div align="center">
+    <img 
+        title="" 
+        src="./imgs/hqr_step1_neg.png" 
+        alt="" 
+        width="300" 
+        data-align="center"
+    />
+</div>
+
+For completeness, we have 
+
+$$
+H_1 = \mathrm{I} - 2 \frac{u u^H}{u^H u} = \beta e_1.
+$$
+
+__Remark on numerical stability.__ Observe that the first element of $v$, 
+$v_1 = a_{11} \mp \Vert a_1 \Vert_2$. If $a_{11}$ is positive and 
+$a_{11} \approx \Vert a_1 \Vert_2$ ($a_1$ is really close to $x$-axis), we incur
+catastrophic cancellation in the computation of $a_{11} - \Vert a_1 \Vert_2$.
+
+<div align="center">
+    <img 
+        title="" 
+        src="./imgs/hqr_step1_catastrophic.png" 
+        alt="" 
+        width="300" 
+        data-align="center"
+    />
+</div>
+
+Irrespective of the sign of $a_{11}$, we can avoid catastrophic cancellation by 
+choosing $v = a_1 + \text{sign}(a_11) \Vert a_1 \Vert_2 e_1$:
+
+$$
+v = \begin{bmatrix} 
+a_{11} + \text{sign}(a_11) \Vert a_1 \Vert_2 \\
+a_{21} \\
+\vdots \\
+a_{m1} \\
+\end{bmatrix}.
 $$
 
 ```python
