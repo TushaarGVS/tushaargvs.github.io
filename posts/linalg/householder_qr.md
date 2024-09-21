@@ -22,8 +22,8 @@ $$
 A = QR,
 $$
 
-with $Q$ is an $m \times m$ orthogonal matrix (recall: $Q^H Q = \mathrm{I}$ for
-orthogonal $Q$) and $R$ is an $m \times n$ upper triangular matrix. For 
+where $Q$ is an $m \times m$ unitary matrix (recall: $Q^H Q = \mathrm{I}$ for
+unitary $Q$) and $R$ is an $m \times n$ upper triangular matrix. For 
 tall-thin matrices ($m \geq n$), it is often beneficial to note the _economy_ 
 (or, thin [Golub and Van Loan], or, reduced [Trefethen and Bau]) QR 
 decomposition as
@@ -133,8 +133,8 @@ $H^HH = HH^H = I$ and $HH = I$: reflecting a reflection results in the original
 vector.)
 
 $$
-\Vert Hx \Vert^2 = (Hx)^H Hx = x^H (\underbrace{H^H H}_{\mathrm{I}}) x = x^H x 
-= \Vert x \Vert^2.
+\Vert Hx \Vert_2^2 = (Hx)^H Hx = x^H (\underbrace{H^H H}_{\mathrm{I}}) x = x^H x 
+= \Vert x \Vert_2^2.
 $$
 
 ##### Adjusting the mirror
@@ -165,7 +165,7 @@ that mirrors $x$ into $y$.
 __Remark.__ If $u$ is not a unit vector, the Householder transformation is 
 
 $$
-H = \left(\mathrm{I} - 2 \frac{u u^H}{u^H u}\right) x.
+H = \mathrm{I} - 2 \frac{u u^H}{u^H u}.
 $$
 
 ##### Householder QR
@@ -182,28 +182,28 @@ A = \begin{bmatrix}
     \small{\times} & \small{\times} & \small{\times} \\
     \vdots & \vdots & \vdots \\
     \small{\times} & \small{\times} & \small{\times} \\
-\end{bmatrix} \xrightarrow{\color{green}{Q_1}} \begin{bmatrix} 
+\end{bmatrix} \xrightarrow{H_1} \matrix{\begin{bmatrix} 
     \color{green}{*} & \small{*} & \small{*} \\
     \color{green}{0} & \small{*} & \small{*} \\
     \color{green}{0} & \small{*} & \small{*} \\
     \color{green}{0} & \small{*} & \small{*} \\
     \color{green}{\vdots} & \vdots & \vdots \\
     \color{green}{0} & \small{*} & \small{*} \\
-\end{bmatrix} \xrightarrow{\color{blue}{Q_2}} \begin{bmatrix} 
-    * & \color{blue}{*} & \small{\star} \\
-    0 & \color{blue}{\star} & \small{\star} \\
-    0 & \color{blue}{0} & \small{\star} \\
-    0 & \color{blue}{0} & \small{\star} \\
-    \vdots & \color{blue}{\vdots} & \vdots \\
-    0 & \color{blue}{0} & \small{\star} \\
-\end{bmatrix} \xrightarrow{\color{red}{Q_3}} \begin{bmatrix} 
-    * & \star & \color{red}{\small{\bullet}} \\
-    0 & \star & \color{red}{\small{\bullet}} \\
-    0 & 0 & \color{red}{\small{\bullet}} \\
-    0 & 0 & \color{red}{0} \\
-    \vdots & \vdots & \color{red}{\vdots} \\
-    0 & 0 & \color{red}{0} \\
-\end{bmatrix} = \begin{bmatrix}
+\end{bmatrix} \\ H_1 A} \xrightarrow{H_2} \matrix{\begin{bmatrix} 
+    * & \color{green}{*} & \small{\star} \\
+    0 & \color{green}{\star} & \small{\star} \\
+    0 & \color{green}{0} & \small{\star} \\
+    0 & \color{green}{0} & \small{\star} \\
+    \vdots & \color{green}{\vdots} & \vdots \\
+    0 & \color{green}{0} & \small{\star} \\
+\end{bmatrix} \\ H_2 H_1 A} \xrightarrow{H_3} \matrix{\begin{bmatrix} 
+    * & \star & \color{green}{\small{\bullet}} \\
+    0 & \star & \color{green}{\small{\bullet}} \\
+    0 & 0 & \color{green}{\small{\bullet}} \\
+    0 & 0 & \color{green}{0} \\
+    \vdots & \vdots & \color{green}{\vdots} \\
+    0 & 0 & \color{green}{0} \\
+\end{bmatrix} \\ H_3 H_2 H_1 A} = \begin{bmatrix}
 R_1 \\
 0
 \end{bmatrix}
