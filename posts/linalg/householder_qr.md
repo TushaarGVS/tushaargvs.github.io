@@ -214,11 +214,11 @@ Let us look at the first step $H_1A$:
 $$
 H_1 A = H_1 \begin{bmatrix}
 | & | & & | \\
-a_1 & a_2 & \dots & a_n
+a_1 & a_2 & \dots & a_n \\
 | & | & & | \\
 \end{bmatrix} = \begin{bmatrix}
 | & | & & | \\
-H_1 a_1 & H_1 a_2 & \dots & H_1 a_n
+H_1 a_1 & H_1 a_2 & \dots & H_1 a_n \\
 | & | & & | \\
 \end{bmatrix},
 $$
@@ -256,7 +256,7 @@ a_{m1} \\
 $$
 
 Notice that we have several options to choose $\beta$: $\Vert a_1 \Vert_2$,
-$- \Vert a_1 \Vert_2$, $z \Vert a_1 \Vert_2$ for some $z \in \mathcal{C}$ with 
+$- \Vert a_1 \Vert_2$, $z \Vert a_1 \Vert_2$ for some $z \in \mathbb{C}$ with 
 $\vert z \vert = 1$. If we restrict to real-valued $a_1$, we have
 
 $$
