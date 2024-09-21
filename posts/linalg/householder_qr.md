@@ -353,10 +353,10 @@ def H1_(a1: Fl("m")):
     end of a function name indicates an inplace operation.
     """
     a11 = a1[0]
-    beta_e11 = -sign(a11) * torch.norm(a1)
+    beta_e11 = -sign(a11) * torch.norm(a1)  # stable choice
     v1 = a11 - beta_e11
-    a1[0] = beta_e11
-    a1[1:] /= v1  # inplace op
+    a1[0] = beta_e11  # R11 (in A = QR)
+    a1[1:] /= v1  # inplace op; stores a1[1:] = v[1:], v[0] = 1.0
 
 
 m = 10
