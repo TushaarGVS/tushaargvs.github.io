@@ -279,7 +279,10 @@ mirror as follows:
 For completeness, we have 
 
 $$
-H_1 = \mathrm{I} - 2 \frac{u u^H}{u^H u} = \beta e_1.
+H_1 = 
+    \mathrm{I} - 
+    2 \frac{v}{\Vert v \Vert_2} \left(\frac{v}{\Vert v \Vert_2}\right)^H 
+    = \beta e_1.
 $$
 
 __Remark on numerical stability.__ Observe that the first element of $v$, 
@@ -309,7 +312,7 @@ a_{m1} \\
 \end{bmatrix}.
 $$
 
-__Remark on storing $\boldsymbol{H}$.__
+__Remark on storing $\boldsymbol{H_j}$.__
 
 ```python
 import jaxtyping as jt
