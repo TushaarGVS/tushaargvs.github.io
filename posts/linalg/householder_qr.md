@@ -223,7 +223,7 @@ H_1 a_1 & H_1 a_2 & \dots & H_1 a_n \\
 \end{bmatrix},
 $$
 
-where $a_j$ is an $n$-dimensional column of $A$. What we essentially require is 
+where $a_j$ is an $m$-dimensional column of $A$. What we essentially require is 
 a Householder transformation such that $H_1 a_1 = \beta e_1$ for some constant
 $\beta$, $e_1$ is the first standard basis vector. Since Householder reflectors
 preserve lengths, we need $\vert \beta \vert = \Vert a_1 \Vert_2$. Hence, we 
@@ -280,9 +280,7 @@ For completeness, we have
 
 $$
 H_1 a_1 = 
-    \left(\mathrm{I} - 
-    2 \frac{v}{\Vert v \Vert_2} \left(\frac{v}{\Vert v \Vert_2}\right)^H\right) 
-    a_1 = \beta e_1.
+    \left(\mathrm{I} - 2 \frac{vv^H}{\Vert v \Vert_2}\right) a_1 = \beta e_1.
 $$
 
 __Remark on numerical stability.__ Observe that the first element of $v$, 
@@ -312,7 +310,23 @@ a_{m1} \\
 \end{bmatrix}.
 $$
 
-__Remark on storing $\boldsymbol{H_j}$.__
+__Remark on storing $\boldsymbol{H_j}$.__ A simple observation from 
+$H_1 a_1 = \beta e_1$ is that the entries other than the first entry of 
+$H_1 a_1$ are zeros, meaning $(v_2, \dotsc, v_m)$ can be stored as entries of
+$(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that makes 
+$(H_1 a_1)[1] = 1$, we can store $v_1$ in $(H_1 a_1)[1]$. Hence
+
+$$
+\tilde{v} = \frac{v}{v_1} = 
+\frac{1}{a_{11} + \text{sign}(a_{11}) \Vert a_1 \Vert_2} \begin{bmatrix} 
+1 \\
+a_{21} \\
+\vdots \\
+a_{m1} \\
+\end{bmatrix}.
+$$
+
+(If $v_1 = 0$, we can simply set $\tilde{v}_{j > 1} = 0$.)
 
 ```python
 import jaxtyping as jt
