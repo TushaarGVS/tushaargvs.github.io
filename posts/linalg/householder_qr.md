@@ -298,16 +298,18 @@ catastrophic cancellation in the computation of $a_{11} - \Vert a_1 \Vert_2$.
 </div>
 
 Irrespective of the sign of $a_{11}$, we can avoid catastrophic cancellation by 
-choosing $v = a_1 + \text{sign}(a_11) \Vert a_1 \Vert_2 e_1$:
+choosing $v = a_1 + \text{sign}(a_{11}) \Vert a_1 \Vert_2 e_1$:
 
 $$
 v = \begin{bmatrix} 
-a_{11} + \text{sign}(a_11) \Vert a_1 \Vert_2 \\
+a_{11} + \text{sign}(a_{11}) \Vert a_1 \Vert_2 \\
 a_{21} \\
 \vdots \\
 a_{m1} \\
 \end{bmatrix}.
 $$
+
+__Remark on storing $\boldsymbol{H}$.__
 
 ```python
 import jaxtyping as jt
