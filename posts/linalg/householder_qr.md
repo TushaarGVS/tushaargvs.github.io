@@ -441,7 +441,7 @@ A_{22} \\
 \underbrace{\begin{bmatrix}1 & \tilde{v}_{21}^T \end{bmatrix} \begin{bmatrix}
 a_{12}^T \\ 
 A_{22} \\ 
-\end{bmatrix}}_{=\,a_{21}^T + \tilde{v}_{21}^T A_{22}}}_{w_{12}^T}.
+\end{bmatrix}}_{=\,a_{12}^T + \tilde{v}_{21}^T A_{22}}}_{w_{12}^T}.
 $$
 
 Now, we have
@@ -481,13 +481,44 @@ H_2 = \begin{bmatrix}
 $$
 
 ```python
+import numpy as np
+
+
+def housev_(A22: Fl("m n")):
+    """Apply Householder transformation to the first column of A22."""
+    alpha11 = A22[0, 0]
+    a21 = A22[1:, 0]
+    rho11 = -sign(alpha11) * torch.norm(torch.cat([alpha11[None], a21]))
+    v1 = alpha11 - rho11
+    A22[0, 0] = rho11
+    a21 /= v1
+
+
 def hqr_(A: Fl("m n")):
     """
     Transform `A` to upper triangular using Householder QR.
-    
+
     Note: The elements below the diagonal store the vectors associated with
     the respective Householder transformation.
     """
-    while 
+    A22 = A
+    while A22.shape[1] > 0:
+        housev_(A22)
 
+        a12_tr = A22[0, 1:][None]
+        a21 = A22[1:, 0][:, None]
+        A22 = A22[1:, 1:]
+
+        w12_tr = (2 / (1 + torch.norm(a21) ** 2)) * (a12_tr + a21.T @ A22)
+        a12_tr -= w12_tr
+        A22 -= a21 @ w12_tr
+
+# Compare with standard numpy implementation: `np.linalg.qr`.
+m, n = 5, 3
+A = fl64_randn([m, n])
+A_ref = deepcopy(A)
+hqr_(A)
+
+R_np = np.linalg.qr(A_ref, "complete").R
+assert torch.allclose(torch.triu(A), torch.from_numpy(R_np))
 ```
