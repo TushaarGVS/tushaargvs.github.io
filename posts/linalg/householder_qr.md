@@ -397,6 +397,7 @@ $$
 \tilde{v}_{21} \\ 
 \end{bmatrix},
 $$
+
 where $\rho_{11} = \beta = -\text{sign}(\alpha_{11}) \Vert a[:,1] \Vert_2$.
 
 Now, applying unblocked Householder transformation to $A$ results in
@@ -443,3 +444,26 @@ A_{22} \\
 \end{bmatrix}}_{=\,a_{21}^T + \tilde{v}_{21}^T A_{22}}}_{w_{12}^T}.
 $$
 
+Now, we have
+
+$$
+\text{hqr}(A) =  
+\left(\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T\right) 
+\begin{bmatrix}
+\alpha_{11} & a_{12}^T \\
+a_{21} & A_{22} \\ 
+\end{bmatrix} = \begin{bmatrix}
+\rho_{11} & \color{red}{\small{\times}} \\
+0 & \color{red}{\small{\times}} \\ 
+\end{bmatrix} = \begin{bmatrix}
+\rho_{11} & a_{12}^T - w_{12}^T \\
+0 & A_{22} - \tilde{v}_{21} w_{12}^T \\ 
+\end{bmatrix}.
+$$
+
+Note that in this formulation involves computing $w_{12}^T$ (involving 
+matrix-vector multiplication) and $A_{22} - \tilde{v}_{21} w_{12}^T$ (a rank-one
+update). This is cheaper than forming $H_1$ and performing matrix-matrix 
+multiplication.
