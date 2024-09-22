@@ -464,17 +464,17 @@ a_{21} & A_{22} \\
 $$
 
 Note that in this formulation involves computing $w_{12}^T$ (involving 
-matrix-vector multiplication) and $A_{22} - \tilde{v}_{21} w_{12}^T$ (a rank-one
+matrix-vector multiplication) and $A_{22} - \tilde{v}_{21} w_{12}^T $ (a rank-one
 update). This is cheaper than forming $H_1$ and performing matrix-matrix 
 multiplication.
 
 In the next iteration, we proceed with by running Householder transformation on
-the first column of $A_{22} - \tilde{v}_{21} w_{12}^T$. Note that the associated
+the first column of $A_{22} - \tilde{v}_{21} w_{12}^T $. Note that the associated
 $H_2$ applied to the entire matrix (which ignores first row and column) is
 
 $$
 H_2 = \begin{bmatrix}
-\mathrm{I} & 0
+\mathrm{I} & 0 \\
 0 & \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
