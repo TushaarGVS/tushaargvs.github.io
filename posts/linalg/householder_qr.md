@@ -344,19 +344,20 @@ fl64_zeros = lambda size: torch.zeros(size, dtype=torch.float64)
 
 def housev_(a1: Fl("m")):
     """
-    Computes `H1 a1` and stores `v` corresponding to `H1` in `a1`.
+    Apply Householder transformation to vector `a1` and store the associated
+    Householder vector in `a1`.
 
-    Note: By convention, `v1 = 1` and `v[2:]` are stored in `a1[2:]`.
-    Also notice zero-indexing in code, while function definitions and
-    variable names employ one-indexing.
+    Note: By convention, `v1 = 1` and `v[2:]` are stored in `a1[2:]`. Also 
+    notice zero-indexing in code, while function definitions and variable 
+    names employ one-indexing.
 
-    Convention: Keeping in line with PyTorch convention `_` at the
-    end of a function name indicates an inplace operation.
+    (Convention: Keeping in line with PyTorch convention `_` at the end of a 
+    function name indicates an inplace operation.)
     """
     a11 = a1[0]
-    beta_e11 = -sign(a11) * torch.norm(a1)  # stable choice
-    v1 = a11 - beta_e11
-    a1[0] = beta_e11  # R11 (in A = QR)
+    rho11 = -sign(a11) * torch.norm(a1)  # stable choice
+    v1 = a11 - rho11
+    a1[0] = rho11  # R11 (in A = QR)
     a1[1:] /= v1  # inplace op; stores a1[1:] = v[1:], v[0] = 1.0
 
 
@@ -392,22 +393,52 @@ Let the Householder transformation computed from the first column be as follows:
 $$
 \text{housev}\left(\begin{bmatrix}\alpha_{11} \\ a_{21} \end{bmatrix}\right) = 
 \begin{bmatrix}
-\beta_{11} \\
+\rho_{11} \\
 \tilde{v}_{21} \\ 
-\end{bmatrix}.
+\end{bmatrix},
 $$
+where $\rho_{11} = \beta = -\text{sign}(\alpha_{11}) \Vert a[:,1] \Vert_2$.
 
-Now, applying the Householder transformation to $A$ results in
+Now, applying unblocked Householder transformation to $A$ results in
 
 $$
-\text{hqr}(A) =  (\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\text{hqr}(A) =  
+\left(\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T) 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T\right) 
 \begin{bmatrix}
 \alpha_{11} & a_{12}^T \\
 a_{21} & A_{22} \\ 
 \end{bmatrix} = \begin{bmatrix}
-\beta_{11} &  \\
+\rho_{11} &  \\
 0 & \\ 
 \end{bmatrix}
+$$
+
+Note that the second column above is the resultant of
+
+$$
+\left(\underbrace{\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T}_{H_1}\right) \begin{bmatrix}
+a_{12}^T \\ 
+A_{22} \\ 
+\end{bmatrix}.
+$$
+
+If we explicitly form $H_1$, we would incur $\mathcal{O}(n^2)$ computations and
+applying the matrix is  $\mathcal{O}(n^3)$. So instead, we will compute it as
+follows:
+
+$$
+\begin{bmatrix}
+a_{12}^T \\ 
+A_{22} \\ 
+\end{bmatrix} - 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
+\frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\underbrace{\begin{bmatrix}1 & \tilde{v}_{21}^T \end{bmatrix} \begin{bmatrix}
+a_{12}^T \\ 
+A_{22} \\ 
+\end{bmatrix}}_{=\,a_{21}^T + \tilde{v}_{21}^T A_{22}}.
 $$
