@@ -525,4 +525,7 @@ assert torch.allclose(torch.triu(A), torch.from_numpy(R_np))
 ```
 
 From the above algorithm, one can reason that the cost of the algorithm to be 
-$\mathcal{O}(mn^2)$.
+$\mathcal{O}(mn^2)$. Notice that the above algorithm doesn't explicitly form 
+$Q^T = H_n \dotsc H_1$, and so long as we have efficient routines to perform
+$Qx$ or $Q^T x$ using the Householder vectors, we won't need to explicitly form
+$Q$ or $Q^T$.
