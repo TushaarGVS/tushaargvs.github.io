@@ -410,8 +410,8 @@ $$
 \alpha_{11} & a_{12}^T \\
 a_{21} & A_{22} \\ 
 \end{bmatrix} = \begin{bmatrix}
-\rho_{11} &  \\
-0 & \\ 
+\rho_{11} & \color{red}{\small{\times}} \\
+0 & \color{red}{\small{\times}} \\ 
 \end{bmatrix}
 $$
 
@@ -436,9 +436,10 @@ a_{12}^T \\
 A_{22} \\ 
 \end{bmatrix} - 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
-\frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\underbrace{\frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
 \underbrace{\begin{bmatrix}1 & \tilde{v}_{21}^T \end{bmatrix} \begin{bmatrix}
 a_{12}^T \\ 
 A_{22} \\ 
-\end{bmatrix}}_{=\,a_{21}^T + \tilde{v}_{21}^T A_{22}}.
+\end{bmatrix}}_{=\,a_{21}^T + \tilde{v}_{21}^T A_{22}}}_{w_{12}^T}.
 $$
+
