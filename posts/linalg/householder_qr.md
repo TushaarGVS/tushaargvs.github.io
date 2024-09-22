@@ -505,10 +505,11 @@ def hqr_(A: Fl("m n")):
     while A22.shape[1] > 0:
         housev_(A22)
 
-        a12_tr = A22[0, 1:][None]
-        a21 = A22[1:, 0][:, None]
-        A22 = A22[1:, 1:]
+        a12_tr = A22[0, 1:][None]  # (1, n - k)
+        a21 = A22[1:, 0][:, None]  # (m - k, 1)
+        A22 = A22[1:, 1:]   # (m - k, n - k)
 
+        # w12_tr: (1, n - k)
         w12_tr = (2 / (1 + torch.norm(a21) ** 2)) * (a12_tr + a21.T @ A22)
         a12_tr -= w12_tr
         A22 -= a21 @ w12_tr
@@ -522,3 +523,6 @@ hqr_(A)
 R_np = np.linalg.qr(A_ref, "complete").R
 assert torch.allclose(torch.triu(A), torch.from_numpy(R_np))
 ```
+
+From the above algorithm, one can reason that the cost of the algorithm to be 
+$\mathcal{O}(mn^2)$.
