@@ -464,13 +464,12 @@ a_{21} & A_{22} \\
 $$
 
 Note that in this formulation involves computing $w_{12}^T$ (involving 
-matrix-vector multiplication) and $A_{22} - \tilde{v}_{21} w_{12}^T $ (a rank-one
-update). This is cheaper than forming $H_1$ and performing matrix-matrix 
-multiplication.
+matrix-vector multiplication) and the updated $A_{22}$ (a rank-one update). This
+is cheaper than forming $H_1$ and performing matrix-matrix multiplication.
 
 In the next iteration, we proceed with by running Householder transformation on
-the first column of $A_{22} - \tilde{v}_{21} w_{12}^T $. Note that the associated
-$H_2$ applied to the entire matrix (which ignores first row and column) is
+the first column of the updated $A_{22}$. Note that the associated $H_2$ applied
+to the entire matrix (which ignores first row and column) is
 
 $$
 H_2 = \begin{bmatrix}
@@ -482,5 +481,13 @@ H_2 = \begin{bmatrix}
 $$
 
 ```python
+def hqr_(A: Fl("m n")):
+    """
+    Transform `A` to upper triangular using Householder QR.
+    
+    Note: The elements below the diagonal store the vectors associated with
+    the respective Householder transformation.
+    """
+    while 
 
 ```
