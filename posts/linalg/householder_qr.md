@@ -398,7 +398,7 @@ $$
 \end{bmatrix},
 $$
 
-where $\rho_{11} = \beta = -\text{sign}(\alpha_{11}) \Vert a[:,1] \Vert_2$.
+where $\rho_{11} = \beta = -\text{sign}(\alpha_{11}) \Vert A[:,1] \Vert_2$.
 
 Now, applying unblocked Householder transformation to $A$ results in
 
@@ -465,7 +465,9 @@ $$
 
 Note that in this formulation involves computing $w_{12}^T$ (involving 
 matrix-vector multiplication) and the updated $A_{22}$ (a rank-one update). This
-is cheaper than forming $H_1$ and performing matrix-matrix multiplication.
+is cheaper than forming $H_1$ and performing matrix-matrix multiplication. (We 
+will explicitly analyze the computational cost once we write down the complete
+algorithm.)
 
 In the next iteration, we proceed with by running Householder transformation on
 the first column of the updated $A_{22}$. Note that the associated $H_2$ applied
@@ -503,6 +505,7 @@ def hqr_(A: Fl("m n")):
     """
     A22 = A
     while A22.shape[1] > 0:
+        # A22: (m - k + 1, n - k + 1) at iter k = {1, ..., n}.
         housev_(A22)
 
         a12_tr = A22[0, 1:][None]  # (1, n - k)
@@ -524,8 +527,16 @@ R_np = np.linalg.qr(A_ref, "complete").R
 assert torch.allclose(torch.triu(A), torch.from_numpy(R_np))
 ```
 
-From the above algorithm, one can reason that the cost of the algorithm to be 
-$\mathcal{O}(mn^2)$. Notice that the above algorithm doesn't explicitly form 
-$Q^T = H_n \dotsc H_1$, and so long as we have efficient routines to perform
-$Qx$ or $Q^T x$ using the Householder vectors, we won't need to explicitly form
-$Q$ or $Q^T$.
+For the above algorithm, bulk of the computation goes in computing $w_{12}^T$ 
+and updating $A_{22}$. Computing $a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost 
+$\mathcal{O}((m - k)(n - k)). Since $k$ runs through all the columns of $A$, the
+cost is approximately $\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives 
+us the cost of the algorithm to be $\mathcal{O}(mn^2)$. 
+
+Note that the above algorithm doesn't explicitly form  $Q^T = H_n \dots H_1$ 
+(or, $Q = H_1 \dots H_n$), and so long as we have efficient routines to perform 
+$Qx$ or $QA$ using the Householder vectors, we won't need to explicitly form 
+$Q$ or $Q^T$. However, in cases when you need to explicitly form $Q$ (e.g., for 
+forward error analysis), 
+
+### References
