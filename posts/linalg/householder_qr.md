@@ -165,7 +165,8 @@ that mirrors $x$ into $y$.
 __Remark.__ If $u$ is not a unit vector, the Householder transformation is 
 
 $$
-H = \mathrm{I} - 2 \frac{u u^H}{u^H u}.
+H = \mathrm{I} - 2 \frac{u}{\Vert u \Vert_2} \frac{u^H}{\Vert u \Vert_2} 
+= \mathrm{I} - 2 \frac{u u^H}{u^H u}.
 $$
 
 ##### Householder QR
@@ -280,7 +281,7 @@ For completeness, we have
 
 $$
 H_1 a_1 = 
-    \left(\mathrm{I} - 2 \frac{vv^H}{\Vert v \Vert_2}\right) a_1 = \beta e_1.
+    \left(\mathrm{I} - 2 \frac{vv^H}{\Vert v \Vert^2_2}\right) a_1 = \beta e_1.
 $$
 
 __Remark on numerical stability.__ Observe that the first element of $v$, 
@@ -341,7 +342,7 @@ fl64_randn = lambda size: torch.randn(size, dtype=torch.float64)
 fl64_zeros = lambda size: torch.zeros(size, dtype=torch.float64)
 
 
-def H1_(a1: Fl("m")):
+def housev_(a1: Fl("m")):
     """
     Computes `H1 a1` and stores `v` corresponding to `H1` in `a1`.
 
@@ -363,15 +364,50 @@ m = 10
 a1 = fl64_randn(m)  # random from N(0, 1)
 a1_ref = deepcopy(a1)  # store to check correctness of H1
 
-H1_(a1)  # stores v in a1
+housev_(a1)  # stores v in a1
 v_H1 = torch.cat((torch.tensor(1.0)[None], a1[1:]))
-print(f"v={v_H1}")
+print(f"ṽ={v_H1}")
 print(f"R11={a1[0]}")
 
-H1 = torch.eye(m, m) - 2 * torch.outer(v_H1, v_H1) / torch.inner(v_H1, v_H1)
+H1 = torch.eye(m, m) - 2 * torch.outer(v_H1, v_H1) / torch.norm(v_H1)**2
 H1_a1 = H1 @ a1_ref
 print(f"H1@a1={H1_a1}")
 assert torch.allclose(H1_a1[1:], fl64_zeros(m - 1))
 assert torch.allclose(H1_a1[0], a1[0])
 ```
 
+Now, let us see how to achieve the complete QR transformation (as shown in the
+chalkboard animation) through a sequence of Householder transformations. In the
+first iteration, we can block-partition $A$ as:
+
+$$
+A = \begin{bmatrix}
+\alpha_{11} & a_{12}^T \\
+a_{21} & A_{22} \\ 
+\end{bmatrix}.
+$$
+
+Let the Householder transformation computed from the first column be as follows:
+
+$$
+\text{housev}\left(\begin{bmatrix}\alpha_{11} \\ a_{21} \end{bmatrix}\right) = 
+\begin{bmatrix}
+\beta_{11} \\
+\tilde{v}_{21} \\ 
+\end{bmatrix}.
+$$
+
+Now, applying the Householder transformation to $A$ results in
+
+$$
+\text{hqr}(A) =  (\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T) 
+\begin{bmatrix}
+\alpha_{11} & a_{12}^T \\
+a_{21} & A_{22} \\ 
+\end{bmatrix} = \begin{bmatrix}
+\beta_{11} &  \\
+0 & \\ 
+\end{bmatrix}
+$$
