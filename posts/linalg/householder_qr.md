@@ -184,26 +184,26 @@ A = \begin{bmatrix}
     \vdots & \vdots & \vdots \\
     \small{\times} & \small{\times} & \small{\times} \\
 \end{bmatrix} \xrightarrow{H_1} \matrix{\begin{bmatrix} 
-    \color{green}{*} & \small{*} & \small{*} \\
-    \color{green}{0} & \small{*} & \small{*} \\
-    \color{green}{0} & \small{*} & \small{*} \\
-    \color{green}{0} & \small{*} & \small{*} \\
-    \color{green}{\vdots} & \vdots & \vdots \\
-    \color{green}{0} & \small{*} & \small{*} \\
+    \color{red}{*} & \small{*} & \small{*} \\
+    \color{red}{0} & \small{*} & \small{*} \\
+    \color{red}{0} & \small{*} & \small{*} \\
+    \color{red}{0} & \small{*} & \small{*} \\
+    \color{red}{\vdots} & \vdots & \vdots \\
+    \color{red}{0} & \small{*} & \small{*} \\
 \end{bmatrix} \\[1pt] \small{H_1 A}} \xrightarrow{H_2} \matrix{\begin{bmatrix} 
     * & * & * \\
-    0 & \color{green}{\star} & \small{\star} \\
-    0 & \color{green}{0} & \small{\star} \\
-    0 & \color{green}{0} & \small{\star} \\
-    \vdots & \color{green}{\vdots} & \vdots \\
-    0 & \color{green}{0} & \small{\star} \\
+    0 & \color{red}{\star} & \small{\star} \\
+    0 & \color{red}{0} & \small{\star} \\
+    0 & \color{red}{0} & \small{\star} \\
+    \vdots & \color{red}{\vdots} & \vdots \\
+    0 & \color{red}{0} & \small{\star} \\
 \end{bmatrix} \\[1pt] \small{ H_2 H_1 A}} \xrightarrow{H_3} \matrix{\begin{bmatrix} 
     * & * & * \\
     0 & \star & \star \\
-    0 & 0 & \color{green}{\small{\bullet}} \\
-    0 & 0 & \color{green}{0} \\
-    \vdots & \vdots & \color{green}{\vdots} \\
-    0 & 0 & \color{green}{0} \\
+    0 & 0 & \color{red}{\small{\bullet}} \\
+    0 & 0 & \color{red}{0} \\
+    \vdots & \vdots & \color{red}{\vdots} \\
+    0 & 0 & \color{red}{0} \\
 \end{bmatrix} \\[1pt] \small{ H_3 H_2 H_1 A}} = \begin{bmatrix}
 R_1 \\
 0
@@ -467,3 +467,20 @@ Note that in this formulation involves computing $w_{12}^T$ (involving
 matrix-vector multiplication) and $A_{22} - \tilde{v}_{21} w_{12}^T$ (a rank-one
 update). This is cheaper than forming $H_1$ and performing matrix-matrix 
 multiplication.
+
+In the next iteration, we proceed with by running Householder transformation on
+the first column of $A_{22} - \tilde{v}_{21} w_{12}^T$. Note that the associated
+$H_2$ applied to the entire matrix (which ignores first row and column) is
+
+$$
+H_2 = \begin{bmatrix}
+\mathrm{I} & 0
+0 & \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
+\end{bmatrix}.
+$$
+
+```python
+
+```
