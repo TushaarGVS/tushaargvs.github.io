@@ -675,8 +675,24 @@ H_2 \begin{bmatrix}
         -\color{red}{\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}} \\
     -\tilde{v}_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &
         A_{22} - \tilde{v}_{21} \color{red}{\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}} \\
-\end{bmatrix}
+\end{bmatrix}.
 \end{align*}
+$$
+
+Hence, we can proceed by updating a block $
+    \begin{bmatrix}
+        \alpha_{11} = 1 & a_{12}^T = 0 
+        a_{21} = \tilde{v}_{21} & A_{22}
+    \end{bmatrix}
+$ as
+
+$$
+\begin{align*}
+    \alpha_{11} &\coloneq 1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
+    a_{12}^T &\coloneq -\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
+    A_{22} &\coloneq A_{22} + a_{21} a_{12}^T, \\
+    a_{21} &\coloneq -a_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}. \\
+\end{align&}
 $$
 
 ```python
