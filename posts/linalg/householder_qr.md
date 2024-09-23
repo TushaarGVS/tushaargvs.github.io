@@ -481,7 +481,7 @@ to the entire matrix (which ignores first row and column of $A$) is
 $$
 H_2 = \begin{bmatrix}
 \mathrm{I} & 0 \\
-0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+0 & \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \end{bmatrix}.
@@ -586,8 +586,8 @@ H_3
 \end{bmatrix} 
 &=
 \begin{bmatrix}
-    \mathrm{I}_{2 \times 2} & 0
-    0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    \mathrm{I}_{2 \times 2} & 0 \\
+    0 & \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
             \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
             \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \end{bmatrix} \begin{bmatrix}
@@ -635,13 +635,13 @@ $$
 H_2 \begin{bmatrix}
     1 & 0 & 0 \\
     0 & \color{red}{1} & \color{red}{0} \\
-    0 & \color{red}{0} & \small{\times} \\
-    0 & \color{red}{0} & \small{\times} \\
-    0 & \color{red}{0} & \small{\times}  \\
+    0 & \color{red}{0} & \color{red}{\small{\times}} \\
+    0 & \color{red}{0} & \color{red}{\small{\times}} \\
+    0 & \color{red}{0} & \color{red}{\small{\times}}  \\
 \end{bmatrix}
 &=
 \left(
-    \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
     \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
     \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \right) \begin{bmatrix}
@@ -652,7 +652,7 @@ H_2 \begin{bmatrix}
 \begin{bmatrix}
     1 & 0 \\
     0_{3 \times 1} & A_{22} \\
-\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}}
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}\Vert_2^2}
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
 \left(
     \begin{bmatrix}1 & \tilde{v}_{21}^T\end{bmatrix}
@@ -665,16 +665,16 @@ H_2 \begin{bmatrix}
 \begin{bmatrix}
     1 & 0 \\
     0_{3 \times 1} & A_{22} \\
-\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}}
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}\Vert_2^2} 
 \begin{bmatrix}
     1 & \tilde{v}_{21}^T A_{22} \\ 
     \tilde{v}_{21} & 
 \end{bmatrix} \\
 &= \begin{bmatrix}
     1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} & 
-        -\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
+        -\color{red}{\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}} \\
     -\tilde{v}_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &
-        A_{22} - 
+        A_{22} - \tilde{v}_{21} \color{red}{\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}} \\
 \end{bmatrix}
 \end{align*}
 $$
