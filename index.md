@@ -65,7 +65,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
       <br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">::</a> <i>ML systems</i>: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>)
       <br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: <i>Mechanistic interpretability</i>: <a href="https://github.com/TushaarGVS/sae">Sparse autoencoders</a> to understand the role of recurrence in linear recurrence models
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: <i>Mechanistic interpretability</i>: Sparse autoencoders to understand the role of recurrence in linear recurrence models
     </div>
 </p>
 <p>

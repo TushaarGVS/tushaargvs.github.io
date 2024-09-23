@@ -562,21 +562,74 @@ BLAS operations using the Householder vectors, we won't need to explicitly form
 $Q$ or $Q^T$. However, in few specific cases we may need to explicitly form 
 $Q$ (e.g., for forward error analysis), and we'll now see how to do so.
 
-Let $\mathrm{I}_n$ be the first $n$ columns of an $m \times m$ identity matrix 
-(noting $m \geq n$). If we now apply our Householder transformations on 
-$\mathrm{I}_n$, we have
+Observe that if we now apply our Householder transformations on to the (padded)
+identity matrix in reverse, we have
 
 $$
-Q = H_1 H_2 \dots H_n \mathrm{I}_n.
+H_1 H_2 \dots H_n 
+\begin{bmatrix} 
+    \mathrm{I}_{n \times n} \\
+    0_{m - n \times n} 
+\end{bmatrix} = Q.
 $$
 
-This is the same as the Householder QR we saw in the previous section, but 
-applied in reverse (from $H_n$ to $H_1$) to an identity matrix.
+Let us consider the first step of applying $H_n$. Note that for an $m \times n$
+matrix $A$, $H_n$ only modifies $A[n:, n]$ entries. As an example, consider a
+$5 \times 3$ $A$ and let's see how $H_3$ applies:
+
+$$
+\begin{align*}
+H_3 
+\begin{bmatrix} 
+    \mathrm{I}_{3 \times 3} \\ 
+    0_{2 \times 3} 
+\end{bmatrix} &=
+\begin{bmatrix}
+    \mathrm{I}_{2 \times 2} & 0
+    0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+            \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+            \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
+\end{bmatrix} \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & \color{green}{1} \\
+    0 & 0 & \color{green}{0} \\
+    0 & 0 & \color{green}{0} \\
+\end{bmatrix} \\
+&= \left(
+    \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
+\right)
+\begin{bmatrix} 
+    1 \\
+    0
+\end{bmatrix} \\
+&=
+\begin{bmatrix} 
+    1 \\
+    0
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\left(
+    \begin{bmatrix}1 & \tilde{v}_{21}^T\end{bmatrix}
+    \begin{bmatrix} 
+        1 \\
+        0
+    \end{bmatrix}
+\right) \\
+&=
+\begin{bmatrix} 
+    1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
+    -\tilde{v}_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\end{bmatrix}
+\end{align*}.
+$$
 
 ```python
-def formQ(R: Fl("m n")):
-    """Forms `Q` from Householder vectors stored below the diagonal in `R`."""
-
+def formQ(A: Fl("m n")):
+    """Forms `Q` from Householder vectors stored below the diagonal in `A`."""
+    A22 = 
 ```
 
 ---
