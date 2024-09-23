@@ -574,7 +574,7 @@ H_1 H_2 \dots H_n
 $$
 
 Let us consider the first step of applying $H_n$. Note that for an $m \times n$
-matrix $A$, $H_n$ only modifies $A[n:, n]$ entries. As an example, consider a
+matrix $A$, $H_n$ only modifies $A[n:, n:]$ entries. As an example, consider a
 $5 \times 3$ $A$ and let's see how $H_3$ applies:
 
 $$
@@ -672,9 +672,16 @@ H_2 \begin{bmatrix}
 \end{bmatrix} \\
 &= \begin{bmatrix}
     1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} & 
-        -\color{green}{\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}} \\
+        -\color{green}{
+            \tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+        } \\
     -\tilde{v}_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &
-        A_{22} - \tilde{v}_{21} \color{green}{\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}} \\
+        A_{22} - 
+            \tilde{v}_{21} 
+            \color{green}{
+                \tilde{v}_{21}^T A_{22} 
+                \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+            } \\
 \end{bmatrix}.
 \end{align*}
 $$
@@ -686,19 +693,30 @@ Hence, we can proceed by updating a block of $A$ (inplace) $\begin{bmatrix}
 
 $$
 \begin{align*}
-    \alpha_{11} &\coloneqq 
+    \alpha_{11} &\leftarrow 
         1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
-    a_{12}^T &\coloneqq 
-        -\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
-    A_{22} &\coloneqq A_{22} + a_{21} a_{12}^T, \\
-    a_{21} &\coloneqq -a_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}. \\
+    a_{12}^T &\leftarrow
+        -a_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
+    A_{22} &\leftarrow A_{22} + a_{21} a_{12}^T, \\
+    a_{21} &\leftarrow -a_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}. \\
 \end{align*}
 $$
 
 ```python
-def formQ_(A: Fl("m n")):
+def form_Q_(A: Fl("m n")):
     """Forms `Q` from Householder vectors stored below the diagonal in `A`."""
-    
+    for k in range(n - 1, -1, -1):
+        tau = 2 / (1 + torch.norm(A[k + 1:, k])**2)
+        A[k, k] = 1 - tau
+        if k + 1 < m and k + 1 < n:
+            a12_tr = A[k, k + 1:][None]
+            a21 = A[k + 1:, k][:, None]
+            A22 = A[k + 1:, k + 1]
+            
+            a12_tr = -a21.T @ A22
+            A22 += a21 @ a12_tr
+        if k + 1 < m:
+            A[k + 1:, k] /= -tau
 ```
 
 ---
