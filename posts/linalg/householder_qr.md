@@ -53,6 +53,7 @@ $$
 back substitution to find $\hat{x}$.)
 
 <br/>
+
 #### Gram-Schmidt, a brief note
 
 A first course in linear algebra often shows orthogonalization (converting the 
@@ -77,6 +78,7 @@ algorithm is often discussed. However, we will see a different approach of using
 Householder reflectors to achieve orthogonal triangularizations.
 
 <br/>
+
 #### QR factorization via Householder reflections
 
 ##### Reflecting a vector
@@ -473,7 +475,7 @@ algorithm.)
 
 In the next iteration, we proceed with by running Householder transformation on
 the first column of the updated $A_{22}$. Note that the associated $H_2$ applied
-to the entire matrix (which ignores first row and column) is
+to the entire matrix (which ignores first row and column of $A$) is
 
 $$
 H_2 = \begin{bmatrix}
@@ -536,18 +538,56 @@ Since $k$ runs through all the columns of $A$, the cost is approximately
 $\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives us the cost of the 
 algorithm to be $\mathcal{O}(mn^2)$. 
 
-#### Forming $\boldsymbol{Q}$
+##### Forming $\boldsymbol{Q}$
+
+Running a full iteration of Householder QR on an $m \times n$ matrix $A$ results 
+in
+
+$$
+H_n \dots H_2 H_1 A = R,
+$$
+
+where $R$ is upper trapezoidal and $H_j$ is a unitary Householder transformation
+(almost: note that the top-left corner is a $j-1 \times j-1$ identity matrix).
+Further, we know that $H_j^{-1} = H_j$. Hence, we have
+
+$$
+A = \underbrace{H_1 H_2 \dots H_n}_{Q} R.
+$$
 
 Note that the above algorithm doesn't explicitly form  $Q^T = H_n \dots H_1$ 
-(or, $Q = H_1 \dots H_n$), and so long as we have efficient routines to perform 
-$Qx$ or $QA$ using the Householder vectors, we won't need to explicitly form 
-$Q$ or $Q^T$. However, in cases when you need to explicitly form $Q$ (e.g., for 
-forward error analysis), 
+(or, $Q = H_1 \dots H_n$), and as long as we have efficient routines to perform 
+BLAS operations using the Householder vectors, we won't need to explicitly form 
+$Q$ or $Q^T$. However, in few specific cases we may need to explicitly form 
+$Q$ (e.g., for forward error analysis), and we'll now see how to do so.
+
+Let $\mathrm{I}_n$ be the first $n$ columns of an $m \times m$ identity matrix 
+(noting $m \geq n$). If we now apply our Householder transformations on 
+$\mathrm{I}_n$, we have
+
+$$
+Q = H_1 H_2 \dots H_n \mathrm{I}_n.
+$$
+
+This is the same as the Householder QR we saw in the previous section, but 
+applied in reverse (from $H_n$ to $H_1$) to an identity matrix.
+
+```python
+def formQ(R: Fl("m n")):
+    """Forms `Q` from Householder vectors stored below the diagonal in `R`."""
+
+```
+
 
 <br/>
+
 #### Visualizing HQR (optional reading)
 
-
+This blog post was heavily inspired by me wanting to recreate the [animation 
+from Gabriel Peyré's tweet (or, "x"?) on unitary triangulation of a nonsymmetric
+matrix](https://x.com/gabrielpeyre/status/1788071332833354163) and partly from
+wanting to convert the David Bindel's chalkboard animation to come alive!
 
 <br/>
+
 #### References
