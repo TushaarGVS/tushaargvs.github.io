@@ -708,17 +708,17 @@ $$
 def Q_(A: Fl("m n")):
     """Forms `Q` from Householder vectors stored below the diagonal in `A`."""
     for k in range(n - 1, -1, -1):
-        tau = 2 / (1 + torch.norm(A[k + 1:, k])**2)
-        A[k, k] = 1 - tau
+        assert k + 1 < m
+        a21 = A[k + 1:, k][:, None]
+        tau = -2 / (1 + torch.norm(a21)**2)
+        
+        A[k, k] = 1 + tau
         if k + 1 < m and k + 1 < n:
             a12_tr = A[k, k + 1:][None]
-            a21 = A[k + 1:, k][:, None]
-            A22 = A[k + 1:, k + 1]
-            
-            a12_tr = -a21.T @ A22
+            A22 = A[k + 1:, k + 1:]
+            a12_tr = tau * (a21.T @ A22)
             A22 += a21 @ a12_tr
-        if k + 1 < m:
-            A[k + 1:, k] /= -tau
+        a21 *= tau
 ```
 
 ---
