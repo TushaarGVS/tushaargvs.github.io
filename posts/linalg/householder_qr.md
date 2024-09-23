@@ -531,9 +531,9 @@ assert torch.allclose(torch.triu(A), torch.from_numpy(R_np))
 
 __Remark on computational complexity.__ For the above algorithm, bulk of the 
 computation goes in computing $w_{12}^T$ and updating $A_{22}$. Computing 
-$a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost $\mathcal{O}((m - k)(n - k)). 
+$a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost $\mathcal{O}((m - k)(n - k))$. 
 Since $k$ runs through all the columns of $A$, the cost is approximately 
-$\sum_{k=1}^{n} ((m - k)(n - k))-$simplifying this gives us the cost of the 
+$\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives us the cost of the 
 algorithm to be $\mathcal{O}(mn^2)$. 
 
 #### Forming $\boldsymbol{Q}$
