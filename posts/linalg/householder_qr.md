@@ -478,7 +478,7 @@ to the entire matrix (which ignores first row and column) is
 $$
 H_2 = \begin{bmatrix}
 \mathrm{I} & 0 \\
-0 & \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \end{bmatrix}.
