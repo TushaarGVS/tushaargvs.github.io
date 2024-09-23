@@ -164,7 +164,7 @@ $$
 Now, we have an approach of determining the vector $u$, which defines a subspace
 that mirrors $x$ into $y$.
 
-<u><i>Remark on $\underline{\Vert u \Vert_2 > 1}$</i></u>. If $u$ is not a unit 
+<u><i>Remark on normalization</i></u>. If $u$ is not a unit 
 vector, the Householder transformation is 
 
 $$
@@ -314,7 +314,7 @@ a_{m1} \\
 \end{bmatrix}.
 $$
 
-<u><i>Remark on storing $\underline{H_1}$</i></u>. A simple observation from 
+<u><i>Remark on storing Householder vectors</i></u>. A simple observation from 
 $H_1 a_1 = \beta e_1$ is that the entries other than the first entry of 
 $H_1 a_1$ are zeros, meaning $(v_2, \dotsc, v_m)$ can be stored as entries of
 $(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that ensures 
