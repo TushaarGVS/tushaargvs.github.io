@@ -52,7 +52,7 @@ $$
 (Note: We don't need to explicitly compute $R_1^{-1}$; instead, we can use
 back substitution to find $\hat{x}$.)
 
-<br/>
+---
 
 #### Gram-Schmidt, a brief note
 
@@ -77,7 +77,7 @@ To overcome this issue of catastrophic cancellation, the _modified_ Gram-Schmidt
 algorithm is often discussed. However, we will see a different approach of using
 Householder reflectors to achieve orthogonal triangularizations.
 
-<br/>
+---
 
 #### QR factorization via Householder reflections
 
@@ -578,8 +578,7 @@ def formQ(R: Fl("m n")):
 
 ```
 
-
-<br/>
+---
 
 #### Visualizing HQR (optional reading)
 
@@ -588,6 +587,6 @@ from Gabriel Peyré's tweet (or, "x"?) on unitary triangulation of a nonsymmetri
 matrix](https://x.com/gabrielpeyre/status/1788071332833354163) and partly from
 wanting to convert the David Bindel's chalkboard animation to come alive!
 
-<br/>
+---
 
 #### References

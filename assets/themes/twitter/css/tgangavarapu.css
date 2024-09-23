@@ -97,6 +97,10 @@ td.right {
     font-weight: normal;
 } */
 
+h4, h5 {
+    line-height: 30px;
+}
+
 .danger {
     background-color: #ffdddd;
     border-left: 6px solid #f44336;
