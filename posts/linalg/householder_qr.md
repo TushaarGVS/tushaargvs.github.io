@@ -545,4 +545,9 @@ $Q$ or $Q^T$. However, in cases when you need to explicitly form $Q$ (e.g., for
 forward error analysis), 
 
 <br/>
+#### Visualizing HQR (optional reading)
+
+
+
+<br/>
 #### References
