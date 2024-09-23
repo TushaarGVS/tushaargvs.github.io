@@ -686,13 +686,15 @@ H_2 \begin{bmatrix}
 \end{align*}
 $$
 
-Hence, we can proceed by updating a block of $A$ (inplace) $\begin{bmatrix}
-    \alpha_{11} & a_{12}^T 
-    a_{21} = \tilde{v}_{21} & A_{22}
-\end{bmatrix}$ as
+Hence, we can proceed by updating a block of $A$ (inplace) as
 
 $$
 \begin{align*}
+Q\left(\begin{bmatrix}
+    \alpha_{11} & a_{12}^T 
+    a_{21} = \tilde{v}_{21} & A_{22}
+\end{bmatrix}\right):
+\\
     \alpha_{11} &\leftarrow 
         1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
     a_{12}^T &\leftarrow
@@ -703,7 +705,7 @@ $$
 $$
 
 ```python
-def form_Q_(A: Fl("m n")):
+def Q_(A: Fl("m n")):
     """Forms `Q` from Householder vectors stored below the diagonal in `A`."""
     for k in range(n - 1, -1, -1):
         tau = 2 / (1 + torch.norm(A[k + 1:, k])**2)
