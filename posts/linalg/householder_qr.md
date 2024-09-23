@@ -164,7 +164,8 @@ $$
 Now, we have an approach of determining the vector $u$, which defines a subspace
 that mirrors $x$ into $y$.
 
-__Remark.__ If $u$ is not a unit vector, the Householder transformation is 
+<u><i>Remark on $\Vert u \Vert_2 > 1$.</i></u> If $u$ is not a unit vector, the 
+Householder transformation is 
 
 $$
 H = \mathrm{I} - 2 \frac{u}{\Vert u \Vert_2} \frac{u^H}{\Vert u \Vert_2} 
@@ -286,8 +287,8 @@ H_1 a_1 =
     \left(\mathrm{I} - 2 \frac{vv^H}{\Vert v \Vert^2_2}\right) a_1 = \beta e_1.
 $$
 
-__Remark on numerical stability.__ Observe that the first element of $v$, 
-$v_1 = a_{11} \mp \Vert a_1 \Vert_2$. If $a_{11}$ is positive and 
+<u><i>Remark on numerical stability.</i></u> Observe that the first element of 
+$v$, $v_1 = a_{11} \mp \Vert a_1 \Vert_2$. If $a_{11}$ is positive and 
 $a_{11} \approx \Vert a_1 \Vert_2$ ($a_1$ is really close to $x$-axis), we incur
 catastrophic cancellation in the computation of $a_{11} - \Vert a_1 \Vert_2$.
 
@@ -313,7 +314,7 @@ a_{m1} \\
 \end{bmatrix}.
 $$
 
-__Remark on storing $\boldsymbol{H_1}$.__ A simple observation from 
+<u><i>Remark on storing $H_1$.</i></u> A simple observation from 
 $H_1 a_1 = \beta e_1$ is that the entries other than the first entry of 
 $H_1 a_1$ are zeros, meaning $(v_2, \dotsc, v_m)$ can be stored as entries of
 $(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that ensures 
@@ -531,8 +532,8 @@ R_np = np.linalg.qr(A_ref, "complete").R
 assert torch.allclose(torch.triu(A), torch.from_numpy(R_np))
 ```
 
-__Remark on computational complexity.__ For the above algorithm, bulk of the 
-computation goes in computing $w_{12}^T$ and updating $A_{22}$. Computing 
+<u><i>Remark on computational complexity.</i></u> For the above algorithm, bulk 
+of the computation goes in computing $w_{12}^T$ and updating $A_{22}$. Computing 
 $a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost $\mathcal{O}((m - k)(n - k))$. 
 Since $k$ runs through all the columns of $A$, the cost is approximately 
 $\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives us the cost of the 
@@ -585,7 +586,7 @@ def formQ(R: Fl("m n")):
 This blog post was heavily inspired by me wanting to recreate the [animation 
 from Gabriel Peyré's tweet (or, "x"?) on unitary triangulation of a nonsymmetric
 matrix](https://x.com/gabrielpeyre/status/1788071332833354163) and partly from
-wanting to convert the David Bindel's chalkboard animation to come alive!
+wanting David Bindel's chalkboard animation to come alive!
 
 ---
 
