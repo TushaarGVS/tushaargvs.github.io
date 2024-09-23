@@ -544,4 +544,5 @@ $Qx$ or $QA$ using the Householder vectors, we won't need to explicitly form
 $Q$ or $Q^T$. However, in cases when you need to explicitly form $Q$ (e.g., for 
 forward error analysis), 
 
-### References
+<br/>
+#### References
