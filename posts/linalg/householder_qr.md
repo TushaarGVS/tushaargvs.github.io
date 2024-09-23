@@ -169,7 +169,7 @@ H = \mathrm{I} - 2 \frac{u}{\Vert u \Vert_2} \frac{u^H}{\Vert u \Vert_2}
 = \mathrm{I} - 2 \frac{u u^H}{u^H u}.
 $$
 
-##### Householder QR
+##### Householder vector
 
 Our goal is to convert $A$ to an upper triangular matrix through a series of 
 orthogonal transformations. Here's a chalkboard animation (as David Bindel would
@@ -377,6 +377,8 @@ assert torch.allclose(H1_a1[1:], fl64_zeros(m - 1))
 assert torch.allclose(H1_a1[0], a1[0])
 ```
 
+##### Householder QR
+
 Now, let us see how to achieve the complete QR transformation (as shown in the
 chalkboard animation) through a sequence of Householder transformations. In the
 first iteration, we can block-partition $A$ as:
@@ -527,11 +529,14 @@ R_np = np.linalg.qr(A_ref, "complete").R
 assert torch.allclose(torch.triu(A), torch.from_numpy(R_np))
 ```
 
-For the above algorithm, bulk of the computation goes in computing $w_{12}^T$ 
-and updating $A_{22}$. Computing $a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost 
-$\mathcal{O}((m - k)(n - k)). Since $k$ runs through all the columns of $A$, the
-cost is approximately $\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives 
-us the cost of the algorithm to be $\mathcal{O}(mn^2)$. 
+__Remark on computational complexity.__ For the above algorithm, bulk of the 
+computation goes in computing $w_{12}^T$ and updating $A_{22}$. Computing 
+$a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost $\mathcal{O}((m - k)(n - k)). 
+Since $k$ runs through all the columns of $A$, the cost is approximately 
+$\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives us the cost of the 
+algorithm to be $\mathcal{O}(mn^2)$. 
+
+#### Forming $\boldsymbol{Q}$
 
 Note that the above algorithm doesn't explicitly form  $Q^T = H_n \dots H_1$ 
 (or, $Q = H_1 \dots H_n$), and so long as we have efficient routines to perform 
