@@ -691,7 +691,7 @@ Hence, we can proceed by updating a block of $A$ (inplace) as
 $$
 \begin{align*}
 Q\left(\begin{bmatrix}
-    \alpha_{11} & a_{12}^T 
+    \alpha_{11} & a_{12}^T \\
     a_{21} = \tilde{v}_{21} & A_{22}
 \end{bmatrix}\right):
 \\
