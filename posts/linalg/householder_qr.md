@@ -583,7 +583,8 @@ H_3
 \begin{bmatrix} 
     \mathrm{I}_{3 \times 3} \\ 
     0_{2 \times 3} 
-\end{bmatrix} &=
+\end{bmatrix} 
+&=
 \begin{bmatrix}
     \mathrm{I}_{2 \times 2} & 0
     0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
@@ -592,38 +593,90 @@ H_3
 \end{bmatrix} \begin{bmatrix}
     1 & 0 & 0 \\
     0 & 1 & 0 \\
-    0 & 0 & \color{green}{1} \\
-    0 & 0 & \color{green}{0} \\
-    0 & 0 & \color{green}{0} \\
+    0 & 0 & \color{red}{1} \\
+    0 & 0 & \color{red}{0} \\
+    0 & 0 & \color{red}{0} \\
 \end{bmatrix} \\
-&= \left(
+&= 
+\left(
     \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
     \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
     \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \right)
 \begin{bmatrix} 
     1 \\
-    0
+    0_{2 \times 1}
 \end{bmatrix} \\
 &=
 \begin{bmatrix} 
     1 \\
-    0
+    0_{2 \times 1}
 \end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
 \left(
     \begin{bmatrix}1 & \tilde{v}_{21}^T\end{bmatrix}
     \begin{bmatrix} 
         1 \\
-        0
+        0_{2 \times 1}
     \end{bmatrix}
 \right) \\
 &=
 \begin{bmatrix} 
-    1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
+    1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
     -\tilde{v}_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\end{bmatrix}.
+\end{align*}
+$$
+
+Next, let's apply $H_2$:
+
+$$
+\begin{align*}
+H_2 \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & \color{red}{1} & \color{red}{0} \\
+    0 & \color{red}{0} & \small{\times} \\
+    0 & \color{red}{0} & \small{\times} \\
+    0 & \color{red}{0} & \small{\times}  \\
 \end{bmatrix}
-\end{align*}.
+&=
+\left(
+    \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
+\right) \begin{bmatrix}
+    1 & 0 \\
+    0_{3 \times 1} & A_{22} \\
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+    1 & 0 \\
+    0_{3 \times 1} & A_{22} \\
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\left(
+    \begin{bmatrix}1 & \tilde{v}_{21}^T\end{bmatrix}
+    \begin{bmatrix}
+        1 & 0 \\
+        0_{3 \times 1} & A_{22} \\
+    \end{bmatrix}
+\right) \\
+&=
+\begin{bmatrix}
+    1 & 0 \\
+    0_{3 \times 1} & A_{22} \\
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}}
+\begin{bmatrix}
+    1 & \tilde{v}_{21}^T A_{22} \\ 
+    \tilde{v}_{21} & 
+\end{bmatrix} \\
+&= \begin{bmatrix}
+    1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} & 
+        -\tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
+    -\tilde{v}_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &
+        A_{22} - 
+\end{bmatrix}
+\end{align*}
 $$
 
 ```python
