@@ -481,7 +481,7 @@ to the entire matrix (which ignores first row and column of $A$) is
 $$
 H_2 = \begin{bmatrix}
 \mathrm{I} & 0 \\
-0 & \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \end{bmatrix}.
@@ -588,7 +588,7 @@ H_3
 &=
 \begin{bmatrix}
     \mathrm{I}_{2 \times 2} & 0 \\
-    0 & \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
             \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
             \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \end{bmatrix} \begin{bmatrix}
@@ -623,8 +623,8 @@ H_3
 \right) \\
 &=
 \begin{bmatrix} 
-    1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
-    -\tilde{v}_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
+    -\tilde{v}_{21} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
 \end{bmatrix}.
 \end{align*}
 $$
@@ -748,6 +748,13 @@ from Gabriel Peyré's tweet (or, "x"?) on unitary triangulation of a nonsymmetri
 matrix](https://x.com/gabrielpeyre/status/1788071332833354163) and partly from
 wanting David Bindel's chalkboard animation to come alive!
 
+For the purposes of this animation, we will be using a terribly inefficient way
+of forming $Q$. Observe that our approach of forming $Q$ in reverse requires us
+to have completed a (forward) run of the Householder QR; however, for the 
+purpose of this animation, we want to show gradual change in $Q$ as $R$ changes. 
+
 ---
 
 #### References
+
+* 
