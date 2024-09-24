@@ -495,7 +495,7 @@ def housev_(A22: Fl("m n")):
     """Apply Householder transformation to the first column of A22."""
     alpha11 = A22[0, 0]
     a21 = A22[1:, 0]
-    rho11 = -sign(alpha11) * torch.norm(torch.cat([alpha11[None], a21]))
+    rho11 = -sign(alpha11) * torch.norm(A22[:, 0])
     v1 = alpha11 - rho11
     A22[0, 0] = rho11
     a21 /= v1
@@ -515,12 +515,13 @@ def hqr_(A: Fl("m n")):
 
         a12_tr = A22[0, 1:][None]  # (1, n - k)
         a21 = A22[1:, 0][:, None]  # (m - k, 1)
-        A22 = A22[1:, 1:]   # (m - k, n - k)
+        A22 = A22[1:, 1:]  # (m - k, n - k)
 
         # w12_tr: (1, n - k)
         w12_tr = (2 / (1 + torch.norm(a21) ** 2)) * (a12_tr + a21.T @ A22)
         a12_tr -= w12_tr
         A22 -= a21 @ w12_tr
+
 
 # Compare with standard numpy implementation: `np.linalg.qr`.
 m, n = 5, 3
@@ -528,8 +529,8 @@ A = fl64_randn([m, n])
 A_ref = deepcopy(A)
 hqr_(A)
 
-R_np = np.linalg.qr(A_ref, "complete").R
-assert torch.allclose(torch.triu(A), torch.from_numpy(R_np))
+R_np = np.linalg.qr(A_ref, "reduced").R
+assert torch.allclose(torch.triu(A)[:n], torch.from_numpy(R_np))
 ```
 
 <u><i>Remark on computational complexity</i></u>. For the above algorithm, bulk 
@@ -707,18 +708,35 @@ $$
 ```python
 def Q_(A: Fl("m n")):
     """Forms `Q` from Householder vectors stored below the diagonal in `A`."""
+    m, n = A.shape
     for k in range(n - 1, -1, -1):
-        assert k + 1 < m
-        a21 = A[k + 1:, k][:, None]
-        tau = -2 / (1 + torch.norm(a21)**2)
-        
-        A[k, k] = 1 + tau
-        if k + 1 < m and k + 1 < n:
-            a12_tr = A[k, k + 1:][None]
-            A22 = A[k + 1:, k + 1:]
-            a12_tr = tau * (a21.T @ A22)
-            A22 += a21 @ a12_tr
-        a21 *= tau
+        if k + 1 >= m:
+            continue
+
+        a21 = A[k + 1 :, k][:, None]  # (m - k - 1, 1)
+        tau = 2 / (1 + torch.norm(a21) ** 2)
+
+        A[k, k] = 1 - tau  # alpha_11
+        if k + 1 < n:
+            A22 = A[k + 1 :, k + 1 :]  # (m - k - 1, n - k - 1)
+            a12_tr = tau * (-a21.T @ A22)
+            A22 += a21 @ a12_tr  # inplace
+            A[k, k + 1 :][None] = a12_tr  # write inplace
+        a21 *= -tau
+
+
+# Compare with standard numpy implementation: `np.linalg.qr`.
+m, n = 5, 3
+A = fl64_randn([m, n])
+A_ref = deepcopy(A)
+hqr_(A)
+Q_(A)
+
+Q_np = np.linalg.qr(A_ref, "reduced").Q
+assert torch.allclose(A, torch.from_numpy(Q_np))
+
+# Also verify that Q.T@Q is identity (orthogonality check).
+assert torch.allclose(torch.eye(n, dtype=torch.float64), A.T @ A)
 ```
 
 ---
