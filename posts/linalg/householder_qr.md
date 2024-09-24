@@ -669,19 +669,19 @@ H_2 \begin{bmatrix}
 \end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}\Vert_2^2} 
 \begin{bmatrix}
     1 & \tilde{v}_{21}^T A_{22} \\ 
-    \tilde{v}_{21} & 
+    \tilde{v}_{21} & \tilde{v}_{21} \tilde{v}_{21}^T A_{22} \\
 \end{bmatrix} \\
 &= \begin{bmatrix}
-    1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} & 
+    1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} & 
         -\color{green}{
-            \tilde{v}_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+            \tilde{v}_{21}^T A_{22} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
         } \\
-    -\tilde{v}_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &
+    -\tilde{v}_{21} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &
         A_{22} - 
             \tilde{v}_{21} 
             \color{green}{
                 \tilde{v}_{21}^T A_{22} 
-                \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+                \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
             } \\
 \end{bmatrix}.
 \end{align*}
