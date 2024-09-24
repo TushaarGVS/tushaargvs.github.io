@@ -238,7 +238,7 @@ need to find a reflector (= mirror) $H$ that reflects $a_1$ onto the $x$-axis:
         title="" 
         src="./imgs/hqr_step1.png" 
         alt="" 
-        width="300" 
+        width="350" 
         data-align="center"
     />
 </div>
@@ -275,7 +275,7 @@ mirror as follows:
         title="" 
         src="./imgs/hqr_step1_neg.png" 
         alt="" 
-        width="300" 
+        width="350" 
         data-align="center"
     />
 </div>
@@ -297,7 +297,7 @@ catastrophic cancellation in the computation of $a_{11} - \Vert a_1 \Vert_2$.
         title="" 
         src="./imgs/hqr_step1_catastrophic.png" 
         alt="" 
-        width="300" 
+        width="350" 
         data-align="center"
     />
 </div>
