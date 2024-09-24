@@ -751,7 +751,184 @@ wanting David Bindel's chalkboard animation to come alive!
 For the purposes of this animation, we will be using a terribly inefficient way
 of forming $Q$. Observe that our approach of forming $Q$ in reverse requires us
 to have completed a (forward) run of the Householder QR; however, for the 
-purpose of this animation, we want to show gradual change in $Q$ as $R$ changes. 
+purpose of this animation, we want to show gradual change in $Q$ (as $R$ 
+changes). To that end, we will update $Q$ at every iteration as
+
+$$
+Q_j = Q_{j-1} H_j.
+$$
+
+```python
+def housev(A22: Fl("m n")) -> [float, float]:
+    """Out-of-place Householder transformation to the first column of A22."""
+    alpha11 = A22[0, 0]
+    a21 = A22[1:, 0]
+    rho11 = -sign(alpha11) * torch.norm(A22[:, 0])
+    v1 = alpha11 - rho11
+    return rho11, v1
+
+
+def hqr(A: Fl("m n")) -> [Fl("m n"), Fl("n n")]:
+    """Out-of-place Householder QR (forms Q explicitly)."""
+    m, n = A.shape
+    Q = torch.eye(m, dtype=A.dtype)
+    R = deepcopy(A)
+
+    R22 = R
+    for k in range(n):
+        rho11, v1 = housev(R22)
+        v21 = R22[1:, 0] / v1
+        R22[0, 0] = rho11
+        R22[1:, 0] = torch.zeros_like(R22[1:, 0])
+
+        v = torch.cat((torch.tensor([1.0]), v21))[:, None]
+        H = torch.eye(m, dtype=A.dtype)
+        H[k:, k:] -= 2 * (v @ v.T) / (v.T @ v)
+        Q = Q @ H
+
+        v21 = v21[:, None]
+        r12_tr = R22[0, 1:][None]
+        R22 = R22[1:, 1:]
+
+        w12_tr = (2 / (1 + torch.norm(v21) ** 2)) * (r12_tr + v21.T @ R22)
+        r12_tr -= w12_tr
+        R22 -= v21 @ w12_tr
+
+    return Q[:, :n], R[:n]
+
+
+# Compare with standard numpy implementation: `np.linalg.qr`.
+m, n = 5, 3
+A = fl64_randn([m, n])
+Q, R = hqr(A)
+
+QR_np = np.linalg.qr(A, "reduced")
+assert torch.allclose(Q, torch.from_numpy(QR_np.Q))
+assert torch.allclose(R, torch.from_numpy(QR_np.R))
+```
+
+Now, let's finally animate Householder QR:
+
+```python
+from functools import partial
+
+import matplotlib.cm as cm
+import matplotlib.colors as colors
+import matplotlib.pyplot as plt
+import seaborn as sns
+from celluloid import Camera
+
+plt.rcParams.update({"font.size": 14})
+plt.rc("text", usetex=True)
+plt.rc("text.latex", preamble=r"\usepackage{amsmath} \usepackage{amssymb}")
+
+
+def plt_mat(
+    A: Fl("m n"),
+    ax: plt.Axes,
+    cmap: colors.LinearSegmentedColormap,
+    norm: colors.TwoSlopeNorm,
+    label: str = None,
+):
+    """Plot matrix `A` on the given axis `ax`."""
+    A_hmap = sns.heatmap(
+        A,
+        ax=ax,
+        cmap=cmap,
+        norm=norm,
+        xticklabels=[],
+        yticklabels=[],
+        cbar=False,
+        square=(A.shape[0] == A.shape[1]),
+    )
+    A_hmap.axhline(y=0, color="k")
+    A_hmap.axhline(y=A.shape[1], color="k")
+    A_hmap.axvline(x=0, color="k")
+    A_hmap.axvline(x=A.shape[0], color="k")
+    if label is not None:
+        ax.text(A.shape[0] / 2, A.shape[1] + 2, label)
+
+
+def hqr_anim(A: Fl("m n")):
+    """Animate Householder QR."""
+    # Setup fig, axes for animation.
+    gridspec = dict(wspace=0, width_ratios=[1.2, 1, 1])
+    fig, axs = plt.subplots(
+        nrows=1, ncols=3, figsize=(15, 4), gridspec_kw=gridspec
+    )
+    camera = Camera(fig)
+
+    # Setup cmap and normalization to ensure 0.0 is always mapped to white.
+    norm = colors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1)
+    cmap = cm.RdBu
+    _plt_mat = partial(plt_mat, cmap=cmap, norm=norm)
+
+    m, n = A.shape
+    Q = torch.eye(m, dtype=A.dtype)
+    R = deepcopy(A)
+
+    # Plot `A`, add "=", as in "A = " part.
+    _plt_mat(A, ax=axs[0], label=r"$\boldsymbol{A}$")
+    axs[0].text(A.shape[0] + 2, (A.shape[1] + 2) / 2, r"$\boldsymbol{=}$")
+    # Plot initial `Q` (= identity) and `R` (= `A`).
+    _plt_mat(Q, ax=axs[1], label=r"$\boldsymbol{Q}$")
+    _plt_mat(R, ax=axs[2], label=r"$\boldsymbol{R}$")
+
+    # Run Householder QR, explicity forming `Q` at each step and zeroing out the
+    # below diagonal elements of `R`.
+    R22 = R
+    for k in range(n):
+        rho11, v1 = housev(R22)
+        v21 = R22[1:, 0] / v1
+        R22[0, 0] = rho11
+        R22[1:, 0] = torch.zeros_like(R22[1:, 0])
+
+        v = torch.cat((torch.tensor([1.0]), v21))[:, None]
+        H = torch.eye(m, dtype=A.dtype)
+        H[k:, k:] -= 2 * (v @ v.T) / (v.T @ v)
+        Q = Q @ H
+
+        v21 = v21[:, None]
+        r12_tr = R22[0, 1:][None]
+        R22 = R22[1:, 1:]
+
+        w12_tr = (2 / (1 + torch.norm(v21) ** 2)) * (r12_tr + v21.T @ R22)
+        r12_tr -= w12_tr
+        R22 -= v21 @ w12_tr
+
+        # Plot `A` to the left.
+        _plt_mat(A, ax=axs[0], label=r"$\boldsymbol{A}$")
+        axs[0].text(A.shape[0] + 2, (A.shape[1] + 2) / 2, r"$\boldsymbol{=}$")
+        # Plot the updated `Q` and `R` to the right.
+        _plt_mat(Q, ax=axs[1], label=r"$\boldsymbol{Q}$")
+        _plt_mat(R, ax=axs[2], label=r"$\boldsymbol{R}$")
+        camera.snap()
+
+    # Verify that the obtained QR factorization is as expected.
+    Q = Q[:, :n]
+    assert torch.allclose(Q.T @ Q, torch.eye(n, dtype=A.dtype))
+    assert torch.allclose(A, Q @ torch.triu(R)[:n])
+
+    plt.tight_layout()
+    anim = camera.animate()
+    return anim
+
+# Let us run the animation for a (100, 100) random matrix.
+m, n = 100, 100
+A = fl64_randn([m, n])
+anim = hqr_anim(A)
+anim.save("./hqr_anim.gif", dpi=200, writer="pillow")
+```
+
+<div align="center">
+    <img 
+        title="" 
+        src="./imgs/hqr_anim.gif" 
+        alt="" 
+        width="500" 
+        data-align="center"
+    />
+</div>
 
 ---
 
