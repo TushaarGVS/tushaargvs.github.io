@@ -846,7 +846,7 @@ def plt_mat(
     A_hmap.axvline(x=0, color="k")
     A_hmap.axvline(x=A.shape[0], color="k")
     if label is not None:
-        ax.text(A.shape[0] / 2, A.shape[1] + 2, label)
+        ax.text(A.shape[0] / 2, A.shape[1] + A.shape[1] / 10, label)
 
 
 def hqr_anim(A: Fl("m n")):
@@ -854,7 +854,7 @@ def hqr_anim(A: Fl("m n")):
     # Setup fig, axes for animation.
     gridspec = dict(wspace=0, width_ratios=[1.2, 1, 1])
     fig, axs = plt.subplots(
-        nrows=1, ncols=3, figsize=(15, 4), gridspec_kw=gridspec
+        nrows=1, ncols=3, figsize=(12, 4), gridspec_kw=gridspec
     )
     camera = Camera(fig)
 
@@ -869,7 +869,8 @@ def hqr_anim(A: Fl("m n")):
 
     # Plot `A`, add "=", as in "A = " part.
     _plt_mat(A, ax=axs[0], label=r"$\boldsymbol{A}$")
-    axs[0].text(A.shape[0] + 2, (A.shape[1] + 2) / 2, r"$\boldsymbol{=}$")
+    equals_pos = (A.shape[0] + A.shape[0] / 12, (A.shape[1] + A.shape[1] / 10) / 2)
+    axs[0].text(equals_pos[0], equals_pos[1], r"$\boldsymbol{=}$")
     # Plot initial `Q` (= identity) and `R` (= `A`).
     _plt_mat(Q, ax=axs[1], label=r"$\boldsymbol{Q}$")
     _plt_mat(R, ax=axs[2], label=r"$\boldsymbol{R}$")
@@ -898,7 +899,7 @@ def hqr_anim(A: Fl("m n")):
 
         # Plot `A` to the left.
         _plt_mat(A, ax=axs[0], label=r"$\boldsymbol{A}$")
-        axs[0].text(A.shape[0] + 2, (A.shape[1] + 2) / 2, r"$\boldsymbol{=}$")
+        axs[0].text(equals_pos[0], equals_pos[1], r"$\boldsymbol{=}$")
         # Plot the updated `Q` and `R` to the right.
         _plt_mat(Q, ax=axs[1], label=r"$\boldsymbol{Q}$")
         _plt_mat(R, ax=axs[2], label=r"$\boldsymbol{R}$")
@@ -934,4 +935,8 @@ anim.save("./hqr_anim.gif", dpi=200, writer="pillow")
 
 #### References
 
-* 
+* David Bindel. 
+[Householder transformations](https://www.cs.cornell.edu/courses/cs6210/2022fa/lec/2022-09-22.pdf#page=5.59).
+
+* Robert van de Geijn, Margaret Myers. [Householder QR Factorization](https://www.cs.utexas.edu/~flame/laff/alaff-beta/chapter03-householder-qr-factorization.html). 
+In _Advanced Linear Algebra: Foundations to Frontiers._
