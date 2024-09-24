@@ -926,7 +926,7 @@ anim.save("./hqr_anim.gif", dpi=200, writer="pillow")
         title="" 
         src="./imgs/hqr_anim.gif" 
         alt="" 
-        width="500" 
+        width="1000" 
         data-align="center"
     />
 </div>
@@ -936,7 +936,8 @@ anim.save("./hqr_anim.gif", dpi=200, writer="pillow")
 #### References
 
 * David Bindel. 
-[Householder transformations](https://www.cs.cornell.edu/courses/cs6210/2022fa/lec/2022-09-22.pdf#page=5.59).
+"[Householder transformations.](https://www.cs.cornell.edu/courses/cs6210/2022fa/lec/2022-09-22.pdf#page=5.59)" 
+(Accessed 09/22/2024.)
 
-* Robert van de Geijn, Margaret Myers. [Householder QR Factorization](https://www.cs.utexas.edu/~flame/laff/alaff-beta/chapter03-householder-qr-factorization.html). 
-In _Advanced Linear Algebra: Foundations to Frontiers._
+* Robert van de Geijn, Margaret Myers. "[Householder QR Factorization.](https://www.cs.utexas.edu/~flame/laff/alaff-beta/chapter03-householder-qr-factorization.html)" 
+_Advanced Linear Algebra: Foundations to Frontiers._
