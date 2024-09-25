@@ -179,14 +179,14 @@ orthogonal transformations. Here's a chalkboard animation (as David Bindel would
 call it!):
 
 $$
-A = \begin{bmatrix} 
+A = \matrix{\begin{bmatrix} 
     \small{\times} & \small{\times} & \small{\times} \\
     \small{\times} & \small{\times} & \small{\times} \\
     \small{\times} & \small{\times} & \small{\times} \\
     \small{\times} & \small{\times} & \small{\times} \\
     \vdots & \vdots & \vdots \\
     \small{\times} & \small{\times} & \small{\times} \\
-\end{bmatrix} \\[1pt] \phantom{\small{A}} \xrightarrow{H_1} \matrix{\begin{bmatrix} 
+\end{bmatrix} \\[1pt] \phantom{\small{A}}} \xrightarrow{H_1} \matrix{\begin{bmatrix} 
     \color{red}{*} & \small{*} & \small{*} \\
     \color{red}{0} & \small{*} & \small{*} \\
     \color{red}{0} & \small{*} & \small{*} \\
