@@ -186,7 +186,7 @@ A = \begin{bmatrix}
     \small{\times} & \small{\times} & \small{\times} \\
     \vdots & \vdots & \vdots \\
     \small{\times} & \small{\times} & \small{\times} \\
-\end{bmatrix} \xrightarrow{H_1} \matrix{\begin{bmatrix} 
+\end{bmatrix} \\[1pt] \phantom{\small{A}} \xrightarrow{H_1} \matrix{\begin{bmatrix} 
     \color{red}{*} & \small{*} & \small{*} \\
     \color{red}{0} & \small{*} & \small{*} \\
     \color{red}{0} & \small{*} & \small{*} \\
