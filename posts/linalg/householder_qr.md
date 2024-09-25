@@ -357,6 +357,10 @@ def housev_(a1: Fl("m")):
     (Convention: Keeping in line with PyTorch convention `_` at the end of a 
     function name indicates an inplace operation.)
     """
+    if len(a1) == 1:
+        # No need to reflect.
+        return
+
     a11 = a1[0]
     rho11 = -sign(a11) * torch.norm(a1)  # stable choice
     v1 = a11 - rho11
@@ -493,6 +497,12 @@ import numpy as np
 
 def housev_(A22: Fl("m n")):
     """Apply Householder transformation to the first column of A22."""
+    if len(A22[:, 0]) == 1:
+        # No need to reflect anything. 
+        # NOTE: If this is ignored, the sign for the last entry will be flipped,
+        # and the resultant `Q` will not be orthogonal.
+        return
+    
     alpha11 = A22[0, 0]
     a21 = A22[1:, 0]
     rho11 = -sign(alpha11) * torch.norm(A22[:, 0])
@@ -711,6 +721,8 @@ def Q_(A: Fl("m n")):
     m, n = A.shape
     for k in range(n - 1, -1, -1):
         if k + 1 >= m:
+            # The last entry in a square matrix.
+            A[k, k] = 1.0
             continue
 
         a21 = A[k + 1 :, k][:, None]  # (m - k - 1, 1)
@@ -761,6 +773,9 @@ $$
 ```python
 def housev(A22: Fl("m n")) -> [float, float]:
     """Out-of-place Householder transformation to the first column of A22."""
+    if len(A22[:, 0]) == 1:
+        return A22[0, 0], 1.0
+
     alpha11 = A22[0, 0]
     a21 = A22[1:, 0]
     rho11 = -sign(alpha11) * torch.norm(A22[:, 0])
