@@ -1,6 +1,6 @@
 ---
 layout: post
-title: _You_ think, therefore _I_ am!
+title: You think, therefore I am!
 tagline:
 description:
 tags: [yann hicke, ms cs]
@@ -10,6 +10,12 @@ next:
 previous:
 toc: false
 ---
+
+On Thu, Oct 31, 2024, Yann Hicke wrote,
+
+> Sorry, who are you?
+> I don't think we have ever met.
+> You go to Cornell?
 
 <div align="center">
     <img 
