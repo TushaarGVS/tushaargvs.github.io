@@ -1,7 +1,7 @@
 ---
 layout: frontpage
 title: Tushaar Gangavarapu
-description: Tushaar Gangavarapu is an MS CS student at Cornell University, Ithaca, NY. 
+description: Tushaar Gangavarapu is an MS CS student at Cornell University, Ithaca, NY.
 keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazon, nitk, graduate, student, applied, scientist, research, engineer, nlp, ml, ai, dl
 ---
 
@@ -172,7 +172,6 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
 <!-- </div> -->
 
-
 <hr class="normal">
 
 <b>Misc.</b>
@@ -184,4 +183,5 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     <li>I am scared (but also excited), a lot!, while teaching, publicly speaking, etc.</li>
     <li><a href="https://github.com/TushaarGVS/backprop-lecture-notes-CS-4740/blob/main/13-backprop_notes.pdf">Lecture notes on backpropagation</a> (personal knowledge + compiled from various sources)</li>
     <li>Oh!, I love sleeping; when I'm not a computer scientist, I'm probably (read: definitely) asleep</li>
+    <li><a href="posts/random/yann.html">_You_ think, therefore _I_ am!</a></li>
 </ul>
