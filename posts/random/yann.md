@@ -16,7 +16,7 @@ On Thu, Oct 31, 2024, [Yann Hicke](https://yannhicke.github.io/) wrote,
 <blockquote>
     <p style="line-height: 1.3; margin: 0;">
         Sorry, who are <i>you</i>? <br>
-        I don’t think we have ever met. <br>
+        I don't think we have ever met. <br>
         <i>You</i> go to Cornell?
     </p>
 </blockquote>
