@@ -24,7 +24,7 @@ On Thu, Oct 31, 2024, [Yann Hicke](https://yannhicke.github.io/) wrote,
 And thus began one of the most profound philosophical exchanges of our time.
 
 <font color="blue">
-    \*<i>Cue dramatic music mixed with existential crisis vibes.</i>\*
+    *<i>Cue dramatic music mixed with existential crisis vibes.</i>*<br/>
 </font>
 
 In that email thread, Hicke didn't just ask me about my identity; he asked <i>the</i>
@@ -54,9 +54,9 @@ all because of you, Hicke.</i> Naturally, I wasn't done. I had to deliver my
     </p>
 </blockquote>
 
-After all, Descartes may have had his "<i>Cogito, ergo sum</i>," but did he (they?) ever
-say it to an unsuspecting friend over email? I think not!! And just when I expected a
-hilarious response (or a blatant insult), he wrote back with a humble request:
+After all, Descartes may have had his "<i>Cogito, ergo sum</i>," but did he ever say it
+to an unsuspecting friend over email? I think not!! And just when I expected a hilarious
+response (or a blatant insult), he wrote back with a humble request:
 
 <blockquote>
     <p style="line-height: 1.3; margin: 0;">
