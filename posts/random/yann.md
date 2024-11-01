@@ -3,7 +3,7 @@ layout: post
 title: You think, therefore I am!
 tagline:
 description:
-tags: [yann hicke, ms cs]
+tags: [yann hicke, ms cs, philosophy]
 date: 2024-10-31
 author: Tushaar Gangavarapu
 next:
