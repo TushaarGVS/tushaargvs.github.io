@@ -23,9 +23,11 @@ On Thu, Oct 31, 2024, [Yann Hicke](https://yannhicke.github.io/) wrote,
 
 And thus began one of the most profound philosophical exchanges of our time.
 
-<font color="blue">
-    *<i>Cue dramatic music mixed with existential crisis vibes.</i>*<br/>
-</font>
+<p>
+    <font color="blue">
+        *<i>Cue dramatic music mixed with existential crisis vibes.</i>*
+    </font>
+</p>
 
 In that email thread, Hicke didn't just ask me about my identity; he asked <i>the</i>
 age-old question: <i>Who am I? Why do I exist?</i> Am I just a blip in the vast,
