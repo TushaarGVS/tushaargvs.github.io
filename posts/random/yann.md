@@ -46,7 +46,8 @@ I wasn't just replying to an email. This was my <i>magnum opus</i>, the culminat
 my academic career, distilled into one email response, that said: <i>I am here, and it's
 all because of you, Hicke.</i>
 
-Naturally, I wasn't done. I had to deliver my pièce de résistance, and so I added:
+Naturally, I wasn't done. I had to deliver my <i>pièce de résistance</i>, and so I
+added:
 
 <blockquote>
     <p style="line-height: 1.3; margin: 0;">
