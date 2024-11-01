@@ -11,7 +11,8 @@ previous:
 toc: false
 ---
 
-On Thu, Oct 31, 2024, [Yann Hicke](https://yannhicke.github.io/) wrote,
+On Thu, Oct 31, 2024,
+[Yann Hicke](https://yannhicke.github.io/images/EscapeFromHappiness.JPG) wrote,
 
 <blockquote>
     <p style="line-height: 1.3; margin: 0;">
