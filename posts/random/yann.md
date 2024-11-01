@@ -11,7 +11,7 @@ previous:
 toc: false
 ---
 
-On Thu, Oct 31, 2024, Yann Hicke wrote,
+On Thu, Oct 31, 2024, [Yann Hicke](https://yannhicke.github.io/) wrote,
 
 <p style="line-height: 1.3; margin: 0;">
     Sorry, who are <i>you</i>? <br>
