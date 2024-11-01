@@ -13,9 +13,11 @@ toc: false
 
 On Thu, Oct 31, 2024, Yann Hicke wrote,
 
-> Sorry, who are you? <br/>
-> I don't think we have ever met. <br/>
-> You go to Cornell?
+<p style="line-height: 1.3; margin: 0;">
+    Sorry, who are <i>you</i>? <br>
+    <i>I</i> don't think we have ever met. <br>
+    <i>You</i> go to Cornell?
+</p>
 
 <div align="center">
     <img 
