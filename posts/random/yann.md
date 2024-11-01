@@ -13,8 +13,8 @@ toc: false
 
 On Thu, Oct 31, 2024, Yann Hicke wrote,
 
-> Sorry, who are you?
-> I don't think we have ever met.
+> Sorry, who are you? <br/>
+> I don't think we have ever met. <br/>
 > You go to Cornell?
 
 <div align="center">
@@ -25,4 +25,8 @@ On Thu, Oct 31, 2024, Yann Hicke wrote,
         width="300" 
         data-align="center"
     />
+    <br/>
+    Yann Hicke: "Please add this to your website." 
+    <br/>
+    (Attached was the above screenshot.)
 </div>
