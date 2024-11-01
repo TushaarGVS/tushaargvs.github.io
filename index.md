@@ -183,5 +183,5 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     <li>I am scared (but also excited), a lot!, while teaching, publicly speaking, etc.</li>
     <li><a href="https://github.com/TushaarGVS/backprop-lecture-notes-CS-4740/blob/main/13-backprop_notes.pdf">Lecture notes on backpropagation</a> (personal knowledge + compiled from various sources)</li>
     <li>Oh!, I love sleeping; when I'm not a computer scientist, I'm probably (read: definitely) asleep</li>
-    <li><a href="posts/random/yann.html"><i>You</i>> think, therefore <i>I</i> am!</a></li>
+    <li><a href="posts/random/yann.html"><i>You</i> think, therefore <i>I</i> am!</a></li>
 </ul>
