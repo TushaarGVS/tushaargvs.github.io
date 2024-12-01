@@ -1,0 +1,1089 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../assets/images/favicon.ico">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143518986-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-143518986-2');
+    </script>
+
+    <meta name="google-site-verification" content="huu2Y2-hvgWrKYnpHP2tQcShK-fww3FDKlpP7au_4V0" />
+    <meta charset="utf-8">
+    <title>Householder QR</title>
+    <meta name="description" content="QR factorization using Householder reflectors">
+    
+    <meta name="author" content="Tushaar Gangavarapu">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/tgangavarapu.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/rouge.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/tabs.css" rel="stylesheet">
+
+    <!-- atom & rss feed -->
+    <link href="nil" type="application/atom+xml" rel="alternate" title="Tushaar Gangavarapu">
+    <link href="nil" type="application/rss+xml" rel="alternate" title="Tushaar Gangavarapu">
+    
+    <!--Add function that displays last modified date: -->
+    <script type="text/javascript">
+    onload = function(){
+        document.getElementById("lastModified").innerHTML = "last modified: " + document.lastModified.split(" ")[0];
+    }
+    </script>
+
+    <style type="text/css">
+      .alignleft { float: left; }
+      .alignright { float: right; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!--    <script type="text/x-mathjax-config">-->
+<!--      MathJax.Hub.Config({-->
+<!--        jax: ["input/TeX", "output/HTML-CSS"],-->
+<!--        tex2jax: {-->
+<!--          inlineMath: [['$', '$'], ['\\(', '\\)']],-->
+<!--          displayMath: [['$$', '$$'], ['\\[', '\\]']],-->
+<!--          processEscapes: true,-->
+<!--          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']-->
+<!--        },-->
+<!--        scale: 100,-->
+<!--        messageStyle: "none",-->
+<!--        "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }-->
+<!--      });-->
+<!--    </script>-->
+<!--    <script id="MathJax-script" async-->
+<!--            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+<!--            type="text/javascript">-->
+<!--    </script>-->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        },
+        scale: 100,
+      };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!--    <script type="text/javascript" id="MathJax-script" async-->
+<!--      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">-->
+<!--    </script>-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/" style="text-decoration: none;">Home</a>
+          <ul class="nav">
+              <li><a href="/pages/research.html">Research</a></li>
+              <li><a href="/pages/posts.html">Blog</a></li>
+              <!-- <li><a href="/pages/news.html">News</a></li> -->
+              <!-- <li><a href="/pages/teaching.html">Other</a></li> -->
+              <li><a href="../../../assets/documents/cv.pdf">CV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<link rel="alternate" type="application/atom+xml" title="Tushaar Gangavarapu" href="/feed.xml">
+<link rel="shortcut icon" type="image/x-icon" href="../../../assets/images/favicon.ico">
+<div class="page-header">
+  <h3>Householder QR </h3>
+</div>
+<!-- 
+<script type="text/javascript">
+  onload = function(){
+      document.getElementById("lastModified").innerHTML = "post last modified on: " + document.lastModified.split(" ")[0];
+  }
+  </script> -->
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+    <span>(Last modified on: 09/19/2024)</span>
+    <!-- <span id="lastModified"></span> -->
+    </div>
+    <div class="content">
+      <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h4"><a href="#gram-schmidt-a-brief-note">Gram-Schmidt, a brief note</a></li>
+<li class="toc-entry toc-h4"><a href="#qr-factorization-via-householder-reflections">QR factorization via Householder reflections</a>
+<ul>
+<li class="toc-entry toc-h5"><a href="#reflecting-a-vector">Reflecting a vector</a></li>
+<li class="toc-entry toc-h5"><a href="#adjusting-the-mirror">Adjusting the mirror</a></li>
+<li class="toc-entry toc-h5"><a href="#householder-vector">Householder vector</a></li>
+<li class="toc-entry toc-h5"><a href="#householder-qr">Householder QR</a></li>
+<li class="toc-entry toc-h5"><a href="#forming-boldsymbolq">Forming $\boldsymbol{Q}$</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h4"><a href="#visualizing-hqr-optional-reading">Visualizing HQR (optional reading)</a></li>
+<li class="toc-entry toc-h4"><a href="#references">References</a></li>
+</ul>
+<hr>
+
+<p>A compelling motivation: A natural decomposition for thinking about least 
+squares problems ($Ax = b$) is the QR decomposition of $A$,</p>
+
+\[A = QR,\]
+
+<p>where $Q$ is an $m \times m$ unitary matrix (recall: $Q^H Q = \mathrm{I}$ for
+unitary $Q$) and $R$ is an $m \times n$ upper triangular matrix. For 
+tall-thin matrices ($m \geq n$), it is often beneficial to note the <em>economy</em> 
+(or, thin [Golub and Van Loan], or, reduced [Trefethen and Bau]) QR 
+decomposition as</p>
+
+\[A = QR = Q \begin{bmatrix}
+R_1 \\
+0
+\end{bmatrix} = \begin{bmatrix} Q_1 &amp; Q_2 \end{bmatrix} \begin{bmatrix}
+R_1 \\
+0
+\end{bmatrix} = Q_1 R_1,\]
+
+<p>where $R_1$ is an $n \times n$ upper triangular matrix and $0$ is an 
+$(m - n) \times n$ zero matrix, $Q_1$ is an $m \times n$ matrix, and $Q_2$ is
+$m \times (m - n)$. ($Q_1$ and $Q_2$ have orthogonal columns.)</p>
+
+<p>We can find a solution, $\hat{x}$, to an overdetermined system $Ax = b$ 
+($m \geq n$) using the QR decomposition as</p>
+
+\[\hat{x} = R_1^{-1} (Q_1^H b).\]
+
+<p>(Note: We don’t need to explicitly compute $R_1^{-1}$; instead, we can use
+back substitution to find $\hat{x}$.)</p>
+
+<hr>
+
+<h4 id="gram-schmidt-a-brief-note">
+<a class="anchor" href="#gram-schmidt-a-brief-note" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gram-Schmidt, a brief note</h4>
+
+<p>A first course in linear algebra often shows orthogonalization (converting the 
+existing basis of $A$ to an orthonormal basis) using the Gram-Schmidt process.
+The Gram-Schmidt process orthogonalizes by subtracting off components in the
+directions of previous columns and then normalizing the remainder to unit 
+length. Simply put,</p>
+
+\[q_j = (\mathrm{I} - P_{j-1}) a_j,\]
+
+<p>where $P_{j-1}$ is a projector onto $(q_1, \dotsc, q_{j-1})$.</p>
+
+<p>A critical question to ask here is the following: what happens when $a_j$ is
+large and lies really close to $P_{j-1}$—aha!—the computation of $q_j$ as shown
+above is prone to catastrophic cancellation. More concretely, the computed $q_j$
+might not be orthogonal to previous $q_j$s.</p>
+
+<p>To overcome this issue of catastrophic cancellation, the <em>modified</em> Gram-Schmidt
+algorithm is often discussed. However, we will see a different approach of using
+Householder reflectors to achieve orthogonal triangularizations.</p>
+
+<hr>
+
+<h4 id="qr-factorization-via-householder-reflections">
+<a class="anchor" href="#qr-factorization-via-householder-reflections" aria-hidden="true"><span class="octicon octicon-link"></span></a>QR factorization via Householder reflections</h4>
+
+<h5 id="reflecting-a-vector">
+<a class="anchor" href="#reflecting-a-vector" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reflecting a vector</h5>
+
+<p>Before proceeding with Householder QR, let us look at Householder reflections,
+which are to become an essential part of Householder QR.</p>
+
+<p>Our goal here will be to come up with a linear transformation that reflects a 
+given vector, $x$, about a subspace, $\mathcal{V}$. Let $u$ be a vector of unit
+length ($\Vert u \Vert_2 = 1$) orthogonal to subspace $\mathcal{V}$. Then, 
+$H = (\mathrm{I} - 2 u u^H)$ is the transformation that represents reflecting
+$x$ with respect to the subspace orthogonal to the vector $u$ (= “mirror”).</p>
+
+<div align="center">
+    <img title="" src="./imgs/householder_reflector.png" alt="" width="300" data-align="center">
+</div>
+
+<p>$H$ is often referred to as the Householder transformation or Householder 
+reflector.</p>
+
+<p>Some observations to note:</p>
+<ul>
+  <li>
+    <p>Any vector $z$ in the subspace $\mathcal{V}$ (= orthogonal to the vector $u$) 
+is left unchanged:</p>
+
+\[Hz = (\mathrm{I} - 2 u u^H) z = z - 2 u (u^H z) = z.\]
+  </li>
+  <li>
+    <p>Any vector $x$ can be written as $z + (u^H x) u$, where $z$ is the projection
+of $x$ onto the subspace $\mathcal{V}$ and $(u^H x) u$ is the projection in the
+direction of $u$ (orthogonal to $\mathcal{V}$). Now, the reflection is</p>
+
+\[\begin{align*}
+  Hx &amp;= (\mathrm{I} - 2 u u^H)(z + (u^H x) u) \\
+  &amp;= z + (u^H x) u - 2 u u^H (u^H x) u \\
+  &amp;= z + (u^H x) u - 2 (u^H x) u (\underbrace{u^H u}_{=\,1}) \\
+  &amp;= z + (u^H x) u - 2 (u^H x) u \\
+  &amp;= z - (u^H x) u.
+  \end{align*}\]
+
+    <p>If the vector $x$ has a component orthogonal to the mirror ($u^H x \neq 0$), 
+then that component is reversed.</p>
+  </li>
+  <li>
+    <p>Finally, observe that reflection is a length-preserving transformation. (Note: 
+$H^HH = HH^H = I$ and $HH = I$: reflecting a reflection results in the original
+vector.)</p>
+  </li>
+</ul>
+
+\[\Vert Hx \Vert_2^2 = (Hx)^H Hx = x^H (\underbrace{H^H H}_{\mathrm{I}}) x = x^H x 
+= \Vert x \Vert_2^2.\]
+
+<h5 id="adjusting-the-mirror">
+<a class="anchor" href="#adjusting-the-mirror" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adjusting the mirror</h5>
+
+<p>Given two vectors, $x$ and $y$, our goal is to find a mirror (= subspace 
+$\mathcal{V}$) that facilitates reflecting vector $x$ into vector $y$ with 
+$\Vert x \Vert_2 = \Vert y \Vert_2$. Simply put, we need to compute $u$ such
+that</p>
+
+\[\begin{align*}
+y = (\mathrm{I} - 2 u u^H) x = x - 2 u u^H x
+\implies 2 \underbrace{u u^H x}_{=\,p} = x - y,
+\end{align*}\]
+
+<p>where $p$ is the projection of $x$ onto $u$ (see figure in the previous 
+subsection). By construction, $p$ and $u$ must point in the same direction.
+Hence, $u$ must be a unit vector in that direction:</p>
+
+\[u = \frac{x - y}{\Vert x - y \Vert_2}.\]
+
+<p>Now, we have an approach of determining the vector $u$, which defines a subspace
+that mirrors $x$ into $y$.</p>
+
+<p><u><i>Remark on normalization</i></u>. If $u$ is not a unit 
+vector, the Householder transformation is</p>
+
+\[H = \mathrm{I} - 2 \frac{u}{\Vert u \Vert_2} \frac{u^H}{\Vert u \Vert_2} 
+= \mathrm{I} - 2 \frac{u u^H}{u^H u}.\]
+
+<h5 id="householder-vector">
+<a class="anchor" href="#householder-vector" aria-hidden="true"><span class="octicon octicon-link"></span></a>Householder vector</h5>
+
+<p>Our goal is to convert $A$ to an upper triangular matrix through a series of 
+orthogonal transformations. Here’s a chalkboard animation (as David Bindel would
+call it!):</p>
+
+\[A = \matrix{\begin{bmatrix} 
+    \small{\times} &amp; \small{\times} &amp; \small{\times} \\
+    \small{\times} &amp; \small{\times} &amp; \small{\times} \\
+    \small{\times} &amp; \small{\times} &amp; \small{\times} \\
+    \small{\times} &amp; \small{\times} &amp; \small{\times} \\
+    \vdots &amp; \vdots &amp; \vdots \\
+    \small{\times} &amp; \small{\times} &amp; \small{\times} \\
+\end{bmatrix} \\[1pt] \phantom{\small{A}}} \xrightarrow{H_1} \matrix{\begin{bmatrix} 
+    \color{red}{*} &amp; \small{*} &amp; \small{*} \\
+    \color{red}{0} &amp; \small{*} &amp; \small{*} \\
+    \color{red}{0} &amp; \small{*} &amp; \small{*} \\
+    \color{red}{0} &amp; \small{*} &amp; \small{*} \\
+    \color{red}{\vdots} &amp; \vdots &amp; \vdots \\
+    \color{red}{0} &amp; \small{*} &amp; \small{*} \\
+\end{bmatrix} \\[1pt] \small{H_1 A}} \xrightarrow{H_2} \matrix{\begin{bmatrix} 
+    * &amp; * &amp; * \\
+    0 &amp; \color{red}{\star} &amp; \small{\star} \\
+    0 &amp; \color{red}{0} &amp; \small{\star} \\
+    0 &amp; \color{red}{0} &amp; \small{\star} \\
+    \vdots &amp; \color{red}{\vdots} &amp; \vdots \\
+    0 &amp; \color{red}{0} &amp; \small{\star} \\
+\end{bmatrix} \\[1pt] \small{ H_2 H_1 A}} \xrightarrow{H_3} \matrix{\begin{bmatrix} 
+    * &amp; * &amp; * \\
+    0 &amp; \star &amp; \star \\
+    0 &amp; 0 &amp; \color{red}{\small{\bullet}} \\
+    0 &amp; 0 &amp; \color{red}{0} \\
+    \vdots &amp; \vdots &amp; \color{red}{\vdots} \\
+    0 &amp; 0 &amp; \color{red}{0} \\
+\end{bmatrix} \\[1pt] \small{ H_3 H_2 H_1 A}} = \begin{bmatrix}
+R_1 \\
+0
+\end{bmatrix}\]
+
+<p>Let us look at the first step $H_1A$:</p>
+
+\[H_1 A = H_1 \begin{bmatrix}
+| &amp; | &amp; &amp; | \\
+a_1 &amp; a_2 &amp; \dots &amp; a_n \\
+| &amp; | &amp; &amp; | \\
+\end{bmatrix} = \begin{bmatrix}
+| &amp; | &amp; &amp; | \\
+H_1 a_1 &amp; H_1 a_2 &amp; \dots &amp; H_1 a_n \\
+| &amp; | &amp; &amp; | \\
+\end{bmatrix},\]
+
+<p>where $a_j$ is an $m$-dimensional column of $A$. What we essentially require is 
+a Householder transformation such that $H_1 a_1 = \beta e_1$ for some constant
+$\beta$, $e_1$ is the first standard basis vector. Since Householder reflectors
+preserve lengths, we need $\vert \beta \vert = \Vert a_1 \Vert_2$. Hence, we 
+need to find a reflector (= mirror) $H$ that reflects $a_1$ onto the $x$-axis:</p>
+
+<div align="center">
+    <img title="" src="./imgs/hqr_step1.png" alt="" width="350" data-align="center">
+</div>
+
+<p>Now, we have $v$ as</p>
+
+\[v = \begin{bmatrix} 
+a_{11} \\
+a_{21} \\
+\vdots \\
+a_{m1} \\
+\end{bmatrix} - \begin{bmatrix} 
+\beta \\
+0 \\
+\vdots \\
+0 \\
+\end{bmatrix}.\]
+
+<p>Notice that we have several options to choose $\beta$: $\Vert a_1 \Vert_2$,
+$- \Vert a_1 \Vert_2$, $z \Vert a_1 \Vert_2$ for some $z \in \mathbb{C}$ with 
+$\vert z \vert = 1$. If we restrict to real-valued $a_1$, we have</p>
+
+\[v = a_1 \mp \Vert a_1 \Vert_2 e_1.\]
+
+<p>If we choose $\beta = -\Vert a_1 \Vert_2$, we are consequently placing the 
+mirror as follows:</p>
+
+<div align="center">
+    <img title="" src="./imgs/hqr_step1_neg.png" alt="" width="350" data-align="center">
+</div>
+
+<p>For completeness, we have</p>
+
+\[H_1 a_1 = 
+    \left(\mathrm{I} - 2 \frac{vv^H}{\Vert v \Vert^2_2}\right) a_1 = \beta e_1.\]
+
+<p><u><i>Remark on numerical stability</i></u>. Observe that the first element of 
+$v$, $v_1 = a_{11} \mp \Vert a_1 \Vert_2$. If $a_{11}$ is positive and 
+$a_{11} \approx \Vert a_1 \Vert_2$ ($a_1$ is really close to $x$-axis), we incur
+catastrophic cancellation in the computation of $a_{11} - \Vert a_1 \Vert_2$.</p>
+
+<div align="center">
+    <img title="" src="./imgs/hqr_step1_catastrophic.png" alt="" width="350" data-align="center">
+</div>
+
+<p>Irrespective of the sign of $a_{11}$, we can avoid catastrophic cancellation by 
+choosing $v = a_1 + \text{sign}(a_{11}) \Vert a_1 \Vert_2 e_1$:</p>
+
+\[v = \begin{bmatrix} 
+a_{11} + \text{sign}(a_{11}) \Vert a_1 \Vert_2 \\
+a_{21} \\
+\vdots \\
+a_{m1} \\
+\end{bmatrix}.\]
+
+<p><u><i>Remark on storing Householder vectors</i></u>. A simple observation from 
+$H_1 a_1 = \beta e_1$ is that the entries other than the first entry of 
+$H_1 a_1$ are zeros, meaning $(v_2, \dotsc, v_m)$ can be stored as entries of
+$(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that ensures 
+$v_1 = 1$, we don’t need to explicitly store $v_1$. Hence</p>
+
+\[\tilde{v} = \frac{v}{v_1} = 
+\frac{1}{a_{11} + \text{sign}(a_{11}) \Vert a_1 \Vert_2} \begin{bmatrix} 
+1 \\
+a_{21} \\
+\vdots \\
+a_{m1} \\
+\end{bmatrix}.\]
+
+<p>(If $v_1 = 0$, we can simply set $\tilde{v}_{j &gt; 1} = 0$.)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">import</span> <span class="nn">jaxtyping</span> <span class="k">as</span> <span class="n">jt</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">Fl</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">size</span><span class="p">:</span> <span class="n">jt</span><span class="p">.</span><span class="n">Float</span><span class="p">[</span><span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">size</span><span class="p">]</span>
+
+<span class="n">sign</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">fl64_randn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">size</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">fl64_zeros</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">size</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float64</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">housev_</span><span class="p">(</span><span class="n">a1</span><span class="p">:</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"m"</span><span class="p">)):</span>
+    <span class="s">"""
+    Apply Householder transformation to vector `a1` and store the associated
+    Householder vector in `a1`.
+
+    Note: By convention, `v1 = 1` and `v[2:]` are stored in `a1[2:]`. Also 
+    notice zero-indexing in code, while function definitions and variable 
+    names employ one-indexing.
+
+    (Convention: Keeping in line with PyTorch convention `_` at the end of a 
+    function name indicates an inplace operation.)
+    """</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># No need to reflect.
+</span>        <span class="k">return</span>
+
+    <span class="n">a11</span> <span class="o">=</span> <span class="n">a1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">rho11</span> <span class="o">=</span> <span class="o">-</span><span class="n">sign</span><span class="p">(</span><span class="n">a11</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>  <span class="c1"># stable choice
+</span>    <span class="n">v1</span> <span class="o">=</span> <span class="n">a11</span> <span class="o">-</span> <span class="n">rho11</span>
+    <span class="n">a1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho11</span>  <span class="c1"># R11 (in A = QR)
+</span>    <span class="n">a1</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">/=</span> <span class="n">v1</span>  <span class="c1"># inplace op; stores a1[1:] = v[1:], v[0] = 1.0
+</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="n">fl64_randn</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>  <span class="c1"># random from N(0, 1)
+</span><span class="n">a1_ref</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>  <span class="c1"># store to check correctness of H1
+</span>
+<span class="n">housev_</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>  <span class="c1"># stores v in a1
+</span><span class="n">v_H1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">cat</span><span class="p">((</span><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)[</span><span class="bp">None</span><span class="p">],</span> <span class="n">a1</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"ṽ=</span><span class="si">{</span><span class="n">v_H1</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"R11=</span><span class="si">{</span><span class="n">a1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="n">H1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">torch</span><span class="p">.</span><span class="n">outer</span><span class="p">(</span><span class="n">v_H1</span><span class="p">,</span> <span class="n">v_H1</span><span class="p">)</span> <span class="o">/</span> <span class="n">torch</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v_H1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">H1_a1</span> <span class="o">=</span> <span class="n">H1</span> <span class="o">@</span> <span class="n">a1_ref</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"H1@a1=</span><span class="si">{</span><span class="n">H1_a1</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">H1_a1</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">fl64_zeros</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">H1_a1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h5 id="householder-qr">
+<a class="anchor" href="#householder-qr" aria-hidden="true"><span class="octicon octicon-link"></span></a>Householder QR</h5>
+
+<p>Now, let us see how to achieve the complete QR transformation (as shown in the
+chalkboard animation) through a sequence of Householder transformations. In the
+first iteration, we can block-partition $A$ as:</p>
+
+\[A = \begin{bmatrix}
+\alpha_{11} &amp; a_{12}^T \\
+a_{21} &amp; A_{22} \\ 
+\end{bmatrix}.\]
+
+<p>Let the Householder transformation computed from the first column be as follows:</p>
+
+\[\text{housev}\left(\begin{bmatrix}\alpha_{11} \\ a_{21} \end{bmatrix}\right) = 
+\begin{bmatrix}
+\rho_{11} \\
+\tilde{v}_{21} \\ 
+\end{bmatrix},\]
+
+<p>where $\rho_{11} = \beta = -\text{sign}(\alpha_{11}) \Vert A[:,1] \Vert_2$.</p>
+
+<p>Now, applying unblocked Householder transformation to $A$ results in</p>
+
+\[\text{hqr}(A) =  
+\left(\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T\right) 
+\begin{bmatrix}
+\alpha_{11} &amp; a_{12}^T \\
+a_{21} &amp; A_{22} \\ 
+\end{bmatrix} = \begin{bmatrix}
+\rho_{11} &amp; \color{red}{\small{\times}} \\
+0 &amp; \color{red}{\small{\times}} \\ 
+\end{bmatrix}\]
+
+<p>Note that the second column above is the resultant of</p>
+
+\[\left(\underbrace{\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T}_{H_1}\right) \begin{bmatrix}
+a_{12}^T \\ 
+A_{22} \\ 
+\end{bmatrix}.\]
+
+<p>If we explicitly form $H_1$, we would incur $\mathcal{O}(n^2)$ computations and
+applying the matrix is  $\mathcal{O}(n^3)$. So instead, we will compute it as
+follows:</p>
+
+\[\begin{bmatrix}
+a_{12}^T \\ 
+A_{22} \\ 
+\end{bmatrix} - 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
+\underbrace{\frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\underbrace{\begin{bmatrix}1 &amp; \tilde{v}_{21}^T \end{bmatrix} \begin{bmatrix}
+a_{12}^T \\ 
+A_{22} \\ 
+\end{bmatrix}}_{=\,a_{12}^T + \tilde{v}_{21}^T A_{22}}}_{w_{12}^T}.\]
+
+<p>Now, we have</p>
+
+\[\text{hqr}(A) =  
+\left(\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T\right) 
+\begin{bmatrix}
+\alpha_{11} &amp; a_{12}^T \\
+a_{21} &amp; A_{22} \\ 
+\end{bmatrix} = \begin{bmatrix}
+\rho_{11} &amp; \color{red}{\small{\times}} \\
+0 &amp; \color{red}{\small{\times}} \\ 
+\end{bmatrix} = \begin{bmatrix}
+\rho_{11} &amp; a_{12}^T - w_{12}^T \\
+0 &amp; A_{22} - \tilde{v}_{21} w_{12}^T \\ 
+\end{bmatrix}.\]
+
+<p>Note that in this formulation involves computing $w_{12}^T$ (involving 
+matrix-vector multiplication) and the updated $A_{22}$ (a rank-one update). This
+is cheaper than forming $H_1$ and performing matrix-matrix multiplication. (We 
+will explicitly analyze the computational cost once we write down the complete
+algorithm.)</p>
+
+<p>In the next iteration, we proceed with by running Householder transformation on
+the first column of the updated $A_{22}$. Note that the associated $H_2$ applied
+to the entire matrix (which ignores first row and column of $A$) is</p>
+
+\[H_2 = \begin{bmatrix}
+\mathrm{I} &amp; 0 \\
+0 &amp; \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
+\end{bmatrix}.\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+
+<span class="k">def</span> <span class="nf">housev_</span><span class="p">(</span><span class="n">A22</span><span class="p">:</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"m n"</span><span class="p">)):</span>
+    <span class="s">"""Apply Householder transformation to the first column of A22."""</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A22</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># No need to reflect anything. 
+</span>        <span class="c1"># NOTE: If this is ignored, the sign for the last entry will be flipped,
+</span>        <span class="c1"># and the resultant `Q` will not be orthogonal.
+</span>        <span class="k">return</span>
+    
+    <span class="n">alpha11</span> <span class="o">=</span> <span class="n">A22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">a21</span> <span class="o">=</span> <span class="n">A22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">rho11</span> <span class="o">=</span> <span class="o">-</span><span class="n">sign</span><span class="p">(</span><span class="n">alpha11</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A22</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">v1</span> <span class="o">=</span> <span class="n">alpha11</span> <span class="o">-</span> <span class="n">rho11</span>
+    <span class="n">A22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho11</span>
+    <span class="n">a21</span> <span class="o">/=</span> <span class="n">v1</span>
+
+
+<span class="k">def</span> <span class="nf">hqr_</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"m n"</span><span class="p">)):</span>
+    <span class="s">"""
+    Transform `A` to upper triangular using Householder QR.
+
+    Note: The elements below the diagonal store the vectors associated with
+    the respective Householder transformation.
+    """</span>
+    <span class="n">A22</span> <span class="o">=</span> <span class="n">A</span>
+    <span class="k">while</span> <span class="n">A22</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># A22: (m - k + 1, n - k + 1) at iter k = {1, ..., n}.
+</span>        <span class="n">housev_</span><span class="p">(</span><span class="n">A22</span><span class="p">)</span>
+
+        <span class="n">a12_tr</span> <span class="o">=</span> <span class="n">A22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:][</span><span class="bp">None</span><span class="p">]</span>  <span class="c1"># (1, n - k)
+</span>        <span class="n">a21</span> <span class="o">=</span> <span class="n">A22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">][:,</span> <span class="bp">None</span><span class="p">]</span>  <span class="c1"># (m - k, 1)
+</span>        <span class="n">A22</span> <span class="o">=</span> <span class="n">A22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span>  <span class="c1"># (m - k, n - k)
+</span>
+        <span class="c1"># w12_tr: (1, n - k)
+</span>        <span class="n">w12_tr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a21</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">a12_tr</span> <span class="o">+</span> <span class="n">a21</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A22</span><span class="p">)</span>
+        <span class="n">a12_tr</span> <span class="o">-=</span> <span class="n">w12_tr</span>
+        <span class="n">A22</span> <span class="o">-=</span> <span class="n">a21</span> <span class="o">@</span> <span class="n">w12_tr</span>
+
+
+<span class="c1"># Compare with standard numpy implementation: `np.linalg.qr`.
+</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">fl64_randn</span><span class="p">([</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+<span class="n">A_ref</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">hqr_</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">R_np</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">qr</span><span class="p">(</span><span class="n">A_ref</span><span class="p">,</span> <span class="s">"reduced"</span><span class="p">).</span><span class="n">R</span>
+<span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">triu</span><span class="p">(</span><span class="n">A</span><span class="p">)[:</span><span class="n">n</span><span class="p">],</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">R_np</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><u><i>Remark on computational complexity</i></u>. For the above algorithm, bulk 
+of the computation goes in computing $w_{12}^T$ and updating $A_{22}$. Computing 
+$a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost $\mathcal{O}((m - k)(n - k))$. 
+Since $k$ runs through all the columns of $A$, the cost is approximately 
+$\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives us the cost of the 
+algorithm to be $\mathcal{O}(mn^2)$.</p>
+
+<h5 id="forming-boldsymbolq">
+<a class="anchor" href="#forming-boldsymbolq" aria-hidden="true"><span class="octicon octicon-link"></span></a>Forming $\boldsymbol{Q}$</h5>
+
+<p>Running a full iteration of Householder QR on an $m \times n$ matrix $A$ results 
+in</p>
+
+\[H_n \dots H_2 H_1 A = R,\]
+
+<p>where $R$ is upper trapezoidal and $H_j$ is a unitary Householder transformation
+(almost: note that the top-left corner is a $j-1 \times j-1$ identity matrix).
+Further, we know that $H_j^{-1} = H_j$. Hence, we have</p>
+
+\[A = \underbrace{H_1 H_2 \dots H_n}_{Q} R.\]
+
+<p>Note that the above algorithm doesn’t explicitly form  $Q^T = H_n \dots H_1$ 
+(or, $Q = H_1 \dots H_n$), and as long as we have efficient routines to perform 
+BLAS operations using the Householder vectors, we won’t need to explicitly form 
+$Q$ or $Q^T$. However, in few specific cases we may need to explicitly form 
+$Q$ (e.g., for forward error analysis), and we’ll now see how to do so.</p>
+
+<p>Observe that if we now apply our Householder transformations on to the (padded)
+identity matrix in reverse, we have</p>
+
+\[H_1 H_2 \dots H_n 
+\begin{bmatrix} 
+    \mathrm{I}_{n \times n} \\
+    0_{m - n \times n} 
+\end{bmatrix} = Q.\]
+
+<p>Let us consider the first step of applying $H_n$. Note that for an $m \times n$
+matrix $A$, $H_n$ only modifies $A[n:, n:]$ entries. As an example, consider a
+$5 \times 3$ $A$ and let’s see how $H_3$ applies:</p>
+
+\[\begin{align*}
+H_3 
+\begin{bmatrix} 
+    \mathrm{I}_{3 \times 3} \\ 
+    0_{2 \times 3} 
+\end{bmatrix} 
+&amp;=
+\begin{bmatrix}
+    \mathrm{I}_{2 \times 2} &amp; 0 \\
+    0 &amp; \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+            \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+            \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
+\end{bmatrix} \begin{bmatrix}
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; 1 &amp; 0 \\
+    0 &amp; 0 &amp; \color{red}{1} \\
+    0 &amp; 0 &amp; \color{red}{0} \\
+    0 &amp; 0 &amp; \color{red}{0} \\
+\end{bmatrix} \\
+&amp;= 
+\left(
+    \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
+\right)
+\begin{bmatrix} 
+    1 \\
+    0_{2 \times 1}
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix} 
+    1 \\
+    0_{2 \times 1}
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\left(
+    \begin{bmatrix}1 &amp; \tilde{v}_{21}^T\end{bmatrix}
+    \begin{bmatrix} 
+        1 \\
+        0_{2 \times 1}
+    \end{bmatrix}
+\right) \\
+&amp;=
+\begin{bmatrix} 
+    1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
+    -\tilde{v}_{21} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\end{bmatrix}.
+\end{align*}\]
+
+<p>Next, let’s apply $H_2$:</p>
+
+\[\begin{align*}
+H_2 \begin{bmatrix}
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; \color{red}{1} &amp; \color{red}{0} \\
+    0 &amp; \color{red}{0} &amp; \color{red}{\small{\times}} \\
+    0 &amp; \color{red}{0} &amp; \color{red}{\small{\times}} \\
+    0 &amp; \color{red}{0} &amp; \color{red}{\small{\times}}  \\
+\end{bmatrix}
+&amp;=
+\left(
+    \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
+\right) \begin{bmatrix}
+    1 &amp; 0 \\
+    0_{3 \times 1} &amp; A_{22} \\
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix}
+    1 &amp; 0 \\
+    0_{3 \times 1} &amp; A_{22} \\
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}\Vert_2^2}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\left(
+    \begin{bmatrix}1 &amp; \tilde{v}_{21}^T\end{bmatrix}
+    \begin{bmatrix}
+        1 &amp; 0 \\
+        0_{3 \times 1} &amp; A_{22} \\
+    \end{bmatrix}
+\right) \\
+&amp;=
+\begin{bmatrix}
+    1 &amp; 0 \\
+    0_{3 \times 1} &amp; A_{22} \\
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}\Vert_2^2} 
+\begin{bmatrix}
+    1 &amp; \tilde{v}_{21}^T A_{22} \\ 
+    \tilde{v}_{21} &amp; \tilde{v}_{21} \tilde{v}_{21}^T A_{22} \\
+\end{bmatrix} \\
+&amp;= \begin{bmatrix}
+    1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &amp; 
+        -\color{green}{
+            \tilde{v}_{21}^T A_{22} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+        } \\
+    -\tilde{v}_{21} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &amp;
+        A_{22} - 
+            \tilde{v}_{21} 
+            \color{green}{
+                \tilde{v}_{21}^T A_{22} 
+                \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+            } \\
+\end{bmatrix}.
+\end{align*}\]
+
+<p>Hence, we can proceed by updating a block of $A$ (inplace) as</p>
+
+\[\begin{align*}
+Q\left(\begin{bmatrix}
+    \alpha_{11} &amp; a_{12}^T \\
+    a_{21} = \tilde{v}_{21} &amp; A_{22}
+\end{bmatrix}\right):
+\\
+    \alpha_{11} &amp;\leftarrow 
+        1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
+    a_{12}^T &amp;\leftarrow
+        -a_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
+    A_{22} &amp;\leftarrow A_{22} + a_{21} a_{12}^T, \\
+    a_{21} &amp;\leftarrow -a_{21} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}. \\
+\end{align*}\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">Q_</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"m n"</span><span class="p">)):</span>
+    <span class="s">"""Forms `Q` from Householder vectors stored below the diagonal in `A`."""</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="n">m</span><span class="p">:</span>
+            <span class="c1"># The last entry in a square matrix.
+</span>            <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="k">continue</span>
+
+        <span class="n">a21</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:,</span> <span class="n">k</span><span class="p">][:,</span> <span class="bp">None</span><span class="p">]</span>  <span class="c1"># (m - k - 1, 1)
+</span>        <span class="n">tau</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a21</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">tau</span>  <span class="c1"># alpha_11
+</span>        <span class="k">if</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">A22</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>  <span class="c1"># (m - k - 1, n - k - 1)
+</span>            <span class="n">a12_tr</span> <span class="o">=</span> <span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a21</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A22</span><span class="p">)</span>
+            <span class="n">A22</span> <span class="o">+=</span> <span class="n">a21</span> <span class="o">@</span> <span class="n">a12_tr</span>  <span class="c1"># inplace
+</span>            <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:][</span><span class="bp">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">a12_tr</span>  <span class="c1"># write inplace
+</span>        <span class="n">a21</span> <span class="o">*=</span> <span class="o">-</span><span class="n">tau</span>
+
+
+<span class="c1"># Compare with standard numpy implementation: `np.linalg.qr`.
+</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">fl64_randn</span><span class="p">([</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+<span class="n">A_ref</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">hqr_</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">Q_</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">Q_np</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">qr</span><span class="p">(</span><span class="n">A_ref</span><span class="p">,</span> <span class="s">"reduced"</span><span class="p">).</span><span class="n">Q</span>
+<span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Q_np</span><span class="p">))</span>
+
+<span class="c1"># Also verify that Q.T@Q is identity (orthogonality check).
+</span><span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">A</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr>
+
+<h4 id="visualizing-hqr-optional-reading">
+<a class="anchor" href="#visualizing-hqr-optional-reading" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualizing HQR (optional reading)</h4>
+
+<p>This blog post was heavily inspired by me wanting to recreate the <a href="https://x.com/gabrielpeyre/status/1788071332833354163">animation 
+from Gabriel Peyré’s tweet (or, “x”?) on unitary triangulation of a nonsymmetric
+matrix</a> and partly from
+wanting David Bindel’s chalkboard animation to come alive!</p>
+
+<p>For the purposes of this animation, we will be using a terribly inefficient way
+of forming $Q$. Observe that our approach of forming $Q$ in reverse requires us
+to have completed a (forward) run of the Householder QR; however, for the 
+purpose of this animation, we want to show gradual change in $Q$ (as $R$ 
+changes). To that end, we will update $Q$ at every iteration as</p>
+
+\[Q_j = Q_{j-1} H_j.\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">housev</span><span class="p">(</span><span class="n">A22</span><span class="p">:</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"m n"</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+    <span class="s">"""Out-of-place Householder transformation to the first column of A22."""</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A22</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">A22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mf">1.0</span>
+
+    <span class="n">alpha11</span> <span class="o">=</span> <span class="n">A22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">a21</span> <span class="o">=</span> <span class="n">A22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">rho11</span> <span class="o">=</span> <span class="o">-</span><span class="n">sign</span><span class="p">(</span><span class="n">alpha11</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A22</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">v1</span> <span class="o">=</span> <span class="n">alpha11</span> <span class="o">-</span> <span class="n">rho11</span>
+    <span class="k">return</span> <span class="n">rho11</span><span class="p">,</span> <span class="n">v1</span>
+
+
+<span class="k">def</span> <span class="nf">hqr</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"m n"</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">Fl</span><span class="p">(</span><span class="s">"m n"</span><span class="p">),</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"n n"</span><span class="p">)]:</span>
+    <span class="s">"""Out-of-place Householder QR (forms Q explicitly)."""</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+    <span class="n">R22</span> <span class="o">=</span> <span class="n">R</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">rho11</span><span class="p">,</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">housev</span><span class="p">(</span><span class="n">R22</span><span class="p">)</span>
+        <span class="n">v21</span> <span class="o">=</span> <span class="n">R22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">v1</span>
+        <span class="n">R22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho11</span>
+        <span class="n">R22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">R22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">cat</span><span class="p">((</span><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]),</span> <span class="n">v21</span><span class="p">))[:,</span> <span class="bp">None</span><span class="p">]</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">H</span><span class="p">[</span><span class="n">k</span><span class="p">:,</span> <span class="n">k</span><span class="p">:]</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">v</span> <span class="o">@</span> <span class="n">v</span><span class="p">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">v</span><span class="p">)</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">@</span> <span class="n">H</span>
+
+        <span class="n">v21</span> <span class="o">=</span> <span class="n">v21</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">]</span>
+        <span class="n">r12_tr</span> <span class="o">=</span> <span class="n">R22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:][</span><span class="bp">None</span><span class="p">]</span>
+        <span class="n">R22</span> <span class="o">=</span> <span class="n">R22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span>
+
+        <span class="n">w12_tr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v21</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">r12_tr</span> <span class="o">+</span> <span class="n">v21</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">R22</span><span class="p">)</span>
+        <span class="n">r12_tr</span> <span class="o">-=</span> <span class="n">w12_tr</span>
+        <span class="n">R22</span> <span class="o">-=</span> <span class="n">v21</span> <span class="o">@</span> <span class="n">w12_tr</span>
+
+    <span class="k">return</span> <span class="n">Q</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n</span><span class="p">],</span> <span class="n">R</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+
+
+<span class="c1"># Compare with standard numpy implementation: `np.linalg.qr`.
+</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">fl64_randn</span><span class="p">([</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+<span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">hqr</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">QR_np</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">qr</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s">"reduced"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">QR_np</span><span class="p">.</span><span class="n">Q</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">QR_np</span><span class="p">.</span><span class="n">R</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Now, let’s finally animate Householder QR:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="n">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">from</span> <span class="nn">celluloid</span> <span class="kn">import</span> <span class="n">Camera</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">rcParams</span><span class="p">.</span><span class="n">update</span><span class="p">({</span><span class="s">"font.size"</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">rc</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">rc</span><span class="p">(</span><span class="s">"text.latex"</span><span class="p">,</span> <span class="n">preamble</span><span class="o">=</span><span class="sa">r</span><span class="s">"\usepackage{amsmath} \usepackage{amssymb}"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plt_mat</span><span class="p">(</span>
+    <span class="n">A</span><span class="p">:</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"m n"</span><span class="p">),</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="p">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="n">colors</span><span class="p">.</span><span class="n">LinearSegmentedColormap</span><span class="p">,</span>
+    <span class="n">norm</span><span class="p">:</span> <span class="n">colors</span><span class="p">.</span><span class="n">TwoSlopeNorm</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="s">"""Plot matrix `A` on the given axis `ax`."""</span>
+    <span class="n">A_hmap</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span>
+        <span class="n">A</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+        <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+        <span class="n">xticklabels</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">yticklabels</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">cbar</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">square</span><span class="o">=</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+    <span class="p">)</span>
+    <span class="n">A_hmap</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"k"</span><span class="p">)</span>
+    <span class="n">A_hmap</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"k"</span><span class="p">)</span>
+    <span class="n">A_hmap</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"k"</span><span class="p">)</span>
+    <span class="n">A_hmap</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">"k"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ax</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">hqr_anim</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">Fl</span><span class="p">(</span><span class="s">"m n"</span><span class="p">)):</span>
+    <span class="s">"""Animate Householder QR."""</span>
+    <span class="c1"># Setup fig, axes for animation.
+</span>    <span class="n">gridspec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span>
+        <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="n">gridspec</span>
+    <span class="p">)</span>
+    <span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+    <span class="c1"># Setup cmap and normalization to ensure 0.0 is always mapped to white.
+</span>    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="p">.</span><span class="n">TwoSlopeNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vcenter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">cm</span><span class="p">.</span><span class="n">RdBu</span>
+    <span class="n">_plt_mat</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">plt_mat</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+    <span class="c1"># Plot `A`, add "=", as in "A = " part.
+</span>    <span class="n">_plt_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s">"$\boldsymbol{A}$"</span><span class="p">)</span>
+    <span class="n">equals_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">text</span><span class="p">(</span><span class="n">equals_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">equals_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">r</span><span class="s">"$\boldsymbol{=}$"</span><span class="p">)</span>
+    <span class="c1"># Plot initial `Q` (= identity) and `R` (= `A`).
+</span>    <span class="n">_plt_mat</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s">"$\boldsymbol{Q}$"</span><span class="p">)</span>
+    <span class="n">_plt_mat</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s">"$\boldsymbol{R}$"</span><span class="p">)</span>
+
+    <span class="c1"># Run Householder QR, explicity forming `Q` at each step and zeroing out the
+</span>    <span class="c1"># below diagonal elements of `R`.
+</span>    <span class="n">R22</span> <span class="o">=</span> <span class="n">R</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">rho11</span><span class="p">,</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">housev</span><span class="p">(</span><span class="n">R22</span><span class="p">)</span>
+        <span class="n">v21</span> <span class="o">=</span> <span class="n">R22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">v1</span>
+        <span class="n">R22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho11</span>
+        <span class="n">R22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">R22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">cat</span><span class="p">((</span><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]),</span> <span class="n">v21</span><span class="p">))[:,</span> <span class="bp">None</span><span class="p">]</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">H</span><span class="p">[</span><span class="n">k</span><span class="p">:,</span> <span class="n">k</span><span class="p">:]</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">v</span> <span class="o">@</span> <span class="n">v</span><span class="p">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">v</span><span class="p">)</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">@</span> <span class="n">H</span>
+
+        <span class="n">v21</span> <span class="o">=</span> <span class="n">v21</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">]</span>
+        <span class="n">r12_tr</span> <span class="o">=</span> <span class="n">R22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:][</span><span class="bp">None</span><span class="p">]</span>
+        <span class="n">R22</span> <span class="o">=</span> <span class="n">R22</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span>
+
+        <span class="n">w12_tr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v21</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">r12_tr</span> <span class="o">+</span> <span class="n">v21</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">R22</span><span class="p">)</span>
+        <span class="n">r12_tr</span> <span class="o">-=</span> <span class="n">w12_tr</span>
+        <span class="n">R22</span> <span class="o">-=</span> <span class="n">v21</span> <span class="o">@</span> <span class="n">w12_tr</span>
+
+        <span class="c1"># Plot `A` to the left.
+</span>        <span class="n">_plt_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s">"$\boldsymbol{A}$"</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">text</span><span class="p">(</span><span class="n">equals_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">equals_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">r</span><span class="s">"$\boldsymbol{=}$"</span><span class="p">)</span>
+        <span class="c1"># Plot the updated `Q` and `R` to the right.
+</span>        <span class="n">_plt_mat</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s">"$\boldsymbol{Q}$"</span><span class="p">)</span>
+        <span class="n">_plt_mat</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s">"$\boldsymbol{R}$"</span><span class="p">)</span>
+        <span class="n">camera</span><span class="p">.</span><span class="n">snap</span><span class="p">()</span>
+
+    <span class="c1"># Verify that the obtained QR factorization is as expected.
+</span>    <span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Q</span><span class="p">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Q</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">A</span><span class="p">.</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">torch</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Q</span> <span class="o">@</span> <span class="n">torch</span><span class="p">.</span><span class="n">triu</span><span class="p">(</span><span class="n">R</span><span class="p">)[:</span><span class="n">n</span><span class="p">])</span>
+
+    <span class="n">plt</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">camera</span><span class="p">.</span><span class="n">animate</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">anim</span>
+
+<span class="c1"># Let us run the animation for a (100, 100) random matrix.
+</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">fl64_randn</span><span class="p">([</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+<span class="n">anim</span> <span class="o">=</span> <span class="n">hqr_anim</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">anim</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"./hqr_anim.gif"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="s">"pillow"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div align="center">
+    <img title="" src="./imgs/hqr_anim.gif" alt="" width="800" data-align="center">
+</div>
+
+<hr>
+
+<h4 id="references">
+<a class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h4>
+
+<ul>
+  <li>David Bindel. 
+<a href="https://www.cs.cornell.edu/courses/cs6210/2022fa/lec/2022-09-22.pdf#page=5.59">Householder transformations</a>.
+(Accessed 09/22/2024.)</li>
+  <li>Robert van de Geijn, Margaret Myers. <a href="https://www.cs.utexas.edu/~flame/laff/alaff-beta/chapter03-householder-qr-factorization.html">Householder QR Factorization</a>.
+<em>Advanced Linear Algebra: Foundations to Frontiers.</em>
+</li>
+</ul>
+
+    </div>
+
+    <hr>
+
+    <!-- 
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+    
+  
+
+
+    </ul>
+       -->
+
+    
+      <ul class="tag_box inline">
+        <li><i class="icon-tags"></i></li>
+        
+        
+
+
+  
+     
+    	<li>householder reflectors <span></span></li>
+     
+    	<li>QR <span></span></li>
+     
+    	<li>matrix factorization <span></span></li>
+    
+  
+
+
+
+      </ul>
+    
+    
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev disabled"><a>&larr; previous</a></li>
+      
+        <!-- <li><a href="nil">archive</a></li> -->
+      
+        <li class="next disabled"><a>next &rarr;</a>
+      
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+
+      <hr>
+      <div>
+        <p class="alignleft">
+          <!-- <a href="https://scholar.google.co.in/citations?user=C7v_cA8AAAAJ&hl=en" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlescholar.svg"/></a>  -->
+          <a href="https://scholar.google.co.in/citations?hl=en&user=C7v_cA8AAAAJ&view_op=list_works&sortby=pubdate" target="_blank"><font size="2">Scholar</font></a> &#124;
+          <!-- <a href="https://www.linkedin.com/in/tgangavarapu/" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg"/></a>  -->
+          <!-- <a href="https://instagram.com/tushaargangarapu/" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg"/></a>  -->
+          <!-- <a href="https://github.com/TushaarGVS" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"/></a> 
+          <a href="https://twitter.com/tushrgangarapu" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg"/></a> -->
+          <a href="https://github.com/TushaarGVS" target="_blank"><font size="2">GitHub</font></a> &#124;
+          <a href="https://twitter.com/tushrgangarapu" target="_blank"><font size="2">Twitter</font></a>
+          <!-- <a href="/feed.xml" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/rss.svg"/></a> -->
+          <!-- <a href="https://orcid.org/0000-0002-0489-9573" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/orcid.svg"/></a> -->
+        </p>
+        <p class="alignright"><font size="2">Tushaar Gangavarapu [<a href="mailto:tg352@cornell.edu">tg352@cornell.edu</a>]; <span id="lastModified"></span></font></p>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+
+    
+    <script src="/assets/themes/twitter/js/tabs.js"></script>
+  </body>
+</html>
+
