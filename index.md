@@ -130,8 +130,8 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   </tr>
   
   <tr>
-    <td style="vertical-align: text-top;"><span>08/2022&#150;now:</span></td>
-    <td><span>MS CS Student (Major: Computer Science, Minor: Applied Math), Cornell University, Ithaca</span></td>
+    <td style="vertical-align: text-top;"><span>08/2022&#150;12/2024:</span></td>
+    <td><span>MS CS Student (Major: Computer Science, Minor: Applied Math), Cornell University, Ithaca [<a href="https://www.proquest.com/docview/3153452111">thesis</a>]</span></td>
   </tr>
   
   <tr>
