@@ -63,7 +63,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
     <div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternate-attention: Compute/memory-efficient architectures such as Mamba(<a href="https://arxiv.org/pdf/2401.13660">Byte</a>), RecurrentGemma
       <br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">::</a> <i>ML systems</i>: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/linear-rnn/tree/main-v2/linear_rnn/triton">Triton</a>)
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://en.wikipedia.org/wiki/Scope_resolution_operator">::</a> <i>ML systems</i>: Hardware-aware kernels (in <a href="https://github.com/TushaarGVS/sae/tree/main/sparse_autoencoder/modules">Triton</a>)
       <br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: <i>Mechanistic interpretability</i>: Sparse autoencoders to understand the role of recurrence in linear recurrence models
     </div>
