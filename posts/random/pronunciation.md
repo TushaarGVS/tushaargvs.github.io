@@ -21,9 +21,11 @@ audio {
 }
 </style>
 
+<p>
 It's "thuh"-shaar and NOT "two"-shaar (or, "too"-shaar)!! (There's only one of me, I
 think!) <br/>
 Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-pu":
+</p>
 
 <b>Thuh-shaar</b>
 
