@@ -44,7 +44,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <!-- <br/><font color="#008400">MS CS student</font> at Cornell University -->
   <h3><a href="posts/random/pronunciation.html">Tu</a>shaar Gangavarapu</h3>
   <br/>MS CS student at Cornell University
-  <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px">tg352@cornell.edu</a> (by email), or 456 Gates Hall <a href="https://xkcd.com/222/">in person</a>
+  <br/>Contact: <a href="mailto:TG352@cornell.edu" style="height:15px">TG352@cornell.edu</a> (by email), or 456 Gates Hall <a href="https://xkcd.com/222/">in person</a>
   <p style="margin-bottom:0.3cm;"></p>
   <blockquote>
   <div>
