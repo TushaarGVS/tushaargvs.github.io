@@ -99,7 +99,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <tbody>
   <tr>
     <td style="vertical-align: text-top;"><span>05/2025&#150;08/2025:</span></td>
-    <td><span>Research Scientist: Large Language Models Intern, IBM, Yorktown Heights, NY</span></td>
+    <td><span>Research Science Intern; Large-scale language models, IBM, Yorktown Heights, NY</span></td>
   </tr>
   <tr>
     <td style="vertical-align: text-top;"><span>01/2025&#150;05/2025:</span></td>
