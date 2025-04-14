@@ -33,7 +33,6 @@ Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-pu":
     <li> "shaar" rhymes with "shar" in "shark," but extend the "aa" just a touch (and drop the "k"). </li>
 </ul>
 </p>
-<br/>
 
 <b>Gun-ga-vah-ra-pu</b>
 
@@ -47,7 +46,6 @@ Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-pu":
 </ul>
 </p>
 
-<br/>
 <p>
 Here's an audio recording of "Tushaar Gangavarapu" pronounced three times using the
 "Italian/Giorgio" voice from <a href="https://ttsmp3.com">ttsmp3.com</a>:
