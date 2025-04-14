@@ -12,17 +12,14 @@ toc: false
 ---
 
 <style>
-audio {
-  /* Optional: Remove the default box appearance */
-  display: none;
-}
+audio {}
 </style>
 
 It's "thuh"-shaar and NOT "two"-shaar (or, "too"-shaar)!! (There's only one of me, I
 think!) <br/>
 Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-pu":
 
-<b>Thuh-shaar</b><br/>
+<b>Thuh-shaar</b>
 
 <p>
 <ul>
@@ -30,14 +27,13 @@ Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-pu":
     <li> "shaar" rhymes with "shar" in "shark," but extend the "aa" just a touch (and drop the "k"). </li>
 </ul>
 </p>
+<br/>
 
-<br/>
 <b>Gun-ga-vah-ra-pu</b>
-<br/>
 
 <p>
 <ul>
-    <li> "Gun" like "gun,"
+    <li> "Gun" like "gun," </li>
     <li> "ga" like the "guh" in "gutter," minus the "tter," </li>
     <li> "vah" like the "vuh" in "vulture," </li>
     <li> "ra" like "ruh" in "runner," minus the "n," and </li>
