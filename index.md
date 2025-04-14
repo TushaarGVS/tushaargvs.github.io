@@ -42,7 +42,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
   <!-- <font color="#4285F4"><h3>Tush<font color="#333333"><u>aa</u></font>r Gangavarapu</h3></font> -->
   <!-- <font color="#4285F4"><h3>Tushaar Gangavarapu</h3></font> -->
   <!-- <br/><font color="#008400">MS CS student</font> at Cornell University -->
-  <h3>Tushaar Gangavarapu</h3>
+  <h3><a href="posts/random/pronunciation.html">Tu</a>shaar Gangavarapu</h3>
   <br/>MS CS student at Cornell University
   <br/>Contact: <a href="mailto:tg352@cornell.edu" style="height:15px">tg352@cornell.edu</a> (by email), or 456 Gates Hall <a href="https://xkcd.com/222/">in person</a>
   <p style="margin-bottom:0.3cm;"></p>
@@ -79,7 +79,14 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 
 <p><b>Research interests.</b> NLP :: LLM :: alternate-attention :: efficiency, mechanistic interpretability </p>
 
-<p><b>Recognition.</b> For my contributions to CS4740 (and cross-listings) in fall 2022 and 2023, and CS4300 (and cross-listings) in spring 2022 and 2023, I was awarded the Bowers CIS Best TA Award.</p>
+<p><b>Recognition.</b> 
+<ul>
+  <li>Degree Marshall (along w/ Canan Cem) for the Cornell Graduate School, 2025 Commencement</li>
+  <li>
+    For my contributions to CS4740 (and cross-listings) in fall 2022 and 2023, and CS4300 (and cross-listings) in spring 2022 and 2023, I was awarded the Bowers CIS Best TA Award.
+  </li>
+</ul>
+</p>
 
 <hr class="normal">
 
@@ -91,8 +98,12 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <colgroup><col width="150px"></colgroup>
 <tbody>
   <tr>
+    <td style="vertical-align: text-top;"><span>05/2025&#150;08/2025:</span></td>
+    <td><span>Research Scientist: Large Language Models Intern, IBM, Yorktown Heights, NY</span></td>
+  </tr>
+  <tr>
     <td style="vertical-align: text-top;"><span>01/2025&#150;05/2025:</span></td>
-    <td><span>Co-instructor, <a href="https://www.cs.cornell.edu/courses/cs3780/2025sp">Intro to Machine Learning (CS3780)</a> Sp25, Cornell University, Ithaca</span></td>
+    <td><span>Instructor (along w/ Karthik Sridharan), <a href="https://www.cs.cornell.edu/courses/cs3780/2025sp">Intro to Machine Learning (CS3780)</a> Sp25, Cornell University, Ithaca</span></td>
   </tr>
   <tr>
     <td style="vertical-align: text-top;"><span>08/2024&#150;01/2025:</span></td>
