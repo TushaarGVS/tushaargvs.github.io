@@ -13,7 +13,7 @@ toc: false
 
 <p>
 On Thu, Oct 31, 2024,
-[Yann Hicke](https://yannhicke.github.io/images/EscapeFromHappiness.JPG) wrote,
+<a href="https://yannhicke.github.io/images/EscapeFromHappiness.JPG">Yann Hicke</a> wrote,
 </p>
 
 <blockquote>
@@ -42,7 +42,7 @@ some something ... bigger.
 
 <p>
 So, I took a deep breath, channeled my inner
-[Jonathan (Chang)](https://www.cs.cornell.edu/~jpchang/), and replied:
+<a href="https://www.cs.cornell.edu/~jpchang/">Jonathan (Chang)</a>, and replied:
 </p>
 
 <blockquote>
