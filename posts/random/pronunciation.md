@@ -20,7 +20,7 @@ audio {
 
 It's "thuh"-shaar and NOT "two"-shaar (or, "too"-shaar)!! (There's only one of me, I
 think!) <br/>
-Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-poo":
+Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-pu":
 
 <b>Thuh-shaar</b><br/>
 
