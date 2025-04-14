@@ -12,7 +12,13 @@ toc: false
 ---
 
 <style>
-audio {}
+audio::-webkit-media-controls-enclosure {
+    background: none !important;
+}
+
+audio {
+    height: 15px !important;
+}
 </style>
 
 It's "thuh"-shaar and NOT "two"-shaar (or, "too"-shaar)!! (There's only one of me, I
@@ -46,7 +52,6 @@ Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-pu":
 Here's an audio recording of "Tushaar Gangavarapu" pronounced three times using the
 "Italian/Giorgio" voice from <a href="https://ttsmp3.com">ttsmp3.com</a>:
 </p>
-<br/>
 
 <audio controls>
 <source src="files/name-pronunciation.mp3" type="audio/mpeg" />
