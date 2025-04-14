@@ -83,7 +83,7 @@ keywords: tushaar, gangavarapu, cornell, university, ithaca, new york, ny, amazo
 <ul>
   <li>Degree Marshall (along w/ Canan Cem) for the Cornell Graduate School, 2025 Commencement</li>
   <li>
-    For my contributions to CS4740 (and cross-listings) in fall 2022 and 2023, and CS4300 (and cross-listings) in spring 2022 and 2023, I was awarded the Bowers CIS Best TA Award.
+    For my contributions to CS4740 (and cross-listings) in fall 2022 and 2023, and CS4300 (and cross-listings) in spring 2022 and 2023, I was awarded the Bowers CIS Best TA Award
   </li>
 </ul>
 </p>
