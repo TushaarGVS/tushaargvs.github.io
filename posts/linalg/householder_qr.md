@@ -97,7 +97,7 @@ $x$ with respect to the subspace orthogonal to the vector $u$ (= "mirror").
         title="" 
         src="./imgs/householder_reflector.png" 
         alt="" 
-        width="300" 
+        width="320" 
         data-align="center"
     />
 </div>
