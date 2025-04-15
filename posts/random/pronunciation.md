@@ -31,7 +31,7 @@ Tushaar is pronounced as "Thuh-shaar," and Gangavarapu as "Gun-ga-vah-ra-pu":
 
 <p>
 <ul>
-    <li> "Thuh" sounds like the "thu" in "thunder" (the short "uh" vowel) and NOT like "two" or "too," and </li>
+    <li> "Thuh" sounds like a soft "th" in "thin," followed by "uh" in "cup"; NOT like "two" or "too," and </li>
     <li> "shaar" rhymes with "shar" in "shark," but extend the "aa" just a touch (and drop the "k"). </li>
 </ul>
 </p>
