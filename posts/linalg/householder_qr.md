@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Householder QR
-tagline: 
+tagline:
 description: QR factorization using Householder reflectors
 tags: [householder reflectors, QR, matrix factorization]
 date: 2024-09-19
 author: Tushaar Gangavarapu
 next:
-previous: 
+previous:
 toc: true
 ---
 
@@ -15,7 +15,7 @@ toc: true
 
 ---
 
-A compelling motivation: A natural decomposition for thinking about least 
+A compelling motivation: A natural decomposition for thinking about least
 squares problems ($Ax = b$) is the QR decomposition of $A$,
 
 $$
@@ -23,9 +23,9 @@ A = QR,
 $$
 
 where $Q$ is an $m \times m$ unitary matrix (recall: $Q^H Q = \mathrm{I}$ for
-unitary $Q$) and $R$ is an $m \times n$ upper triangular matrix. For 
-tall-thin matrices ($m \geq n$), it is often beneficial to note the _economy_ 
-(or, thin [Golub and Van Loan], or, reduced [Trefethen and Bau]) QR 
+unitary $Q$) and $R$ is an $m \times n$ upper triangular matrix. For
+tall-thin matrices ($m \geq n$), it is often beneficial to note the _economy_
+(or, thin [Golub and Van Loan], or, reduced [Trefethen and Bau]) QR
 decomposition as
 
 $$
@@ -38,11 +38,11 @@ R_1 \\
 \end{bmatrix} = Q_1 R_1,
 $$
 
-where $R_1$ is an $n \times n$ upper triangular matrix and $0$ is an 
+where $R_1$ is an $n \times n$ upper triangular matrix and $0$ is an
 $(m - n) \times n$ zero matrix, $Q_1$ is an $m \times n$ matrix, and $Q_2$ is
 $m \times (m - n)$. ($Q_1$ and $Q_2$ have orthogonal columns.)
 
-We can find a solution, $\hat{x}$, to an overdetermined system $Ax = b$ 
+We can find a solution, $\hat{x}$, to an overdetermined system $Ax = b$
 ($m \geq n$) using the QR decomposition as
 
 $$
@@ -56,10 +56,10 @@ back substitution to find $\hat{x}$.)
 
 #### Gram-Schmidt, a brief note
 
-A first course in linear algebra often shows orthogonalization (converting the 
+A first course in linear algebra often shows orthogonalization (converting the
 existing basis of $A$ to an orthonormal basis) using the Gram-Schmidt process.
 The Gram-Schmidt process orthogonalizes by subtracting off components in the
-directions of previous columns and then normalizing the remainder to unit 
+directions of previous columns and then normalizing the remainder to unit
 length. Simply put,
 
 $$
@@ -84,11 +84,11 @@ Householder reflectors to achieve orthogonal triangularizations.
 ##### Reflecting a vector
 
 Before proceeding with Householder QR, let us look at Householder reflections,
-which are to become an essential part of Householder QR. 
+which are to become an essential part of Householder QR.
 
-Our goal here will be to come up with a linear transformation that reflects a 
+Our goal here will be to come up with a linear transformation that reflects a
 given vector, $x$, about a subspace, $\mathcal{V}$. Let $u$ be a vector of unit
-length ($\Vert u \Vert_2 = 1$) orthogonal to subspace $\mathcal{V}$. Then, 
+length ($\Vert u \Vert_2 = 1$) orthogonal to subspace $\mathcal{V}$. Then,
 $H = (\mathrm{I} - 2 u u^H)$ is the transformation that represents reflecting
 $x$ with respect to the subspace orthogonal to the vector $u$ (= "mirror").
 
@@ -102,47 +102,49 @@ $x$ with respect to the subspace orthogonal to the vector $u$ (= "mirror").
     />
 </div>
 
-$H$ is often referred to as the Householder transformation or Householder 
+$H$ is often referred to as the Householder transformation or Householder
 reflector.
 
 Some observations to note:
-* Any vector $z$ in the subspace $\mathcal{V}$ (= orthogonal to the vector $u$) 
-is left unchanged: 
 
-    $$
-    Hz = (\mathrm{I} - 2 u u^H) z = z - 2 u (u^H z) = z.
-    $$
+- Any vector $z$ in the subspace $\mathcal{V}$ (= orthogonal to the vector $u$)
+  is left unchanged:
 
-* Any vector $x$ can be written as $z + (u^H x) u$, where $z$ is the projection
-of $x$ onto the subspace $\mathcal{V}$ and $(u^H x) u$ is the projection in the
-direction of $u$ (orthogonal to $\mathcal{V}$). Now, the reflection is
+      $$
+      Hz = (\mathrm{I} - 2 u u^H) z = z - 2 u (u^H z) = z.
+      $$
 
-    $$
-    \begin{align*}
-    Hx &= (\mathrm{I} - 2 u u^H)(z + (u^H x) u) \\
-    &= z + (u^H x) u - 2 u u^H (u^H x) u \\
-    &= z + (u^H x) u - 2 (u^H x) u (\underbrace{u^H u}_{=\,1}) \\
-    &= z + (u^H x) u - 2 (u^H x) u \\
-    &= z - (u^H x) u.
-    \end{align*}
-    $$
+- Any vector $x$ can be written as $z + (u^H x) u$, where $z$ is the projection
+  of $x$ onto the subspace $\mathcal{V}$ and $(u^H x) u$ is the projection in the
+  direction of $u$ (orthogonal to $\mathcal{V}$). Now, the reflection is
 
-    If the vector $x$ has a component orthogonal to the mirror ($u^H x \neq 0$), 
-then that component is reversed.
+      $$
+      \begin{align*}
+      Hx &= (\mathrm{I} - 2 u u^H)(z + (u^H x) u) \\
+      &= z + (u^H x) u - 2 u u^H (u^H x) u \\
+      &= z + (u^H x) u - 2 (u^H x) u (\underbrace{u^H u}_{=\,1}) \\
+      &= z + (u^H x) u - 2 (u^H x) u \\
+      &= z - (u^H x) u.
+      \end{align*}
+      $$
 
-* Finally, observe that reflection is a length-preserving transformation. (Note: 
-$H^HH = HH^H = I$ and $HH = I$: reflecting a reflection results in the original
-vector.)
+      If the vector $x$ has a component orthogonal to the mirror ($u^H x \neq 0$),
+
+  then that component is reversed.
+
+- Finally, observe that reflection is a length-preserving transformation. (Note:
+  $H^HH = HH^H = I$ and $HH = I$: reflecting a reflection results in the original
+  vector.)
 
 $$
-\Vert Hx \Vert_2^2 = (Hx)^H Hx = x^H (\underbrace{H^H H}_{\mathrm{I}}) x = x^H x 
+\Vert Hx \Vert_2^2 = (Hx)^H Hx = x^H (\underbrace{H^H H}_{\mathrm{I}}) x = x^H x
 = \Vert x \Vert_2^2.
 $$
 
 ##### Adjusting the mirror
 
-Given two vectors, $x$ and $y$, our goal is to find a mirror (= subspace 
-$\mathcal{V}$) that facilitates reflecting vector $x$ into vector $y$ with 
+Given two vectors, $x$ and $y$, our goal is to find a mirror (= subspace
+$\mathcal{V}$) that facilitates reflecting vector $x$ into vector $y$ with
 $\Vert x \Vert_2 = \Vert y \Vert_2$. Simply put, we need to compute $u$ such
 that
 
@@ -153,7 +155,7 @@ y = (\mathrm{I} - 2 u u^H) x = x - 2 u u^H x
 \end{align*}
 $$
 
-where $p$ is the projection of $x$ onto $u$ (see figure in the previous 
+where $p$ is the projection of $x$ onto $u$ (see figure in the previous
 subsection). By construction, $p$ and $u$ must point in the same direction.
 Hence, $u$ must be a unit vector in that direction:
 
@@ -164,43 +166,43 @@ $$
 Now, we have an approach of determining the vector $u$, which defines a subspace
 that mirrors $x$ into $y$.
 
-<u><i>Remark on normalization</i></u>. If $u$ is not a unit 
-vector, the Householder transformation is 
+<u><i>Remark on normalization</i></u>. If $u$ is not a unit
+vector, the Householder transformation is
 
 $$
-H = \mathrm{I} - 2 \frac{u}{\Vert u \Vert_2} \frac{u^H}{\Vert u \Vert_2} 
+H = \mathrm{I} - 2 \frac{u}{\Vert u \Vert_2} \frac{u^H}{\Vert u \Vert_2}
 = \mathrm{I} - 2 \frac{u u^H}{u^H u}.
 $$
 
 ##### Householder vector
 
-Our goal is to convert $A$ to an upper triangular matrix through a series of 
+Our goal is to convert $A$ to an upper triangular matrix through a series of
 orthogonal transformations. Here's a chalkboard animation (as David Bindel would
 call it!):
 
 $$
-A = \matrix{\begin{bmatrix} 
+A = \matrix{\begin{bmatrix}
     \small{\times} & \small{\times} & \small{\times} \\
     \small{\times} & \small{\times} & \small{\times} \\
     \small{\times} & \small{\times} & \small{\times} \\
     \small{\times} & \small{\times} & \small{\times} \\
     \vdots & \vdots & \vdots \\
     \small{\times} & \small{\times} & \small{\times} \\
-\end{bmatrix} \\[1pt] \phantom{\small{A}}} \xrightarrow{H_1} \matrix{\begin{bmatrix} 
+\end{bmatrix} \\[1pt] \phantom{\small{A}}} \xrightarrow{H_1} \matrix{\begin{bmatrix}
     \color{red}{*} & \small{*} & \small{*} \\
     \color{red}{0} & \small{*} & \small{*} \\
     \color{red}{0} & \small{*} & \small{*} \\
     \color{red}{0} & \small{*} & \small{*} \\
     \color{red}{\vdots} & \vdots & \vdots \\
     \color{red}{0} & \small{*} & \small{*} \\
-\end{bmatrix} \\[1pt] \small{H_1 A}} \xrightarrow{H_2} \matrix{\begin{bmatrix} 
+\end{bmatrix} \\[1pt] \small{H_1 A}} \xrightarrow{H_2} \matrix{\begin{bmatrix}
     * & * & * \\
     0 & \color{red}{\star} & \small{\star} \\
     0 & \color{red}{0} & \small{\star} \\
     0 & \color{red}{0} & \small{\star} \\
     \vdots & \color{red}{\vdots} & \vdots \\
     0 & \color{red}{0} & \small{\star} \\
-\end{bmatrix} \\[1pt] \small{ H_2 H_1 A}} \xrightarrow{H_3} \matrix{\begin{bmatrix} 
+\end{bmatrix} \\[1pt] \small{ H_2 H_1 A}} \xrightarrow{H_3} \matrix{\begin{bmatrix}
     * & * & * \\
     0 & \star & \star \\
     0 & 0 & \color{red}{\small{\bullet}} \\
@@ -227,10 +229,10 @@ H_1 a_1 & H_1 a_2 & \dots & H_1 a_n \\
 \end{bmatrix},
 $$
 
-where $a_j$ is an $m$-dimensional column of $A$. What we essentially require is 
+where $a_j$ is an $m$-dimensional column of $A$. What we essentially require is
 a Householder transformation such that $H_1 a_1 = \beta e_1$ for some constant
 $\beta$, $e_1$ is the first standard basis vector. Since Householder reflectors
-preserve lengths, we need $\vert \beta \vert = \Vert a_1 \Vert_2$. Hence, we 
+preserve lengths, we need $\vert \beta \vert = \Vert a_1 \Vert_2$. Hence, we
 need to find a reflector (= mirror) $H$ that reflects $a_1$ onto the $x$-axis:
 
 <div align="center">
@@ -246,12 +248,12 @@ need to find a reflector (= mirror) $H$ that reflects $a_1$ onto the $x$-axis:
 Now, we have $v$ as
 
 $$
-v = \begin{bmatrix} 
+v = \begin{bmatrix}
 a_{11} \\
 a_{21} \\
 \vdots \\
 a_{m1} \\
-\end{bmatrix} - \begin{bmatrix} 
+\end{bmatrix} - \begin{bmatrix}
 \beta \\
 0 \\
 \vdots \\
@@ -260,14 +262,14 @@ a_{m1} \\
 $$
 
 Notice that we have several options to choose $\beta$: $\Vert a_1 \Vert_2$,
-$- \Vert a_1 \Vert_2$, $z \Vert a_1 \Vert_2$ for some $z \in \mathbb{C}$ with 
+$- \Vert a_1 \Vert_2$, $z \Vert a_1 \Vert_2$ for some $z \in \mathbb{C}$ with
 $\vert z \vert = 1$. If we restrict to real-valued $a_1$, we have
 
 $$
 v = a_1 \mp \Vert a_1 \Vert_2 e_1.
 $$
 
-If we choose $\beta = -\Vert a_1 \Vert_2$, we are consequently placing the 
+If we choose $\beta = -\Vert a_1 \Vert_2$, we are consequently placing the
 mirror as follows:
 
 <div align="center">
@@ -280,15 +282,15 @@ mirror as follows:
     />
 </div>
 
-For completeness, we have 
+For completeness, we have
 
 $$
-H_1 a_1 = 
+H_1 a_1 =
     \left(\mathrm{I} - 2 \frac{vv^H}{\Vert v \Vert^2_2}\right) a_1 = \beta e_1.
 $$
 
-<u><i>Remark on numerical stability</i></u>. Observe that the first element of 
-$v$, $v_1 = a_{11} \mp \Vert a_1 \Vert_2$. If $a_{11}$ is positive and 
+<u><i>Remark on numerical stability</i></u>. Observe that the first element of
+$v$, $v_1 = a_{11} \mp \Vert a_1 \Vert_2$. If $a_{11}$ is positive and
 $a_{11} \approx \Vert a_1 \Vert_2$ ($a_1$ is really close to $x$-axis), we incur
 catastrophic cancellation in the computation of $a_{11} - \Vert a_1 \Vert_2$.
 
@@ -302,11 +304,11 @@ catastrophic cancellation in the computation of $a_{11} - \Vert a_1 \Vert_2$.
     />
 </div>
 
-Irrespective of the sign of $a_{11}$, we can avoid catastrophic cancellation by 
+Irrespective of the sign of $a_{11}$, we can avoid catastrophic cancellation by
 choosing $v = a_1 + \text{sign}(a_{11}) \Vert a_1 \Vert_2 e_1$:
 
 $$
-v = \begin{bmatrix} 
+v = \begin{bmatrix}
 a_{11} + \text{sign}(a_{11}) \Vert a_1 \Vert_2 \\
 a_{21} \\
 \vdots \\
@@ -314,15 +316,15 @@ a_{m1} \\
 \end{bmatrix}.
 $$
 
-<u><i>Remark on storing Householder vectors</i></u>. A simple observation from 
-$H_1 a_1 = \beta e_1$ is that the entries other than the first entry of 
+<u><i>Remark on storing Householder vectors</i></u>. A simple observation from
+$H_1 a_1 = \beta e_1$ is that the entries other than the first entry of
 $H_1 a_1$ are zeros, meaning $(v_2, \dotsc, v_m)$ can be stored as entries of
-$(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that ensures 
+$(H_1 a_1)[2:]$. Additionally, if we can scale $v$ in a way that ensures
 $v_1 = 1$, we don't need to explicitly store $v_1$. Hence
 
 $$
-\tilde{v} = \frac{v}{v_1} = 
-\frac{1}{a_{11} + \text{sign}(a_{11}) \Vert a_1 \Vert_2} \begin{bmatrix} 
+\tilde{v} = \frac{v}{v_1} =
+\frac{1}{a_{11} + \text{sign}(a_{11}) \Vert a_1 \Vert_2} \begin{bmatrix}
 1 \\
 a_{21} \\
 \vdots \\
@@ -350,11 +352,11 @@ def housev_(a1: Fl("m")):
     Apply Householder transformation to vector `a1` and store the associated
     Householder vector in `a1`.
 
-    Note: By convention, `v1 = 1` and `v[2:]` are stored in `a1[2:]`. Also 
-    notice zero-indexing in code, while function definitions and variable 
+    Note: By convention, `v1 = 1` and `v[2:]` are stored in `a1[2:]`. Also
+    notice zero-indexing in code, while function definitions and variable
     names employ one-indexing.
 
-    (Convention: Keeping in line with PyTorch convention `_` at the end of a 
+    (Convention: Keeping in line with PyTorch convention `_` at the end of a
     function name indicates an inplace operation.)
     """
     if len(a1) == 1:
@@ -393,17 +395,17 @@ first iteration, we can block-partition $A$ as:
 $$
 A = \begin{bmatrix}
 \alpha_{11} & a_{12}^T \\
-a_{21} & A_{22} \\ 
+a_{21} & A_{22} \\
 \end{bmatrix}.
 $$
 
 Let the Householder transformation computed from the first column be as follows:
 
 $$
-\text{housev}\left(\begin{bmatrix}\alpha_{11} \\ a_{21} \end{bmatrix}\right) = 
+\text{housev}\left(\begin{bmatrix}\alpha_{11} \\ a_{21} \end{bmatrix}\right) =
 \begin{bmatrix}
 \rho_{11} \\
-\tilde{v}_{21} \\ 
+\tilde{v}_{21} \\
 \end{bmatrix},
 $$
 
@@ -412,69 +414,69 @@ where $\rho_{11} = \beta = -\text{sign}(\alpha_{11}) \Vert A[:,1] \Vert_2$.
 Now, applying unblocked Householder transformation to $A$ results in
 
 $$
-\text{hqr}(A) =  
-\left(\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T\right) 
+\text{hqr}(A) =
+\left(\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T\right)
 \begin{bmatrix}
 \alpha_{11} & a_{12}^T \\
-a_{21} & A_{22} \\ 
+a_{21} & A_{22} \\
 \end{bmatrix} = \begin{bmatrix}
 \rho_{11} & \color{red}{\small{\times}} \\
-0 & \color{red}{\small{\times}} \\ 
+0 & \color{red}{\small{\times}} \\
 \end{bmatrix}
 $$
 
 Note that the second column above is the resultant of
 
 $$
-\left(\underbrace{\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\left(\underbrace{\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T}_{H_1}\right) \begin{bmatrix}
-a_{12}^T \\ 
-A_{22} \\ 
+a_{12}^T \\
+A_{22} \\
 \end{bmatrix}.
 $$
 
 If we explicitly form $H_1$, we would incur $\mathcal{O}(n^2)$ computations and
-applying the matrix is  $\mathcal{O}(n^3)$. So instead, we will compute it as
+applying the matrix is $\mathcal{O}(n^3)$. So instead, we will compute it as
 follows:
 
 $$
 \begin{bmatrix}
-a_{12}^T \\ 
-A_{22} \\ 
-\end{bmatrix} - 
+a_{12}^T \\
+A_{22} \\
+\end{bmatrix} -
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
-\underbrace{\frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+\underbrace{\frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
 \underbrace{\begin{bmatrix}1 & \tilde{v}_{21}^T \end{bmatrix} \begin{bmatrix}
-a_{12}^T \\ 
-A_{22} \\ 
+a_{12}^T \\
+A_{22} \\
 \end{bmatrix}}_{=\,a_{12}^T + \tilde{v}_{21}^T A_{22}}}_{w_{12}^T}.
 $$
 
 Now, we have
 
 $$
-\text{hqr}(A) =  
-\left(\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T\right) 
+\text{hqr}(A) =
+\left(\mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T\right)
 \begin{bmatrix}
 \alpha_{11} & a_{12}^T \\
-a_{21} & A_{22} \\ 
+a_{21} & A_{22} \\
 \end{bmatrix} = \begin{bmatrix}
 \rho_{11} & \color{red}{\small{\times}} \\
-0 & \color{red}{\small{\times}} \\ 
+0 & \color{red}{\small{\times}} \\
 \end{bmatrix} = \begin{bmatrix}
 \rho_{11} & a_{12}^T - w_{12}^T \\
-0 & A_{22} - \tilde{v}_{21} w_{12}^T \\ 
+0 & A_{22} - \tilde{v}_{21} w_{12}^T \\
 \end{bmatrix}.
 $$
 
-Note that in this formulation involves computing $w_{12}^T$ (involving 
+Note that in this formulation involves computing $w_{12}^T$ (involving
 matrix-vector multiplication) and the updated $A_{22}$ (a rank-one update). This
-is cheaper than forming $H_1$ and performing matrix-matrix multiplication. (We 
+is cheaper than forming $H_1$ and performing matrix-matrix multiplication. (We
 will explicitly analyze the computational cost once we write down the complete
 algorithm.)
 
@@ -485,8 +487,8 @@ to the entire matrix (which ignores first row and column of $A$) is
 $$
 H_2 = \begin{bmatrix}
 \mathrm{I} & 0 \\
-0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
 \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \end{bmatrix}.
 $$
@@ -498,11 +500,11 @@ import numpy as np
 def housev_(A22: Fl("m n")):
     """Apply Householder transformation to the first column of A22."""
     if len(A22[:, 0]) == 1:
-        # No need to reflect anything. 
+        # No need to reflect anything.
         # NOTE: If this is ignored, the sign for the last entry will be flipped,
         # and the resultant `Q` will not be orthogonal.
         return
-    
+
     alpha11 = A22[0, 0]
     a21 = A22[1:, 0]
     rho11 = -sign(alpha11) * torch.norm(A22[:, 0])
@@ -543,16 +545,16 @@ R_np = np.linalg.qr(A_ref, "reduced").R
 assert torch.allclose(torch.triu(A)[:n], torch.from_numpy(R_np))
 ```
 
-<u><i>Remark on computational complexity</i></u>. For the above algorithm, bulk 
-of the computation goes in computing $w_{12}^T$ and updating $A_{22}$. Computing 
-$a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost $\mathcal{O}((m - k)(n - k))$. 
-Since $k$ runs through all the columns of $A$, the cost is approximately 
-$\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives us the cost of the 
-algorithm to be $\mathcal{O}(mn^2)$. 
+<u><i>Remark on computational complexity</i></u>. For the above algorithm, bulk
+of the computation goes in computing $w_{12}^T$ and updating $A_{22}$. Computing
+$a_{21}^T A_{22}$ and $a_{21} w_{12}^T$ cost $\mathcal{O}((m - k)(n - k))$.
+Since $k$ runs through all the columns of $A$, the cost is approximately
+$\sum_{k=1}^{n} ((m - k)(n - k))$—simplifying this gives us the cost of the
+algorithm to be $\mathcal{O}(mn^2)$.
 
 ##### Forming $\boldsymbol{Q}$
 
-Running a full iteration of Householder QR on an $m \times n$ matrix $A$ results 
+Running a full iteration of Householder QR on an $m \times n$ matrix $A$ results
 in
 
 $$
@@ -567,20 +569,20 @@ $$
 A = \underbrace{H_1 H_2 \dots H_n}_{Q} R.
 $$
 
-Note that the above algorithm doesn't explicitly form  $Q^T = H_n \dots H_1$ 
-(or, $Q = H_1 \dots H_n$), and as long as we have efficient routines to perform 
-BLAS operations using the Householder vectors, we won't need to explicitly form 
-$Q$ or $Q^T$. However, in few specific cases we may need to explicitly form 
+Note that the above algorithm doesn't explicitly form $Q^T = H_n \dots H_1$
+(or, $Q = H_1 \dots H_n$), and as long as we have efficient routines to perform
+BLAS operations using the Householder vectors, we won't need to explicitly form
+$Q$ or $Q^T$. However, in few specific cases we may need to explicitly form
 $Q$ (e.g., for forward error analysis), and we'll now see how to do so.
 
 Observe that if we now apply our Householder transformations on to the (padded)
 identity matrix in reverse, we have
 
 $$
-H_1 H_2 \dots H_n 
-\begin{bmatrix} 
+H_1 H_2 \dots H_n
+\begin{bmatrix}
     \mathrm{I}_{n \times n} \\
-    0_{m - n \times n} 
+    0_{m - n \times n}
 \end{bmatrix} = Q.
 $$
 
@@ -590,16 +592,16 @@ $5 \times 3$ $A$ and let's see how $H_3$ applies:
 
 $$
 \begin{align*}
-H_3 
-\begin{bmatrix} 
-    \mathrm{I}_{3 \times 3} \\ 
-    0_{2 \times 3} 
-\end{bmatrix} 
+H_3
+\begin{bmatrix}
+    \mathrm{I}_{3 \times 3} \\
+    0_{2 \times 3}
+\end{bmatrix}
 &=
 \begin{bmatrix}
     \mathrm{I}_{2 \times 2} & 0 \\
-    0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
-            \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+    0 & \mathrm{I} - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+            \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
             \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \end{bmatrix} \begin{bmatrix}
     1 & 0 & 0 \\
@@ -608,33 +610,33 @@ H_3
     0 & 0 & \color{red}{0} \\
     0 & 0 & \color{red}{0} \\
 \end{bmatrix} \\
-&= 
+&=
 \left(
-    \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
-    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+    \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
     \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \right)
-\begin{bmatrix} 
+\begin{bmatrix}
     1 \\
     0_{2 \times 1}
 \end{bmatrix} \\
 &=
-\begin{bmatrix} 
+\begin{bmatrix}
     1 \\
     0_{2 \times 1}
-\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
 \left(
     \begin{bmatrix}1 & \tilde{v}_{21}^T\end{bmatrix}
-    \begin{bmatrix} 
+    \begin{bmatrix}
         1 \\
         0_{2 \times 1}
     \end{bmatrix}
 \right) \\
 &=
-\begin{bmatrix} 
+\begin{bmatrix}
     1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} \\
-    -\tilde{v}_{21} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
+    -\tilde{v}_{21} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
 \end{bmatrix}.
 \end{align*}
 $$
@@ -652,8 +654,8 @@ H_2 \begin{bmatrix}
 \end{bmatrix}
 &=
 \left(
-    \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} 
-    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+    \mathrm{I} - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
+    \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
     \begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}^T
 \right) \begin{bmatrix}
     1 & 0 \\
@@ -664,7 +666,7 @@ H_2 \begin{bmatrix}
     1 & 0 \\
     0_{3 \times 1} & A_{22} \\
 \end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}\Vert_2^2}
-\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix} 
+\begin{bmatrix}1 \\ \tilde{v}_{21}\end{bmatrix}
 \left(
     \begin{bmatrix}1 & \tilde{v}_{21}^T\end{bmatrix}
     \begin{bmatrix}
@@ -676,21 +678,21 @@ H_2 \begin{bmatrix}
 \begin{bmatrix}
     1 & 0 \\
     0_{3 \times 1} & A_{22} \\
-\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}\Vert_2^2} 
+\end{bmatrix} - \frac{2}{1 + \Vert \tilde{v}_{21}\Vert_2^2}
 \begin{bmatrix}
-    1 & \tilde{v}_{21}^T A_{22} \\ 
+    1 & \tilde{v}_{21}^T A_{22} \\
     \tilde{v}_{21} & \tilde{v}_{21} \tilde{v}_{21}^T A_{22} \\
 \end{bmatrix} \\
 &= \begin{bmatrix}
-    1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} & 
+    1 - \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &
         -\color{green}{
             \tilde{v}_{21}^T A_{22} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
         } \\
     -\tilde{v}_{21} \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2} &
-        A_{22} - 
-            \tilde{v}_{21} 
+        A_{22} -
+            \tilde{v}_{21}
             \color{green}{
-                \tilde{v}_{21}^T A_{22} 
+                \tilde{v}_{21}^T A_{22}
                 \dfrac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}
             } \\
 \end{bmatrix}.
@@ -706,7 +708,7 @@ Q\left(\begin{bmatrix}
     a_{21} = \tilde{v}_{21} & A_{22}
 \end{bmatrix}\right):
 \\
-    \alpha_{11} &\leftarrow 
+    \alpha_{11} &\leftarrow
         1 - \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
     a_{12}^T &\leftarrow
         -a_{21}^T A_{22} \frac{2}{1 + \Vert \tilde{v}_{21} \Vert_2^2}, \\
@@ -755,15 +757,15 @@ assert torch.allclose(torch.eye(n, dtype=torch.float64), A.T @ A)
 
 #### Visualizing HQR (optional reading)
 
-This blog post was heavily inspired by me wanting to recreate the [animation 
+This blog post was heavily inspired by me wanting to recreate the [animation
 from Gabriel Peyré's tweet (or, "x"?) on unitary triangulation of a nonsymmetric
 matrix](https://x.com/gabrielpeyre/status/1788071332833354163) and partly from
 wanting David Bindel's chalkboard animation to come alive!
 
 For the purposes of this animation, we will be using a terribly inefficient way
 of forming $Q$. Observe that our approach of forming $Q$ in reverse requires us
-to have completed a (forward) run of the Householder QR; however, for the 
-purpose of this animation, we want to show gradual change in $Q$ (as $R$ 
+to have completed a (forward) run of the Householder QR; however, for the
+purpose of this animation, we want to show gradual change in $Q$ (as $R$
 changes). To that end, we will update $Q$ at every iteration as
 
 $$
@@ -950,8 +952,8 @@ anim.save("./hqr_anim.gif", dpi=200, writer="pillow")
 
 #### References
 
-* David Bindel. 
-[Householder transformations](https://www.cs.cornell.edu/courses/cs6210/2022fa/lec/2022-09-22.pdf#page=5.59).
-(Accessed 09/22/2024.)
-* Robert van de Geijn, Margaret Myers. [Householder QR Factorization](https://www.cs.utexas.edu/~flame/laff/alaff-beta/chapter03-householder-qr-factorization.html).
-_Advanced Linear Algebra: Foundations to Frontiers._
+- David Bindel.
+  [Householder transformations](https://www.cs.cornell.edu/courses/cs6210/2022fa/lec/2022-09-22.pdf#page=5.59).
+  (Accessed 09/22/2024.)
+- Robert van de Geijn, Margaret Myers. [Householder QR Factorization](https://www.cs.utexas.edu/~flame/laff/alaff-beta/chapter03-householder-qr-factorization.html).
+  _Advanced Linear Algebra: Foundations to Frontiers._
