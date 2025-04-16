@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../assets/images/favicon.ico">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143518986-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-143518986-2');
+    </script>
+
+    <meta name="google-site-verification" content="huu2Y2-hvgWrKYnpHP2tQcShK-fww3FDKlpP7au_4V0" />
+    <meta charset="utf-8">
+    <title>Research</title>
+    <meta name="description" content="Tushaar Gangavarapu's research">
+    
+    <meta name="author" content="Tushaar Gangavarapu">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/tgangavarapu.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/rouge.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/tabs.css" rel="stylesheet">
+
+    <!-- atom & rss feed -->
+    <link href="nil" type="application/atom+xml" rel="alternate" title="Tushaar Gangavarapu">
+    <link href="nil" type="application/rss+xml" rel="alternate" title="Tushaar Gangavarapu">
+    
+    <!--Add function that displays last modified date: -->
+    <script type="text/javascript">
+    onload = function(){
+        document.getElementById("lastModified").innerHTML = "last modified: " + document.lastModified.split(" ")[0];
+    }
+    </script>
+
+    <style type="text/css">
+      .alignleft { float: left; }
+      .alignright { float: right; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!--    <script type="text/x-mathjax-config">-->
+<!--      MathJax.Hub.Config({-->
+<!--        jax: ["input/TeX", "output/HTML-CSS"],-->
+<!--        tex2jax: {-->
+<!--          inlineMath: [['$', '$'], ['\\(', '\\)']],-->
+<!--          displayMath: [['$$', '$$'], ['\\[', '\\]']],-->
+<!--          processEscapes: true,-->
+<!--          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']-->
+<!--        },-->
+<!--        scale: 100,-->
+<!--        messageStyle: "none",-->
+<!--        "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }-->
+<!--      });-->
+<!--    </script>-->
+<!--    <script id="MathJax-script" async-->
+<!--            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"-->
+<!--            type="text/javascript">-->
+<!--    </script>-->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        },
+        scale: 100,
+      };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!--    <script type="text/javascript" id="MathJax-script" async-->
+<!--      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">-->
+<!--    </script>-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/" style="text-decoration: none;">Home</a>
+          <ul class="nav">
+              <li><a href="/pages/research.html">Research</a></li>
+              <li><a href="/pages/posts.html">Blog</a></li>
+              <!-- <li><a href="/pages/news.html">News</a></li> -->
+              <!-- <li><a href="/pages/teaching.html">Other</a></li> -->
+              <li><a href="../../../assets/documents/cv.pdf">CV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<link rel="alternate" type="application/atom+xml" title="Tushaar Gangavarapu" href="/feed.xml">
+<link rel="shortcut icon" type="image/x-icon" href="../../../assets/images/favicon.ico">
+<div class="page-header">
+  <h3>Research </h3>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+
+<script>
+    function cite(element_id, authors, title, url, other_info) {
+        let authorNames = authors.map(author => {
+            if (author.toLowerCase() === "tushaar gangavarapu") {
+                return `<i>Tushaar Gangavarapu</i>`;
+            } else if (author.toLowerCase() === "tushaar gangavarapu*") {
+                return `<i>Tushaar Gangavarapu</i>*`;
+            }
+            return author;
+        }).join(", ");
+        let htmlString = `${authorNames}<br>`;
+        if (url) {
+            htmlString += `<a href="${url}">${title}</a>`;
+        } else {
+            htmlString += title;
+        }
+        if (other_info) {
+            let otherInfo = other_info.join(", ");
+            htmlString += `<br>[${otherInfo}]`;
+        }
+        document.getElementById(element_id).innerHTML = htmlString
+    }
+</script>
+
+<style type="text/css">
+    td {
+        text-align: left;
+        vertical-align: top;
+        padding-bottom: 15px;
+    }
+</style>
+
+<blockquote>
+  <div>
+    "<i>History is not simply the study of the past, it is an explanation of the present.</i>"
+    <br/>
+    &#151;Paul Hunham, portrayed by Paul Giamatti in <a href="https://www.imdb.com/title/tt14849194/">The Holdovers</a>
+  </div>
+  <br/>
+  <div>
+    "[...] <i>The past does not exist to remind the present that the future cannot change.
+        The past is supposed to exist *for* the sake of the future.</i>"
+    <p style="margin-bottom:0.1cm;"></p>
+    &#151;<a href="https://naruto.fandom.com/wiki/Tailed_Beast?file=Young_Bijuu_and_Hagoromo.png">Hagoromo &#332;tsutsuki</a>,
+    <a href="https://naruto.fandom.com/wiki/The_Valley_of_the_End_(episode)">Ep. 475: The Valley of the End (Naruto: Shipp&umacr;den, sub)</a>,<br/>
+    in response to Kakashi Hatake's question: "<i>Are you saying that Sasuke would share the same fate as Madara?</i>"
+  </div>
+</blockquote>
+
+<div> Full list can be found on 
+    <a href="https://scholar.google.co.in/citations?hl=en&user=C7v_cA8AAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Google Scholar</a> (sorted chronologically).
+    <br/><br/>
+    The list below is sorted chronologically. (Despite having eight+ years of computer science education, I still don't know how to make sortable tables.<br>
+    I'll convert the table below into a sortable one <a href="https://www.cartoonstock.com/cartoon?searchID=CS192241"><i>once</i> I figure it out</a>!)<br/>
+    * = equal contribution
+</div>
+<br/>
+
+<script>
+    window.onload = function() {
+        // 2025
+        cite(
+            element_id="attrib",
+            authors=["Johannes Knittel", "Tushaar Gangavarapu", "Hendrik Strobelt", " Hanspeter Pfister"], 
+            title="GPT-2 Through the Lens of Vector Symbolic Architectures", 
+            url="https://arxiv.org/abs/2412.07947",
+            other_info=[
+                "<a href='https://openreview.net/forum?id=bc8LCJIJbt'>OpenReview</a>",
+                "<a href='https://www.linkedin.com/posts/johannes-knittel_gpt-2-through-the-lens-of-vector-symbolic-activity-7273496681482973184-XFDL?utm_source=share&utm_medium=member_desktop'>Johannes's post</a>"
+            ],
+        )
+        // 2024
+        cite(
+            element_id="colm",
+            authors=["Junxiong Wang", "Tushaar Gangavarapu", "Jing Nathan Yan", "Alexander M. Rush"], 
+            title="MambaByte: Token-free Selective State Space Model", 
+            url="https://arxiv.org/pdf/2401.13660",
+            other_info=[
+                "<a href='https://huggingface.co/JunxiongWang?search_models=MambaByte'>Pretrained models</a>",
+                "<a href='https://www.youtube.com/watch?v=kcd0BTKJuXk'>video</a> (by Sasha Rush)",
+                "<a href='https://openreview.net/forum?id=X1xNsuKssb'>OpenReview</a>",
+                "<a href='https://twitter.com/search?q=mambabyte&src=typed_query&f=top'>Twitter coverage</a>"
+            ],
+        )
+        // 2023
+        cite(
+            element_id="bea", 
+            authors=["Yann Hicke", "Abhishek Masand", "Wentao Guo", "Tushaar Gangavarapu"], 
+            title="Assessing the efficacy of large language models in generating accurate teacher responses", 
+            url="https://aclanthology.org/2023.bea-1.60",
+            other_info=[
+                "<a href='https://github.com/TushaarGVS/bea-2023'>Code</a>",
+                "<a href='https://sig-edu.org/sharedtask/2023'>Shared task</a>"
+            ],
+        )
+        // 2022
+        cite(
+            element_id="amlc_erl", 
+            authors=["Tushaar Gangavarapu", "Sriraghavendra Ramaswamy"], 
+            title="Alexa, stop reading the references: Enhancing the reading experience in Kindle eBooks", 
+            url="https://w.amazon.com/index.php/AMLC",
+            other_info=[
+                "Amazon confidential (email <a href='mailto:sriragha@amazon.com'>sriragha@amazon.com</a> for details)"
+            ],
+        )
+        cite(
+            element_id="amlc_bleed", 
+            authors=["Tushaar Gangavarapu*", "Sriraghavendra Ramaswamy*"], 
+            title="A figure is worth a thousand words, but where are the words?: Enhancing image experience in Kindle eBooks", 
+            url="https://w.amazon.com/index.php/AMLC",
+            other_info=[
+                "Amazon confidential (email <a href='mailto:sriragha@amazon.com'>sriragha@amazon.com</a> for details)"
+            ],
+        )
+        // 2021
+        cite(
+            element_id="tetc", 
+            authors=["Tushaar Gangavarapu", "Gokul S Krishnan", "Sowmya Kamath S", "Jayakumar Jeganathan"], 
+            title="FarSight: Long-Term Disease Prediction Using Unstructured Clinical Nursing Notes", 
+            url="https://doi.org/10.1109/TETC.2020.2975251",
+            other_info=[
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        cite(
+            element_id="fgcs", 
+            authors=["Veena Mayya", "Sowmya Kamath S", "Gokul S Krishnan", "Tushaar Gangavarapu"], 
+            title="Multi-channel, convolutional attention based neural model for automated diagnostic coding of unstructured patient discharge summaries", 
+            url="https://doi.org/10.1016/j.future.2021.01.013",
+            other_info=[
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        // 2020
+        cite(
+            element_id="iccs", 
+            authors=["Tushaar Gangavarapu", "Jaidhar CD"], 
+            title="A Novel Bio-inspired Hybrid Metaheuristic for Unsolicited Bulk Email Detection", 
+            url="https://dx.doi.org/10.1007/978-3-030-50420-5_18",
+            other_info=[
+                "<a href='https://goo.gl/gkuJ2g'>Data</a>"
+            ]
+        )
+        cite(
+            element_id="aire", 
+            authors=["Tushaar Gangavarapu", "Jaidhar CD", "Bhabesh Chanduka"], 
+            title="Applicability of machine learning in spam and phishing email filtering: review and approaches", 
+            url="https://link.springer.com/article/10.1007/s10462-020-09814-9",
+            other_info=[
+                "<a href='https://goo.gl/gkuJ2g'>Data</a>",
+                "<a href='https://github.com/TushaarGVS/Phishing'>Code</a>"
+            ]
+        )
+        cite(
+            element_id="cods_comad", 
+            authors=["Aditya Jayasimha*", "Tushaar Gangavarapu*", "Sowmya Kamath S", "Gokul S Krishnan"], 
+            title="Deep Neural Learning for Automated Diagnostic Code Group Prediction Using Unstructured Nursing Notes", 
+            url="https://doi.org/10.1145/3371158.3371176",
+            other_info=[
+                "<a href='https://tushaargvs.github.io/assets/publications/cods-comad-2020-poster.pdf'>Poster</a>",
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        // 2019
+        cite(
+            element_id="knosys", 
+            authors=["Tushaar Gangavarapu", "Aditya Jayasimha", "Gokul S Krishnan", "Sowmya Kamath S"], 
+            title="Predicting ICD-9 code groups with fuzzy similarity based supervised multi-label classification of unstructured clinical nursing notes", 
+            url="https://doi.org/10.1016/j.knosys.2019.105321",
+            other_info=[
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        cite(
+            element_id="conll", 
+            authors=["Tushaar Gangavarapu", "Gokul S Krishnan", "Sowmya Kamath S"], 
+            title="Coherence-based Modeling of Clinical Concepts Inferred from Heterogeneous Clinical Notes for ICU Patient Risk Stratification", 
+            url="https://www.aclweb.org/anthology/K19-1095/",
+            other_info=[
+                "<a href='https://tushaargvs.github.io/assets/publications/conll-2019-poster.pdf'>Poster</a>",
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        cite(
+            element_id="nldb", 
+            authors=["Tushaar Gangavarapu*", "Aditya Jayasimha*", "Gokul S Krishnan", "Sowmya Kamath S"], 
+            title="TAGS: Towards Automated Classification of Unstructured Clinical Nursing Notes", 
+            url="https://doi.org/10.1007/978-3-030-23281-8_16",
+            other_info=[
+                "<a href='https://tushaargvs.github.io/assets/publications/nldb-2019-ppt.pdf'>Slides</a>",
+                "<a href='https://mimic.physionet.org/'>MIMIC-III dataset</a>"
+            ]
+        )
+        cite(
+            element_id="asoc", 
+            authors=["Tushaar Gangavarapu", "Nagamma Patil"], 
+            title="A novel filter-wrapper hybrid greedy ensemble approach optimized using the genetic algorithm to reduce the dimensionality of high-dimensional biomedical datasets", 
+            url="https://doi.org/10.1016/j.asoc.2019.105538",
+            other_info=[
+                "<a href='https://tushaargvs.github.io/assets/publications/asoc-2019-ppt.pdf'>Slides</a>"
+            ]
+        )
+        
+        // Set lastModified data.
+        document.getElementById("lastModified").innerHTML = "last modified: " + document.lastModified.split(" ")[0];
+    }
+</script>
+
+<table style="width:90%" cellspacing="25" cellpadding="2">
+    <thead height="33">
+        <tr style="background-color:rgba(0,0,0,0.15); border-bottom: 10px solid white;">
+            <th width="11%" align="left" valign="center" style="padding-left: 5px; padding-right: 5px;">Topic(s)</th>
+            <th width="13%" align="left" valign="center" style="padding-right: 5px">Year, venue</th>
+            <th align="left" valign="center" style="padding-right: 10px">Publication</th>
+            <th width="20%" align="left" valign="center">Note(s)</th>
+        </tr>
+    </thead>
+
+    <!-- 2025 -->
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Mechanistic<br/>interpretability</td>
+            <td>2025, NeurIPS: ATTRIB workshop</td>
+            <td id="attrib"></td>
+            <td></td>
+        </tr>
+    </tbody>
+
+    <!-- 2024 -->
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Alternate-<br/>attention</td>
+            <td>2024, COLM</td>
+            <td id="colm"></td>
+            <td>Read <a href="https://arxiv.org/abs/2412.09871">Meta's paper on BLT: <i>dynamic</i> patching of bytes</a> (this is a follow-up to strict patching in <a href="https://arxiv.org/abs/2305.07185">MegaByte</a>).</td>
+        </tr>
+    </tbody>
+
+    <!-- 2023 -->
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">LLMs</td>
+            <td>2023, ACL: BEA Shared Task</td>
+            <td id="bea"></td>
+            <td></td>
+        </tr>
+    </tbody>
+
+    <!-- 2022 -->
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Information<br/>retrieval</td>
+            <td>2022, AMLC</td>
+            <td id="amlc_erl"></td>
+            <td></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Information<br/>retrieval</td>
+            <td>2022, AMLC</td>
+            <td id="amlc_bleed"></td>
+            <td></td>
+        </tr>
+    </tbody>
+
+    <!-- 2021 -->
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Healthcare<br/>analytics</td>
+            <td>2021, TETC</td>
+            <td id="tetc"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Healthcare<br/>analytics</td>
+            <td>2021, FGCS</td>
+            <td id="fgcs"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+
+    <!-- 2020 -->
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Evolutionary<br/>computing</td>
+            <td>2020, ICCS</td>
+            <td id="iccs"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Machine<br/>learning</td>
+            <td>2020, AIRE</td>
+            <td id="aire"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Healthcare<br/>analytics</td>
+            <td>2020, ACM CoDS-COMAD</td>
+            <td id="cods_comad"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+
+    <!-- 2019 -->
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Healthcare<br/>analytics</td>
+            <td>2019, KnoSys</td>
+            <td id="knosys"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Healthcare<br/>analytics</td>
+            <td>2019, CoNLL</td>
+            <td id="conll"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Healthcare<br/>analytics</td>
+            <td>2019, NLDB</td>
+            <td id="nldb"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td style="padding-left: 5px">Evolutionary<br/>computing</td>
+            <td>2019, ASOC</td>
+            <td id="asoc"></td>
+            <td><font color="red">(Not an active area of research anymore!)</font></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr class="normal">
+
+<p>
+    <b>Endnotes.</b> This page is a poor man's (or, grad student lacks HTML knowledge) version of
+    <a href="https://www.cs.cornell.edu/home/llee/papers.html">Lillian's "Papers" webpage</a>&#151;proudly 
+    inspired, but with much less flair!<br/>
+    Over the years, I've grown to love minimalistic design and Times as *my* go-to 
+    <a href="https://xkcd.com/2109">font</a>&#151;especially for its gorgeous italics.<br/>
+    That said, I used to have a 
+    more <a href="https://www.reddit.com/r/moviescirclejerk/comments/156ioyn/comment/jt0elbq/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button"><i>colorful</i></a> 
+    webpage, accessible <a href="https://tushaargvs.github.io/pages/research_old.html">here</a> 
+    (note: it's not actively updated).
+</p>
+  </div>
+</div>
+
+
+      </div>
+
+      <hr>
+      <div>
+        <p class="alignleft">
+          <!-- <a href="https://scholar.google.co.in/citations?user=C7v_cA8AAAAJ&hl=en" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlescholar.svg"/></a>  -->
+          <a href="https://scholar.google.co.in/citations?hl=en&user=C7v_cA8AAAAJ&view_op=list_works&sortby=pubdate" target="_blank"><font size="2">Scholar</font></a> &#124;
+          <!-- <a href="https://www.linkedin.com/in/tgangavarapu/" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg"/></a>  -->
+          <!-- <a href="https://instagram.com/tushaargangarapu/" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg"/></a>  -->
+          <!-- <a href="https://github.com/TushaarGVS" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"/></a> 
+          <a href="https://twitter.com/tushrgangarapu" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg"/></a> -->
+          <a href="https://github.com/TushaarGVS" target="_blank"><font size="2">GitHub</font></a> &#124;
+          <a href="https://twitter.com/tushrgangarapu" target="_blank"><font size="2">Twitter</font></a>
+          <!-- <a href="/feed.xml" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/rss.svg"/></a> -->
+          <!-- <a href="https://orcid.org/0000-0002-0489-9573" target="_blank"><img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/orcid.svg"/></a> -->
+        </p>
+        <p class="alignright"><font size="2">Tushaar Gangavarapu [<a href="mailto:tg352@cornell.edu">tg352@cornell.edu</a>]; <span id="lastModified"></span></font></p>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+
+    
+    <script src="/assets/themes/twitter/js/tabs.js"></script>
+  </body>
+</html>
+
